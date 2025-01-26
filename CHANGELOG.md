@@ -8,6 +8,13 @@
     - Animarion for shooting with 1 ammo shootable
     - Animarion for shooting with 0 ammo shootable
 - Changed Player X Position
+## Changed
+- Main Menu
+    - Main Menu text now is bigger
+    - Main Menu text now says Dreamland
+    - Moved "Press enter to play" text
+    - "Press enter to play" text now has a dark green color
+    - Move highscore text
 
 # 0.1.0 - 1.25.2025
 This is the minimum viable product. Not a V-Slice quality but MVP nonetheless
