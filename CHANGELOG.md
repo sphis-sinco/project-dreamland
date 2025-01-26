@@ -8,6 +8,8 @@
     - Animation for shooting with 1 ammo shootable
     - Animation for shooting with 0 ammo shootable
 - Changed Player X Position
+- Enemy Art
+    - Hell Enemy Art
 ## Changed
 - Main Menu
     - Main Menu text now is bigger
