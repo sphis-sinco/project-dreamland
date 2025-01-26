@@ -15,7 +15,7 @@
             "enemy_easy": 50,
             "enemy_common": 25
         },
-        "changes": {
+        "chances": {
             "enemy_rare": 10,
             "enemy_easy": 85
         }

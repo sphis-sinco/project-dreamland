@@ -26,7 +26,8 @@ class PlayState extends FlxState
 	var enemy_offscreen_padding:Float = 40;
 
 	var level_data = {
-		"level_data_format": 1,
+		"level_data_format": 3,
+		"difficulty": "medium",
 		"author": "Sphis_Sinco",
 		"assets": {
 			"directory": "",
@@ -39,9 +40,13 @@ class PlayState extends FlxState
 				"enemy_rare": 0,
 				"enemy_easy": 0,
 				"enemy_common": 0
+			},
+			"chances": {
+				"enemy_rare": 0,
+				"enemy_easy": 0
 			}
 		}
-	};
+	}
 
 	override public function create()
 	{
@@ -73,7 +78,8 @@ class PlayState extends FlxState
 		catch (e)
 		{
 			level_data = {
-				"level_data_format": 1,
+				"level_data_format": 3,
+				"difficulty": "medium",
 				"author": "Sphis_Sinco",
 				"assets": {
 					"directory": "",
@@ -87,6 +93,10 @@ class PlayState extends FlxState
 						"enemy_rare": 125,
 						"enemy_easy": 50,
 						"enemy_common": 25
+					},
+					"chances": {
+						"enemy_rare": 10,
+						"enemy_easy": 85
 					}
 				}
 			}
@@ -154,12 +164,12 @@ class PlayState extends FlxState
 			var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
 			new_enemy.ID = 0;
 
-			if (FlxG.random.bool(1))
+			if (FlxG.random.bool(level_data.settings.chances.enemy_rare))
 			{
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
 				new_enemy.ID = 2;
 			}
-			else if (FlxG.random.bool(25))
+			else if (FlxG.random.bool(level_data.settings.chances.enemy_easy))
 			{
 				texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
 				new_enemy.ID = 1;
