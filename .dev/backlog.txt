@@ -1,0 +1,15 @@
+FULL RELEASE (1.x.y)
+- Cutscenes (Pixel art)
+
+VSLICE ERA (0.6.x - 0.9.x)
+- Upgrades (simple and complicated)
+- Story
+- Mod Support using Polymod
+- more Options Menu submenus
+
+BETA ERA (0.4.x - 0.5.x)
+- Options Menu
+    - Controls/Keybind Changing Menu
+- Upgrades (simple ones)
+- Discord RPC [DONE]
+- Level Backgrounds
