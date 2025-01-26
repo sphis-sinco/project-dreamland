@@ -8,6 +8,8 @@ import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
+	public static var SCORE:Int = 0;
+
 	var player:FlxSprite = new FlxSprite();
 	var player_offscreen_padding:Float = 16;
 
@@ -102,6 +104,8 @@ class PlayState extends FlxState
 				{
 					if (enemy.overlaps(bullet))
 					{
+						SCORE += 100;
+
 						enemy.destroy();
 						enemies_group.members.remove(enemy);
 						bullet.destroy();
