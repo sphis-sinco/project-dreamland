@@ -36,6 +36,8 @@ class PlayState extends FlxState
 		score_text.y = 16;
 		add(score_text);
 
+		SCORE = 0;
+
 		super.create();
 	}
 
