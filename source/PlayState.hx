@@ -32,6 +32,10 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+		#if windows
+		Discord.DiscordClient.changePresence('In the level: "$CURRENT_LEVEL"', 'Blasting Creatures');
+		#end
+
 		add(bullets_group);
 
 		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
