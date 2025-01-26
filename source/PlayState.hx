@@ -32,6 +32,7 @@ class PlayState extends FlxState
 		player.animation.add('shoot-a1', [2], 1);
 		player.animation.add('shoot-a0', [3], 1);
 		player.animation.play('idle');
+		player.scale.set(2, 2);
 		player.screenCenter();
 		add(player);
 
@@ -77,6 +78,7 @@ class PlayState extends FlxState
 			new_bullet.setPosition(player.x, player.y);
 			bullets_group.add(new_bullet);
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
+			trace(bullets_max_onscreen - bullets_group.members.length);
 		}
 
 		for (bullet in bullets_group.members)
