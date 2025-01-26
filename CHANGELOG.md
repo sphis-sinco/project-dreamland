@@ -1,3 +1,5 @@
+# 0.4.0 (1/26/2025)
+
 # 0.3.3 (1/26/2025)
 ## Fixed
 - OutdatedState display even when you are not in an outdated version
