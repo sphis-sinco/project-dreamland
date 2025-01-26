@@ -25,28 +25,7 @@ class PlayState extends FlxState
 	var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	var enemy_offscreen_padding:Float = 40;
 
-	var level_data = {
-		"level_data_format": 3,
-		"difficulty": "medium",
-		"author": "Sphis_Sinco",
-		"assets": {
-			"directory": "",
-			"enemy_rare": "",
-			"enemy_easy": "",
-			"enemy_common": ""
-		},
-		"settings": {
-			"scores": {
-				"enemy_rare": 0,
-				"enemy_easy": 0,
-				"enemy_common": 0
-			},
-			"chances": {
-				"enemy_rare": 0,
-				"enemy_easy": 0
-			}
-		}
-	}
+	var level_data:LevelData;
 
 	override public function create()
 	{
