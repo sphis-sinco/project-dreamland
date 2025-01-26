@@ -29,6 +29,11 @@ class PlayState extends FlxState
 		key_down = FlxG.keys.justReleased.DOWN;
 		key_shoot = FlxG.keys.justReleased.SPACE;
 
+		if (key_up)
+			player.y -= 10;
+		if (key_down)
+			player.y += 10;
+
 		super.update(elapsed);
 	}
 }
