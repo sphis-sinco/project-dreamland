@@ -11,7 +11,8 @@ class Splash extends FlxState
 	{
 		super.create();
 
-		var hi:FlxText = new FlxText(0, 0, 0, "Thank you for playing Dreamland!", 32);
+		var hi:FlxText = new FlxText(0, 0, 0, "Thank you\nfor playing Dreamland!", 32);
+		hi.alignment = CENTER;
 		hi.screenCenter();
 		add(hi);
 
