@@ -89,6 +89,7 @@ class LevelSelect extends FlxState
 		}
 		catch (e)
 		{
+			trace(e);
 			#if web
 			difficulty.text = level_diffs[CURRENT_SELECTION];
 			#else
