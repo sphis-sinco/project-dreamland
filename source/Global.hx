@@ -8,6 +8,6 @@ class Global
 	{
 		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
 		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : HIGHSCORE;
-		FileManager.writeToPath('highscore.json', '{highscore:$HIGHSCORE}');
+		FileManager.writeToPath('highscore.json', '{"highscore":$HIGHSCORE}');
 	}
 }
