@@ -8,9 +8,8 @@ class Main extends Sprite
 {
 	public function new()
 	{
+		Global.set_HIGHSCORE();
 		super();
 		addChild(new FlxGame(0, 0, MenuState));
-		Global.set_HIGHSCORE();
-		PlayState.SCORE = Json.parse(FileManager.readFile(FileManager.getAssetFile('highscore.json'))).highscore;
 	}
 }
