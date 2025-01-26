@@ -3,12 +3,13 @@ package;
 import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
+import flixel.util.FlxColor;
 
 class MenuState extends FlxState
 {
 	var menuText:FlxText = new FlxText(0, 0, 0, "Main Menu", 32);
-	var pressButton:FlxText = new FlxText(0, 32, 0, "Press enter to play", 16);
-	var highscoreText:FlxText = new FlxText(0, 48, 0, "Highscore: 0", 16);
+	var pressButton:FlxText = new FlxText(0, 0, 0, "Press enter to play", 32);
+	var highscoreText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
 
 	override public function create()
 	{
@@ -20,6 +21,8 @@ class MenuState extends FlxState
 		highscoreText.color = (Global.NEW_HIGHSCORE) ? 0x00ff00 : 0xffffff;
 		add(highscoreText);
 
+		pressButton.y = FlxG.height - pressButton.height + 8;
+		pressButton.color = FlxColor.GREEN;
 
 		super.create();
 	}
