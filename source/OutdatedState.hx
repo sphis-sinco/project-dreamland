@@ -13,10 +13,11 @@ class OutdatedState extends FlxState
 		add(outdatedText);
 
 		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Application.current.meta.get('version')}) IS OUTDATED!\n'
-			+ 'THE CURRENT PUBLIC RELEASE IS v${Main.updateVersion} AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
+			+ 'THE CURRENT PUBLIC RELEASE IS v${Main.updateVersion},\n AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
 			+ 'You can press ENTER to go to the github to update\n'
 			+ 'or you can press BACKSPACE or ESCAPE to continue.';
 		outdatedText.text = outdatedText.text.toUpperCase();
+		outdatedText.alignment = CENTER;
 		outdatedText.screenCenter();
 
 		super.create();
