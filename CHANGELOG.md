@@ -1,3 +1,7 @@
+# 0.3.3 (1/25/2025)
+## Fixed
+- OutdatedState display even when you are not in an outdated version
+
 # 0.3.2 (1/25/2025)
 The game should now be compilable for web
 

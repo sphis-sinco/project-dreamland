@@ -15,6 +15,7 @@ class Main extends Sprite
 	public function new()
 	{
 		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
+		var needUpdate = false;
 		#if !hl
 		trace('checking for update');
 		var http = new haxe.Http("https://raw.githubusercontent.com/sphis-Sinco/project-dreamland/refs/heads/master/version.txt");
@@ -27,21 +28,20 @@ class Main extends Sprite
 			if (updateVersion != curVersion)
 			{
 				trace('versions arent matching!');
-				FlxG.save.data.latest_version = updateVersion;
+				needUpdate = true;
 			}
 		}
 
 		http.onError = function(error)
 		{
 			trace('error: $error');
+			FlxG.save.data.latest_version = Application.current.meta.get('version');
 		}
 
 		http.request();
-		#else
-		FlxG.save.data.latest_version = Application.current.meta.get('version');
 		#end
 		
 		super();
-		addChild(new FlxGame(0, 0, (Application.current.meta.get('version') != FlxG.save.data.latest_version) ? OutdatedState : MenuState));
+		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : MenuState));
 	}
 }
