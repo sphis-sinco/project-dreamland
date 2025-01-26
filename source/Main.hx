@@ -43,6 +43,6 @@ class Main extends Sprite
 		
 		super();
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
-		Discord.main();
+		Discord.Disc.main();
 	}
 }

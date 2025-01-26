@@ -4,7 +4,7 @@ import hxdiscord_rpc.Discord;
 import hxdiscord_rpc.Types;
 import sys.thread.Thread;
 
-class Main
+class Disc
 {
 	public static function main():Void
 	{
