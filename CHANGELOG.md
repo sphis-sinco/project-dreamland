@@ -2,6 +2,7 @@
 ## Added
 - New LevelData fields
     - `chance` - json data that controls the rariety of `enemy-easy` and `enemy-rare`
+    - `speed_additions` - json data that adds to the speeds of the 3 enemy types
 - `LevelData` typedef to make things easier
 ## Fixed
 - Bug where every enemy would be earth enemies
