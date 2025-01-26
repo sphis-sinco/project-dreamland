@@ -150,13 +150,16 @@ class PlayState extends FlxState
 		{
 			var new_enemy:FlxSprite = new FlxSprite();
 			var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
+			new_enemy.ID = 0;
 
 			switch (FlxG.random.int(0, 1000))
 			{
 				case 1 | 1000:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
+					new_enemy.ID = 2;
 				case 10 | 20 | 40 | 80 | 160 | 320 | 640:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
+					new_enemy.ID = 1;
 			}
 
 			new_enemy.loadGraphic(texturepath);
@@ -184,7 +187,15 @@ class PlayState extends FlxState
 				{
 					if (enemy.overlaps(bullet))
 					{
-						SCORE += 100;
+						switch (enemy.ID)
+						{
+							case 0:
+								SCORE += level_data.settings.scores.enemy_common;
+							case 1:
+								SCORE += level_data.settings.scores.enemy_easy;
+							case 2:
+								SCORE += level_data.settings.scores.enemy_rare;
+						}
 						if (Global.HIGHSCORE < SCORE)
 							score_text.color = FlxColor.LIME;
 
