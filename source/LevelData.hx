@@ -2,7 +2,6 @@ package;
 
 typedef LevelData =
 {
-	var level_data_format:Int;
 	var difficulty:String;
 	var ?author:String;
 	var ?assets:LevelDataAssetsInfo;
