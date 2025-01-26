@@ -53,6 +53,8 @@ class Discord
 		trace('not cpp!');
 	}
 
+	public static function changePresence(details:String, state:String) {}
+
 	static function onReady() {}
 
 	static function onError(_code:Int, _message:String) {}
