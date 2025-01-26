@@ -85,13 +85,14 @@ class LevelSelect extends FlxState
 
 		try
 		{
-			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}
-						${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}')));
+			var filename:String = FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}');
+			// trace(filename);
+			level_json = Json.parse(FileManager.readFile(filename));
 			difficulty.text = level_json.difficulty;
 		}
 		catch (e)
 		{
-			trace(e);
+			// trace(e);
 			#if web
 			difficulty.text = level_diffs[CURRENT_SELECTION];
 			#else
