@@ -129,8 +129,7 @@ class PlayState extends FlxState
 					if (enemy.overlaps(bullet))
 					{
 						SCORE += 100;
-						Global.set_HIGHSCORE();
-						if (Global.NEW_HIGHSCORE)
+						if (Global.HIGHSCORE < SCORE)
 							score_text.color = FlxColor.LIME;
 
 						enemy.destroy();
