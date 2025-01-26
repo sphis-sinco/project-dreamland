@@ -10,6 +10,7 @@ class PlayState extends FlxState
 	override public function create()
 	{
 		player.screenCenter();
+		trace(player.getPosition());
 		add(player);
 
 		super.create();
