@@ -4,6 +4,7 @@
 - Level Select crash
 ## Added
 - variables in Level select for level difficulties (hardcoded...)
+- Back keybind to Level Select (you can leave it)
 
 # 0.3.2 (1/25/2025)
 The game should now be compilable for web
