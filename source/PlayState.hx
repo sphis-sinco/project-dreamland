@@ -34,15 +34,7 @@ class PlayState extends FlxState
 	{
 		add(bullets_group);
 
-		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
-		player.animation.add('idle', [0]);
-		player.animation.add('shoot-a2', [1, 2], 4, false);
-		player.animation.add('shoot-a1', [2, 3], 4, false);
-		player.animation.add('shoot-a0', [3, 3], 4, false);
-		player.animation.play('idle');
-		player.scale.set(2, 2);
-		player.screenCenter();
-		player.x -= player.width * 8;
+		playerSetup();
 		add(player);
 
 		add(enemies_group);
@@ -70,6 +62,19 @@ class PlayState extends FlxState
 		super.create();
 	}
 
+	function playerSetup()
+	{
+		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
+		player.animation.add('idle', [0]);
+		player.animation.add('shoot-a2', [1, 2], 4, false);
+		player.animation.add('shoot-a1', [2, 3], 4, false);
+		player.animation.add('shoot-a0', [3, 3], 4, false);
+		player.animation.play('idle');
+		player.scale.set(2, 2);
+		player.screenCenter();
+		player.x -= player.width * 8;
+	}
+
 	var key_up:Bool;
 	var key_down:Bool;
 	var key_shoot:Bool;
@@ -82,6 +87,26 @@ class PlayState extends FlxState
 		key_down = FlxG.keys.pressed.DOWN;
 		key_shoot = FlxG.keys.justReleased.SPACE;
 
+		inputCheck();
+
+		bulletMovement();
+
+		if (FlxG.random.int(0, 20) == 10)
+		{
+			var new_enemy:FlxSprite = newEnemy();
+			enemies_group.add(new_enemy);
+		}
+
+		enemyMovement();
+
+		if (player.animation.finished)
+			player.animation.play('idle');
+
+		super.update(elapsed);
+	}
+
+	function inputCheck()
+	{
 		if (key_up)
 		{
 			player.y -= 10;
@@ -105,7 +130,10 @@ class PlayState extends FlxState
 		{
 			player.animation.play('shoot-a0');
 		}
+	}
 
+	function bulletMovement()
+	{
 		for (bullet in bullets_group.members)
 		{
 			try
@@ -119,13 +147,10 @@ class PlayState extends FlxState
 			}
 			catch (e) {}
 		}
+	}
 
-		if (FlxG.random.int(0, 20) == 10)
-		{
-			var new_enemy:FlxSprite = newEnemy();
-			enemies_group.add(new_enemy);
-		}
-
+	function enemyMovement()
+	{
 		for (enemy in enemies_group.members)
 		{
 			try
@@ -135,14 +160,14 @@ class PlayState extends FlxState
 				try
 				{
 					switch (enemy.ID)
-				{
-					case 0:
-						additionalSpeed += level_data.settings.speed_additions.enemy_common;
-					case 1:
-						additionalSpeed += level_data.settings.speed_additions.enemy_easy;
-					case 2:
-						additionalSpeed += level_data.settings.speed_additions.enemy_rare;
-				}
+					{
+						case 0:
+							additionalSpeed += level_data.settings.speed_additions.enemy_common;
+						case 1:
+							additionalSpeed += level_data.settings.speed_additions.enemy_easy;
+						case 2:
+							additionalSpeed += level_data.settings.speed_additions.enemy_rare;
+					}
 				}
 				catch (e)
 				{
@@ -155,43 +180,43 @@ class PlayState extends FlxState
 					enemy.destroy();
 					enemies_group.members.remove(enemy);
 				}
-				for (bullet in bullets_group.members)
-				{
-					if (enemy.overlaps(bullet))
-					{
-						switch (enemy.ID)
-						{
-							case 0:
-								SCORE += level_data.settings.scores.enemy_common;
-							case 1:
-								SCORE += level_data.settings.scores.enemy_easy;
-							case 2:
-								SCORE += level_data.settings.scores.enemy_rare;
-						}
-						if (Global.HIGHSCORE < SCORE)
-							score_text.color = FlxColor.LIME;
-
-						enemy.destroy();
-						enemies_group.members.remove(enemy);
-						bullet.destroy();
-						bullets_group.members.remove(bullet);
-					}
-				}
+				enemyBeingShotCheck(enemy);
 				if (enemy.overlaps(player))
 					FlxG.switchState(new MenuState());
-			
 			}
 			catch (e)
 			{
 				trace(e);
 			}
 		}
-
-		if (player.animation.finished)
-			player.animation.play('idle');
-
-		super.update(elapsed);
 	}
+
+	function enemyBeingShotCheck(enemy:FlxSprite)
+	{
+		for (bullet in bullets_group.members)
+		{
+			if (enemy.overlaps(bullet))
+			{
+				switch (enemy.ID)
+				{
+					case 0:
+						SCORE += level_data.settings.scores.enemy_common;
+					case 1:
+						SCORE += level_data.settings.scores.enemy_easy;
+					case 2:
+						SCORE += level_data.settings.scores.enemy_rare;
+				}
+				if (Global.HIGHSCORE < SCORE)
+					score_text.color = FlxColor.LIME;
+
+				enemy.destroy();
+				enemies_group.members.remove(enemy);
+				bullet.destroy();
+				bullets_group.members.remove(bullet);
+			}
+			}
+	}
+
 	function newBullet():FlxSprite
 	{
 		var new_bullet:FlxSprite = new FlxSprite();
