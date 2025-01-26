@@ -40,7 +40,7 @@ typedef LDSChances =
 
 typedef LDSSpeeds =
 {
-	var ?enemy_rare:Int;
-	var ?enemy_easy:Int;
-	var ?enemy_common:Int;
+	var ?enemy_rare:Float;
+	var ?enemy_easy:Float;
+	var ?enemy_common:Float;
 }

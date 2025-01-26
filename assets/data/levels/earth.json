@@ -18,6 +18,11 @@
         "chances": {
             "enemy_rare": 10,
             "enemy_easy": 85
+        },
+        "speed_additions": {
+            "enemy_common": 0,
+            "enemy_easy": -32,
+            "enemy_rare": 64
         }
     }
 }

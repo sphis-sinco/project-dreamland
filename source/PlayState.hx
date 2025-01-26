@@ -76,6 +76,11 @@ class PlayState extends FlxState
 					"chances": {
 						"enemy_rare": 10,
 						"enemy_easy": 85
+					},
+					"speed_additions": {
+						"enemy_common": 0,
+						"enemy_easy": -32,
+						"enemy_rare": 64
 					}
 				}
 			}
@@ -169,7 +174,20 @@ class PlayState extends FlxState
 		{
 			try
 			{
-				enemy.x -= enemy.width / 6;
+				var additionalSpeed:Float = 0;
+
+				switch (enemy.ID)
+				{
+					case 0:
+						additionalSpeed += level_data.settings.speed_additions.enemy_common;
+					case 1:
+						additionalSpeed += level_data.settings.speed_additions.enemy_easy;
+					case 2:
+						additionalSpeed += level_data.settings.speed_additions.enemy_rare;
+				}
+
+				enemy.x -= enemy.width / 6 + additionalSpeed;
+
 				if (enemy.x < 0 - enemy.width * 2)
 				{
 					enemy.destroy();
@@ -201,7 +219,10 @@ class PlayState extends FlxState
 					FlxG.switchState(new MenuState());
 			
 			}
-			catch (e) {}
+			catch (e)
+			{
+				trace(e);
+			}
 		}
 
 		if (player.animation.finished)
