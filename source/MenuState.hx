@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import lime.app.Application;
 
 class MenuState extends FlxState
 {
@@ -23,6 +24,8 @@ class MenuState extends FlxState
 
 		pressButton.y = FlxG.height - pressButton.height + 8;
 		pressButton.color = FlxColor.GREEN;
+
+		menuText.text += ' v${Application.current.meta.get('version')}';
 
 		super.create();
 	}

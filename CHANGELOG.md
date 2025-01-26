@@ -11,6 +11,7 @@
 - Enemy Art
     - Random Chances for enemy arts to change
     - Hell Enemy Art
+- Game version to Main Menu
 ## Changed
 - Main Menu
     - Main Menu text now is bigger
