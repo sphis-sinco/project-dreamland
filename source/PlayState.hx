@@ -13,6 +13,7 @@ class PlayState extends FlxState
 
 	var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	var bullet_offscreen_addition:Float = 16;
+	var bullets_max_onscreen:Float = 2;
 
 	override public function create()
 	{
@@ -47,7 +48,7 @@ class PlayState extends FlxState
 			if (player.y > FlxG.height - player.height - player_offscreen_padding)
 				player.y = FlxG.height - player.height - player_offscreen_padding;
 		}
-		if (key_shoot && bullets_group.members.length != 2)
+		if (key_shoot && bullets_group.members.length != bullets_max_onscreen)
 		{
 			var new_bullet:FlxSprite = new FlxSprite();
 			new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
