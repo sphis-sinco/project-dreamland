@@ -56,9 +56,13 @@ class PlayState extends FlxState
 
 		for (bullet in bullets_group.members)
 		{
-			bullet.x += bullet.width;
-			if (bullet.x > FlxG.width + player_offscreen_padding)
-				bullets_group.remove(bullet);
+			try
+			{
+				bullet.x += bullet.width;
+				if (bullet.x > FlxG.width + player_offscreen_padding)
+					bullets_group.remove(bullet);
+			}
+			catch (e) {}
 		}
 
 		super.update(elapsed);
