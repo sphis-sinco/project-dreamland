@@ -1,17 +1,17 @@
 {
   "dependencies": [
     {
-      "name": "discord-rpc",
-      "type": "haxelib",
-      "version": null
-    },
-    {
       "name": "flixel",
       "type": "haxelib",
       "version": null
     },
     {
       "name": "hxcpp",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "hxdiscord",
       "type": "haxelib",
       "version": null
     }
