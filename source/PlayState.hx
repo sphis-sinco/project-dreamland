@@ -15,6 +15,8 @@ class PlayState extends FlxState
 	var bullet_offscreen_addition:Float = 16;
 	var bullets_max_onscreen:Float = 2;
 
+	var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
 	override public function create()
 	{
 		add(bullets_group);
@@ -22,6 +24,8 @@ class PlayState extends FlxState
 		player.makeGraphic(32,32, FlxColor.LIME); 
 		player.screenCenter();
 		add(player);
+
+		add(enemies_group);
 
 		super.create();
 	}
