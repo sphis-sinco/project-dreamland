@@ -1,5 +1,4 @@
 {
-    "level_data_format": 4,
     "difficulty": "medium",
     "author": "Sphis_Sinco",
     "assets": {
@@ -22,7 +21,7 @@
         "speed_additions": {
             "enemy_common": 0,
             "enemy_easy": -10,
-            "enemy_rare": 64
+            "enemy_rare": 10
         }
     }
 }
