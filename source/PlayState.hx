@@ -12,6 +12,7 @@ class PlayState extends FlxState
 	var player_offscreen_padding:Float = 16;
 
 	var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	var bullet_offscreen_addition:Float = 16;
 
 	override public function create()
 	{
@@ -59,7 +60,7 @@ class PlayState extends FlxState
 			try
 			{
 				bullet.x += bullet.width;
-				if (bullet.x > FlxG.width + player_offscreen_padding)
+				if (bullet.x > FlxG.width + bullet_offscreen_addition)
 				{
 					bullet.destroy();
 					bullets_group.members.remove(bullet);
