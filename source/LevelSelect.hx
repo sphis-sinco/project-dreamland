@@ -84,7 +84,7 @@ class LevelSelect extends FlxState
 
 		try
 		{
-			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}')));
+			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}.json')));
 			difficulty.text = level_json.difficulty;
 		}
 		catch (e)
