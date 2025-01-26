@@ -32,11 +32,13 @@ class LevelSelect extends FlxState
 
 	var key_up:Bool;
 	var key_down:Bool;
+	var key_enter:Bool;
 
 	override public function update(elapsed:Float)
 	{
-		key_up = FlxG.keys.pressed.UP;
-		key_down = FlxG.keys.pressed.DOWN;
+		key_up = FlxG.keys.justReleased.UP;
+		key_down = FlxG.keys.justReleased.DOWN;
+		key_enter = FlxG.keys.justReleased.ENTER;
 
 		if (key_up)
 		{
