@@ -1,4 +1,4 @@
-# [UNRELEASED]
+# 0.2.0 (1/25/2025)
 ## Added
 - Saving via `FlxG.save`
     - Highscore Saving
@@ -23,7 +23,7 @@
     - Score text now turns green when you have achieved a new high score
     - Score now gets added depending on the enemy Type
 
-# 0.1.0 - 1.25.2025
+# 0.1.0 (1/25/2025)
 This is the minimum viable product. Not a V-Slice quality but MVP nonetheless
 ## Added
 - Boxes for graphics
