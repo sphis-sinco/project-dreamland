@@ -9,6 +9,7 @@
     - Animation for shooting with 0 ammo shootable
 - Changed Player X Position
 - Enemy Art
+    - Random Chances for enemy arts to change
     - Hell Enemy Art
 ## Changed
 - Main Menu
