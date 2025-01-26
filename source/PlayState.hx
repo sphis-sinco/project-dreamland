@@ -83,7 +83,10 @@ class PlayState extends FlxState
 			
 			bullets_group.add(new_bullet);
 		}
-
+		else if (bullets_group.members.length == bullets_max_onscreen)
+		{
+			player.animation.play('shoot-a0');
+		}
 		for (bullet in bullets_group.members)
 		{
 			try
