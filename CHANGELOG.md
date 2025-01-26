@@ -5,6 +5,7 @@
     - `speed_additions` - json data that adds to the speeds of the 3 enemy types
 - `LevelData` typedef to make things easier
 - New global variable for the game version: `APP_VERSION`
+- New application Icon
 ## Fixed
 - Bug where every enemy would be earth enemies
 ## Changed
