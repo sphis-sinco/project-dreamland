@@ -12,6 +12,6 @@ class Main extends Sprite
 	{
 		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
 		super();
-		addChild(new FlxGame(0, 0, MenuState));
+		addChild(new FlxGame(0, 0, (FlxG.save.data.version != Application.current.meta.get('version')) ? OutdatedState : MenuState));
 	}
 }
