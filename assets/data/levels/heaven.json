@@ -1,0 +1,18 @@
+{
+    "level_data_format": 1,
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "heaven/",
+
+        "enemy_rare": "enemy-rare",
+        "enemy_easy": "enemy-easy",
+        "enemy_common": "enemy-common"
+    },
+    "settings": {
+        "scores": {
+            "enemy_rare": 63,
+            "enemy_easy": 25,
+            "enemy_common": 13
+        }
+    }
+}
