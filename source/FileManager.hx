@@ -25,7 +25,7 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 5.0;
+	public static var FILE_MANAGER_VERSION:Float = 5.1;
 
 	public static function getPath(path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 		return 'assets/${PATH_TYPE}${path}';
@@ -67,7 +67,10 @@ class FileManager
 	public static function makeFile(path:String, content:String)
 	{
 		#if sys
-		File.saveContent(path, content);
+		if (path.length > 0)
+			File.saveContent(path, content);
+		else
+			throw 'A path is required.';
 		#else
 		trace('NOT SYS!');
 		#end
