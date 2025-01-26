@@ -176,7 +176,9 @@ class PlayState extends FlxState
 			{
 				var additionalSpeed:Float = 0;
 
-				switch (enemy.ID)
+				try
+				{
+					switch (enemy.ID)
 				{
 					case 0:
 						additionalSpeed += level_data.settings.speed_additions.enemy_common;
@@ -185,7 +187,11 @@ class PlayState extends FlxState
 					case 2:
 						additionalSpeed += level_data.settings.speed_additions.enemy_rare;
 				}
-
+				}
+				catch (e)
+				{
+					additionalSpeed = 0;
+				}
 				enemy.x -= enemy.width / 6 + additionalSpeed;
 
 				if (enemy.x < 0 - enemy.width * 2)
