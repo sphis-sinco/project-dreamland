@@ -3,6 +3,7 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
+import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.util.FlxColor;
 
 class PlayState extends FlxState
@@ -10,8 +11,12 @@ class PlayState extends FlxState
 	var player:FlxSprite = new FlxSprite();
 	var player_offscreen_padding:Float = 16;
 
+	var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
 	override public function create()
 	{
+		add(bullets_group);
+
 		player.makeGraphic(32,32, FlxColor.LIME); 
 		player.screenCenter();
 		add(player);
