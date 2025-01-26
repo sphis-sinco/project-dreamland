@@ -10,6 +10,8 @@ import haxe.Json;
 
 class PlayState extends FlxState
 {
+	public static var CURRENT_LEVEL:String = 'earth';
+
 	public static var SCORE:Int = 0;
 	var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
@@ -66,7 +68,7 @@ class PlayState extends FlxState
 
 		try
 		{
-			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/heaven.json')));
+			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL.json')));
 		}
 		catch (e)
 		{
