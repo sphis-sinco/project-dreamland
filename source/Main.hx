@@ -10,6 +10,8 @@ using StringTools;
 
 class Main extends Sprite
 {
+	public static var updateVersion:String;
+
 	public function new()
 	{
 		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
@@ -18,7 +20,7 @@ class Main extends Sprite
 
 		http.onData = function(data:String)
 		{
-			var updateVersion = data.split('\n')[0].trim();
+			updateVersion = data.split('\n')[0].trim();
 			var curVersion:String = Application.current.meta.get('version').trim();
 			trace('version online: ' + updateVersion + ', your version: ' + curVersion);
 			if (updateVersion != curVersion)
