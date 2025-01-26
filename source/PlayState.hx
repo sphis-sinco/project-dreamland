@@ -28,5 +28,6 @@ class Player extends FlxSprite
 	{
 		super(X,Y);
 		makeGraphic(32,32, 0x00ff00);
+		visible = true;
 	}
 }
