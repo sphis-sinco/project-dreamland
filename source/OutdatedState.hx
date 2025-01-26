@@ -9,10 +9,6 @@ class OutdatedState extends FlxState
 {
 	override public function create()
 	{
-		#if windows
-		Discord.DiscordClient.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${Main.updateVersion}');
-		#end
-
 		var outdatedText:FlxText = new FlxText(0, 0, 0, "blah", 16);
 		add(outdatedText);
 
@@ -23,6 +19,10 @@ class OutdatedState extends FlxState
 		outdatedText.text = outdatedText.text.toUpperCase();
 		outdatedText.alignment = CENTER;
 		outdatedText.screenCenter();
+
+		#if windows
+		Discord.DiscordClient.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${Main.updateVersion}');
+		#end
 
 		super.create();
 	}
