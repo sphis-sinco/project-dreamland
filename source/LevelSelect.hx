@@ -9,7 +9,8 @@ import haxe.Json;
 
 class LevelSelect extends FlxState
 {
-	var levels:Array<String> = ['heaven', 'earth', 'hell'];
+	var levels:Array<String> = ['earth', 'heaven', 'hell'];
+	var level_diffs:Array<String> = ['medium', 'easy', 'hard'];
 	var level_texts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
 	var difficulty:FlxText = new FlxText(0, 0, 0, "", 32);
@@ -81,7 +82,11 @@ class LevelSelect extends FlxState
 		}
 		catch (e)
 		{
+			#if html
+			difficulty.text = level_diffs[CURRENT_SELECTION];
+			#else
 			difficulty.text = "unknown difficulty: " + e;
+			#end
 		}
 		super.update(elapsed);
 	}

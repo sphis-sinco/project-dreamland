@@ -2,6 +2,8 @@
 ## Fixed
 - OutdatedState display even when you are not in an outdated version
 - Level Select crash
+## Added
+- variables in Level select for level difficulties (hardcoded...)
 
 # 0.3.2 (1/25/2025)
 The game should now be compilable for web
