@@ -32,10 +32,6 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-		#if windows
-		Discord.DiscordClient.changePresence('In the level: "$CURRENT_LEVEL"', 'Blasting Creatures');
-		#end
-
 		add(bullets_group);
 
 		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
@@ -66,6 +62,10 @@ class PlayState extends FlxState
 			// trace(e);
 			level_data = LevelDataManager.defaultJSON;
 		}
+
+		#if windows
+		Discord.DiscordClient.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
+		#end
 
 		super.create();
 	}
