@@ -151,11 +151,11 @@ class PlayState extends FlxState
 			var new_enemy:FlxSprite = new FlxSprite();
 			var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
 
-			switch (FlxG.random.int(0, 100))
+			switch (FlxG.random.int(0, 1000))
 			{
-				case 1 | 100:
+				case 1 | 1000:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
-				case 10 | 20:
+				case 100 | 200:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
 			}
 
