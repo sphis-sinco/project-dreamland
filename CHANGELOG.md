@@ -1,7 +1,7 @@
 # [UNRELEASED]
 ## Added
-- Highscore Saving
-- Saves via `FlxG.save`
+- Saving via `FlxG.save`
+    - Highscore Saving
 - Player Art
     - Art for idle
     - Animation for shooting with 2 ammo shootable
