@@ -155,7 +155,7 @@ class PlayState extends FlxState
 			{
 				case 1 | 1000:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
-				case 100 | 200:
+				case 10 | 20 | 40 | 80 | 160 | 320 | 640:
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
 			}
 
