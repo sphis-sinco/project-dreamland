@@ -28,9 +28,9 @@ class PlayState extends FlxState
 
 		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
 		player.animation.add('idle', [0]);
-		player.animation.add('shoot-a2', [1, 2], 2);
-		player.animation.add('shoot-a1', [2, 3], 2);
-		player.animation.add('shoot-a0', [3, 3], 2);
+		player.animation.add('shoot-a2', [1, 2], 4);
+		player.animation.add('shoot-a1', [2, 3], 4);
+		player.animation.add('shoot-a0', [3, 3], 4);
 		player.animation.play('idle');
 		player.scale.set(2, 2);
 		player.screenCenter();
