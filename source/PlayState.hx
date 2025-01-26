@@ -8,6 +8,8 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import haxe.Json;
 
+using StringTools;
+
 class PlayState extends FlxState
 {
 	public static var CURRENT_LEVEL:String = 'earth';
@@ -52,10 +54,11 @@ class PlayState extends FlxState
 
 		try
 		{
-			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL')));
+			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL${(!CURRENT_LEVEL.endsWith('.json')) ? '.json' : ''}')));
 		}
 		catch (e)
 		{
+			// trace(e);
 			level_data = {
 				"difficulty": "medium",
 				"author": "Sphis_Sinco",
