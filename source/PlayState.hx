@@ -76,9 +76,10 @@ class PlayState extends FlxState
 			var new_bullet:FlxSprite = new FlxSprite();
 			new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
 			new_bullet.setPosition(player.x, player.y);
-			bullets_group.add(new_bullet);
+
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 			trace(bullets_max_onscreen - bullets_group.members.length);
+			bullets_group.add(new_bullet);
 		}
 
 		for (bullet in bullets_group.members)
