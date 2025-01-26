@@ -92,6 +92,17 @@ class PlayState extends FlxState
 					enemy.destroy();
 					enemies_group.members.remove(enemy);
 				}
+				for (bullet in bullets_group.members)
+				{
+					if (enemy.overlaps(bullet))
+					{
+						enemy.destroy();
+						enemies_group.members.remove(enemy);
+						bullet.destroy();
+						bullets_group.members.remove(bullet);
+					}
+				}
+			
 			}
 			catch (e) {}
 		}
