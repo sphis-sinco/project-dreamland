@@ -16,6 +16,7 @@ class PlayState extends FlxState
 	var bullets_max_onscreen:Float = 2;
 
 	var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	var enemy_offscreen_padding:Float = 40;
 
 	override public function create()
 	{
@@ -79,6 +80,11 @@ class PlayState extends FlxState
 			var new_enemy:FlxSprite = new FlxSprite();
 			new_enemy.makeGraphic(40, 40, FlxColor.RED);
 			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
+			if (new_enemy.y < 0 + enemy_offscreen_padding)
+				new_enemy.y = 0 + enemy_offscreen_padding;
+			if (new_enemy.y > FlxG.height - new_enemy.height - enemy_offscreen_padding)
+				new_enemy.y = FlxG.height - new_enemy.height - enemy_offscreen_padding;
+
 			enemies_group.add(new_enemy);
 		}
 
