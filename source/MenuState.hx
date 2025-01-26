@@ -33,7 +33,7 @@ class MenuState extends FlxState
 	override public function update(elapsed:Float)
 	{
 		if (FlxG.keys.justReleased.ENTER)
-			FlxG.switchState(new PlayState());
+			FlxG.switchState(new LevelSelect());
 
 		super.update(elapsed);
 	}
