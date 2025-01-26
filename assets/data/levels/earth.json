@@ -1,5 +1,5 @@
 {
-    "level_data_format": 2,
+    "level_data_format": 3,
     "difficulty": "medium",
     "author": "Sphis_Sinco",
     "assets": {
@@ -14,6 +14,10 @@
             "enemy_rare": 125,
             "enemy_easy": 50,
             "enemy_common": 25
+        },
+        "changes": {
+            "enemy_rare": 10,
+            "enemy_easy": 85
         }
     }
 }

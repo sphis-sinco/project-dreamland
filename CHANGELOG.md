@@ -1,4 +1,6 @@
 # 0.4.0 (1/26/2025)
+## Added
+- Field for enemy chances in the level data jsons
 
 # 0.3.3 (1/26/2025)
 ## Fixed
