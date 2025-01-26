@@ -1,6 +1,8 @@
 # 0.4.1 (1/26/2025)
 ## Fixed
 - Every level being the earth level on web
+## Added
+- Discord RPC Support
 
 # 0.4.0 (1/26/2025)
 ## Added
