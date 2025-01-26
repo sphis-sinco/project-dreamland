@@ -4,11 +4,13 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
 class PlayState extends FlxState
 {
 	public static var SCORE:Int = 0;
+	var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
 	var player:FlxSprite = new FlxSprite();
 	var player_offscreen_padding:Float = 16;
@@ -30,6 +32,10 @@ class PlayState extends FlxState
 
 		add(enemies_group);
 
+		score_text.screenCenter(X);
+		score_text.y = 16;
+		add(score_text);
+
 		super.create();
 	}
 
@@ -39,6 +45,8 @@ class PlayState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		score_text.text = "Score: " + SCORE;
+
 		key_up = FlxG.keys.pressed.UP;
 		key_down = FlxG.keys.pressed.DOWN;
 		key_shoot = FlxG.keys.justReleased.SPACE;
