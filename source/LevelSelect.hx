@@ -15,6 +15,8 @@ class LevelSelect extends FlxState
 
 	override public function create()
 	{
+		levels = FileManager.readDirectory('assets/data/levels');
+
 		add(level_texts);
 
 		var int:Int = 0;
