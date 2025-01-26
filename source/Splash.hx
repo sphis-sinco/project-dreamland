@@ -11,8 +11,6 @@ class Splash extends FlxState
 	{
 		super.create();
 
-		Discord.main();
-
 		var hi:FlxText = new FlxText(0, 0, 0, "Thank you\nfor playing Dreamland!", 32);
 		hi.alignment = CENTER;
 		hi.screenCenter();

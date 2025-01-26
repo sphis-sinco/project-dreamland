@@ -22,9 +22,14 @@ class Discord
 
 	static function onReady()
 	{
+		changePresence('Chilling', 'Chilling');
+	}
+
+	public static function changePresence(details:String, state:String)
+	{
 		DiscordRpc.presence({
-			details: 'Chilling',
-			state: 'Chilling',
+			details: details,
+			state: state,
 			largeImageKey: 'logo_haxe',
 			largeImageText: 'Haxe'
 		});
