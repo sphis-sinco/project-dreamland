@@ -86,7 +86,7 @@ class PlayState extends FlxState
 		{
 			try
 			{
-				enemy.x -= enemy.width / 4;
+				enemy.x -= enemy.width / 6;
 				if (enemy.x < 0 - enemy.width * 2)
 				{
 					enemy.destroy();
