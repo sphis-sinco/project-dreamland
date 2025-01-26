@@ -1,6 +1,7 @@
 # 0.4.0 (1/26/2025)
 ## Added
 - Field for enemy chances in the level data jsons
+- `LevelData` typedef to make things easier
 ## Fixed
 - Bug where every enemy would be earth enemies
 
