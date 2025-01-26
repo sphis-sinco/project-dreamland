@@ -1,8 +1,8 @@
 package;
 
 import lime.utils.Assets;
-import sys.FileSystem;
 #if sys
+import sys.FileSystem;
 import sys.io.File;
 #end
 
@@ -26,7 +26,7 @@ class FileManager
 			MAYBE there is now a feature flag required to be specified for specific functions to function. 
 			I mean these can be big too but yknow. 1 thing at a time.
 	 */
-	public static var FILE_MANAGER_VERSION:Float = 5.5;
+	public static var FILE_MANAGER_VERSION:Float = 5.6;
 
 	public static function getPath(pathprefix:String, path:String, ?PATH_TYPE:PathTypes = DEFAULT):String
 		return '${pathprefix}${PATH_TYPE}${path}';
