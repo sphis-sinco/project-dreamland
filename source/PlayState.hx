@@ -90,21 +90,18 @@ class PlayState extends FlxState
 			if (player.y > FlxG.height - player.height - player_offscreen_padding)
 				player.y = FlxG.height - player.height - player_offscreen_padding;
 		}
+
 		if (key_shoot && bullets_group.members.length != bullets_max_onscreen)
 		{
-			var new_bullet:FlxSprite = new FlxSprite();
-			new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
-			new_bullet.setPosition(player.x, player.y);
-
+			var new_bullet:FlxSprite = newBullet();
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
-			// trace(bullets_max_onscreen - bullets_group.members.length);
-			
 			bullets_group.add(new_bullet);
 		}
 		else if (bullets_group.members.length == bullets_max_onscreen)
 		{
 			player.animation.play('shoot-a0');
 		}
+
 		for (bullet in bullets_group.members)
 		{
 			try
@@ -121,29 +118,7 @@ class PlayState extends FlxState
 
 		if (FlxG.random.int(0, 20) == 10)
 		{
-			var new_enemy:FlxSprite = new FlxSprite();
-			var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
-			new_enemy.ID = 0;
-
-			if (FlxG.random.bool(level_data.settings.chances.enemy_rare))
-			{
-					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
-				new_enemy.ID = 2;
-			}
-			else if (FlxG.random.bool(level_data.settings.chances.enemy_easy))
-			{
-				texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
-				new_enemy.ID = 1;
-			}
-
-			new_enemy.loadGraphic(texturepath);
-
-			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
-			if (new_enemy.y < 0 + enemy_offscreen_padding)
-				new_enemy.y = 0 + enemy_offscreen_padding;
-			if (new_enemy.y > FlxG.height - new_enemy.height - enemy_offscreen_padding)
-				new_enemy.y = FlxG.height - new_enemy.height - enemy_offscreen_padding;
-
+			var new_enemy:FlxSprite = newEnemy();
 			enemies_group.add(new_enemy);
 		}
 
@@ -212,5 +187,41 @@ class PlayState extends FlxState
 			player.animation.play('idle');
 
 		super.update(elapsed);
+	}
+	function newBullet():FlxSprite
+	{
+		var new_bullet:FlxSprite = new FlxSprite();
+		new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
+		new_bullet.setPosition(player.x, player.y);
+
+		return new_bullet;
+	}
+
+	function newEnemy():FlxSprite
+	{
+		var new_enemy:FlxSprite = new FlxSprite();
+		var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
+		new_enemy.ID = 0;
+
+		if (FlxG.random.bool(level_data.settings.chances.enemy_rare))
+		{
+			texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
+			new_enemy.ID = 2;
+		}
+		else if (FlxG.random.bool(level_data.settings.chances.enemy_easy))
+		{
+			texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
+			new_enemy.ID = 1;
+		}
+
+		new_enemy.loadGraphic(texturepath);
+
+		new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
+		if (new_enemy.y < 0 + enemy_offscreen_padding)
+			new_enemy.y = 0 + enemy_offscreen_padding;
+		if (new_enemy.y > FlxG.height - new_enemy.height - enemy_offscreen_padding)
+			new_enemy.y = FlxG.height - new_enemy.height - enemy_offscreen_padding;
+
+		return new_enemy;
 	}
 }
