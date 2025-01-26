@@ -108,6 +108,8 @@ class PlayState extends FlxState
 						bullets_group.members.remove(bullet);
 					}
 				}
+				if (enemy.overlaps(player))
+					FlxG.switchState(new MenuState());
 			
 			}
 			catch (e) {}
