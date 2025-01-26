@@ -17,8 +17,10 @@ class MenuState extends FlxState
 		add(pressButton);
 
 		Global.set_HIGHSCORE();
-		drugText.text = 'Highscore: ${Global.HIGHSCORE}';
+		drugText.text = 'Highscore: ${Global.HIGHSCORE}${(Global.NEW_HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
+		drugText.color = (Global.NEW_HIGHSCORE) ? 0x00ff00 : 0xffffff;
 		add(drugText);
+
 
 		super.create();
 	}
