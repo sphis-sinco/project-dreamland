@@ -78,7 +78,7 @@ class PlayState extends FlxState
 		{
 			var new_enemy:FlxSprite = new FlxSprite();
 			new_enemy.makeGraphic(40, 40, FlxColor.RED);
-			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y);
+			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
 			enemies_group.add(new_enemy);
 		}
 
