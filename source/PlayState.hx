@@ -74,6 +74,14 @@ class PlayState extends FlxState
 			catch (e) {}
 		}
 
+		if (FlxG.random.int(0, 20) == 10)
+		{
+			var new_enemy:FlxSprite = new FlxSprite();
+			new_enemy.makeGraphic(40, 40, FlxColor.RED);
+			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y);
+			enemies_group.add(new_enemy);
+		}
+
 		super.update(elapsed);
 	}
 }
