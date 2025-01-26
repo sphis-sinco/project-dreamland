@@ -57,7 +57,6 @@ class PlayState extends FlxState
 		catch (e)
 		{
 			level_data = {
-				"level_data_format": 3,
 				"difficulty": "medium",
 				"author": "Sphis_Sinco",
 				"assets": {
@@ -79,8 +78,8 @@ class PlayState extends FlxState
 					},
 					"speed_additions": {
 						"enemy_common": 0,
-						"enemy_easy": -32,
-						"enemy_rare": 64
+						"enemy_easy": -10,
+						"enemy_rare": 10
 					}
 				}
 			}
