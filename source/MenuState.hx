@@ -6,10 +6,9 @@ import flixel.text.FlxText;
 
 class MenuState extends FlxState
 {
-	var menuText:FlxText = new FlxText(0, 0, 0, "Main Menu", 16);
-	var pressButton:FlxText = new FlxText(0, 16, 0, "Press enter to play", 16);
-
-	var drugText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
+	var menuText:FlxText = new FlxText(0, 0, 0, "Main Menu", 32);
+	var pressButton:FlxText = new FlxText(0, 32, 0, "Press enter to play", 16);
+	var highscoreText:FlxText = new FlxText(0, 48, 0, "Highscore: 0", 16);
 
 	override public function create()
 	{
@@ -17,9 +16,9 @@ class MenuState extends FlxState
 		add(pressButton);
 
 		Global.set_HIGHSCORE();
-		drugText.text = 'Highscore: ${Global.HIGHSCORE}${(Global.NEW_HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
-		drugText.color = (Global.NEW_HIGHSCORE) ? 0x00ff00 : 0xffffff;
-		add(drugText);
+		highscoreText.text = 'Highscore: ${Global.HIGHSCORE}${(Global.NEW_HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
+		highscoreText.color = (Global.NEW_HIGHSCORE) ? 0x00ff00 : 0xffffff;
+		add(highscoreText);
 
 
 		super.create();
