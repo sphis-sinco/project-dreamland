@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.text.FlxText;
 
@@ -18,6 +19,9 @@ class MenuState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		if (FlxG.keys.justReleased.ENTER)
+			FlxG.switchState(new PlayState());
+
 		super.update(elapsed);
 	}
 }
