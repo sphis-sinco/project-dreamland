@@ -49,8 +49,13 @@ class LevelSelect extends FlxState
 		else if (key_down)
 		{
 			CURRENT_SELECTION++;
-			if (CURRENT_SELECTION > level_texts.members.length - 1)
+			if (CURRENT_SELECTION > levels.length - 1)
 				CURRENT_SELECTION--;
+		}
+		else if (key_enter)
+		{
+			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
+			FlxG.switchState(new PlayState());
 		}
         
 		for (text in level_texts)
