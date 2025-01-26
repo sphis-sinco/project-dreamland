@@ -3,7 +3,7 @@ import discord_rpc.DiscordRpc;
 
 class Discord
 {
-	static function main()
+	public static function main()
 	{
 		DiscordRpc.start({
 			clientID: "1333139063263330375",
@@ -43,7 +43,7 @@ class Discord
 #else
 class Discord
 {
-	static function main()
+	public static function main()
 	{
 		trace('not cpp!');
 	}
