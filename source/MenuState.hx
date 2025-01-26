@@ -16,6 +16,7 @@ class MenuState extends FlxState
 		add(menuText);
 		add(pressButton);
 
+		Global.set_HIGHSCORE();
 		drugText.text = 'Highscore: ${Global.HIGHSCORE}';
 		add(drugText);
 
