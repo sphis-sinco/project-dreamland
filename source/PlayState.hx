@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 class PlayState extends FlxState
 {
 	var player:FlxSprite = new FlxSprite();
+	var player_offscreen_padding:Float = 16;
 
 	override public function create()
 	{
@@ -31,14 +32,14 @@ class PlayState extends FlxState
 		if (key_up)
 		{
 			player.y -= 10;
-			if (player.y < 0)
-				player.y = 0;
+			if (player.y < 0 + player_offscreen_padding)
+				player.y = 0 + player_offscreen_padding;
 		}
 		if (key_down)
 		{
 			player.y += 10;
-			if (player.y > FlxG.height)
-				player.y = FlxG.height;
+			if (player.y > FlxG.height - player.height - player_offscreen_padding)
+				player.y = FlxG.height - player.height - player_offscreen_padding;
 		}
 
 		super.update(elapsed);
