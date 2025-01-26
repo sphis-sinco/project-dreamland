@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -29,8 +30,27 @@ class LevelSelect extends FlxState
 		super.create();
 	}
 
+	var key_up:Bool;
+	var key_down:Bool;
+
 	override public function update(elapsed:Float)
 	{
+		key_up = FlxG.keys.pressed.UP;
+		key_down = FlxG.keys.pressed.DOWN;
+
+		if (key_up)
+		{
+			CURRENT_SELECTION--;
+			if (CURRENT_SELECTION < 0)
+				CURRENT_SELECTION = 0;
+		}
+		else if (key_down)
+		{
+			CURRENT_SELECTION++;
+			if (CURRENT_SELECTION > level_texts.members.length - 1)
+				CURRENT_SELECTION--;
+		}
+        
 		for (text in level_texts)
         {
             text.x = (CURRENT_SELECTION == text.ID) ? 8 : 0;
