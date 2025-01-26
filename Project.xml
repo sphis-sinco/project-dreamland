@@ -35,10 +35,12 @@
 	<source path="source" />
 	<assets path="assets" />
 
+	<define name="discord_rpc" if="windows"/>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
-	<haxelib name="discord_rpc" if="windows"/>
+	<haxelib name="discord_rpc" if="discord_rpc"/>
 
 	<!--In case you want to use the addons package-->
 	<!--<haxelib name="flixel-addons" />-->

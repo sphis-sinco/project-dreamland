@@ -55,7 +55,7 @@ class PlayState extends FlxState
 			level_data = LevelDataManager.defaultJSON;
 		}
 
-		#if windows
+		#if (discord_rpc && !hl)
 		Discord.DiscordClient.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
 

@@ -41,7 +41,7 @@ class LevelSelect extends FlxState
 		difficulty.y = FlxG.height - difficulty.height;
 		add(difficulty);
 
-		#if windows
+		#if (discord_rpc && !hl)
 		Discord.DiscordClient.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 

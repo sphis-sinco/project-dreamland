@@ -1,6 +1,5 @@
 package;
 
-import Discord.DiscordClient;
 import flixel.FlxG;
 import flixel.FlxGame;
 import haxe.Json;
@@ -43,8 +42,8 @@ class Main extends Sprite
 		#end
 		
 		super();
-		#if windows
-		DiscordClient.initialize();
+		#if (discord_rpc && !hl)
+		Discord.DiscordClient.initialize();
 		#end
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));

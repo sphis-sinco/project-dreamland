@@ -27,7 +27,7 @@ class MenuState extends FlxState
 
 		menuText.text += ' v${Global.APP_VERSION}';
 
-		#if windows
+		#if (discord_rpc && !hl)
 		Discord.DiscordClient.changePresence('In the menus', 'Navigating');
 		#end
 
