@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import haxe.Json;
 
 class PlayState extends FlxState
 {
@@ -21,6 +22,24 @@ class PlayState extends FlxState
 
 	var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	var enemy_offscreen_padding:Float = 40;
+
+	var level_data = {
+		"level_data_format": 1,
+		"author": "Sphis_Sinco",
+		"assets": {
+			"directory": "",
+			"enemy_rare": "",
+			"enemy_easy": "",
+			"enemy_common": ""
+		},
+		"settings": {
+			"scores": {
+				"enemy_rare": 0,
+				"enemy_easy": 0,
+				"enemy_common": 0
+			}
+		}
+	};
 
 	override public function create()
 	{
@@ -44,6 +63,32 @@ class PlayState extends FlxState
 		add(score_text);
 
 		SCORE = 0;
+
+		try
+		{
+			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/hell.json')));
+		}
+		catch (e)
+		{
+			level_data = {
+				"level_data_format": 1,
+				"author": "Sphis_Sinco",
+				"assets": {
+					"directory": "",
+
+					"enemy_rare": "enemy-rare",
+					"enemy_easy": "enemy-easy",
+					"enemy_common": "enemy-common"
+				},
+				"settings": {
+					"scores": {
+						"enemy_rare": 125,
+						"enemy_easy": 50,
+						"enemy_common": 25
+					}
+				}
+			}
+		}
 
 		super.create();
 	}
@@ -104,7 +149,18 @@ class PlayState extends FlxState
 		if (FlxG.random.int(0, 20) == 10)
 		{
 			var new_enemy:FlxSprite = new FlxSprite();
-			new_enemy.makeGraphic(40, 40, FlxColor.RED);
+			var texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_common);
+
+			switch (FlxG.random.int(0, 100))
+			{
+				case 1 | 100:
+					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
+				case 10 | 20:
+					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
+			}
+
+			new_enemy.loadGraphic(texturepath);
+
 			new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
 			if (new_enemy.y < 0 + enemy_offscreen_padding)
 				new_enemy.y = 0 + enemy_offscreen_padding;
