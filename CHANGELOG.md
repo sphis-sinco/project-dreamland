@@ -1,6 +1,7 @@
 # 0.3.0 (1/25/2025)
 - Enemy Art
     - Earth Enemy Art
+    - Heaven Enemy Art
 
 # 0.2.0 (1/25/2025)
 ## Added
