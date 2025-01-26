@@ -24,8 +24,8 @@ class PlayState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		key_up = FlxG.keys.justReleased.UP;
-		key_down = FlxG.keys.justReleased.DOWN;
+		key_up = FlxG.keys.pressed.UP;
+		key_down = FlxG.keys.pressed.DOWN;
 		key_shoot = FlxG.keys.justReleased.SPACE;
 
 		if (key_up)
