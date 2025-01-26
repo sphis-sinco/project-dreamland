@@ -82,6 +82,20 @@ class PlayState extends FlxState
 			enemies_group.add(new_enemy);
 		}
 
+		for (enemy in enemies_group.members)
+		{
+			try
+			{
+				enemy.x -= enemy.width;
+				if (enemy.x < 0 - enemy.width * 2)
+				{
+					enemy.destroy();
+					enemies_group.members.remove(enemy);
+				}
+			}
+			catch (e) {}
+		}
+
 		super.update(elapsed);
 	}
 }
