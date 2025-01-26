@@ -9,11 +9,6 @@
       "name": "hxcpp",
       "type": "haxelib",
       "version": null
-    },
-    {
-      "name": "hxdiscord",
-      "type": "haxelib",
-      "version": null
     }
   ]
 }
