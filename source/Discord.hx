@@ -43,7 +43,10 @@ class Discord
 #else
 class Discord
 {
-	static function main() {}
+	static function main()
+	{
+		trace('not cpp!');
+	}
 
 	static function onReady() {}
 
