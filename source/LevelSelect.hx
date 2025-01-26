@@ -5,12 +5,15 @@ import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
+import haxe.Json;
 
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['heaven', 'earth', 'hell'];
 	var level_texts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
+	var difficulty:FlxText = new FlxText(0, 0, 0, "", 32);
+    
 	var CURRENT_SELECTION:Int = 0;
 
 	override public function create()
@@ -28,6 +31,9 @@ class LevelSelect extends FlxState
 
 			int++;
 		}
+
+		difficulty.y = FlxG.height - difficulty.height;
+		add(difficulty);
 
 		super.create();
 	}
@@ -67,6 +73,14 @@ class LevelSelect extends FlxState
             text.alpha = (CURRENT_SELECTION == text.ID) ? 1 : 0.75;
         }
 
+		try
+		{
+			difficulty.text = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}'))).difficulty;
+		}
+		catch (e)
+		{
+			difficulty.text = "unknown difficulty: " + e;
+		}
 		super.update(elapsed);
 	}
 }

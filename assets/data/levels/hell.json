@@ -1,5 +1,6 @@
 {
-    "level_data_format": 1,
+    "level_data_format": 2,
+    "difficulty": "hard",
     "author": "Sphis_Sinco",
     "assets": {
         "directory": "hell/",
