@@ -27,6 +27,7 @@ class OutdatedState extends FlxState
 		if (FlxG.keys.justReleased.ENTER)
 		{
 			FlxG.openURL('https://github.com/sphis-Sinco/project-dreamland/releases/latest');
+			Sys.exit(0);
 		}
 		else if (FlxG.keys.justReleased.BACKSPACE || FlxG.keys.justReleased.ESCAPE)
 		{
