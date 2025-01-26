@@ -1,6 +1,7 @@
 # 0.4.0 (1/26/2025)
 ## Added
-- Field for enemy chances in the level data jsons
+- New LevelData fields
+    - `chance` - json data that controls the rariety of `enemy-easy` and `enemy-rare`
 - `LevelData` typedef to make things easier
 ## Fixed
 - Bug where every enemy would be earth enemies
