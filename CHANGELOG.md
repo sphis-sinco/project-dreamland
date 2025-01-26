@@ -1,3 +1,7 @@
+# 0.4.1 (1/26/2025)
+## Fixed
+- Every level being the earth level
+
 # 0.4.0 (1/26/2025)
 ## Added
 - New LevelData fields
