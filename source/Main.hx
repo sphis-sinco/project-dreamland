@@ -11,6 +11,6 @@ class Main extends Sprite
 		super();
 		addChild(new FlxGame(0, 0, MenuState));
 		Global.set_HIGHSCORE();
-		PlayState.SCORE = Json.parse(FileManager.readFile(FileManager.getPath('', 'highscore.json'))).highscore;
+		PlayState.SCORE = Json.parse(FileManager.readFile(FileManager.getAssetFile('highscore.json'))).highscore;
 	}
 }
