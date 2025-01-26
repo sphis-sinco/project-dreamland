@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.util.FlxColor;
@@ -18,8 +19,16 @@ class PlayState extends FlxState
 		super.create();
 	}
 
+	var key_up:Bool;
+	var key_down:Bool;
+	var key_shoot:Bool;
+
 	override public function update(elapsed:Float)
 	{
+		key_up = FlxG.keys.justReleased.UP;
+		key_down = FlxG.keys.justReleased.DOWN;
+		key_shoot = FlxG.keys.justReleased.SPACE;
+
 		super.update(elapsed);
 	}
 }
