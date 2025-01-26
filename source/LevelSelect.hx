@@ -22,7 +22,7 @@ class LevelSelect extends FlxState
 		var int:Int = 0;
 		for (level in levels)
 		{
-			var new_text:FlxText = new FlxText(0, 0 + (36 * int), 0, level, 32);
+			var new_text:FlxText = new FlxText(0, 0 + (36 * int), 0, level.split('.')[0], 32);
 			new_text.ID = int;
 			level_texts.add(new_text);
 
