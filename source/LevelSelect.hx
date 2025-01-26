@@ -11,7 +11,7 @@ using StringTools;
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['earth', 'heaven', 'hell'];
-	var level_diffs:Array<String> = ['medium', 'easy', 'hard'];
+	var level_diffs:Array<String> = ['easy-ish', 'medium', 'hard'];
 	var level_texts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
 	var level_json:LevelData;

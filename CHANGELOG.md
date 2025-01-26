@@ -8,6 +8,7 @@
 - New application Icon
 ## Fixed
 - Bug where every enemy would be earth enemies
+- Level Select not reading level json files on web
 ## Changed
 - Difficulty of earth: now `easy-ish`
 - Difficulty of heaven: now `medium`
