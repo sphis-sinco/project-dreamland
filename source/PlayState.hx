@@ -34,7 +34,7 @@ class PlayState extends FlxState
 		player.animation.play('idle');
 		player.scale.set(2, 2);
 		player.screenCenter();
-		player.x -= player.width;
+		player.x -= player.width * 16;
 		add(player);
 
 		add(enemies_group);
