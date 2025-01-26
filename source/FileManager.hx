@@ -1,5 +1,6 @@
 package;
 
+import sys.FileSystem;
 #if sys
 import sys.io.File;
 #end
