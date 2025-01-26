@@ -13,6 +13,8 @@ class LevelSelect extends FlxState
 	var level_diffs:Array<String> = ['medium', 'easy', 'hard'];
 	var level_texts:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
+	var level_json:LevelData;
+
 	var difficulty:FlxText = new FlxText(0, 0, 0, "", 32);
     
 	var CURRENT_SELECTION:Int = 0;
@@ -82,7 +84,8 @@ class LevelSelect extends FlxState
 
 		try
 		{
-			difficulty.text = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}'))).difficulty;
+			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}')));
+			difficulty.text = level_json.difficulty;
 		}
 		catch (e)
 		{
