@@ -7,6 +7,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import haxe.Json;
 
+using StringTools;
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['earth', 'heaven', 'hell'];
@@ -84,7 +85,8 @@ class LevelSelect extends FlxState
 
 		try
 		{
-			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}.json')));
+			level_json = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}
+						${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}')));
 			difficulty.text = level_json.difficulty;
 		}
 		catch (e)
