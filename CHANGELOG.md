@@ -4,9 +4,9 @@
 - Saves via `FlxG.save`
 - Player Art
     - Art for idle
-    - Animarion for shooting with 2 ammo
-    - Animarion for shooting with 1 ammo
-    - Animarion for shooting with 0 ammo
+    - Animarion for shooting with 2 ammo shootable
+    - Animarion for shooting with 1 ammo shootable
+    - Animarion for shooting with 0 ammo shootable
 - Changed Player X Position
 
 # 0.1.0 - 1.25.2025
