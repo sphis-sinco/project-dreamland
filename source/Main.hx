@@ -42,6 +42,6 @@ class Main extends Sprite
 		#end
 		
 		super();
-		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : MenuState));
+		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
 }
