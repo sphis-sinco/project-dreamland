@@ -11,7 +11,6 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-		// player code
 		player.makeGraphic(32,32, FlxColor.LIME); 
 		player.screenCenter();
 		add(player);
