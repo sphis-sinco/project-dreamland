@@ -15,6 +15,8 @@
     - Moved "Press enter to play" text
     - "Press enter to play" text now has a dark green color
     - Move highscore text
+- Play State
+    - Score text now turns green when you have achieved a new high score
 
 # 0.1.0 - 1.25.2025
 This is the minimum viable product. Not a V-Slice quality but MVP nonetheless
