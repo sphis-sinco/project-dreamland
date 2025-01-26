@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxGame;
+import haxe.Json;
 import openfl.display.Sprite;
 
 class Main extends Sprite
@@ -9,5 +10,7 @@ class Main extends Sprite
 	{
 		super();
 		addChild(new FlxGame(0, 0, MenuState));
+		Global.set_HIGHSCORE();
+		PlayState.SCORE = Json.parse(FileManager.getPath('highscore.json')).highscore;
 	}
 }
