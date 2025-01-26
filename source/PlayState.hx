@@ -26,7 +26,12 @@ class PlayState extends FlxState
 	{
 		add(bullets_group);
 
-		player.makeGraphic(32,32, FlxColor.LIME); 
+		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
+		player.animation.add('idle', [0]);
+		player.animation.add('shoot-a2', [1], 1);
+		player.animation.add('shoot-a1', [2], 1);
+		player.animation.add('shoot-a0', [3], 1);
+		player.animation.play('idle');
 		player.screenCenter();
 		add(player);
 
@@ -71,6 +76,7 @@ class PlayState extends FlxState
 			new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
 			new_bullet.setPosition(player.x, player.y);
 			bullets_group.add(new_bullet);
+			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 		}
 
 		for (bullet in bullets_group.members)
@@ -128,6 +134,9 @@ class PlayState extends FlxState
 			}
 			catch (e) {}
 		}
+
+		if (player.animation.finished)
+			player.animation.play('idle');
 
 		super.update(elapsed);
 	}
