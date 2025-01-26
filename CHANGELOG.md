@@ -1,4 +1,4 @@
-# 0.3.3 (1/25/2025)
+# 0.3.3 (1/26/2025)
 ## Fixed
 - OutdatedState display even when you are not in an outdated version
 - Level Select crash
@@ -6,10 +6,10 @@
 - variables in Level select for level difficulties (hardcoded...)
 - Back keybind to Level Select (you can leave it)
 
-# 0.3.2 (1/25/2025)
+# 0.3.2 (1/26/2025)
 The game should now be compilable for web
 
-# 0.3.1 (1/25/2025)
+# 0.3.1 (1/26/2025)
 The game should now be compilable for web
 
 # 0.3.0 (1/25/2025)
