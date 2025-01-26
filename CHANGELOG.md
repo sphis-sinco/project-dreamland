@@ -3,6 +3,7 @@
 - Highscore Saving
 - Saves via `FlxG.save`
 - Player Art
+- Changed Player X Position
 
 # 0.1.0 - 1.25.2025
 This is the minimum viable product. Not a V-Slice quality but MVP nonetheless
