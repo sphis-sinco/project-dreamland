@@ -1,14 +1,16 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxGame;
 import haxe.Json;
+import lime.app.Application;
 import openfl.display.Sprite;
 
 class Main extends Sprite
 {
 	public function new()
 	{
-		Global.set_HIGHSCORE();
+		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
 		super();
 		addChild(new FlxGame(0, 0, MenuState));
 	}

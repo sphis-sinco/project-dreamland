@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import haxe.Json;
 
 class Global
@@ -8,18 +9,9 @@ class Global
 	public static var NEW_HIGHSCORE:Bool = false;
 	public static function set_HIGHSCORE()
 	{
-		var score = PlayState.SCORE;
-		try
-		{
-			PlayState.SCORE = Json.parse(FileManager.readFile(FileManager.getAssetFile('highscore.json'))).highscore;
-		}
-		catch (e)
-		{
-			PlayState.SCORE = score;
-			trace(e);
-		}
+
 		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
-		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : HIGHSCORE;
-		FileManager.writeToPath('assets/highscore.json', '{"highscore":$HIGHSCORE}');
+		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < FlxG.save.data.highscore) ? FlxG.save.data.highscore : HIGHSCORE;
+		FlxG.save.data.highscore = HIGHSCORE;
 	}
 }
