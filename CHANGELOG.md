@@ -6,6 +6,9 @@
 - `LevelData` typedef to make things easier
 ## Fixed
 - Bug where every enemy would be earth enemies
+## Changed
+- Difficulty of earth: now `easy-ish`
+- Difficulty of heaven: now `medium`
 
 # 0.3.3 (1/26/2025)
 ## Fixed
