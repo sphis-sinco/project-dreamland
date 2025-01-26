@@ -7,6 +7,7 @@
 - New global variable for the game version: `APP_VERSION`
 - New application Icon
 - Splash Screen
+- Discord RPC for `C++` Platforms (`Windows`)
 ## Fixed
 - Bug where every enemy would be earth enemies
 - Level Select not reading level json files on web
