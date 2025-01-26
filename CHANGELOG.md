@@ -1,3 +1,6 @@
+# 0.3.2 (1/25/2025)
+The game should now be compilable for web
+
 # 0.3.1 (1/25/2025)
 The game should now be compilable for web
 
