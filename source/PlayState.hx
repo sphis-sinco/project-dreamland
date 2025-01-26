@@ -46,6 +46,20 @@ class PlayState extends FlxState
 			if (player.y > FlxG.height - player.height - player_offscreen_padding)
 				player.y = FlxG.height - player.height - player_offscreen_padding;
 		}
+		if (key_shoot && bullets_group.members.length != 2)
+		{
+			var new_bullet:FlxSprite = new FlxSprite();
+			new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
+			new_bullet.setPosition(player.x, player.y);
+			bullets_group.add(new_bullet);
+		}
+
+		for (bullet in bullets_group.members)
+		{
+			bullet.x += bullet.width;
+			if (bullet.x > FlxG.width + player_offscreen_padding)
+				bullets_group.remove(bullet);
+		}
 
 		super.update(elapsed);
 	}
