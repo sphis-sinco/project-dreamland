@@ -1,11 +1,14 @@
 FULL RELEASE (1.x.y)
 - Cutscenes (Pixel art)
+- Upgraded/pretier Menus
 
 VSLICE ERA (0.6.x - 0.9.x)
 - Upgrades (simple and complicated)
-- Story
+- Proper Story
 - Mod Support using Polymod
 - more Options Menu submenus
+- Code Optimization
+- Upgraded Level Select menu
 
 BETA ERA (0.4.x - 0.5.x)
 - Options Menu
@@ -13,3 +16,6 @@ BETA ERA (0.4.x - 0.5.x)
 - Upgrades (simple ones)
 - Discord RPC [DONE]
 - Level Backgrounds
+- Minor Code Optimization
+- Game over Screen
+- More feedback when enemies are blasted (maybe a blast animation?)
