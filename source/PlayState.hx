@@ -157,7 +157,7 @@ class PlayState extends FlxState
 					texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_rare);
 				new_enemy.ID = 2;
 			}
-			if (FlxG.random.bool(75))
+			else if (FlxG.random.bool(75))
 			{
 				texturepath = FileManager.getImageFile(level_data.assets.directory + level_data.assets.enemy_easy);
 				new_enemy.ID = 1;
