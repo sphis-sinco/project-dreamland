@@ -15,8 +15,7 @@ class Main extends Sprite
 	public function new()
 	{
 		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
-		#if not
-		hl
+		#if !hl
 		trace('checking for update');
 		var http = new haxe.Http("https://raw.githubusercontent.com/sphis-Sinco/project-dreamland/refs/heads/master/version.txt");
 
@@ -38,6 +37,8 @@ class Main extends Sprite
 		}
 
 		http.request();
+		#else
+		FlxG.save.data.latest_version = Application.current.meta.get('version');
 		#end
 		
 		super();
