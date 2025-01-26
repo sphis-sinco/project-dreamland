@@ -66,7 +66,7 @@ class PlayState extends FlxState
 
 		try
 		{
-			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/hell.json')));
+			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/earth.json')));
 		}
 		catch (e)
 		{
