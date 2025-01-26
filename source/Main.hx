@@ -23,7 +23,7 @@ class Main extends Sprite
 		http.onData = function(data:String)
 		{
 			updateVersion = data.split('\n')[0].trim();
-			var curVersion:String = Application.current.meta.get('version').trim();
+			var curVersion:String = Global.APP_VERSION.trim();
 			trace('version online: ' + updateVersion + ', your version: ' + curVersion);
 			if (updateVersion != curVersion)
 			{
@@ -35,7 +35,7 @@ class Main extends Sprite
 		http.onError = function(error)
 		{
 			trace('error: $error');
-			FlxG.save.data.latest_version = Application.current.meta.get('version');
+			FlxG.save.data.latest_version = Global.APP_VERSION;
 		}
 
 		http.request();

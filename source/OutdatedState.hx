@@ -12,7 +12,7 @@ class OutdatedState extends FlxState
 		var outdatedText:FlxText = new FlxText(0, 0, 0, "blah", 16);
 		add(outdatedText);
 
-		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Application.current.meta.get('version')}) IS OUTDATED!\n'
+		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Global.APP_VERSION}) IS OUTDATED!\n'
 			+ 'THE CURRENT PUBLIC RELEASE IS v${Main.updateVersion},\n AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
 			+ 'You can press ENTER to go to the github to update\n'
 			+ 'or you can press BACKSPACE or ESCAPE to continue.';

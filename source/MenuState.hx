@@ -25,7 +25,7 @@ class MenuState extends FlxState
 		pressButton.y = FlxG.height - pressButton.height + 8;
 		pressButton.color = FlxColor.GREEN;
 
-		menuText.text += ' v${Application.current.meta.get('version')}';
+		menuText.text += ' v${Global.APP_VERSION}';
 
 		super.create();
 	}
