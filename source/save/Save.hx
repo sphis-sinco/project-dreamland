@@ -1,7 +1,5 @@
 package save;
 
-import flixel.util.FlxSave;
-
 class Save
 {
 	public static var save:FlxSave;
