@@ -1,4 +1,4 @@
-package;
+package gameplay;
 
 class GameOver extends FlxState
 {
