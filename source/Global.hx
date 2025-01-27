@@ -16,4 +16,7 @@ class Global
 	{
 		return Application.current.meta.get('version');
 	}
+	#if polymod
+	public static var MOD_LIST:Map<String, Bool> = new Map<String, Bool>();
+	#end
 }

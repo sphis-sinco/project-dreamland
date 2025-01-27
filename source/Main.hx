@@ -47,6 +47,10 @@ class Main extends Sprite
 		else if (Save.getSavedataInfo('firstTime') == null)
 			Save.setSavedataInfo('firstTime', true);
 
+		#if polymod
+		PolymodHandler.loadMods();
+		#end
+
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
 }

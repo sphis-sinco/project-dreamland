@@ -10,3 +10,8 @@ import lime.app.Application;
 import save.Save.Save;
 
 using StringTools;
+#if polymod
+import modding.*;
+import polymod.Polymod;
+#end
+
