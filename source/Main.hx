@@ -11,7 +11,7 @@ class Main extends Sprite
 
 	public function new()
 	{
-		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
+		Save.initalize();
 		var needUpdate = false;
 		#if !hl
 		trace('checking for update');
@@ -42,10 +42,10 @@ class Main extends Sprite
 		Discord.DiscordClient.initialize();
 		#end
 
-		if (Save.savedata.firstTime)
-			Save.savedata.firstTime = false;
-		else
-			Save.savedata.firstTime = true;
+		if (Save.save.data.firstTime)
+			Save.save.data.firstTime = false;
+		else if (Save.save.data.firstTime == null)
+			Save.save.data.firstTime = true;
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}

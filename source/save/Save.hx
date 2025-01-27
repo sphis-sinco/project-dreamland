@@ -2,42 +2,32 @@ package save;
 
 import flixel.util.FlxSave;
 
-class Save extends FlxSave
+class Save
 {
-	public var savedata:SaveData;
+	public static var save:FlxSave;
 
-	public var SAVEDATA_VERSION:Int = 2;
+	public static final SAVEDATA_VERSION:Int = 3;
 
-	override public function new()
+	public static function initalize()
 	{
-		super();
-
-		bind('dreamland', Application.current.meta.get('company'));
-		if (this.data.savedata != null)
+		save.bind('dreamland', Application.current.meta.get('company'));
+		if (save.data.savedata == null)
 		{
-			savedata = this.data.savedata;
-			savedata.saveVer = SAVEDATA_VERSION;
-			savedata.firstTime ??= true;
-			savedata.highscore ??= 0;
+			save.data.savedata.saveVer = SAVEDATA_VERSION;
+			save.data.savedata.firstTime ??= true;
+			save.data.savedata.highscore ??= 0;
 		}
 		else
 		{
 			trace('SAVEDATA IS NULL. SETTING TO A COMPLETELY NEW SAVE.');
-			savedata = {
+			save.data.savedata = {
 				saveVer: SAVEDATA_VERSION,
 				firstTime: true,
 				highscore: 0
 			};
 		}
 
-		this.data.savedata = savedata;
-		this.flush();
-	}
-
-	public function save()
-	{
-		this.data.savedata = savedata;
-		this.flush();
+		save.flush();
 	}
 }
 
