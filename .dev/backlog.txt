@@ -13,5 +13,6 @@ VSLICE ERA (0.6.x - 0.9.x)
 BETA ERA (0.4.x - 0.5.x)
 - Options Menu
     - Controls/Keybind Changing Menu
+    - Upgrades Menu
 - Upgrades (simple ones)
 - More feedback when enemies are blasted (maybe a blast animation?)
