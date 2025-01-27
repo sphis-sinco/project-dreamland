@@ -53,6 +53,7 @@ class PlayState extends FlxState
 		bg.loadGraphic(FileManager.getImageFile(level_data.assets.directory + "background"));
 		bg.scale.set(4, 4);
 		bg.screenCenter();
+		bg.color = 0xcccccc;
 
 		add(bullets_group);
 
