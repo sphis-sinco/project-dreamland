@@ -1,11 +1,5 @@
 package;
 
-import flixel.FlxG;
-import flixel.FlxState;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-import lime.app.Application;
-
 class MenuState extends FlxState
 {
 	var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);

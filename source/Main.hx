@@ -1,9 +1,6 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxGame;
-import haxe.Json;
-import lime.app.Application;
 import openfl.display.Sprite;
 
 using StringTools;

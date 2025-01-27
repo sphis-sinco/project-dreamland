@@ -1,10 +1,5 @@
 package;
 
-import flixel.FlxG;
-import flixel.FlxState;
-import flixel.text.FlxText;
-import lime.app.Application;
-
 class OutdatedState extends FlxState
 {
 	override public function create()

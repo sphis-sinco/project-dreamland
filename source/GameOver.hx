@@ -1,10 +1,5 @@
 package;
 
-import flixel.FlxG;
-import flixel.FlxState;
-import flixel.text.FlxText;
-import lime.app.Application;
-
 class GameOver extends FlxState
 {
 	override public function create()

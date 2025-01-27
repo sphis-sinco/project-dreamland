@@ -1,13 +1,5 @@
 package;
 
-import flixel.FlxG;
-import flixel.FlxState;
-import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
-import flixel.util.FlxColor;
-import haxe.Json;
-
-using StringTools;
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['earth', 'heaven', 'hell'];

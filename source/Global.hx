@@ -1,9 +1,5 @@
 package;
 
-import flixel.FlxG;
-import haxe.Json;
-import lime.app.Application;
-
 class Global
 {
 	public static var HIGHSCORE:Int = 0;
