@@ -1,3 +1,5 @@
+# 0.5.0 (1/27/2025)
+
 # 0.4.2 (1/26/2025)
 ## Changed
 - Speeds of every rare enemy in each level
