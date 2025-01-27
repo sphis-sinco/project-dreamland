@@ -7,8 +7,8 @@ class Global
 	public static function set_HIGHSCORE()
 	{
 		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
-		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < FlxG.save.data.highscore) ? FlxG.save.data.highscore : HIGHSCORE;
-		FlxG.save.data.highscore = HIGHSCORE;
+		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < Save.savedata.highscore) ? Save.savedata.highscore : HIGHSCORE;
+		Save.savedata.highscore = HIGHSCORE;
 	}
 	public static var APP_VERSION(get, never):String;
 

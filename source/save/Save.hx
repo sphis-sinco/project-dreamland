@@ -4,7 +4,7 @@ import flixel.util.FlxSave;
 
 class Save extends FlxSave
 {
-	public var savedata:SaveData;
+	public static var savedata:SaveData;
 
 	public var SAVEDATA_VERSION:Int = 2;
 

@@ -42,10 +42,10 @@ class Main extends Sprite
 		Discord.DiscordClient.initialize();
 		#end
 
-		if (FlxG.save.data.firstTime)
-			FlxG.save.data.firstTime = false;
+		if (Save.savedata.firstTime)
+			Save.savedata.firstTime = false;
 		else
-			FlxG.save.data.firstTime = true;
+			Save.savedata.firstTime = true;
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
