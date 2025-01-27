@@ -1,5 +1,4 @@
 import Global;
-import clients.DiscordClient as Discord;
 import flixel.*;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
@@ -10,6 +9,9 @@ import lime.app.Application;
 import save.Save.Save;
 
 using StringTools;
+#if (discord_rpc && !hl)
+import clients.DiscordClient as Discord;
+#end
 #if polymod
 import modding.*;
 import polymod.Polymod;
