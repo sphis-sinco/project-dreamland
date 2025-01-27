@@ -1,4 +1,4 @@
-package;
+package clients;
 
 import Sys.sleep;
 import discord_rpc.DiscordRpc;
