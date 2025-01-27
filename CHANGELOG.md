@@ -1,3 +1,7 @@
+# 0.4.2 (1/26/2025)
+## Changed
+- Speeds of every rare enemy in each level
+
 # 0.4.1 (1/26/2025)
 ## Fixed
 - Every level being the earth level on web

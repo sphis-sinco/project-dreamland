@@ -19,3 +19,4 @@ BETA ERA (0.4.x - 0.5.x)
 - Minor Code Optimization [DONE]
 - Game over Screen [DONE]
 - More feedback when enemies are blasted (maybe a blast animation?)
+- Tutorial

@@ -21,7 +21,7 @@
         "speed_additions": {
             "enemy_common": 0,
             "enemy_easy": 0,
-            "enemy_rare": 10
+            "enemy_rare": 5
         }
     }
 }
