@@ -4,7 +4,7 @@ import flixel.util.FlxSave;
 
 class Save extends FlxSave
 {
-	public static var savedata:SaveData;
+	public var savedata:SaveData;
 
 	public var SAVEDATA_VERSION:Int = 2;
 
@@ -30,6 +30,12 @@ class Save extends FlxSave
 			};
 		}
 
+		this.data.savedata = savedata;
+		this.flush();
+	}
+
+	public function save()
+	{
 		this.data.savedata = savedata;
 		this.flush();
 	}

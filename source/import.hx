@@ -1,3 +1,5 @@
+import Global.SAVE as Save;
+import Global;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -7,6 +9,5 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import haxe.Json;
 import lime.app.Application;
-import save.Save.Save;
 
 using StringTools;

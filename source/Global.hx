@@ -16,4 +16,5 @@ class Global
 	{
 		return Application.current.meta.get('version');
 	}
+	public static var SAVE:Save = new Save();
 }
