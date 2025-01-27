@@ -16,6 +16,16 @@
       "name": "hxcpp",
       "type": "haxelib",
       "version": null
+    },
+    {
+      "name": "polymo",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "polymod",
+      "type": "haxelib",
+      "version": null
     }
   ]
 }
