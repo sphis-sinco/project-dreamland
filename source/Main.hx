@@ -35,7 +35,6 @@ class Main extends Sprite
 		http.onError = function(error)
 		{
 			trace('error: $error');
-			FlxG.save.data.latest_version = Global.APP_VERSION;
 		}
 
 		http.request();
@@ -45,6 +44,11 @@ class Main extends Sprite
 		#if (discord_rpc && !hl)
 		Discord.DiscordClient.initialize();
 		#end
+
+		if (FlxG.save.data.firstTime)
+			FlxG.save.data.firstTime = false;
+		else
+			FlxG.save.data.firstTime = true;
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}

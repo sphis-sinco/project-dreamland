@@ -3,6 +3,9 @@
 - Speeds of every rare enemy in each level
 ## Added
 - Level Backgrounds
+- Small "Tutorial" (using new save info: `firstTime`)
+- New Save info
+    - `firstTime` - should be `null` when your on your "first time" and will be set to `true` until detected that it's `true`, then it will be set to `false`
 
 # 0.4.1 (1/26/2025)
 ## Fixed

@@ -68,8 +68,28 @@ class PlayState extends FlxState
 
 		SCORE = 0;
 
+		if (FlxG.save.data.firstTime)
+		{
+			spacebar = new FlxSprite().loadGraphic(FileManager.getImageFile('tutorial/spacebar'), true, 48, 16);
+			spacebar.animation.add('idle', [0, 1], 2);
+			spacebar.animation.play('idle');
+			spacebar.scale.set(5, 5);
+			spacebar.screenCenter();
+			add(spacebar);
+
+			spacebartext = new FlxText();
+			spacebartext.setPosition(spacebar.x, spacebar.y);
+			spacebartext.text = "PRESS SPACEBAR TO SHOOT!";
+			spacebartext.size = 32;
+			spacebartext.screenCenter(X);
+			spacebartext.y += spacebar.width * 1.1;
+			add(spacebartext);
+		}
+
 		super.create();
 	}
+	var spacebar:FlxSprite;
+	var spacebartext:FlxText;
 
 	function playerSetup()
 	{
@@ -134,6 +154,12 @@ class PlayState extends FlxState
 			var new_bullet:FlxSprite = newBullet();
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 			bullets_group.add(new_bullet);
+			if (FlxG.save.data.firstTime)
+			{
+				FlxG.save.data.firstTime = false;
+				spacebar.destroy();
+				spacebartext.destroy();
+			}
 		}
 		else if (bullets_group.members.length == bullets_max_onscreen)
 		{
