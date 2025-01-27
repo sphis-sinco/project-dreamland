@@ -16,7 +16,7 @@ class OutdatedState extends FlxState
 		outdatedText.screenCenter();
 
 		#if (discord_rpc && !hl)
-		Discord.DiscordClient.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${Main.updateVersion}');
+		Discord.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${Main.updateVersion}');
 		#end
 
 		super.create();

@@ -39,7 +39,7 @@ class Main extends Sprite
 		
 		super();
 		#if (discord_rpc && !hl)
-		Discord.DiscordClient.initialize();
+		Discord.initialize();
 		#end
 
 		if (Save.getSavedataInfo('firstTime'))

@@ -36,7 +36,7 @@ class PlayState extends FlxState
 		}
 
 		#if (discord_rpc && !hl)
-		Discord.DiscordClient.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
+		Discord.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
 
 		var bg:FlxSprite = new FlxSprite();

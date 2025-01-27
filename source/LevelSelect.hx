@@ -34,7 +34,7 @@ class LevelSelect extends FlxState
 		add(difficulty);
 
 		#if (discord_rpc && !hl)
-		Discord.DiscordClient.changePresence('In the menus', 'Looking for a Level to play');
+		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 
 		super.create();

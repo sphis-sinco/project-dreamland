@@ -15,7 +15,7 @@ class GameOver extends FlxState
 		add(diedtext);
 
 		#if (discord_rpc && !hl)
-		Discord.DiscordClient.changePresence('Died.', 'Died.');
+		Discord.changePresence('Died.', 'Died.');
 		#end
 
 		super.create();
