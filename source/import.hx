@@ -12,8 +12,3 @@ using StringTools;
 #if (discord_rpc && !hl)
 import clients.DiscordClient as Discord;
 #end
-#if polymod
-import modding.*;
-import polymod.Polymod;
-#end
-
