@@ -32,18 +32,7 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-		add(bullets_group);
 
-		playerSetup();
-		add(player);
-
-		add(enemies_group);
-
-		score_text.screenCenter(X);
-		score_text.y = 16;
-		add(score_text);
-
-		SCORE = 0;
 
 		try
 		{
@@ -58,6 +47,25 @@ class PlayState extends FlxState
 		#if (discord_rpc && !hl)
 		Discord.DiscordClient.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
+
+		var bg:FlxSprite = new FlxSprite();
+		add(bg);
+		bg.loadGraphic(FileManager.getImageFile(level_data.assets.directory + "background"));
+		bg.scale.set(4, 4);
+		bg.screenCenter();
+
+		add(bullets_group);
+
+		playerSetup();
+		add(player);
+
+		add(enemies_group);
+
+		score_text.screenCenter(X);
+		score_text.y = 16;
+		add(score_text);
+
+		SCORE = 0;
 
 		super.create();
 	}

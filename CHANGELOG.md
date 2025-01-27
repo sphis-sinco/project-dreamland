@@ -1,6 +1,8 @@
 # 0.4.2 (1/26/2025)
 ## Changed
 - Speeds of every rare enemy in each level
+## Added
+- Level Backgrounds
 
 # 0.4.1 (1/26/2025)
 ## Fixed

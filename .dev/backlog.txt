@@ -14,9 +14,5 @@ BETA ERA (0.4.x - 0.5.x)
 - Options Menu
     - Controls/Keybind Changing Menu
 - Upgrades (simple ones)
-- Discord RPC [DONE]
-- Level Backgrounds
-- Minor Code Optimization [DONE]
-- Game over Screen [DONE]
 - More feedback when enemies are blasted (maybe a blast animation?)
 - Tutorial
