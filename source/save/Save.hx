@@ -10,14 +10,10 @@ class Save
 
 	public static function initalize()
 	{
+		save = new FlxSave();
 		save.bind('dreamland', Application.current.meta.get('company'));
+
 		if (save.data.savedata == null)
-		{
-			save.data.savedata.saveVer = SAVEDATA_VERSION;
-			save.data.savedata.firstTime ??= true;
-			save.data.savedata.highscore ??= 0;
-		}
-		else
 		{
 			trace('SAVEDATA IS NULL. SETTING TO A COMPLETELY NEW SAVE.');
 			save.data.savedata = {
@@ -25,6 +21,12 @@ class Save
 				firstTime: true,
 				highscore: 0
 			};
+		}
+		else
+		{
+			save.data.savedata.saveVer ??= SAVEDATA_VERSION;
+			save.data.savedata.firstTime ??= true;
+			save.data.savedata.highscore ??= 0;
 		}
 
 		save.flush();
