@@ -31,6 +31,41 @@ class Save
 
 		save.flush();
 	}
+	public static function getSavedataInfo(field:String):Dynamic
+	{
+		var targetField:String = field.toLowerCase();
+		var saveD:SaveData = save.data.savedata;
+
+		switch (targetField)
+		{
+			case 'savever':
+				return saveD.saveVer;
+			case 'firsttime':
+				return saveD.firstTime;
+			case 'highscore':
+				return saveD.highscore;
+		}
+
+		return null;
+	}
+
+	public static function setSavedataInfo(field:String, newval:Dynamic)
+	{
+		var targetField:String = field.toLowerCase();
+
+		switch (targetField)
+		{
+			case 'savever':
+				save.data.savedata.saveVer = newval;
+			case 'firsttime':
+				save.data.savedata.firstTime = newval;
+			case 'highscore':
+				save.data.savedata.highscore = newval;
+		}
+	}
+
+	public static function flushData()
+		save.flush();
 }
 
 typedef SaveData =

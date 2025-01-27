@@ -7,8 +7,8 @@ class Global
 	public static function set_HIGHSCORE()
 	{
 		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
-		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < Save.save.data.savedata.highscore) ? Save.save.data.savedata.highscore : HIGHSCORE;
-		Save.save.data.highscore = HIGHSCORE;
+		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < Save.getSavedataInfo("highscore")) ? Save.getSavedataInfo("highscore") : HIGHSCORE;
+		Save.setSavedataInfo("highscore", HIGHSCORE);
 	}
 	public static var APP_VERSION(get, never):String;
 
