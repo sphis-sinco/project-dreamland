@@ -40,7 +40,7 @@ class LevelSelect extends FlxState
 		}
 
 		level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
-		level_sprite.scale.set(2, 2);
+		level_sprite.scale.set(1.25, 1.25);
 		level_sprite.screenCenter();
 		add(level_sprite);
 
