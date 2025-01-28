@@ -96,5 +96,6 @@ class LevelSelect extends FlxState
 			level_json = LevelDataManager.defaultJSON;
 			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		}
+		difficulty.screenCenter(X);
 	}
 }
