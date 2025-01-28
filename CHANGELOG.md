@@ -6,6 +6,7 @@
 ## Changed
 - Level Select Controls from up and down to left and right
 - Level Select Difficulty text to include Level name
+- Overhauled how saving works I guess... It still works the same but I reprogrammed it but it's whatever
 
 # 0.4.2 (1/26/2025)
 ## Changed
