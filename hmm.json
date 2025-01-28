@@ -16,13 +16,6 @@
       "name": "hxcpp",
       "type": "haxelib",
       "version": null
-    },
-    {
-      "name": "polymod",
-      "type": "git",
-      "dir": null,
-      "ref": "master",
-      "url": "https://github.com/swordcube/scriptless-polymod"
     }
   ]
 }
