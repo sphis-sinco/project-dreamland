@@ -1,5 +1,7 @@
 package menus;
 
+import data.LevelData;
+
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['earth', 'heaven', 'hell'];
