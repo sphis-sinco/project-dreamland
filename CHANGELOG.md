@@ -1,4 +1,4 @@
-# 1.0.0 (1/27/2025)
+# 1.0.0 (1/28/2025)
 ## Removed
 - Developer feature where it's always the Player's first time
 ## Added
