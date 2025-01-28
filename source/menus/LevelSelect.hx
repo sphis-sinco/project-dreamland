@@ -27,22 +27,14 @@ class LevelSelect extends FlxState
 		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 
-		try
-		{
-			var filename:String = FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}');
-			// trace(filename);
-			level_json = Json.parse(FileManager.readFile(filename));
-			difficulty.text = level_json.difficulty;
-		}
-		catch (e)
-		{
-			level_json = LevelDataManager.defaultJSON;
-		}
+		level_json = LevelDataManager.defaultJSON;
 
 		level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		level_sprite.scale.set(1.25, 1.25);
 		level_sprite.screenCenter();
 		add(level_sprite);
+
+		updateSelections();
 
 		super.create();
 	}
@@ -90,14 +82,14 @@ class LevelSelect extends FlxState
 			var filename:String = FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}');
 			// trace(filename);
 			level_json = Json.parse(FileManager.readFile(filename));
-			difficulty.text = levels[CURRENT_SELECTION] + ' - ' + level_json.difficulty;
+			difficulty.text = levels[CURRENT_SELECTION].split('.json')[0] + ' - ' + level_json.difficulty;
 			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		}
 		catch (e)
 		{
 			// trace(e);
 			#if web
-			difficulty.text = levels[CURRENT_SELECTION] + ' - ' + level_diffs[CURRENT_SELECTION];
+			difficulty.text = levels[CURRENT_SELECTION].split('.json')[0] + ' - ' + level_diffs[CURRENT_SELECTION];
 			#else
 			difficulty.text = "unknown difficulty: " + e;
 			#end
