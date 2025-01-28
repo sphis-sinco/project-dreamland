@@ -19,7 +19,7 @@ class MenuState extends FlxState
 		pressButton.y = FlxG.height - pressButton.height + 8;
 		pressButton.color = FlxColor.GREEN;
 
-		menuText.text += ' v${Global.APP_VERSION} (V-SLICE)';
+		menuText.text += ' v${Global.APP_VERSION}';
 
 		#if (discord_rpc && !hl)
 		Discord.changePresence('In the menus', 'Navigating');
