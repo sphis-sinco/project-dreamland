@@ -1,6 +1,6 @@
 package gameplay;
 
-import LevelData.LevelDataManager;
+import data.LevelData.LevelDataManager;
 
 class PlayState extends FlxState
 {
