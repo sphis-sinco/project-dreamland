@@ -22,7 +22,7 @@ class Splash extends FlxState
 
 		FlxTimer.wait(1, () ->
 		{
-			if (FlxG.save.data.savedata.highscore != null)
+			if (!Save.getSavedataInfo(legacyUser) && Save.getSavedataInfo(legacyHighScore) != null)
 			{
 				FlxG.switchState(SeperateHighscores.new);
 				return;

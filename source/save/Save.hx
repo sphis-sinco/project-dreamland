@@ -38,10 +38,14 @@ class Save
 		{
 			case savever:
 				return saveD.saveVer;
-			case firsttime:
+			case firsttime, firstTime:
 				return saveD.firstTime;
 			case highscores:
 				return saveD.highscores;
+			case legacyUser, legacyuser:
+				return saveD.legacyUser;
+			case legacyHighScore:
+				return saveD.highscore;
 		}
 
 		return null;
@@ -53,10 +57,14 @@ class Save
 		{
 			case savever:
 				save.data.savedata.saveVer = newval;
-			case firsttime:
+			case firsttime, firstTime:
 				save.data.savedata.firstTime = newval;
 			case highscores:
-				save.data.savedata.highscore = newval;
+				save.data.savedata.highscores = newval;
+			case legacyUser, legacyuser:
+				save.data.savedata.legacyUser = newval;
+			case legacyHighScore:
+				trace('Why are you trying to change an outdated save data field?');
 		}
 	}
 
@@ -69,7 +77,11 @@ typedef SaveData =
 	var saveVer:Int;
 
 	var firstTime:Bool;
+
+	var highscore:Int;
 	var highscores:Array<HighScoresArrayEntry>;
+
+	var legacyUser:Bool;
 }
 
 typedef HighScoresArrayEntry =
@@ -81,6 +93,13 @@ typedef HighScoresArrayEntry =
 enum SaveKeys
 {
 	savever;
+
 	firsttime;
+	firstTime;
+
+	legacyHighScore;
 	highscores;
+
+	legacyuser;
+	legacyUser;
 }
