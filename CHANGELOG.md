@@ -10,7 +10,7 @@ Using flixel 6.1.0
 - Level Select Level Texts
 ## Added
 - SOUND EFFECTS
-- NEW LEVEL: JUIJIN
+- NEW LEVEL: JUJIN
 - Player doodle to the splash
 - TryCatch file
 - Level Background image to Level Select
