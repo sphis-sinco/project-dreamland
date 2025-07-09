@@ -7,9 +7,10 @@ import gameplay.*;
 import haxe.*;
 import lime.app.Application;
 import menus.*;
-import save.Save.Save;
+import save.Save;
 
 using StringTools;
+
 #if (discord_rpc && !hl)
 import clients.DiscordClient as Discord;
 #end

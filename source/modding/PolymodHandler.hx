@@ -19,9 +19,10 @@ class PolymodHandler
 			errorCallback: function(error:PolymodError)
 			{
 				#if debug
-				trace(error.message.replace('mod mods/', 'mod '));
+				trace(error.message.replace('mod mods/', 'mod: '));
 				#end
-			}
+			},
+			apiVersionRule: ">=0.6.0 <0.7.0"
 		});
 	}
 
