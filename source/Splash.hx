@@ -1,20 +1,13 @@
 package;
 
-import modding.HScript;
-
 class Splash extends FlxState
 {
 	public var hi:FlxText;
 	public var chilling:FlxSprite;
 
-	public var script:HScript;
-
 	override function create()
 	{
 		super.create();
-
-		script = new HScript('Splash.hxc');
-		script.start();
 
 		hi = initMessage();
 		add(hi);
@@ -31,8 +24,6 @@ class Splash extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		script.update(elapsed);
 	}
 
 	public function initMessage()

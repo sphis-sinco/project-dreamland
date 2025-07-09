@@ -47,8 +47,6 @@ class HScript
 	**/
 	public var create_post:Bool = false;
 
-	public var filename:String = '';
-
 	public function new(hscript_path:String)
 	{
 		var shouldIContinue:Bool = true;
@@ -59,41 +57,20 @@ class HScript
 		parser.allowMetadata = true;
 
 		// load text
-
-		var load:String->Bool = function(prefix:String = '')
+		TryCatch.tryCatch(() ->
 		{
-			var failed = false;
-			var path = '${prefix}scripts/$hscript_path';
-
-			TryCatch.tryCatch(() ->
-			{
-				program = parser.parseString(Assets.getText(path));
-
-				filename = hscript_path.split('/')[hscript_path.split('/').length - 1];
-			}, {
-					errFunc: () ->
-					{
-						failed = true;
-					}
-			});
-
-			return failed;
-		}
-
-		var failed = load('');
-
-		if (failed)
-			load('assets/');
-
-		if (failed)
-			shouldIContinue = false;
+			program = parser.parseString(Assets.getText(hscript_path));
+		}, {
+				errFunc: () ->
+				{
+					shouldIContinue = false;
+				}
+		});
 
 		set_default_vars();
 
 		if (shouldIContinue)
-		{
 			interp.execute(program);
-		}
 	}
 
 	public function start()
@@ -148,7 +125,7 @@ class HScript
 		// function shits
 		interp.variables.set("trace", function(value:Dynamic)
 		{
-			trace('${filename} // $value');
+			trace(value);
 		});
 
 		interp.variables.set("load", function(script_path:String)
