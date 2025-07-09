@@ -97,6 +97,9 @@
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
+	<!-- Something about stack traces-->
+	<haxedef name="hscriptPos" />
+
 	<!--Remove
 	the legacy health system-->
 	<haxedef name="FLX_NO_HEALTH" />
