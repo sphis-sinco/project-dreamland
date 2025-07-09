@@ -11,9 +11,17 @@ class Splash extends FlxState
 		hi.screenCenter();
 		add(hi);
 
+		var chilling:FlxSprite = new FlxSprite(0, 0);
+		chilling.frames = FileManager.getSparrowAtlas('splash/player');
+		chilling.animation.addByPrefix('chill', 'Player chill', 24);
+		chilling.animation.play('chill');
+		chilling.scale.set(0.5, 0.5);
+		chilling.screenCenter();
+		add(chilling);
+
 		FlxTimer.wait(1, () ->
 		{
-			FlxG.switchState(new MenuState());
+			FlxG.switchState(MenuState.new);
 		});
 	}
 }

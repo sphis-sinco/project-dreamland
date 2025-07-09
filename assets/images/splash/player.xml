@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="player.png">
+	<!-- Created with Adobe Animate version 21.0.6.41649 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="Player chill0000" x="4" y="4" width="291" height="291"/>
+	<SubTexture name="Player chill0001" x="4" y="4" width="291" height="291"/>
+	<SubTexture name="Player chill0002" x="303" y="4" width="290" height="291" frameX="0" frameY="0" frameWidth="291" frameHeight="291"/>
+	<SubTexture name="Player chill0003" x="303" y="4" width="290" height="291" frameX="0" frameY="0" frameWidth="291" frameHeight="291"/>
+</TextureAtlas>

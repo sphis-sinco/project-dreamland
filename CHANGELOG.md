@@ -5,8 +5,10 @@ Using flixel 6.1.0
 - Developer feature where it's always the Player's first time
 - Level Select Level Texts
 ## Added
+- TryCatch file
 - Level Background image to Level Select
 ## Changed
+- Updated the File Manager to the latest version I have of it
 - Level Select Controls from up and down to left and right
 - Level Select Difficulty text to include Level name
 - Level Select Difficulty text to be centered on the X-axis
