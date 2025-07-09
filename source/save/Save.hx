@@ -16,37 +16,55 @@ class Save
 			trace('SAVEDATA IS NULL. SETTING TO A COMPLETELY NEW SAVE.');
 			save.data.savedata = {
 				saveVer: SAVEDATA_VERSION,
-				firstTime: true,
+				firstTime: null,
+				highscores: 0,
+				legacyUser: false,
 				highscore: 0
 			};
 		}
 		else
 		{
-			save.data.savedata.saveVer ??= SAVEDATA_VERSION;
-			save.data.savedata.firstTime ??= true;
-			save.data.savedata.highscore ??= 0;
+			TryCatch.tryCatch(() ->
+			{
+				if (getSavedataInfo(highscores) == null)
+					save.data.savedata.highscores = 0;
+				if (getSavedataInfo(legacyUser) == null)
+					save.data.savedata.legacyUser = false;
+				if (getSavedataInfo(legacyHighScore) == null)
+					save.data.savedata.highscore = 0;
+			});
+
+			save.data.savedata.saveVer = SAVEDATA_VERSION;
 		}
 
-		save.flush();
+		flushData();
 	}
 
 	public static function getSavedataInfo(field:SaveKeys):Dynamic
 	{
 		var saveD:SaveData = save.data.savedata;
 
-		switch (field)
+		TryCatch.tryCatch(() ->
 		{
-			case savever:
-				return saveD.saveVer;
-			case firsttime, firstTime:
-				return saveD.firstTime;
-			case highscores:
-				return saveD.highscores;
-			case legacyUser, legacyuser:
-				return saveD.legacyUser;
-			case legacyHighScore:
-				return saveD.highscore;
-		}
+			switch (field)
+			{
+				case savever:
+					return saveD.saveVer;
+				case firsttime, firstTime:
+					return saveD.firstTime;
+				case highscores:
+					return saveD.highscores;
+				case legacyUser, legacyuser:
+					return saveD.legacyUser;
+				case legacyHighScore:
+					return saveD.highscore;
+			}
+		}, {
+				errFunc: () ->
+				{
+					return null;
+				}
+		});
 
 		return null;
 	}
@@ -66,6 +84,7 @@ class Save
 			case legacyHighScore:
 				trace('Why are you trying to change an outdated save data field?');
 		}
+		flushData();
 	}
 
 	public static function flushData()

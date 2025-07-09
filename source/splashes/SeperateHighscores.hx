@@ -9,7 +9,7 @@ class SeperateHighscores extends FlxState
 		var message:FlxText = new FlxText(0, 0, 0,
 			'Wait!\nImportant information...\n\nInstead of there just being one high score,'
 			+ '\nyour high scores are split off for each different level\n\nIf you had like a REALLY high score...\nsorry.'
-			+ 'But! Since you are now to be known as a "Legacy User".\n'
+			+ '\nBut! Since you are now to be known as a "Legacy User".\n'
 			+ 'Your previous highscore will still be there on the main menu.',
 			16);
 		message.alignment = CENTER;
@@ -24,6 +24,7 @@ class SeperateHighscores extends FlxState
 		if (FlxG.keys.justReleased.ANY)
 		{
 			Save.setSavedataInfo(legacyUser, true);
+
 			FlxG.switchState(MenuState.new);
 		}
 	}

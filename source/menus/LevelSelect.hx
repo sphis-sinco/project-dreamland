@@ -21,7 +21,7 @@ class LevelSelect extends FlxState
 		levels = FileManager.readDirectory('assets/data/levels');
 		#end
 
-		score.y = score.height;
+		score.y = score.height / 2;
 		add(score);
 
 		difficulty.y = FlxG.height - difficulty.height;

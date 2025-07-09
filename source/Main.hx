@@ -47,6 +47,8 @@ class Main extends Sprite
 		else if (Save.getSavedataInfo(firsttime) == null)
 			Save.setSavedataInfo(firsttime, true);
 
+		Save.flushData();
+
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : splashes.Splash, 60, 60, true));
 	}
 }
