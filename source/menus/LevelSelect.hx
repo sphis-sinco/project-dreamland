@@ -4,14 +4,14 @@ import data.LevelData;
 
 class LevelSelect extends FlxState
 {
-	var levels:Array<String> = ['earth', 'heaven', 'hell'];
-	var level_diffs:Array<String> = ['easy-ish', 'medium', 'hard'];
+	var levels:Array<String> = ['earth', 'heaven', 'hell', 'jujin'];
+	var level_diffs:Array<String> = ['easy-ish', 'medium', 'hard', 'medium-hard'];
 	var level_sprite:FlxSprite = new FlxSprite();
 
 	var level_json:LevelData;
 
 	var difficulty:FlxText = new FlxText(0, 0, 0, "", 32);
-    
+
 	var CURRENT_SELECTION:Int = 0;
 
 	override public function create()
