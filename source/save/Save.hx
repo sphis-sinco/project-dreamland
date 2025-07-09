@@ -29,6 +29,7 @@ class Save
 
 		save.flush();
 	}
+
 	public static function getSavedataInfo(field:SaveKeys):Dynamic
 	{
 		var saveD:SaveData = save.data.savedata;
@@ -52,7 +53,7 @@ class Save
 		{
 			case savever:
 				save.data.savedata.saveVer = newval;
-			case firsttime:
+			case firsttime, firstTime:
 				save.data.savedata.firstTime = newval;
 			case highscore:
 				save.data.savedata.highscore = newval;
@@ -70,9 +71,11 @@ typedef SaveData =
 	var firstTime:Bool;
 	var highscore:Int;
 }
+
 enum SaveKeys
 {
 	savever;
 	firsttime;
+	firstTime;
 	highscore;
 }
