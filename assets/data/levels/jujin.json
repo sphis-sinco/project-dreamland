@@ -4,9 +4,9 @@
     "assets": {
         "directory": "jujin/",
 
-        "enemy_rare": "enemy-rare",
-        "enemy_easy": "enemy-easy",
-        "enemy_common": "enemy-common"
+        "enemy_rare": "pore",
+        "enemy_easy": "haye",
+        "enemy_common": "kikin"
     },
     "settings": {
         "scores": {
