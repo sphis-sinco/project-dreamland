@@ -12,6 +12,9 @@ class Main extends Sprite
 	public function new()
 	{
 		Save.initalize();
+		#if polymod
+		modding.PolymodHandler.loadMods();
+		#end
 		var needUpdate = false;
 		#if !hl
 		trace('checking for update');
@@ -36,7 +39,7 @@ class Main extends Sprite
 
 		http.request();
 		#end
-		
+
 		super();
 		#if (discord_rpc && !hl)
 		Discord.initialize();

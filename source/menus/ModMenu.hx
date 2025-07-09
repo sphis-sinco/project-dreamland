@@ -88,18 +88,19 @@ class ModMenu extends FlxState
 		if (FlxG.keys.justReleased.UP)
 		{
 			curSelected -= 1;
-			Global.playSound('select');
+			Global.playSound('blip');
 		}
 
 		if (FlxG.keys.justReleased.DOWN)
 		{
 			curSelected += 1;
-			Global.playSound('select');
+			Global.playSound('blip');
 		}
 
 		if (FlxG.keys.justReleased.ESCAPE)
 		{
 			PolymodHandler.loadMods();
+			Global.playSound('select');
 			FlxG.switchState(MenuState.new);
 		}
 
@@ -119,7 +120,7 @@ class ModMenu extends FlxState
 		for (x in page.members)
 		{
 			x.y = 10 + (bruh * 32);
-			x.alpha = ModList.getModEnabled(PolymodHandler.metadataArrays[x.ID]) ? 0.6 : 1.0;
+			x.alpha = ModList.getModEnabled(PolymodHandler.metadataArrays[x.ID]) ? 1.0 : 0.6;
 			x.color = (curSelected == x.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
 
 			if (curSelected == x.ID)

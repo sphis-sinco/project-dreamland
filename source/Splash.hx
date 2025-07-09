@@ -20,10 +20,6 @@ class Splash extends FlxState
 		chilling.screenCenter();
 		add(chilling);
 
-		#if polymod
-		modding.PolymodHandler.loadMods();
-		#end
-
 		FlxTimer.wait(1, () ->
 		{
 			FlxG.switchState(MenuState.new);

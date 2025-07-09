@@ -18,6 +18,7 @@ class Save
 		#if polymod
 		if (save.data.modList != null)
 		{
+			trace(save.data.modList);
 			for (mod in PolymodHandler.metadataArrays)
 			{
 				if (save.data.modlist.exists(mod))
