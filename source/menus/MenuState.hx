@@ -1,6 +1,6 @@
 package menus;
 
-import polymod.hscript.HScriptable.Script;
+import modding.HScript;
 
 class MenuState extends FlxState
 {
@@ -10,8 +10,13 @@ class MenuState extends FlxState
 	public var levelBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 	public var modBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 
+	public var script:HScript;
+
 	override public function create()
 	{
+		script = new HScript('MenuState.hxc');
+		script.start();
+
 		Save.flushData();
 		add(menuText);
 
@@ -45,6 +50,8 @@ class MenuState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		script.update(elapsed);
+
 		if (FlxG.mouse.justReleased)
 		{
 			if (FlxG.mouse.overlaps(levelBtn))

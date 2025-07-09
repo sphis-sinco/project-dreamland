@@ -1,9 +1,8 @@
 package;
 
 import modding.HScript;
-import polymod.hscript.HScriptedClass;
 
-class Splash extends FlxState implements HScriptedClass
+class Splash extends FlxState
 {
 	public var hi:FlxText;
 	public var chilling:FlxSprite;

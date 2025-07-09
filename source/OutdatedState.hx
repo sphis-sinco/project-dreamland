@@ -1,9 +1,16 @@
 package;
 
+import modding.HScript;
+
 class OutdatedState extends FlxState
 {
+	public var script:HScript;
+
 	override public function create()
 	{
+		script = new HScript('OutdatedState.hxc');
+		script.start();
+
 		var outdatedText:FlxText = new FlxText(0, 0, 0, "blah", 16);
 		add(outdatedText);
 
@@ -24,6 +31,8 @@ class OutdatedState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
+		script.update(elapsed);
+
 		if (FlxG.keys.justReleased.ENTER)
 		{
 			FlxG.openURL('https://github.com/sphis-Sinco/project-dreamland/releases/latest');

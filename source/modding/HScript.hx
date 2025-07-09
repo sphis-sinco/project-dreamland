@@ -77,11 +77,6 @@ class HScript
 					}
 			});
 
-			if (failed)
-				trace('$path isn\'t a script file.');
-			else
-				trace('$path is a script file.');
-
 			return failed;
 		}
 

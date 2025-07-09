@@ -1,6 +1,7 @@
 package menus;
 
 import data.LevelData;
+import modding.HScript;
 
 class LevelSelect extends FlxState
 {
@@ -14,8 +15,13 @@ class LevelSelect extends FlxState
 
 	var CURRENT_SELECTION:Int = 0;
 
+	var script:HScript;
+
 	override public function create()
 	{
+		script = new HScript('LevelSelect.hxc');
+		script.start();
+
 		#if !web
 		levels = FileManager.readDirectory('assets/data/levels');
 		#end
