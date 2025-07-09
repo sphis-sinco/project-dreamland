@@ -60,7 +60,7 @@ class PlayState extends FlxState
 
 		SCORE = 0;
 
-		if (Save.getSavedataInfo("firstTime"))
+		if (Save.getSavedataInfo(firsttime))
 		{
 			spacebar = new FlxSprite().loadGraphic(FileManager.getImageFile('tutorial/spacebar'), true, 48, 16);
 			spacebar.animation.add('idle', [0, 1], 2);
@@ -146,9 +146,9 @@ class PlayState extends FlxState
 			var new_bullet:FlxSprite = newBullet();
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 			bullets_group.add(new_bullet);
-			if (Save.getSavedataInfo("firstTime"))
+			if (Save.getSavedataInfo(firsttime))
 			{
-				Save.setSavedataInfo("firstTime", false);
+				Save.setSavedataInfo(firsttime, false);
 				spacebar.destroy();
 				spacebartext.destroy();
 			}

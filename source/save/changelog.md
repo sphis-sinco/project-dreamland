@@ -1,3 +1,6 @@
+# version 4 - 7/9/2025
+- Added an enum for save keys
+
 # version 3 - 1/27/2025
 - Saves are now controlled with `Save.hx` but inside of a variable called `save` which has the `FlxSave` type
 

@@ -20,7 +20,7 @@ class Splash extends FlxState
 		chilling.screenCenter();
 		add(chilling);
 
-		FlxTimer.wait(100, () ->
+		FlxTimer.wait(1, () ->
 		{
 			FlxG.switchState(MenuState.new);
 		});

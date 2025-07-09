@@ -42,10 +42,10 @@ class Main extends Sprite
 		Discord.initialize();
 		#end
 
-		if (Save.getSavedataInfo('firstTime'))
-			Save.setSavedataInfo('firstTime', false);
-		else if (Save.getSavedataInfo('firstTime') == null)
-			Save.setSavedataInfo('firstTime', true);
+		if (Save.getSavedataInfo(firsttime))
+			Save.setSavedataInfo(firsttime, false);
+		else if (Save.getSavedataInfo(firsttime) == null)
+			Save.setSavedataInfo(firsttime, true);
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
