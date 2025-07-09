@@ -24,9 +24,7 @@ class GameOver extends FlxState
 	override public function update(elapsed:Float)
 	{
 		if (FlxG.keys.justReleased.ENTER)
-		{
-			FlxG.switchState(new MenuState());
-		}
+			FlxG.switchState(MenuState.new);
 
 		super.update(elapsed);
 	}

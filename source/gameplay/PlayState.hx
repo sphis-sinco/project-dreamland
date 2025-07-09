@@ -209,7 +209,7 @@ class PlayState extends FlxState
 				}
 				enemyBeingShotCheck(enemy);
 				if (enemy.overlaps(player))
-					FlxG.switchState(new GameOver());
+					FlxG.switchState(GameOver.new);
 			}
 			catch (e)
 			{

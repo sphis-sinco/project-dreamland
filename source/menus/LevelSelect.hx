@@ -66,11 +66,11 @@ class LevelSelect extends FlxState
 		else if (key_enter)
 		{
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
-			FlxG.switchState(new PlayState());
+			FlxG.switchState(PlayState.new);
 		}
 		else if (FlxG.keys.justReleased.ESCAPE)
 		{
-			FlxG.switchState(new MenuState());
+			FlxG.switchState(MenuState.new);
 		}
 		super.update(elapsed);
 	}

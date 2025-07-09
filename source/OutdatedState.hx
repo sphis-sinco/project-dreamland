@@ -33,7 +33,7 @@ class OutdatedState extends FlxState
 		}
 		else if (FlxG.keys.justReleased.BACKSPACE || FlxG.keys.justReleased.ESCAPE)
 		{
-			FlxG.switchState(new MenuState());
+			FlxG.switchState(MenuState.new);
 		}
 
 		super.update(elapsed);
