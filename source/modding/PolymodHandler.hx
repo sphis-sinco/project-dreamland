@@ -20,9 +20,6 @@ class PolymodHandler
 				#if debug
 				trace(error.message.replace('mod mods/', 'mod '));
 				#end
-			},
-			frameworkParams: {
-				assetLibraryPaths: []
 			}
 		});
 	}
@@ -39,11 +36,13 @@ class PolymodHandler
 				#if debug
 				trace(error.message.replace('mod mods/', 'mod '));
 				#end
-			},
+			}
 		});
 
 		for (metadata in tempArray)
 		{
+			if (metadata.title == null)
+				return;
 			metadataArrays.push(metadata.id);
 			ModList.modMetadatas.set(metadata.id, metadata);
 		}

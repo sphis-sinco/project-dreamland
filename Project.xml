@@ -44,7 +44,6 @@
 	<define name="POLYMOD_MODDING" />
 
 	<section if="POLYMOD_MODDING">
-
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>
