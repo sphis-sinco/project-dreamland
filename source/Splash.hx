@@ -9,6 +9,7 @@ class Splash extends FlxState
 		var hi:FlxText = new FlxText(0, 0, 0, "Thank you\nfor playing Dreamland!", 32);
 		hi.alignment = CENTER;
 		hi.screenCenter();
+		hi.y = 32;
 		add(hi);
 
 		var chilling:FlxSprite = new FlxSprite(0, 0);
@@ -19,7 +20,7 @@ class Splash extends FlxState
 		chilling.screenCenter();
 		add(chilling);
 
-		FlxTimer.wait(1, () ->
+		FlxTimer.wait(100, () ->
 		{
 			FlxG.switchState(MenuState.new);
 		});
