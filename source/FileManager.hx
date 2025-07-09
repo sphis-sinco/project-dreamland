@@ -1,4 +1,4 @@
-package sinlib.utilities;
+package;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 import haxe.Json;
