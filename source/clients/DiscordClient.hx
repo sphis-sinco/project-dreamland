@@ -1,4 +1,4 @@
-package;
+package clients;
 
 #if DISCORDRPC
 import Sys.sleep;
