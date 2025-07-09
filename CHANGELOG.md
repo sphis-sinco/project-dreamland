@@ -6,6 +6,7 @@ Using flixel 6.1.0
 - Developer feature where it's always the Player's first time
 - Level Select Level Texts
 ## Added
+- Score text to the level select
 - "legacyUser" save data
 - Warning splash for the new highscore system
 - TryCatch file

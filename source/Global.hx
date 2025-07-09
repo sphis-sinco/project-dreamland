@@ -20,6 +20,9 @@ class Global
 	public static function getHighScoreArray(level:String)
 	{
 		HIGHSCORES = Save.getSavedataInfo(highscores);
+		if (HIGHSCORES == null)
+			return null;
+
 		for (entry in HIGHSCORES)
 		{
 			if (entry.level == level)
