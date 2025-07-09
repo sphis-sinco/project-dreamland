@@ -33,17 +33,31 @@ class ModMenu extends FlxState
 	override function update(elapsed:Float)
 	{
 		if (FlxG.keys.justPressed.R)
+		{
 			refreshModList();
+		}
 
 		selections();
 
 		if (FlxG.keys.justReleased.UP)
+		{
 			selections(-1);
+		}
 		if (FlxG.keys.justReleased.DOWN)
+		{
 			selections(1);
+		}
+
+		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			FlxG.switchState(MenuState.new);
+		}
 
 		if (FlxG.keys.justPressed.SPACE)
+		{
 			grpMods.members[curSelected].modEnabled = !grpMods.members[curSelected].modEnabled;
+			ModList.setModEnabled(grpMods.members[curSelected].daMod, grpMods.members[curSelected].modEnabled);
+		}
 
 		if (FlxG.keys.justPressed.I && curSelected != 0)
 		{
@@ -99,13 +113,14 @@ class ModMenu extends FlxState
 		enabledMods = ModList.getActiveMods(modList);
 		modList = PolymodHandler.metadataArrays;
 
-		trace(modList);
+		// trace(modList);
 
 		var loopNum:Int = 0;
 		for (i in modFolders)
 		{
-			var txt:ModMenuItem = new ModMenuItem(0, 10 + (40 * loopNum), 0, i, 32);
-			txt.text = i;
+			var txt:ModMenuItem = new ModMenuItem(0, 10 + (40 * loopNum), 0, ModList.modMetadatas.get(i).title, 32);
+			txt.daMod = i;
+			txt.modEnabled = enabledMods.contains(i);
 			grpMods.add(txt);
 
 			loopNum++;

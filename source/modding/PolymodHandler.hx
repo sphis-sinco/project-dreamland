@@ -9,6 +9,7 @@ class PolymodHandler
 
 	public static function loadMods()
 	{
+		ModList.load();
 		loadModMetadata();
 
 		Polymod.init({
