@@ -1,4 +1,6 @@
 # 0.5.0 (7/9/2025)
+Using flixel 6.1.0
+
 ## Removed
 - Developer feature where it's always the Player's first time
 - Level Select Level Texts
