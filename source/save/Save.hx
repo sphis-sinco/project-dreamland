@@ -1,5 +1,9 @@
 package save;
 
+import modding.ModList;
+import modding.PolymodHandler;
+import polymod.Polymod;
+
 class Save
 {
 	public static var save:FlxSave;
@@ -10,6 +14,17 @@ class Save
 	{
 		save = new FlxSave();
 		save.bind('dreamland', Application.current.meta.get('company'));
+
+		#if polymod
+		if (save.data.modList != null)
+		{
+			for (mod in PolymodHandler.metadataArrays)
+			{
+				if (save.data.modlist.exists(mod))
+					ModList.setModEnabled(mod, true);
+			}
+		}
+		#end
 
 		if (save.data.savedata == null)
 		{
@@ -27,7 +42,7 @@ class Save
 			save.data.savedata.highscore ??= 0;
 		}
 
-		save.flush();
+		flushData();
 	}
 
 	public static function getSavedataInfo(field:SaveKeys):Dynamic
