@@ -1,28 +1,27 @@
 {
-        "savename": "hell",
-        "difficulty": "hard",
-        "author": "Sphis_Sinco",
-        "assets": {
-                "directory": "hell/",
+    "difficulty": "hard",
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "hell/",
 
-                "enemy_rare": "enemy-rare",
-                "enemy_easy": "enemy-easy",
-                "enemy_common": "enemy-common"
+        "enemy_rare": "enemy-rare",
+        "enemy_easy": "enemy-easy",
+        "enemy_common": "enemy-common"
+    },
+    "settings": {
+        "scores": {
+            "enemy_rare": 250,
+            "enemy_easy": 100,
+            "enemy_common": 50
         },
-        "settings": {
-                "scores": {
-                        "enemy_rare": 250,
-                        "enemy_easy": 100,
-                        "enemy_common": 50
-                },
-                "chances": {
-                        "enemy_rare": 0.5,
-                        "enemy_easy": 43
-                },
-                "speed_additions": {
-                        "enemy_common": 0,
-                        "enemy_easy": 12,
-                        "enemy_rare": 15
-                }
+        "chances": {
+            "enemy_rare": 0.5,
+            "enemy_easy": 43
+        },
+        "speed_additions": {
+            "enemy_common": 0,
+            "enemy_easy": 12,
+            "enemy_rare": 15
         }
+    }
 }

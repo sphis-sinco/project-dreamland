@@ -13,7 +13,7 @@ class TryCatch
 	 * @param func the function you are trying to run
 	 * @param paramaters optional paramaters for the tryCatch.
 	 */
-	public static function tryCatch<T>(func:Dynamic, ?options:TryCatchParamaters):T
+	public static function tryCatch<T>(func:Void->T, ?options:TryCatchParamaters):T
 	{
 		try
 		{
