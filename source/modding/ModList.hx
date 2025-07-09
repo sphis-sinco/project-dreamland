@@ -12,12 +12,14 @@ class ModList
 	public static function setModEnabled(mod:String, enabled:Bool):Void
 	{
 		modList.set(mod, enabled);
+		FlxG.save.data.modList = modList;
+		FlxG.save.flush();
 	}
 
 	public static function getModEnabled(mod:String):Bool
 	{
 		if (!modList.exists(mod))
-			setModEnabled(mod, modMetadatas.get(mod).metadata.get('auto_enable').toLowerCase() != 'false');
+			setModEnabled(mod, true);
 
 		return modList.get(mod);
 	}
@@ -35,6 +37,10 @@ class ModList
 		return activeMods;
 	}
 
-	public static function load():Void {}
+	public static function load():Void
+	{
+		if (FlxG.save.data.modList != null)
+			modList = FlxG.save.data.modList;
+	}
 }
 #end
