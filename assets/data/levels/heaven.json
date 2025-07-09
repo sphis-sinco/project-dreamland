@@ -1,27 +1,28 @@
 {
-    "difficulty": "medium",
-    "author": "Sphis_Sinco",
-    "assets": {
-        "directory": "heaven/",
+        "savename": "heaven",
+        "difficulty": "medium",
+        "author": "Sphis_Sinco",
+        "assets": {
+                "directory": "heaven/",
 
-        "enemy_rare": "enemy-rare",
-        "enemy_easy": "enemy-easy",
-        "enemy_common": "enemy-common"
-    },
-    "settings": {
-        "scores": {
-            "enemy_rare": 63,
-            "enemy_easy": 25,
-            "enemy_common": 13
+                "enemy_rare": "enemy-rare",
+                "enemy_easy": "enemy-easy",
+                "enemy_common": "enemy-common"
         },
-        "chances": {
-            "enemy_rare": 20,
-            "enemy_easy": 95
-        },
-        "speed_additions": {
-            "enemy_common": 0,
-            "enemy_easy": 0,
-            "enemy_rare": 5
+        "settings": {
+                "scores": {
+                        "enemy_rare": 63,
+                        "enemy_easy": 25,
+                        "enemy_common": 13
+                },
+                "chances": {
+                        "enemy_rare": 20,
+                        "enemy_easy": 95
+                },
+                "speed_additions": {
+                        "enemy_common": 0,
+                        "enemy_easy": 0,
+                        "enemy_rare": 5
+                }
         }
-    }
 }

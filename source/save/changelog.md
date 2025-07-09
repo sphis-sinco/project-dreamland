@@ -1,3 +1,6 @@
+# version 5 - 7/9/2025
+- legacy shit implementation
+
 # version 4 - 7/9/2025
 - Added an enum for save keys
 

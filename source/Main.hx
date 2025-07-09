@@ -36,7 +36,7 @@ class Main extends Sprite
 
 		http.request();
 		#end
-		
+
 		super();
 		#if (discord_rpc && !hl)
 		Discord.initialize();
@@ -47,6 +47,8 @@ class Main extends Sprite
 		else if (Save.getSavedataInfo(firsttime) == null)
 			Save.setSavedataInfo(firsttime, true);
 
-		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
+		Save.flushData();
+
+		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : splashes.Splash, 60, 60, true));
 	}
 }
