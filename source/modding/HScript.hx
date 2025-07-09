@@ -47,19 +47,58 @@ class HScript
 	**/
 	public var create_post:Bool = false;
 
+	public var filename:String = '';
+
 	public function new(hscript_path:String)
 	{
+		var shouldIContinue:Bool = true;
+
 		// parser settings
 		parser.allowJSON = true;
 		parser.allowTypes = true;
 		parser.allowMetadata = true;
 
 		// load text
-		program = parser.parseString(Assets.getText(hscript_path));
+
+		var load:String->Bool = function(prefix:String = '')
+		{
+			var failed = false;
+			var path = '${prefix}scripts/$hscript_path';
+
+			TryCatch.tryCatch(() ->
+			{
+				program = parser.parseString(Assets.getText(path));
+
+				filename = hscript_path.split('/')[hscript_path.split('/').length - 1];
+			}, {
+					errFunc: () ->
+					{
+						failed = true;
+					}
+			});
+
+			if (failed)
+				trace('$path isn\'t a script file.');
+			else
+				trace('$path is a script file.');
+
+			return failed;
+		}
+
+		var failed = load('');
+
+		if (failed)
+			load('assets/');
+
+		if (failed)
+			shouldIContinue = false;
 
 		set_default_vars();
 
-		interp.execute(program);
+		if (shouldIContinue)
+		{
+			interp.execute(program);
+		}
 	}
 
 	public function start()
@@ -114,7 +153,7 @@ class HScript
 		// function shits
 		interp.variables.set("trace", function(value:Dynamic)
 		{
-			trace(value);
+			trace('${filename} // $value');
 		});
 
 		interp.variables.set("load", function(script_path:String)

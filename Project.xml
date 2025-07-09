@@ -45,6 +45,7 @@
 	<define name="BLOCK_SOME_POLYMOD_TRACES" if="blockSomePolymodTraces" />
 
 	<section if="POLYMOD_MODDING">
+		<define name="SCRIPT_FILES" />
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>

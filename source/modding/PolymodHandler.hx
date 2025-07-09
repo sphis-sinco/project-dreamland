@@ -79,6 +79,7 @@ class PolymodHandler
 			metadataArrays.push(metadata.id);
 			ModList.modMetadatas.set(metadata.id, metadata);
 		}
+		trace(metadataArrays);
 	}
 }
 #end

@@ -1,12 +1,14 @@
 package menus;
 
+import polymod.hscript.HScriptable.Script;
+
 class MenuState extends FlxState
 {
-	var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);
-	var highscoreText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
+	public var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);
+	public var highscoreText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
 
-	var levelBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
-	var modBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
+	public var levelBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
+	public var modBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 
 	override public function create()
 	{
@@ -34,6 +36,9 @@ class MenuState extends FlxState
 		#end
 		modBtn.screenCenter();
 		add(modBtn);
+
+		#if POLYMOD_MODDING
+		#end
 
 		super.create();
 	}

@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxGame;
 import openfl.display.Sprite;
+import polymod.Polymod;
 
 using StringTools;
 
@@ -15,6 +16,7 @@ class Main extends Sprite
 		#if polymod
 		modding.PolymodHandler.loadMods();
 		#end
+
 		var needUpdate = false;
 		#if !hl
 		trace('checking for update');
