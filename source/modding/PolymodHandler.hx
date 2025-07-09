@@ -18,7 +18,7 @@ class PolymodHandler
 			errorCallback: function(error:PolymodError)
 			{
 				#if debug
-				trace(error.message);
+				trace(error.message.replace('mod mods/', 'mod '));
 				#end
 			},
 			frameworkParams: {
