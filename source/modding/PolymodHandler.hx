@@ -19,6 +19,23 @@ class PolymodHandler
 			errorCallback: function(error:PolymodError)
 			{
 				#if debug
+				#if BLOCK_SOME_POLYMOD_TRACES
+				var I_dont_wanna_see_that_shit:Array<PolymodErrorCode> = [
+					PARSE_MOD_META,
+					PARSE_MOD_VERSION,
+					PARSE_MOD_API_VERSION,
+					FILE_MISSING,
+					MISSING_ICON,
+					MOD_LOAD_PREPARE,
+					MOD_LOAD_DONE
+				];
+
+				if (I_dont_wanna_see_that_shit.contains(error.code))
+					return;
+				#end
+				#end
+
+				#if debug
 				trace(error.message.replace('mod mods/', 'mod: '));
 				#end
 			},

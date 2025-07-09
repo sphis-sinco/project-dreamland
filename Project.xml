@@ -42,6 +42,7 @@
 
 	<define name="DISCORDRPC" if="windows" unless="hl" />
 	<define name="POLYMOD_MODDING" />
+	<define name="BLOCK_SOME_POLYMOD_TRACES" if="blockSomePolymodTraces" />
 
 	<section if="POLYMOD_MODDING">
 		<assets path="example_mods" rename="mods" />
