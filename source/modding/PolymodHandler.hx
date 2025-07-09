@@ -5,6 +5,9 @@ import polymod.Polymod;
 
 class PolymodHandler
 {
+	public static var MINIMUM_MOD_VERSION:String = "0.6.0";
+	public static var MAXIMUM_MOD_VERSION:String = "0.7.0";
+
 	public static var metadataArrays:Array<String> = [];
 
 	public static function loadMods()
@@ -35,11 +38,21 @@ class PolymodHandler
 				#end
 				#end
 
+				if (error.code == VERSION_CONFLICT_API)
+				{
+					var msgList = error.message.split('"');
+					var mod = ModList.modMetadatas.get(msgList[1]);
+
+					trace('${mod.title} uses an outdated API (${mod.apiVersion}). Expected API minimum of ${MINIMUM_MOD_VERSION}.');
+
+					return;
+				}
+
 				#if debug
-				trace(error.message.replace('mod mods/', 'mod: '));
+				trace('[${error.severity}] ' + error.message.replace('mod mods/', 'mod: '));
 				#end
 			},
-			apiVersionRule: ">=0.6.0 <0.7.0"
+			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}'
 		});
 	}
 
