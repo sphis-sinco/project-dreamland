@@ -4,7 +4,7 @@ class Save
 {
 	public static var save:FlxSave;
 
-	public static final SAVEDATA_VERSION:Int = 4;
+	public static final SAVEDATA_VERSION:Int = 5;
 
 	public static function initalize()
 	{
@@ -29,6 +29,7 @@ class Save
 
 		save.flush();
 	}
+
 	public static function getSavedataInfo(field:SaveKeys):Dynamic
 	{
 		var saveD:SaveData = save.data.savedata;
@@ -39,8 +40,8 @@ class Save
 				return saveD.saveVer;
 			case firsttime:
 				return saveD.firstTime;
-			case highscore:
-				return saveD.highscore;
+			case highscores:
+				return saveD.highscores;
 		}
 
 		return null;
@@ -54,7 +55,7 @@ class Save
 				save.data.savedata.saveVer = newval;
 			case firsttime:
 				save.data.savedata.firstTime = newval;
-			case highscore:
+			case highscores:
 				save.data.savedata.highscore = newval;
 		}
 	}
@@ -68,11 +69,18 @@ typedef SaveData =
 	var saveVer:Int;
 
 	var firstTime:Bool;
-	var highscore:Int;
+	var highscores:Array<HighScoresArrayEntry>;
 }
+
+typedef HighScoresArrayEntry =
+{
+	var level:String;
+	var score:Int;
+}
+
 enum SaveKeys
 {
 	savever;
 	firsttime;
-	highscore;
+	highscores;
 }

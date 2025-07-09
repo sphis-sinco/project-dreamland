@@ -1,3 +1,6 @@
+# version 5 - 7/9/2025
+- `highscore` is now `highscores` and stores an array of levels and their score
+
 # version 4 - 7/9/2025
 - Added an enum for save keys
 
