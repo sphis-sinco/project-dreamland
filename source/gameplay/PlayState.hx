@@ -234,7 +234,7 @@ class PlayState extends FlxState
 					case 2:
 						SCORE += level_data.settings.scores.enemy_rare;
 				}
-				if (Global.HIGHSCORE < SCORE)
+				if (Global.HIGHSCORE < SCORE && score_text.color != FlxColor.LIME)
 				{
 					score_text.color = FlxColor.LIME;
 					Global.playSound('blip');

@@ -8,6 +8,7 @@ class MenuState extends FlxState
 
 	override public function create()
 	{
+		Save.flushData();
 		add(menuText);
 		add(pressButton);
 
