@@ -38,7 +38,7 @@ class Save
 		{
 			case savever:
 				return saveD.saveVer;
-			case firsttime:
+			case firsttime, firstTime:
 				return saveD.firstTime;
 			case highscore:
 				return saveD.highscore;
