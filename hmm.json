@@ -14,8 +14,10 @@
     },
     {
       "name": "hxcpp",
-      "type": "haxelib",
-      "version": null
+      "type": "git",
+      "dir": null,
+      "ref": null,
+      "url": "https://github.com/HaxeFoundation/hxcpp"
     }
   ]
 }
