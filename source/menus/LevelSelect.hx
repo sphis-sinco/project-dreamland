@@ -53,23 +53,33 @@ class LevelSelect extends FlxState
 		{
 			CURRENT_SELECTION--;
 			if (CURRENT_SELECTION < 0)
+			{
 				CURRENT_SELECTION = 0;
+			}
+			else
+				Global.playSound('blip');
 			updateSelections();
 		}
 		else if (key_right)
 		{
 			CURRENT_SELECTION++;
 			if (CURRENT_SELECTION > levels.length - 1)
+			{
 				CURRENT_SELECTION--;
+			}
+			else
+				Global.playSound('blip');
 			updateSelections();
 		}
 		else if (key_enter)
 		{
+			Global.playSound('select');
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
 			FlxG.switchState(PlayState.new);
 		}
 		else if (FlxG.keys.justReleased.ESCAPE)
 		{
+			Global.playSound('select');
 			FlxG.switchState(MenuState.new);
 		}
 		super.update(elapsed);

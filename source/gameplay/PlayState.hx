@@ -8,6 +8,7 @@ class PlayState extends FlxState
 	public static var CURRENT_LEVEL:String = 'earth';
 
 	public static var SCORE:Int = 0;
+
 	var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
 	var player:FlxSprite = new FlxSprite();
@@ -24,8 +25,6 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-
-
 		try
 		{
 			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL${(!CURRENT_LEVEL.endsWith('.json')) ? '.json' : ''}')));
@@ -80,6 +79,7 @@ class PlayState extends FlxState
 
 		super.create();
 	}
+
 	var spacebar:FlxSprite;
 	var spacebartext:FlxText;
 
@@ -143,6 +143,7 @@ class PlayState extends FlxState
 
 		if (key_shoot && bullets_group.members.length != bullets_max_onscreen)
 		{
+			Global.playSound('shoot' + FlxG.random.int(1, 3));
 			var new_bullet:FlxSprite = newBullet();
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 			bullets_group.add(new_bullet);
@@ -234,14 +235,18 @@ class PlayState extends FlxState
 						SCORE += level_data.settings.scores.enemy_rare;
 				}
 				if (Global.HIGHSCORE < SCORE)
+				{
 					score_text.color = FlxColor.LIME;
+					Global.playSound('blip');
+				}
 
+				Global.playSound('explosion' + FlxG.random.int(1, 3));
 				enemy.destroy();
 				enemies_group.members.remove(enemy);
 				bullet.destroy();
 				bullets_group.members.remove(bullet);
 			}
-			}
+		}
 	}
 
 	function newBullet():FlxSprite
