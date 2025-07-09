@@ -1,4 +1,4 @@
-package;
+package splashes;
 
 class Splash extends FlxState
 {
@@ -22,6 +22,12 @@ class Splash extends FlxState
 
 		FlxTimer.wait(1, () ->
 		{
+			if (FlxG.save.data.savedata.highscore != null)
+			{
+				FlxG.switchState(SeperateHighscores.new);
+				return;
+			}
+
 			FlxG.switchState(MenuState.new);
 		});
 	}
