@@ -36,12 +36,17 @@
 	<assets path="assets" />
 
 	<define name="DISCORDRPC" if="windows" unless="hl" />
+	<define name="POLYMOD_MODDING"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
 
 	<haxelib name="discord_rpc" if="DISCORDRPC"/>
+	
+	<haxelib name="polymod" if="POLYMOD_MODDING"/>
+	<haxelib name="jsonpath" if="POLYMOD_MODDING"/>
+	<haxelib name="jsonpath" if="POLYMOD_MODDING"/>
 
 	<!--In case you want to use the addons package-->
 	<!--<haxelib name="flixel-addons" />-->

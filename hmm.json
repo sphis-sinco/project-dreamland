@@ -16,6 +16,26 @@
       "name": "hxcpp",
       "type": "haxelib",
       "version": null
+    },
+    {
+      "name": "jsonpatch",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "jsonpath",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "polymod",
+      "type": "haxelib",
+      "version": null
+    },
+    {
+      "name": "thx.semver",
+      "type": "haxelib",
+      "version": null
     }
   ]
 }
