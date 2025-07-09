@@ -1,5 +1,6 @@
 # 0.5.0 (7/9/2025)
 Using flixel 6.1.0
+[Desktop builds](https://github.com/sphis-sinco/project-dreamland/actions/runs/16174756792)
 
 ## Fixed
 - Saves not saving
