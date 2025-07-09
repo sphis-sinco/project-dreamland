@@ -8,7 +8,6 @@ class PlayState extends FlxState
 	public static var CURRENT_LEVEL:String = 'earth';
 
 	public static var SCORE:Int = 0;
-
 	var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
 	var player:FlxSprite = new FlxSprite();
@@ -25,6 +24,8 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+
+
 		try
 		{
 			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL${(!CURRENT_LEVEL.endsWith('.json')) ? '.json' : ''}')));
@@ -79,7 +80,6 @@ class PlayState extends FlxState
 
 		super.create();
 	}
-
 	var spacebar:FlxSprite;
 	var spacebartext:FlxText;
 
@@ -209,10 +209,7 @@ class PlayState extends FlxState
 				}
 				enemyBeingShotCheck(enemy);
 				if (enemy.overlaps(player))
-				{
-					Global.addHighscoreEntry(level_data.savename, SCORE);
 					FlxG.switchState(GameOver.new);
-				}
 			}
 			catch (e)
 			{
@@ -236,8 +233,7 @@ class PlayState extends FlxState
 					case 2:
 						SCORE += level_data.settings.scores.enemy_rare;
 				}
-				NEW_HIGHSCORE = Global.getHighScoreArray(this.level_data.savename).score < SCORE;
-				if (NEW_HIGHSCORE)
+				if (Global.HIGHSCORE < SCORE)
 					score_text.color = FlxColor.LIME;
 
 				enemy.destroy();
@@ -245,10 +241,8 @@ class PlayState extends FlxState
 				bullet.destroy();
 				bullets_group.members.remove(bullet);
 			}
-		}
+			}
 	}
-
-	public static var NEW_HIGHSCORE:Bool = false;
 
 	function newBullet():FlxSprite
 	{

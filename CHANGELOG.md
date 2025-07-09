@@ -2,17 +2,12 @@
 Using flixel 6.1.0
 
 ## Removed
-- Main menu highscore text
 - Developer feature where it's always the Player's first time
 - Level Select Level Texts
 ## Added
-- Score text to the level select
-- "legacyUser" save data
-- Warning splash for the new highscore system
 - TryCatch file
 - Level Background image to Level Select
 ## Changed
-- Each level has seperate saved highscores
 - Updated the File Manager to the latest version I have of it
 - Level Select Controls from up and down to left and right
 - Level Select Difficulty text to include Level name
