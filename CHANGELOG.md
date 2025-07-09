@@ -5,6 +5,7 @@ Using flixel 6.1.0
 - Developer feature where it's always the Player's first time
 - Level Select Level Texts
 ## Added
+- Player doodle to the splash
 - TryCatch file
 - Level Background image to Level Select
 ## Changed
