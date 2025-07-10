@@ -306,7 +306,7 @@ class FileManager
 		{
 			trace('$spacing"$file"');
 		}
-		trace('Replaced ${traceArr.length} $type file(s)');
+		trace('Replaced ${assetReplcements_replaced.length} $type file(s)');
 		var i = 0;
 		for (file in assetReplcements_replaced)
 		{
