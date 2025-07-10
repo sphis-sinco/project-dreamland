@@ -4,6 +4,9 @@
 - `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
 
+## Fixed
+- PlayState singleton (instance) gets set to null properly
+
 # 0.6.0 (7/10/2025)
 This update adds modding support via `polymod` and `hscript-iris`
 

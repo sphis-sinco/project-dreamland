@@ -9,7 +9,7 @@ class PlayState extends FlxState
 
 	public static var SCORE:Int = 0;
 
-	public static var instance:PlayState;
+	public static var instance:PlayState = null;
 
 	public var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
@@ -27,6 +27,13 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
+		if (instance != null)
+		{
+			// TODO: Do something in this case? IDK.
+			trace('WARNING: PlayState instance already exists. This should not happen.');
+		}
+		instance = this;
+
 		try
 		{
 			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL${(!CURRENT_LEVEL.endsWith('.json')) ? '.json' : ''}')));
@@ -80,8 +87,6 @@ class PlayState extends FlxState
 		}
 
 		super.create();
-
-		instance = this;
 	}
 
 	var spacebar:FlxSprite;
@@ -214,7 +219,10 @@ class PlayState extends FlxState
 				}
 				enemyBeingShotCheck(enemy);
 				if (enemy.overlaps(player))
+				{
 					FlxG.switchState(GameOver.new);
+					instance = null;
+				}
 			}
 			catch (e)
 			{
