@@ -1,5 +1,6 @@
 package modding;
 
+import hscript.Interp;
 #if polymod
 import polymod.Polymod;
 
@@ -82,5 +83,7 @@ class PolymodHandler
 		}
 		trace(metadataArrays);
 	}
+
+	public static function callFunction() {}
 }
 #end
