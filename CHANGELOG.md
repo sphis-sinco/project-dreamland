@@ -3,7 +3,8 @@
 ## Added
 - `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
-
+## Changed
+- When a mod gets toggled the mod menu reloads mods
 ## Fixed
 - PlayState singleton (instance) gets set to null properly
 

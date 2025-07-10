@@ -25,6 +25,10 @@ class ModMenu extends FlxState
 	{
 		instance = this;
 
+		#if polymod
+		modding.PolymodHandler.loadMods();
+		#end
+
 		var menuBG:FlxSprite;
 
 		menuBG = new FlxSprite().makeGraphic(1286, 730, FlxColor.fromString("#E1E1E1"), false, "optimizedMenuDesat");
@@ -118,6 +122,7 @@ class ModMenu extends FlxState
 		if (FlxG.keys.justPressed.ENTER)
 		{
 			ModList.setModEnabled(curModId, !ModList.getModEnabled(curModId));
+			FlxG.resetState();
 		}
 
 		if (curSelected < 0)
