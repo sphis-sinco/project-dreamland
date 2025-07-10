@@ -38,13 +38,8 @@ class CheckOutdated
 
 	static function onInit()
 	{
-		for (script in ScriptManager.LOADED_SCRIPTS)
-		{
-			script.call('setGitUser');
-			script.call('setGitRepo');
-			trace('CheckOutdated.onInitScript(script: ${script.name} user: $gitUser, repo: $gitRepo)');
-		}
-
+		ScriptManager.callScript('setGitUser');
+		ScriptManager.callScript('setGitRepo');
 		trace('CheckOutdated.onInit(user: $gitUser, repo: $gitRepo)');
 	}
 
