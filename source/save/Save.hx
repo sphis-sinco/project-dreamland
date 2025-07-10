@@ -2,7 +2,6 @@ package save;
 
 import modding.ModList;
 import modding.PolymodHandler;
-import polymod.Polymod;
 
 class Save
 {
