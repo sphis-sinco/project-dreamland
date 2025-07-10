@@ -2,6 +2,8 @@ package scripts.events;
 
 class CheckOutdated
 {
+	public static var updateVersion:String;
+
 	public static function call()
 	{
 		#if !hl
@@ -16,7 +18,11 @@ class CheckOutdated
 			var curVersion:String = Global.APP_VERSION.trim();
 			trace('CheckOutdated.onData(curVersion: $curVersion, updateVersion: $updateVersion)');
 			if (updateVersion != curVersion)
+			{
 				return true;
+			}
+
+			return false;
 		}
 
 		http.onError = function(error)
@@ -31,11 +37,11 @@ class CheckOutdated
 		return false;
 	}
 
-	public function onInit()
+	static function onInit()
 	{
 		trace('CheckOutdated.onInit(user: $gitUser, repo: $gitRepo)');
 	}
 
-	var gitUser = 'sphis-sinco';
-	var gitRepo = 'project-dreamland';
+	static var gitUser = 'sphis-sinco';
+	static var gitRepo = 'project-dreamland';
 }

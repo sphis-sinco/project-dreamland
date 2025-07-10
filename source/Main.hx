@@ -8,8 +8,6 @@ using StringTools;
 
 class Main extends Sprite
 {
-	public static var updateVersion:String;
-
 	public function new()
 	{
 		Save.initalize();
