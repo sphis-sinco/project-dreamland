@@ -1,7 +1,6 @@
 package;
 
 import flixel.FlxGame;
-import modding.scriptables.ScriptableFlxState;
 import openfl.display.Sprite;
 import polymod.Polymod;
 
@@ -53,7 +52,6 @@ class Main extends Sprite
 		else if (Save.getSavedataInfo(firsttime) == null)
 			Save.setSavedataInfo(firsttime, true);
 
-		needUpdate = true;
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
 }

@@ -66,7 +66,6 @@
 		<haxedef name="POLYMOD_DEBUG" value="true" if="debug" />
 		<!-- The file extension to use for script files. -->
 		<haxedef name="POLYMOD_SCRIPT_EXT" value=".hxc" />
-		<haxedef name="POLYMOD_SCRIPT_CLASS_EXT" value=".hxc" />
 		<!-- Which asset library to use for scripts. -->
 		<haxedef name="POLYMOD_SCRIPT_LIBRARY" value="scripts" />
 		<!-- The base path from which scripts should be accessed. -->

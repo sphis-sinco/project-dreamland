@@ -56,27 +56,6 @@ class PolymodHandler
 			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}',
 			useScriptedClasses: true
 		});
-
-		Polymod.addDefaultImport(FlxState);
-		Polymod.addDefaultImport(FlxSprite);
-		Polymod.addDefaultImport(FlxText);
-		#if (discord_rpc && !hl)
-		Polymod.addDefaultImport(Discord);
-		#end
-		Polymod.addDefaultImport(Save);
-		Polymod.addDefaultImport(Application);
-		Polymod.addDefaultImport(Global);
-		Polymod.addDefaultImport(FlxTypedGroup);
-
-		Polymod.addDefaultImport(GameOver);
-		Polymod.addDefaultImport(PlayState);
-
-		Polymod.addDefaultImport(FileManager);
-		Polymod.addDefaultImport(TryCatch);
-
-		Polymod.blacklistImport('sys.FileSystem');
-		Polymod.blacklistImport('sys.io.File');
-		Polymod.blacklistImport('Sys');
 	}
 
 	public static function loadModMetadata()
