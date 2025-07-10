@@ -8,3 +8,6 @@ function stateUpdate(elapsed:Float):String {}
 // Check outdated
 function setGitUser():String {}
 function setGitRepo():String {}
+
+// Editor menu
+function editorMenuStart() {}
