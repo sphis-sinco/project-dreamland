@@ -48,10 +48,8 @@
     },
     {
       "name": "polymod",
-      "type": "git",
-      "dir": null,
-      "ref": "0fbdf27fe124549730accd540cec8a183f8652c0",
-      "url": "https://github.com/larsiusprime/polymod"
+      "type": "haxelib",
+      "version": null
     },
     {
       "name": "thx.core",

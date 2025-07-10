@@ -57,7 +57,7 @@
 
 	<haxelib name="discord_rpc" if="DISCORDRPC" />
 
-	<haxelib name="polymod" version="git" if="POLYMOD_MODDING" />
+	<haxelib name="polymod" if="POLYMOD_MODDING" />
 	<haxelib name="hscript" if="POLYMOD_MODDING" />
 
 	<!-- Options for Polymod -->
