@@ -184,10 +184,15 @@ class FileManager
 			#if EXCESS_TRACES
 			trace('reading ${directory}');
 			#end
-			for (folder in FileSystem.readDirectory(directory))
+			TryCatch.tryCatch(() ->
 			{
-				readFolder(folder, directory);
-			}
+				for (folder in FileSystem.readDirectory(directory))
+				{
+					readFolder(folder, directory);
+				}
+			}, {
+					traceErr: true
+			});
 		}
 
 		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
@@ -195,15 +200,19 @@ class FileManager
 			#if EXCESS_TRACES
 			trace('Checking $folder for a $type_folder folder');
 			#end
-			final folder_read:Array<String> = readDirectory('./mods/${folder}/');
 
-			if (folder_read.contains('$type_folder'))
+			TryCatch.tryCatch(() ->
 			{
-				#if EXCESS_TRACES
-				trace('$folder has a $type_folder folder');
-				#end
-				typePaths.push('./mods/${folder}/$type_folder/');
-			}
+				if (readDirectory('./mods/${folder}/').contains('$type_folder'))
+				{
+					#if EXCESS_TRACES
+					trace('$folder has a $type_folder folder');
+					#end
+					typePaths.push('./mods/${folder}/$type_folder/');
+				}
+			}, {
+					traceErr: true
+			});
 		}
 		for (path in typePaths)
 		{
@@ -220,7 +229,7 @@ class FileManager
 			traceArr.push(split[split.length - 1]);
 		}
 
-		trace('Loaded $type files: ${traceArr}');
+		trace('Loaded ${traceArr.length} $type file(s): ${traceArr} from the folders ${paths}');
 		#end
 		return arr;
 	}
@@ -253,6 +262,12 @@ class FileManager
 	{
 		var typePaths:Array<String> = ['assets/scripts/'];
 		var typeExtensions:Array<String> = ['.hx', '.hxc'];
+
+		for (mod in ModList.getActiveMods(PolymodHandler.metadataArrays))
+		{
+			trace(mod);
+			// typePaths.push('mods/$mod/scripts/');
+		}
 
 		return getTypeArray('script', 'scripts', typeExtensions, typePaths);
 	}
