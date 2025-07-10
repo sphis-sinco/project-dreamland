@@ -185,7 +185,7 @@ class FileManager
 			#end
 			TryCatch.tryCatch(() ->
 			{
-				for (folder in FileSystem.readDirectory(directory))
+				for (folder in readDirectory(directory))
 				{
 					readFolder(folder, directory);
 				}
