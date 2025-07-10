@@ -24,9 +24,9 @@ class Global
 		FlxG.sound.play(FileManager.getSoundFile('sounds/$soundname'));
 	}
 
-	public var CurrentState(get, never):String;
+	public static var CurrentState(get, never):String;
 
-	function get_CurrentState():String
+	static function get_CurrentState():String
 	{
 		return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
 	}
