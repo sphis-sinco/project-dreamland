@@ -124,7 +124,6 @@ class FileManager
 	public static function getTypeArray(type:String, type_folder:String, ext:Array<String>, paths:Array<String>):Array<String>
 	{
 		var arr:Array<String> = [];
-		#if sys
 		var typePaths:Array<String> = paths;
 		var typeExtensions:Array<String> = ext;
 
@@ -313,7 +312,6 @@ class FileManager
 			trace('$spacing"$file" with "${assetReplcements_replacement[i]}"');
 			i++;
 		}
-		#end
 		return arr;
 	}
 
