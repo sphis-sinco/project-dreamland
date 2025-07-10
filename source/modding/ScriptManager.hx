@@ -42,12 +42,6 @@ class ScriptManager
 
 		setScript('FileManager', FileManager);
 
-		// functions
-		setScript('PlaySFX', function(soundEffect:String):Void
-		{
-			Global.playSound(soundEffect);
-		});
-
 		// init mod
 		ScriptManager.callScript('onCreate');
 	}
