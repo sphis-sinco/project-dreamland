@@ -47,7 +47,6 @@
 	<section if="POLYMOD_MODDING">
 		<define name="SCRIPT_FILES" />
 		<define name="ASSET_REPLACEMENT" />
-		<haxelib name="ki-filesystem" if="html5" />
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>
