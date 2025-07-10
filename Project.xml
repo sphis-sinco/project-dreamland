@@ -58,7 +58,7 @@
 	<haxelib name="discord_rpc" if="DISCORDRPC" />
 
 	<haxelib name="polymod" if="POLYMOD_MODDING" />
-	<haxelib name="hscript" if="POLYMOD_MODDING" />
+	<haxelib name="hscript-iris" if="POLYMOD_MODDING" />
 
 	<!-- Options for Polymod -->
 	<section if="polymod">
