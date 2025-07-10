@@ -272,7 +272,7 @@ class FileManager
 				{
 					if (pi > ppi)
 					{
-						trace('Replacing "$prevPath" with "$path"');
+						// trace('Replacing "$prevPath" with "$path"');
 						arr.remove(prevPath);
 
 						assetReplcements_replaced.push(prevPath);
@@ -280,7 +280,7 @@ class FileManager
 					}
 					else if (ppi > pi)
 					{
-						trace('Replacing "$path" with "$prevPath"');
+						// trace('Replacing "$path" with "$prevPath"');
 						arr.remove(path);
 
 						assetReplcements_replaced.push(path);
