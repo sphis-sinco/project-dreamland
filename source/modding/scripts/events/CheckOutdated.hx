@@ -1,7 +1,18 @@
 package modding.scripts.events;
 
-class CheckOutdated implements HScriptable
+@:hscriptClass
+class CheckOutdated extends EventClass implements HScriptable
 {
+	override function new()
+	{
+		super('CheckOutdated');
+	}
+
+	override function toString()
+	{
+		trace('CheckOutdated(user: $gitUser, repo: $gitRepo)');
+	}
+
 	public static function call()
 	{
 		#if !hl
