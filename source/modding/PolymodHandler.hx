@@ -54,9 +54,10 @@ class PolymodHandler
 				trace('[${error.severity}] ' + error.message.replace('mod mods/', 'mod: '));
 				#end
 			},
-			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}',
-			useScriptedClasses: true
+			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}'
 		});
+
+		ScriptManager.loadScripts();
 	}
 
 	public static function loadModMetadata()

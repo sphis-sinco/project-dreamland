@@ -1,9 +1,0 @@
-function getGitUser()
-{
-	return 'sphis-sinco';
-}
-
-function getGitRepo()
-{
-	return 'project-dreamland';
-}

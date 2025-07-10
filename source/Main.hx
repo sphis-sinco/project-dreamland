@@ -1,7 +1,6 @@
 package;
 
 import flixel.FlxGame;
-import modding.scripts.events.CheckOutdated;
 import openfl.display.Sprite;
 import polymod.Polymod;
 
