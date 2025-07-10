@@ -1,3 +1,4 @@
+#if !macro
 import Global;
 import flixel.*;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -13,4 +14,5 @@ using StringTools;
 
 #if (discord_rpc && !hl)
 import clients.DiscordClient as Discord;
+#end
 #end
