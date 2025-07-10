@@ -221,6 +221,8 @@ class FileManager
 		}
 
 		var prevPath:String = '';
+		var assetReplcements_replacement:Array<String> = [];
+		var assetReplcements_replaced:Array<String> = [];
 		// asset replacement
 		#if ASSET_REPLACEMENT
 		for (path in arr)
@@ -272,11 +274,17 @@ class FileManager
 					{
 						trace('Removing ppsv');
 						arr.remove(prevPath);
+
+						assetReplcements_replaced.push(prevPath);
+						assetReplcements_replacement.push(path);
 					}
 					else if (ppi > pi)
 					{
 						trace('Removing psv');
 						arr.remove(path);
+
+						assetReplcements_replaced.push(path);
+						assetReplcements_replacement.push(prevPath);
 					}
 				}
 			}
@@ -292,10 +300,18 @@ class FileManager
 			traceArr.push(split[split.length - 1]);
 		}
 
-		trace('Loaded ${traceArr.length} $type file(s):');
+		var spacing = '    |    ';
+		trace('Loaded ${traceArr.length} $type file(s)');
 		for (file in arr)
 		{
-			trace('    |    $file');
+			trace('$spacing"$file"');
+		}
+		trace('Replaced ${traceArr.length} $type file(s)');
+		var i = 0;
+		for (file in assetReplcements_replaced)
+		{
+			trace('$spacing"$file" with "${assetReplcements_replacement[i]}"');
+			i++;
 		}
 		#end
 		return arr;
