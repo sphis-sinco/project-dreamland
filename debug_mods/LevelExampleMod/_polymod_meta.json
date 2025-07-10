@@ -1,6 +1,6 @@
 {
-	"title":"Third",
-	"description":"This is the third mod made",
+	"title":"Level Example Mod",
+	"description":"This mod adds levels as an example of them",
 	"homepage": "about:blank",
 	"contributors": [
 		{
@@ -8,7 +8,7 @@
 			"role": "Developer"
 		}
 	],
-	"api_version":"0.1.0",
+	"api_version":"0.7.0",
 	"mod_version":"1.0.0",
 	"license":"CC BY 4.0,MIT"
 }
