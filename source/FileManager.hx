@@ -229,7 +229,7 @@ class FileManager
 		{
 			if (prevPath.length > 0)
 			{
-				trace('$path | $prevPath');
+				// trace('$path | $prevPath');
 
 				var pathSplit = path.split('/');
 				var prevPathSplit = prevPath.split('/');
@@ -266,13 +266,13 @@ class FileManager
 					ppsv += '/' + prevPathSplit[ppi];
 				}
 
-				trace('$psv | $ppsv');
+				// trace('$psv | $ppsv');
 
 				if (psv == ppsv)
 				{
 					if (pi > ppi)
 					{
-						trace('Removing ppsv');
+						trace('Replacing $prevPath with $path');
 						arr.remove(prevPath);
 
 						assetReplcements_replaced.push(prevPath);
@@ -280,7 +280,7 @@ class FileManager
 					}
 					else if (ppi > pi)
 					{
-						trace('Removing psv');
+						trace('Replacing $path with $prevPath');
 						arr.remove(path);
 
 						assetReplcements_replaced.push(path);
