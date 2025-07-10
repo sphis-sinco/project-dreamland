@@ -340,7 +340,6 @@ class FileManager
 		return getAssetFile(finalPath, PATH_TYPE, posinfo);
 	}
 
-	#if sys
 	public static function getScriptArray():Array<String>
 	{
 		var typePaths:Array<String> = ['assets/scripts/'];
@@ -348,13 +347,6 @@ class FileManager
 
 		return getTypeArray('script', 'scripts', typeExtensions, typePaths);
 	}
-	#else
-	public static function getScriptArray():Array<String>
-	{
-		trace('Not Sys!');
-		return [];
-	}
-	#end
 	#else
 
 	/**
