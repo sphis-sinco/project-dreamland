@@ -23,6 +23,8 @@ class Save
 			{
 				if (save.data.modlist.exists(mod))
 					ModList.setModEnabled(mod, true);
+				if (!FileManager.exists('mods/$mod'))
+					save.data.modlist.remove(mod);
 			}
 		}
 		#end
