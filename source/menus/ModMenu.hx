@@ -1,5 +1,6 @@
 package menus;
 
+import openfl.display.BitmapData;
 #if polymod
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -17,6 +18,7 @@ class ModMenu extends FlxState
 
 	var descriptionText:FlxText;
 	var descBg:FlxSprite;
+	var descIcon:FlxSprite;
 
 	override function create()
 	{
@@ -44,6 +46,12 @@ class ModMenu extends FlxState
 		descBg = new FlxSprite(0, FlxG.height - 120).makeGraphic(FlxG.width, 90, 0xFF000000);
 		descBg.alpha = 0.6;
 		add(descBg);
+
+		descIcon = new FlxSprite();
+		updateSel();
+		descIcon.scale.set(0.5, 0.5);
+		descIcon.setPosition(FlxG.width - descIcon.width, 325);
+		add(descIcon);
 
 		descriptionText = new FlxText(descBg.x, descBg.y + 4, FlxG.width, "Template Description", 16);
 		descriptionText.scrollFactor.set();
@@ -89,12 +97,14 @@ class ModMenu extends FlxState
 		{
 			curSelected -= 1;
 			Global.playSound('blip');
+			updateSel();
 		}
 
 		if (FlxG.keys.justReleased.DOWN)
 		{
 			curSelected += 1;
 			Global.playSound('blip');
+			updateSel();
 		}
 
 		if (FlxG.keys.justReleased.ESCAPE)
@@ -110,10 +120,16 @@ class ModMenu extends FlxState
 		}
 
 		if (curSelected < 0)
+		{
 			curSelected = page.length - 1;
+			updateSel();
+		}
 
 		if (curSelected >= page.length)
+		{
 			curSelected = 0;
+			updateSel();
+		}
 
 		var bruh = 0;
 
@@ -132,6 +148,16 @@ class ModMenu extends FlxState
 			}
 
 			bruh++;
+		}
+	}
+
+	function updateSel()
+	{
+		descIcon.loadGraphic(FileManager.getImageFile('default-mod-icon'));
+
+		if (ModList.modMetadatas.get(curModId).icon != null)
+		{
+			descIcon.loadGraphic(BitmapData.fromBytes(ModList.modMetadatas.get(curModId).icon));
 		}
 	}
 }
