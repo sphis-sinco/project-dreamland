@@ -1,5 +1,8 @@
 # 0.7.0 (7/10/2025)
 
+## Added
+- `editorMenuStart` script call
+
 # 0.6.0 (7/10/2025)
 This update adds modding support via `polymod` and `hscript-iris`
 
