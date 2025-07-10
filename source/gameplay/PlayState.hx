@@ -9,6 +9,8 @@ class PlayState extends FlxState
 
 	public static var SCORE:Int = 0;
 
+	public static var instance:PlayState;
+
 	public var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
 	public var player:FlxSprite = new FlxSprite();
@@ -78,6 +80,8 @@ class PlayState extends FlxState
 		}
 
 		super.create();
+
+		instance = this;
 	}
 
 	var spacebar:FlxSprite;
