@@ -1,4 +1,5 @@
-# 0.6.0 (7/9/2025)
+# 0.6.0 (7/10/2025)
+This update adds modding support via `polymod` and `hscript-iris1`
 
 # 0.5.0 (7/9/2025)
 Using flixel 6.1.0
