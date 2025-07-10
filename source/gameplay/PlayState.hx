@@ -9,17 +9,17 @@ class PlayState extends FlxState
 
 	public static var SCORE:Int = 0;
 
-	var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
+	public var score_text:FlxText = new FlxText(0, 0, 0, "Score: 0", 16);
 
-	var player:FlxSprite = new FlxSprite();
-	var player_offscreen_padding:Float = 16;
+	public var player:FlxSprite = new FlxSprite();
+	public var player_offscreen_padding:Float = 16;
 
-	var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
-	var bullet_offscreen_addition:Float = 16;
-	var bullets_max_onscreen:Float = 2;
+	public var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public var bullet_offscreen_addition:Float = 16;
+	public var bullets_max_onscreen:Float = 2;
 
-	var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
-	var enemy_offscreen_padding:Float = 40;
+	public var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+	public var enemy_offscreen_padding:Float = 40;
 
 	var level_data:LevelData;
 
