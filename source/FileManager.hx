@@ -1,5 +1,6 @@
 package;
 
+import filesystem.FileTools;
 import flixel.graphics.frames.FlxAtlasFrames;
 import haxe.Json;
 import haxe.PosInfos;
@@ -124,7 +125,6 @@ class FileManager
 	public static function getTypeArray(type:String, type_folder:String, ext:Array<String>, paths:Array<String>):Array<String>
 	{
 		var arr:Array<String> = [];
-		#if sys
 		var typePaths:Array<String> = paths;
 		var typeExtensions:Array<String> = ext;
 
@@ -186,7 +186,7 @@ class FileManager
 			#end
 			TryCatch.tryCatch(() ->
 			{
-				for (folder in FileSystem.readDirectory(directory))
+				for (folder in readDirectory(directory))
 				{
 					readFolder(folder, directory);
 				}
@@ -313,7 +313,6 @@ class FileManager
 			trace('$spacing"$file" with "${assetReplcements_replacement[i]}"');
 			i++;
 		}
-		#end
 		return arr;
 	}
 
@@ -340,7 +339,6 @@ class FileManager
 		return getAssetFile(finalPath, PATH_TYPE, posinfo);
 	}
 
-	#if sys
 	public static function getScriptArray():Array<String>
 	{
 		var typePaths:Array<String> = ['assets/scripts/'];
@@ -348,13 +346,6 @@ class FileManager
 
 		return getTypeArray('script', 'scripts', typeExtensions, typePaths);
 	}
-	#else
-	public static function getScriptArray():Array<String>
-	{
-		trace('Not Sys!');
-		return [];
-	}
-	#end
 	#else
 
 	/**
