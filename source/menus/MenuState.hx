@@ -60,7 +60,7 @@ class MenuState extends FlxState
 		else if (FlxG.keys.justReleased.SEVEN)
 		{
 			#if !html5
-			FlxG.switchState(EditorMenu.new);
+			// FlxG.switchState(EditorMenu.new);
 			#end
 		}
 
