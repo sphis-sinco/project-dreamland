@@ -7,6 +7,7 @@
 ## Changed
 - When a mod gets toggled the mod menu reloads mods
 ## Fixed
+- Script replacement works properly now
 - PlayState singleton (instance) gets set to null properly
 
 # 0.6.0 (7/10/2025)

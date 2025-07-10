@@ -220,16 +220,19 @@ class FileManager
 			readDir(path);
 		}
 
-		var prevPath:String = '';
-		var assetReplcements_replacement:Array<String> = [];
-		var assetReplcements_replaced:Array<String> = [];
+		var prevPath:String = null;
+		var scriptReplacements_replacement:Array<String> = [];
+		var scriptReplacements_replaced:Array<String> = [];
 		// asset replacement
 		#if ASSET_REPLACEMENT
 		for (path in arr)
 		{
-			if (prevPath.length > 0)
+			for (otherpath in arr)
 			{
-				// trace('$path | $prevPath');
+				if (path == otherpath)
+					continue;
+
+				prevPath = otherpath;
 
 				var pathSplit = path.split('/');
 				var prevPathSplit = prevPath.split('/');
@@ -266,30 +269,24 @@ class FileManager
 					ppsv += '/' + prevPathSplit[ppi];
 				}
 
-				// trace('$psv | $ppsv');
-
 				if (psv == ppsv)
 				{
 					if (pi > ppi)
 					{
-						// trace('Replacing "$prevPath" with "$path"');
 						arr.remove(prevPath);
 
-						assetReplcements_replaced.push(prevPath);
-						assetReplcements_replacement.push(path);
+						scriptReplacements_replaced.push(prevPath);
+						scriptReplacements_replacement.push(path);
 					}
 					else if (ppi > pi)
 					{
-						// trace('Replacing "$path" with "$prevPath"');
 						arr.remove(path);
 
-						assetReplcements_replaced.push(path);
-						assetReplcements_replacement.push(prevPath);
+						scriptReplacements_replaced.push(path);
+						scriptReplacements_replacement.push(prevPath);
 					}
 				}
 			}
-
-			prevPath = path;
 		}
 		#end
 
@@ -306,11 +303,11 @@ class FileManager
 		{
 			trace('$spacing"$file"');
 		}
-		trace('Replaced ${assetReplcements_replaced.length} $type file(s)');
+		trace('Replaced ${scriptReplacements_replaced.length} $type file(s)');
 		var i = 0;
-		for (file in assetReplcements_replaced)
+		for (file in scriptReplacements_replaced)
 		{
-			trace('$spacing"$file" with "${assetReplcements_replacement[i]}"');
+			trace('$spacing"$file" with "${scriptReplacements_replacement[i]}"');
 			i++;
 		}
 		#end
