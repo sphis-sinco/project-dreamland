@@ -10,5 +10,10 @@
 			"source.sortImports": "explicit"
 		}
 	},
-	"haxe.enableExtendedIndentation": true
+	"haxe.enableExtendedIndentation": true,
+
+	"files.associations": {
+                "*.hxc": "haxe",
+                "*.dream": "json"
+	}
 }
