@@ -197,18 +197,16 @@ class FileManager
 
 		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 		{
-			#if EXCESS_TRACES
 			trace('Checking $folder for a $type_folder folder');
-			#end
 
 			TryCatch.tryCatch(() ->
 			{
-				if (readDirectory('./mods/${folder}/').contains('$type_folder'))
+				var prefix:String = 'mods/';
+				var modDir:Array<String> = readDirectory('$prefix${folder}/');
+				if (modDir.contains('$type_folder'))
 				{
-					#if EXCESS_TRACES
 					trace('$folder has a $type_folder folder');
-					#end
-					typePaths.push('./mods/${folder}/$type_folder/');
+					typePaths.push('$prefix${folder}/$type_folder/');
 				}
 			}, {
 					traceErr: true
@@ -222,6 +220,71 @@ class FileManager
 			readDir(path);
 		}
 
+		var prevPath:String = '';
+		// asset replacement
+		#if ASSET_REPLACEMENT
+		for (path in arr)
+		{
+			if (prevPath.length > 0)
+			{
+				trace('$path | $prevPath');
+
+				var pathSplit = path.split('/');
+				var prevPathSplit = prevPath.split('/');
+
+				var psv = pathSplit[0];
+				var ppsv = prevPathSplit[0];
+
+				var pi = 1;
+				var ppi = 1;
+
+				if (psv == 'mods')
+				{
+					pi = 2;
+					psv = pathSplit[2];
+				}
+				else
+					psv = prevPathSplit[1];
+				if (ppsv == 'mods')
+				{
+					ppi = 2;
+					ppsv = prevPathSplit[2];
+				}
+				else
+					ppsv = prevPathSplit[1];
+
+				while (pi != pathSplit.length - 1)
+				{
+					pi++;
+					psv += '/' + pathSplit[pi];
+				}
+				while (ppi != prevPathSplit.length - 1)
+				{
+					ppi++;
+					ppsv += '/' + prevPathSplit[ppi];
+				}
+
+				trace('$psv | $ppsv');
+
+				if (psv == ppsv)
+				{
+					if (pi > ppi)
+					{
+						trace('Removing ppsv');
+						arr.remove(prevPath);
+					}
+					else if (ppi > pi)
+					{
+						trace('Removing psv');
+						arr.remove(path);
+					}
+				}
+			}
+
+			prevPath = path;
+		}
+		#end
+
 		var traceArr:Array<String> = [];
 		for (path in arr)
 		{
@@ -229,7 +292,11 @@ class FileManager
 			traceArr.push(split[split.length - 1]);
 		}
 
-		trace('Loaded ${traceArr.length} $type file(s): ${traceArr} from the folders ${paths}');
+		trace('Loaded ${traceArr.length} $type file(s):');
+		for (file in arr)
+		{
+			trace('    |    $file');
+		}
 		#end
 		return arr;
 	}

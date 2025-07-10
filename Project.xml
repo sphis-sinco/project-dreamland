@@ -46,6 +46,7 @@
 
 	<section if="POLYMOD_MODDING">
 		<define name="SCRIPT_FILES" />
+		<define name="ASSET_REPLACEMENT" />
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>
