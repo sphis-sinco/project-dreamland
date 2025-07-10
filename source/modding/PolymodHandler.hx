@@ -6,8 +6,8 @@ import polymod.Polymod;
 
 class PolymodHandler
 {
-	public static var MINIMUM_MOD_VERSION:String = "0.6.0";
-	public static var MAXIMUM_MOD_VERSION:String = "0.7.0";
+	public static var MINIMUM_MOD_VERSION:String = "0.7.0";
+	public static var MAXIMUM_MOD_VERSION:String = "0.8.0";
 
 	public static var metadataArrays:Array<String> = [];
 
