@@ -154,11 +154,13 @@ class ModMenu extends FlxState
 	function updateSel()
 	{
 		descIcon.loadGraphic(FileManager.getImageFile('default-mod-icon'));
+		var modMeta = ModList.modMetadatas.get(curModId);
 
-		if (ModList.modMetadatas.get(curModId).icon != null)
+		TryCatch.tryCatch(() ->
 		{
-			descIcon.loadGraphic(BitmapData.fromBytes(ModList.modMetadatas.get(curModId).icon));
-		}
+			if (modMeta.icon != null)
+				descIcon.loadGraphic(BitmapData.fromBytes(modMeta.icon));
+		});
 	}
 }
 #end
