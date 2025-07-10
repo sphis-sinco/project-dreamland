@@ -1,0 +1,10 @@
+import scripts.events.CheckOutdated;
+
+function setGitUser()
+{
+        CheckOutdated.gitUser = 'sinco';
+}
+function setGitRepo()
+{
+        CheckOutdated.gitRepo = 'dreamland';
+}

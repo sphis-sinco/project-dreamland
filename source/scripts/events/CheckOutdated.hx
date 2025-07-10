@@ -6,9 +6,8 @@ class CheckOutdated
 
 	public static function call()
 	{
-		#if !hl
 		onInit();
-
+		#if !hl
 		trace('checking for update');
 		var http = new haxe.Http('https://raw.githubusercontent.com/$gitUser/$gitRepo/refs/heads/master/version.txt');
 
@@ -39,6 +38,13 @@ class CheckOutdated
 
 	static function onInit()
 	{
+		for (script in ScriptManager.LOADED_SCRIPTS)
+		{
+			script.call('setGitUser');
+			script.call('setGitRepo');
+			trace('CheckOutdated.onInitScript(script: ${script.name} user: $gitUser, repo: $gitRepo)');
+		}
+
 		trace('CheckOutdated.onInit(user: $gitUser, repo: $gitRepo)');
 	}
 
