@@ -197,7 +197,7 @@ class FileManager
 
 		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 		{
-			trace('Checking $folder for a $type_folder folder');
+			// trace('Checking $folder for a $type_folder folder');
 
 			TryCatch.tryCatch(() ->
 			{
@@ -345,12 +345,6 @@ class FileManager
 	{
 		var typePaths:Array<String> = ['assets/scripts/'];
 		var typeExtensions:Array<String> = ['.hx', '.hxc'];
-
-		for (mod in ModList.getActiveMods(PolymodHandler.metadataArrays))
-		{
-			trace(mod);
-			// typePaths.push('mods/$mod/scripts/');
-		}
 
 		return getTypeArray('script', 'scripts', typeExtensions, typePaths);
 	}
