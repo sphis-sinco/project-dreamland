@@ -1,0 +1,14 @@
+{
+	"title":"Image Example Mod",
+	"description":"This mod adds Image replacements as an example of them",
+	"homepage": "about:blank",
+	"contributors": [
+		{
+			"name": "Sphis_Sinco",
+			"role": "Developer"
+		}
+	],
+	"api_version":"0.7.0",
+	"mod_version":"1.0.0",
+	"license":"CC BY 4.0,MIT"
+}
