@@ -50,9 +50,7 @@ class PolymodHandler
 					return;
 				}
 
-				#if debug
 				trace('[${error.severity}] ' + error.message.replace('mod mods/', 'mod: '));
-				#end
 			},
 			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}'
 		});
