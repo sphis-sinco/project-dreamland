@@ -17,7 +17,13 @@ class LevelSelect extends FlxState
 	override public function create()
 	{
 		#if !web
-		levels = FileManager.readDirectory('assets/data/levels');
+		var oglevels = FileManager.getTypeArray('level files', 'data/levels', ['.dream'], ['assets/data/levels/']);
+
+		levels = [];
+		for (level in oglevels)
+		{
+			levels.push(level.replace('assets/data/levels/', ''));
+		}
 		#end
 
 		difficulty.y = FlxG.height - difficulty.height;
@@ -87,21 +93,24 @@ class LevelSelect extends FlxState
 
 	function updateSelections()
 	{
+		difficulty.size = 32;
 		try
 		{
-			var filename:String = FileManager.getDataFile('levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.json')) ? '.json' : ''}');
-			// trace(filename);
+			var filepath:String = 'levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : ''}';
+			var filename:String = FileManager.getDataFile(filepath);
+			FlxG.log.add(filename);
 			level_json = Json.parse(FileManager.readFile(filename));
-			difficulty.text = levels[CURRENT_SELECTION].split('.json')[0] + ' - ' + level_json.difficulty;
+			difficulty.text = levels[CURRENT_SELECTION].split('.dream')[0] + ' - ' + level_json.difficulty;
 			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		}
 		catch (e)
 		{
-			// trace(e);
+			FlxG.log.warn(e);
 			#if web
-			difficulty.text = levels[CURRENT_SELECTION].split('.json')[0] + ' - ' + level_diffs[CURRENT_SELECTION];
+			difficulty.text = levels[CURRENT_SELECTION].split('.dream')[0] + ' - ' + level_diffs[CURRENT_SELECTION];
 			#else
-			difficulty.text = "unknown difficulty: " + e;
+			difficulty.size = Std.int(difficulty.size / 2);
+			difficulty.text = "parsing error: " + e;
 			#end
 			level_json = LevelDataManager.defaultJSON;
 			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
