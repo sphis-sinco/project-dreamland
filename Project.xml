@@ -96,7 +96,8 @@
 	name="nape-haxe4" />-->
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
-
+	<!-- HScript relies heavily on Reflection, which means we can't use DCE. -->
+	<haxeflag name="-dce no" />
 	<!-- Something about stack traces-->
 	<haxedef name="hscriptPos" />
 

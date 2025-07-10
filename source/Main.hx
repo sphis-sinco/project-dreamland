@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxGame;
+import modding.scripts.events.CheckOutdated;
 import openfl.display.Sprite;
 import polymod.Polymod;
 
@@ -17,31 +18,6 @@ class Main extends Sprite
 		modding.PolymodHandler.loadMods();
 		#end
 
-		var needUpdate = false;
-		#if !hl
-		trace('checking for update');
-		var http = new haxe.Http("https://raw.githubusercontent.com/sphis-Sinco/project-dreamland/refs/heads/master/version.txt");
-
-		http.onData = function(data:String)
-		{
-			updateVersion = data.split('\n')[0].trim();
-			var curVersion:String = Global.APP_VERSION.trim();
-			trace('version online: ' + updateVersion + ', your version: ' + curVersion);
-			if (updateVersion != curVersion)
-			{
-				trace('versions arent matching!');
-				needUpdate = true;
-			}
-		}
-
-		http.onError = function(error)
-		{
-			trace('error: $error');
-		}
-
-		http.request();
-		#end
-
 		super();
 		#if (discord_rpc && !hl)
 		Discord.initialize();
@@ -51,6 +27,9 @@ class Main extends Sprite
 			Save.setSavedataInfo(firsttime, false);
 		else if (Save.getSavedataInfo(firsttime) == null)
 			Save.setSavedataInfo(firsttime, true);
+
+		var needUpdate = false;
+		needUpdate = CheckOutdated.call();
 
 		addChild(new FlxGame(0, 0, (needUpdate) ? OutdatedState : Splash, 60, 60, true));
 	}
