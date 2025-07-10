@@ -1,0 +1,7 @@
+class Script
+{
+        function create()
+        {
+                trace("Hello");
+        }
+}
