@@ -83,7 +83,7 @@ class LevelSelect extends FlxState
 		{
 			Global.playSound('select');
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
-			FlxG.switchState(PlayState.new);
+			FlxG.switchState(() -> new PlayState(level_json));
 		}
 		else if (FlxG.keys.justReleased.ESCAPE)
 		{

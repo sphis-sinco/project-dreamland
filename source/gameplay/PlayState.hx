@@ -23,7 +23,16 @@ class PlayState extends FlxState
 	public var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var enemy_offscreen_padding:Float = 40;
 
-	public var level_data:LevelData;
+	public var level_data:LevelData = null;
+
+	override public function new(levelData:LevelData)
+	{
+		super();
+
+		level_data = null;
+		if (levelData != null)
+			level_data = levelData;
+	}
 
 	override public function create()
 	{
@@ -34,16 +43,11 @@ class PlayState extends FlxState
 		}
 		instance = this;
 
-		try
+		if (level_data == null)
 		{
-			level_data = Json.parse(FileManager.readFile(FileManager.getDataFile('levels/$CURRENT_LEVEL${(!CURRENT_LEVEL.endsWith('.json')) ? '.json' : ''}')));
-		}
-		catch (e)
-		{
-			// trace(e);
+			trace('Null level data');
 			level_data = LevelDataManager.defaultJSON;
 		}
-
 		#if (discord_rpc && !hl)
 		Discord.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
