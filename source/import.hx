@@ -9,11 +9,10 @@ import haxe.*;
 import lime.app.Application;
 import menus.*;
 import save.Save;
-#end
-
 
 using StringTools;
 
 #if (discord_rpc && !hl)
 import clients.DiscordClient as Discord;
+#end
 #end
