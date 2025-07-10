@@ -1,12 +1,15 @@
 # 0.7.0 (7/10/2025)
 
 ## Added
+- `name` field to levels
 - The mod menu saves/resets selection value before refreshing or leaving 
 - `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
 ## Changed
+- Levels now have an extension of `.dream` instead of `.json`
 - When a mod gets toggled the mod menu reloads mods
 ## Fixed
+- Modded levels work properly now
 - Script replacement works properly now
 - PlayState singleton (instance) gets set to null properly
 

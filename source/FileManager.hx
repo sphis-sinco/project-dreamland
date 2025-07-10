@@ -197,12 +197,11 @@ class FileManager
 
 		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 		{
-			// trace('Checking $folder for a $type_folder folder');
-
 			TryCatch.tryCatch(() ->
 			{
 				var prefix:String = 'mods/';
-				var modDir:Array<String> = readDirectory('$prefix${folder}/');
+				var modDir:Array<String> = readDir('$prefix${folder}/');
+				trace('Checking "$prefix${folder}/" for a $type_folder folder');
 				if (modDir.contains('$type_folder'))
 				{
 					trace('$folder has a $type_folder folder');

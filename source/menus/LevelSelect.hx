@@ -22,7 +22,9 @@ class LevelSelect extends FlxState
 		levels = [];
 		for (level in oglevels)
 		{
-			levels.push(level.replace('assets/data/levels/', ''));
+			var newlevel = level.replace('assets/data/levels/', '');
+
+			levels.push(newlevel);
 		}
 		#end
 
@@ -96,11 +98,14 @@ class LevelSelect extends FlxState
 		difficulty.size = 32;
 		try
 		{
-			var filepath:String = 'levels/${levels[CURRENT_SELECTION]}${(!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : ''}';
-			var filename:String = FileManager.getDataFile(filepath);
+			var filepath:String = (!levels[CURRENT_SELECTION].contains('levels/')) ? 'levels/' : '';
+			filepath += levels[CURRENT_SELECTION];
+			filepath += (!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : '';
+
+			var filename:String = (!filepath.contains('data/levels/')) ? FileManager.getDataFile(filepath) : filepath;
 			FlxG.log.add(filename);
 			level_json = Json.parse(FileManager.readFile(filename));
-			difficulty.text = levels[CURRENT_SELECTION].split('.dream')[0] + ' - ' + level_json.difficulty;
+			difficulty.text = level_json.name + ' - ' + level_json.difficulty;
 			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		}
 		catch (e)
