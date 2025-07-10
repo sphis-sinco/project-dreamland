@@ -35,9 +35,6 @@ class MenuState extends FlxState
 		modBtn.screenCenter();
 		add(modBtn);
 
-		#if POLYMOD_MODDING
-		#end
-
 		super.create();
 	}
 

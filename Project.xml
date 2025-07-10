@@ -41,7 +41,7 @@
 	<assets path="assets" />
 
 	<define name="DISCORDRPC" if="windows" unless="hl" />
-	<define name="POLYMOD_MODDING" />
+	<define name="POLYMOD_MODDING" unless="html5" />
 	<define name="BLOCK_SOME_POLYMOD_TRACES" if="blockSomePolymodTraces" />
 
 	<section if="POLYMOD_MODDING">
