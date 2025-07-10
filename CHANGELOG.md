@@ -1,6 +1,7 @@
 # 0.7.0 (7/10/2025)
 
 ## Added
+- `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
 
 # 0.6.0 (7/10/2025)
