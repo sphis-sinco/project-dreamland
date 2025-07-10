@@ -1,0 +1,19 @@
+import gameplay.PlayState;
+
+var PlayStateStateName = 'PlayState';
+
+function stateCreate():String
+{
+        if (Global.CurrentState == PlayStateStateName)
+        {
+                PlayState.instance.bullets_max_onscreen = 20;
+                PlayState.instance.enemy_offscreen_padding = 64;
+        }
+}
+function stateUpdate(elapsed:Float):String
+{
+        if (Global.CurrentState == PlayStateStateName)
+        {
+                PlayState.SCORE += 1;
+        }
+}

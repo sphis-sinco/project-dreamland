@@ -1,0 +1,12 @@
+import scripts.events.CheckOutdated;
+
+// this disables the outdated checks by using incorrect repo information
+
+function setGitUser()
+{
+        CheckOutdated.gitUser = 'sinco';
+}
+function setGitRepo()
+{
+        CheckOutdated.gitRepo = 'dreamland';
+}
