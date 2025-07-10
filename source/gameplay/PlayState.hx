@@ -21,7 +21,7 @@ class PlayState extends FlxState
 	public var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var enemy_offscreen_padding:Float = 40;
 
-	var level_data:LevelData;
+	public var level_data:LevelData;
 
 	override public function create()
 	{
