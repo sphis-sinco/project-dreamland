@@ -1,6 +1,7 @@
 package menus;
 
 import openfl.display.BitmapData;
+import polymod.Polymod;
 #if polymod
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -48,7 +49,7 @@ class ModMenu extends FlxState
 		add(descBg);
 
 		descIcon = new FlxSprite();
-		updateSel();
+		descIcon.loadGraphic(FileManager.getImageFile('default-mod-icon'));
 		descIcon.scale.set(0.5, 0.5);
 		descIcon.setPosition(FlxG.width - descIcon.width, 325);
 		add(descIcon);
@@ -63,6 +64,8 @@ class ModMenu extends FlxState
 		var text:FlxText = new FlxText(0, FlxG.height - 22, FlxG.width, leText, 16);
 		text.scrollFactor.set();
 		add(text);
+
+		updateSel();
 	}
 
 	function loadMods()
@@ -90,8 +93,6 @@ class ModMenu extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
-
-		curModId = PolymodHandler.metadataArrays[curSelected];
 
 		if (FlxG.keys.justReleased.UP)
 		{
@@ -154,6 +155,7 @@ class ModMenu extends FlxState
 	function updateSel()
 	{
 		descIcon.loadGraphic(FileManager.getImageFile('default-mod-icon'));
+		curModId = PolymodHandler.metadataArrays[curSelected];
 		var modMeta = ModList.modMetadatas.get(curModId);
 
 		TryCatch.tryCatch(() ->
