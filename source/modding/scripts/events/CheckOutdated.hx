@@ -1,6 +1,6 @@
 package modding.scripts.events;
 
-class CheckOutdated implements polymod.hscript.HScriptable
+class CheckOutdated implements HScriptable
 {
 	public static function call()
 	{
