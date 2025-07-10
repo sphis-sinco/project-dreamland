@@ -7,6 +7,7 @@ This update counts yes as a content update but it mostly works as a patch
 - `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
 ## Changed
+- Polymod should now be able to easily change assets through mods
 - Levels now have an extension of `.dream` instead of `.json`
 - When a mod gets toggled the mod menu reloads mods
 ## Fixed

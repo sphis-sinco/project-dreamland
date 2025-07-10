@@ -6,6 +6,8 @@ import haxe.PosInfos;
 import lime.utils.Assets;
 import modding.ModList;
 import modding.PolymodHandler;
+import openfl.display.BitmapData;
+import openfl.media.Sound;
 
 using StringTools;
 
@@ -208,7 +210,7 @@ class FileManager
 					typePaths.push('$prefix${folder}/$type_folder/');
 				}
 			}, {
-					traceErr: true
+					traceErr: false
 			});
 		}
 		for (path in typePaths)
@@ -390,8 +392,8 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
-		return getAssetFile('images/$file.png', PATH_TYPE, posinfo);
+	public static function getImageFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):BitmapData
+		return openfl.Assets.getBitmapData(getAssetFile('images/$file.png', PATH_TYPE, posinfo));
 
 	/**
 	 * Returns `assets/$file.$SOUND_EXT`
@@ -399,9 +401,9 @@ class FileManager
 	 * @param PATH_TYPE Assets folder
 	 * @return String
 	 */
-	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):String
+	public static function getSoundFile(file:String, ?PATH_TYPE:PathTypes = DEFAULT, ?posinfo:PosInfos):Sound
 	{
-		return getAssetFile('$file.$SOUND_EXT', PATH_TYPE, posinfo);
+		return openfl.Assets.getSound(getAssetFile('$file.$SOUND_EXT', PATH_TYPE, posinfo));
 	}
 
 	/**
@@ -482,7 +484,7 @@ class FileManager
 
 		return TryCatch.tryCatch(function()
 		{
-			return Assets.getText(path);
+			return openfl.Assets.getText(path);
 		}, {
 				traceErr: true
 		});
@@ -557,12 +559,12 @@ class FileManager
 
 	public static function getPackerAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos):FlxAtlasFrames
 	{
-		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.txt'));
+		return FlxAtlasFrames.fromSpriteSheetPacker(getImageFile(path, path_type, posinfo), getAssetFile('images/$path.txt', path_type, posinfo));
 	}
 
 	public static function getSparrowAtlas(path:String, ?path_type:PathTypes, ?posinfo:PosInfos)
 	{
-		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type, posinfo), getImageFile('$path', path_type, posinfo).replace('.png', '.xml'));
+		return FlxAtlasFrames.fromSparrow(getImageFile(path, path_type, posinfo), getAssetFile('images/$path.xml', path_type, posinfo));
 	}
 }
 
