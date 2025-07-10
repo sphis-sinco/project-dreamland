@@ -11,6 +11,8 @@ import modding.PolymodHandler;
 
 class ModMenu extends FlxState
 {
+	public static var savedSelection:Int = 0;
+
 	var curSelected:Int = 0;
 
 	public var page:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
@@ -28,6 +30,8 @@ class ModMenu extends FlxState
 		#if polymod
 		modding.PolymodHandler.loadMods();
 		#end
+
+		curSelected = savedSelection;
 
 		var menuBG:FlxSprite;
 
@@ -116,11 +120,13 @@ class ModMenu extends FlxState
 		{
 			PolymodHandler.loadMods();
 			Global.playSound('select');
+			savedSelection = 0;
 			FlxG.switchState(MenuState.new);
 		}
 
 		if (FlxG.keys.justPressed.ENTER)
 		{
+			savedSelection = curSelected;
 			ModList.setModEnabled(curModId, !ModList.getModEnabled(curModId));
 			FlxG.resetState();
 		}

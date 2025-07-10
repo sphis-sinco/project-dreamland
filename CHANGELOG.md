@@ -1,6 +1,7 @@
 # 0.7.0 (7/10/2025)
 
 ## Added
+- The mod menu saves/resets selection value before refreshing or leaving 
 - `CurrentState` `Global` variable availible for scripts and the game
 - `editorMenuStart` script call
 ## Changed
