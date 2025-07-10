@@ -1,4 +1,5 @@
 # 0.7.0 (7/10/2025)
+This update counts yes as a content update but it mostly works as a patch
 
 ## Added
 - `name` field to levels
