@@ -1,5 +1,11 @@
 # 0.6.0 (7/10/2025)
-This update adds modding support via `polymod` and `hscript-iris1`
+This update adds modding support via `polymod` and `hscript-iris`
+
+## Added
+- Modding via `polymod` and `hscript-iris` (Desktop only)
+- Mod Menu (Desktop only)
+## Changed
+- Main Menu
 
 # 0.5.0 (7/9/2025)
 Using flixel 6.1.0
