@@ -24,8 +24,6 @@ class Main
 		for (lib in json)
 		{
 			trace('${lib.name} version: ${lib.version}');
-			if (!FileSystem.exists('.haxelib/${lib.name}'));
-			{
 			switch (lib.type)
 			{
 				case "haxelib":
@@ -34,7 +32,7 @@ class Main
 					Sys.command('haxelib --quiet git ${lib.name} ${lib.url}');
 				default:
 					Sys.println('Cannot resolve library of type "${lib.type}"');
-			}}
+			}
 		}
 
 		Sys.exit(0);
