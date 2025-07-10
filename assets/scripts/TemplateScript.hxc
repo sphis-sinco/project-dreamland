@@ -1,6 +1,10 @@
 function onLoad():Void {}
 function onCreate():Void {}
 
+// EVERY STATE
+function stateCreate():String {}
+function stateUpdate(elapsed:Float):String {}
+
 // Check outdated
 function setGitUser():String {}
 function setGitRepo():String {}
