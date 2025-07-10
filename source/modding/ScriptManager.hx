@@ -30,6 +30,7 @@ class ScriptManager
 				trace('New script: $path');
 				#end
 				LOADED_SCRIPTS.push(newScript);
+				newScript.call('onLoad');
 			});
 		}
 

@@ -1,1 +1,6 @@
-function onCreate() {}
+function onLoad():Void {}
+function onCreate():Void {}
+
+// Check outdated
+function setGitUser():String {}
+function setGitRepo():String {}
