@@ -1,7 +1,0 @@
-class LevelSelect
-{
-        function create()
-        {
-                trace('Hello world');
-        }
-}
