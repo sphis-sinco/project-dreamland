@@ -83,7 +83,5 @@ class PolymodHandler
 		}
 		trace(metadataArrays);
 	}
-
-	public static function callFunction() {}
 }
 #end
