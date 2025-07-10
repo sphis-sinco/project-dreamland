@@ -1,5 +1,7 @@
 package menus;
 
+import menus.editors.EditorMenu;
+
 class MenuState extends FlxState
 {
 	public var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);
@@ -54,6 +56,12 @@ class MenuState extends FlxState
 				FlxG.switchState(ModMenu.new);
 				#end
 			}
+		}
+		else if (FlxG.keys.justReleased.SEVEN)
+		{
+			#if !html5
+			FlxG.switchState(EditorMenu.new);
+			#end
 		}
 
 		super.update(elapsed);
