@@ -1,3 +1,4 @@
+#if !macro
 import Global;
 import flixel.*;
 import flixel.group.FlxGroup.FlxTypedGroup;
@@ -8,6 +9,8 @@ import haxe.*;
 import lime.app.Application;
 import menus.*;
 import save.Save;
+#end
+
 
 using StringTools;
 
