@@ -1,6 +1,5 @@
 package modding.scripts.events;
 
-@:hscriptClass
 class CheckOutdated extends EventClass implements HScriptable
 {
 	override function new()
