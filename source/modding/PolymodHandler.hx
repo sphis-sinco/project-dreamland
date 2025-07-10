@@ -16,6 +16,41 @@ class PolymodHandler
 		ModList.load();
 		loadModMetadata();
 
+		TryCatch.tryCatch(() ->
+		{
+			init();
+		});
+
+		ScriptManager.loadScripts();
+	}
+
+	public static function loadModMetadata()
+	{
+		metadataArrays = [];
+
+		var tempArray:Array<ModMetadata> = Polymod.scan({
+			modRoot: "mods/",
+			apiVersionRule: "*.*.*",
+			errorCallback: function(error:PolymodError)
+			{
+				#if debug
+				trace(error.message.replace('mod mods/', 'mod '));
+				#end
+			}
+		});
+
+		for (metadata in tempArray)
+		{
+			if (metadata.title == null)
+				return;
+			metadataArrays.push(metadata.id);
+			ModList.modMetadatas.set(metadata.id, metadata);
+		}
+		trace(metadataArrays);
+	}
+
+	static function init()
+	{
 		Polymod.init({
 			modRoot: "mods/",
 			dirs: ModList.getActiveMods(metadataArrays),
@@ -54,33 +89,6 @@ class PolymodHandler
 			},
 			apiVersionRule: '>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}'
 		});
-
-		ScriptManager.loadScripts();
-	}
-
-	public static function loadModMetadata()
-	{
-		metadataArrays = [];
-
-		var tempArray:Array<ModMetadata> = Polymod.scan({
-			modRoot: "mods/",
-			apiVersionRule: "*.*.*",
-			errorCallback: function(error:PolymodError)
-			{
-				#if debug
-				trace(error.message.replace('mod mods/', 'mod '));
-				#end
-			}
-		});
-
-		for (metadata in tempArray)
-		{
-			if (metadata.title == null)
-				return;
-			metadataArrays.push(metadata.id);
-			ModList.modMetadatas.set(metadata.id, metadata);
-		}
-		trace(metadataArrays);
 	}
 }
 #end

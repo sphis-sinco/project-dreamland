@@ -11,6 +11,7 @@ This update counts yes as a content update but it mostly works as a patch
 - Levels now have an extension of `.dream` instead of `.json`
 - When a mod gets toggled the mod menu reloads mods
 ## Fixed
+- The mod menu loads properly when there are no mods now
 - Modded levels work properly now
 - Script replacement works properly now
 - PlayState singleton (instance) gets set to null properly

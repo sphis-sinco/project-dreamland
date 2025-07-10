@@ -67,6 +67,12 @@ class ModMenu extends FlxState
 		descriptionText.screenCenter(X);
 		add(descriptionText);
 
+		if (PolymodHandler.metadataArrays.length < 1)
+		{
+			descriptionText.text = 'No mods';
+			descriptionText.alignment = CENTER;
+		}
+
 		var leText:String = "Press ENTER to enable / disable the currently selected mod.";
 
 		var text:FlxText = new FlxText(0, FlxG.height - 22, FlxG.width, leText, 16);
@@ -86,6 +92,11 @@ class ModMenu extends FlxState
 		});
 
 		var optionLoopNum:Int = 0;
+
+		if (PolymodHandler.metadataArrays.length < 1)
+		{
+			return;
+		}
 
 		for (modId in PolymodHandler.metadataArrays)
 		{
@@ -145,27 +156,34 @@ class ModMenu extends FlxState
 
 		var bruh = 0;
 
-		for (x in page.members)
+		if (PolymodHandler.metadataArrays.length >= 1)
 		{
-			x.y = 10 + (bruh * 32);
-			x.alpha = ModList.getModEnabled(PolymodHandler.metadataArrays[x.ID]) ? 1.0 : 0.6;
-			x.color = (curSelected == x.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
-
-			if (curSelected == x.ID)
+			for (x in page.members)
 			{
-				@:privateAccess
-				descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nAuthor: " + ModList.modMetadatas.get(curModId).author
-					+ "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + "\nMod Version: "
-					+ ModList.modMetadatas.get(curModId).modVersion + "\n";
-			}
+				x.y = 10 + (bruh * 32);
+				x.alpha = ModList.getModEnabled(PolymodHandler.metadataArrays[x.ID]) ? 1.0 : 0.6;
+				x.color = (curSelected == x.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
 
-			bruh++;
+				if (curSelected == x.ID)
+				{
+					@:privateAccess
+					descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nAuthor: " + ModList.modMetadatas.get(curModId).author
+						+ "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + "\nMod Version: "
+						+ ModList.modMetadatas.get(curModId).modVersion + "\n";
+				}
+
+				bruh++;
+			}
 		}
 	}
 
 	function updateSel()
 	{
 		descIcon.loadGraphic(FileManager.getImageFile('default-mod-icon'));
+
+		if (PolymodHandler.metadataArrays.length < 1)
+			return;
+
 		curModId = PolymodHandler.metadataArrays[curSelected];
 		var modMeta = ModList.modMetadatas.get(curModId);
 
