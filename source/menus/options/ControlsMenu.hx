@@ -1,9 +1,13 @@
 package menus.options;
 
 import base.TextSelecting;
+import flixel.input.keyboard.FlxKey;
+import flixel.math.FlxMath;
 
 class ControlsMenu extends TextSelecting
 {
+	public static var instance:ControlsMenu = null;
+
 	public var control_id:Map<String, String> = [];
 
 	public function newControl(name:String, controlId:String)
@@ -16,10 +20,27 @@ class ControlsMenu extends TextSelecting
 	{
 		super();
 
+		instance = this;
+
 		texts = [];
 		newControl('Gameplay Shoot', 'gameplay_shoot');
 		newControl('Gameplay Move Up', 'gameplay_move_up');
 		newControl('Gameplay Move Down', 'gameplay_move_down');
+
+		backKey = function()
+		{
+			instance = null;
+			FlxG.switchState(OptionsMenuMain.new);
+		}
+
+		enterKey = function()
+		{
+			trace('buttonBULLSHIT');
+			buttonRemapping = true;
+		}
+
+		popup.screenCenter();
+		add(popup);
 	}
 
 	override public function create()
@@ -31,10 +52,38 @@ class ControlsMenu extends TextSelecting
 		super.create();
 	}
 
-	override function backKey()
+	public var popup:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('menus/Yellowpopup'));
+	public var buttonRemapping:Bool = false;
+
+	override function update(elapsed:Float)
 	{
-		FlxG.switchState(OptionsMenuMain.new);
+		popup.visible = buttonRemapping;
+		super.update(elapsed);
 	}
 
-	override function enterKey() {}
+	override function controls()
+	{
+		if (!buttonRemapping)
+		{
+			super.controls();
+		}
+		else
+		{
+			if (FlxG.keys.justReleased.ESCAPE)
+			{
+				buttonRemapping = false;
+			}
+			else
+			{
+				var key:FlxKey = FlxG.keys.firstJustReleased();
+
+				if (key != NONE)
+				{
+					if (key != BACKSPACE)
+						Controls.setKey(control_id.get(texts[CURRENT_SELECTION]), key);
+					buttonRemapping = false;
+				}
+			}
+		}
+	}
 }

@@ -36,6 +36,32 @@ class TextSelecting extends FlxState
 		key_enter = FlxG.keys.justReleased.ENTER;
 		key_back = FlxG.keys.justReleased.ESCAPE;
 
+		if (canPressKeys())
+		{
+			controls();
+		}
+
+		for (text in text_group)
+		{
+			text.x = (CURRENT_SELECTION == text.ID) ? 10 : 0;
+			text.color = (CURRENT_SELECTION == text.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
+			text.alpha = (CURRENT_SELECTION == text.ID) ? 1.0 : 0.6;
+		}
+
+		super.update(elapsed);
+	}
+
+	public dynamic function backKey() {}
+
+	public dynamic function enterKey() {}
+
+	public dynamic function canPressKeys():Bool
+	{
+		return true;
+	}
+
+	public function controls()
+	{
 		if (key_up)
 		{
 			CURRENT_SELECTION--;
@@ -56,18 +82,5 @@ class TextSelecting extends FlxState
 		{
 			backKey();
 		}
-
-		for (text in text_group)
-		{
-			text.x = (CURRENT_SELECTION == text.ID) ? 10 : 0;
-			text.color = (CURRENT_SELECTION == text.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
-			text.alpha = (CURRENT_SELECTION == text.ID) ? 1.0 : 0.6;
-		}
-
-		super.update(elapsed);
 	}
-
-	public dynamic function backKey() {}
-
-	public dynamic function enterKey() {}
 }
