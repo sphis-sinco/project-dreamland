@@ -32,7 +32,6 @@ class Compiler
 		}
 
 		#if debug appends += ' -debug'; #end
-		#if watch appends += ' -watch'; #end
 
 		appends += ' --times';
 

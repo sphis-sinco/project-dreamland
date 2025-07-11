@@ -8,7 +8,6 @@ To run html5: `haxe -main Compiler --interp -D PLATFORM=html5`
 To run neko: `haxe -main Compiler --interp -D PLATFORM=neko`
 
 To run in "debug" mode add `-D debug`
-To run in "watch" mode add `-D watch`
 To have comments add `-D comments`
 
 Add "LIBFILENAME=" and then the name of the file with your haxelibs  
