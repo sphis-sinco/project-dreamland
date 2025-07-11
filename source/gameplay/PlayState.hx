@@ -30,28 +30,19 @@ class PlayState extends FlxState
 	{
 		super();
 
-		level_data = null;
-		if (levelData != null)
-			level_data = levelData;
+		level_data = levelData ?? LevelDataManager.defaultJSON;
 	}
 
 	override public function create()
 	{
 		if (instance != null)
 		{
-			// TODO: Do something in this case? IDK.
-			trace('WARNING: PlayState instance already exists. This should not happen.');
+			trace('WARNING: PlayState instance already exists. This should not happen. Set it back to null.');
+			instance = null;
 		}
 		instance = this;
 
-		if (level_data == null)
-		{
-			trace('Null level data');
-			level_data = LevelDataManager.defaultJSON;
-		}
-
-		bullets_max_onscreen = level_data.ammo;
-		bullets_max_onscreen ??= 2;
+		bullets_max_onscreen = level_data.ammo ?? 2;
 
 		var player_json_path = FileManager.getDataFile('players/${level_data.assets.player ?? 'player'}.json');
 		player_json = FileManager.getJSON(player_json_path);
@@ -101,8 +92,8 @@ class PlayState extends FlxState
 		super.create();
 	}
 
-	var spacebar:FlxSprite;
-	var spacebartext:FlxText;
+	public var spacebar:FlxSprite;
+	public var spacebartext:FlxText;
 
 	public var player_json:PlayerData = null;
 
@@ -124,9 +115,9 @@ class PlayState extends FlxState
 		player.x -= player.width * 8;
 	}
 
-	var key_up:Bool;
-	var key_down:Bool;
-	var key_shoot:Bool;
+	public var key_up:Bool;
+	public var key_down:Bool;
+	public var key_shoot:Bool;
 
 	override public function update(elapsed:Float)
 	{
