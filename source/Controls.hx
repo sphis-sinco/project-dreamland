@@ -37,10 +37,10 @@ class Controls
 	public static var GAMEPLAY_MOVE_UP(get, never):Bool;
 
 	static function get_GAMEPLAY_MOVE_UP():Bool
-		return FlxG.keys.anyJustPressed([gameplay_move_up_keybind, gameplay_move_up_keybind_alt]);
+		return FlxG.keys.anyPressed([gameplay_move_up_keybind, gameplay_move_up_keybind_alt]);
 
 	public static var GAMEPLAY_MOVE_DOWN(get, never):Bool;
 
 	static function get_GAMEPLAY_MOVE_DOWN():Bool
-		return FlxG.keys.anyJustPressed([gameplay_move_down_keybind, gameplay_move_down_keybind_alt]);
+		return FlxG.keys.anyPressed([gameplay_move_down_keybind, gameplay_move_down_keybind_alt]);
 }
