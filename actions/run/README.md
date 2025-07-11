@@ -11,4 +11,7 @@ To run in "debug" mode add `-D debug`
 To run in "watch" mode add `-D watch`
 To have comments add `-D comments`
 
+Add "LIBFILENAME=" and then the name of the file with your haxelibs  
+Add "HMM_SKIP" to skip the library installation
+
 Or you can just run the `.bat` files. But those are release builds only
