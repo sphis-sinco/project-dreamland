@@ -1,17 +1,19 @@
 package menus.options;
 
+import base.TextSelecting;
 import flixel.util.typeLimit.NextState;
 
-class OptionsMenuMain extends FlxState
+class OptionsMenuMain extends TextSelecting
 {
-	public static var optionMenuNames:Array<String> = [];
-	public static var optionMenuDestinations:Map<String, NextState> = [];
+	public static var instance:OptionsMenuMain;
 
-	public static var currentSelection:Int = 0;
+	public var optionMenuDestinations:Map<String, NextState> = [];
 
-	public static function newOptionMenu(name:String, destination:NextState)
+	public var currentSelection:Int = 0;
+
+	public function newOptionMenu(name:String, destination:NextState)
 	{
-		optionMenuNames.push(name);
+		texts.push(name);
 		optionMenuDestinations.set(name, destination);
 	}
 
@@ -23,16 +25,13 @@ class OptionsMenuMain extends FlxState
 
 	override function create()
 	{
+		instance = this;
+
 		super.create();
 	}
 
-	override function update(elapsed:Float)
+	override function enterKey()
 	{
-		super.update(elapsed);
-
-		if (FlxG.keys.justReleased.ENTER)
-		{
-			FlxG.switchState(optionMenuDestinations.get(optionMenuNames[currentSelection]));
-		}
+		FlxG.switchState(optionMenuDestinations.get(texts[currentSelection]));
 	}
 }
