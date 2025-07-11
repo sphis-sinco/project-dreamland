@@ -1,5 +1,6 @@
 # 0.8.0 (7/11/2025)
 ## Added
+- Control remapping
 - WASD Support (WS but whatever)
 - Options menu
 - The mod menu now says if a mod is outdated or not
