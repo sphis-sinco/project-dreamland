@@ -5,7 +5,6 @@ typedef LevelData =
 	var name:String;
 	var difficulty:String;
 	var ?author:String;
-	var ?ammo:Int;
 	var ?assets:LevelDataAssetsInfo;
 	var ?settings:LevelDataSettings;
 }
@@ -23,6 +22,7 @@ typedef LevelDataAssetsInfo =
 
 typedef LevelDataSettings =
 {
+	var ?ammo:Int;
 	var ?scores:LDSScores;
 	var ?chances:LDSChances;
 	var ?speed_additions:LDSSpeeds;
@@ -54,7 +54,6 @@ class LevelDataManager
 		"name": "the original earth i think",
 		"difficulty": "medium",
 		"author": "Sphis_Sinco",
-		"ammo": 4,
 		"assets": {
 			"directory": "",
 			"player": "player",
@@ -63,6 +62,7 @@ class LevelDataManager
 			"enemy_common": "enemy-common"
 		},
 		"settings": {
+			"ammo": 4,
 			"scores": {
 				"enemy_rare": 125,
 				"enemy_easy": 50,

@@ -42,7 +42,7 @@ class PlayState extends FlxState
 		}
 		instance = this;
 
-		bullets_max_onscreen = level_data.ammo ?? 2;
+		bullets_max_onscreen = level_data.settings.ammo ?? 2;
 
 		var player_json_path = FileManager.getDataFile('players/${level_data.assets.player ?? 'player'}.json');
 		player_json = FileManager.getJSON(player_json_path);
