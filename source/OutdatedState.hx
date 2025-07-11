@@ -9,8 +9,8 @@ class OutdatedState extends FlxState
 
 		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Global.APP_VERSION}) IS OUTDATED!\n'
 			+ 'THE CURRENT PUBLIC RELEASE IS v${CheckOutdated.updateVersion},\n AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
-			+ 'You can press ENTER to go to the github to update\n'
-			+ 'or you can press BACKSPACE or ESCAPE to continue.';
+			+ 'You can press ${Controls.getKey('ui_select')} to go to the github to update\n'
+			+ 'or you can press ${Controls.getKey('ui_leave')} to continue.';
 		outdatedText.text = outdatedText.text.toUpperCase();
 		outdatedText.alignment = CENTER;
 		outdatedText.screenCenter();
@@ -24,14 +24,14 @@ class OutdatedState extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.justReleased.ENTER)
+		if (Controls.UI_SELECT)
 		{
 			FlxG.openURL('https://github.com/sphis-Sinco/project-dreamland/releases/latest');
 			#if sys
 			Sys.exit(0);
 			#end
 		}
-		else if (FlxG.keys.justReleased.BACKSPACE || FlxG.keys.justReleased.ESCAPE)
+		else if (Controls.UI_LEAVE)
 		{
 			FlxG.switchState(MenuState.new);
 		}

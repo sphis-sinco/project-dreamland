@@ -4,6 +4,8 @@
 - WASD Support (WS but whatever)
 - Options menu
 - The mod menu now says if a mod is outdated or not
+## Removed
+- BACKSPACE escape key for OutdatedState
 ## Changed
 - The mod menu now lists all contributors in a mod
 - The mod menu mod description text has been moved

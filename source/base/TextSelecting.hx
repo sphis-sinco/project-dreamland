@@ -31,10 +31,10 @@ class TextSelecting extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		key_up = FlxG.keys.justReleased.UP;
-		key_down = FlxG.keys.justReleased.DOWN;
-		key_enter = FlxG.keys.justReleased.ENTER;
-		key_back = FlxG.keys.justReleased.ESCAPE;
+		key_up = Controls.UI_MOVE_UP;
+		key_down = Controls.UI_MOVE_DOWN;
+		key_enter = Controls.UI_SELECT;
+		key_back = Controls.UI_LEAVE;
 
 		if (canPressKeys())
 		{

@@ -114,21 +114,21 @@ class ModMenu extends FlxState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justReleased.UP)
+		if (Controls.UI_MOVE_UP)
 		{
 			curSelected -= 1;
 			Global.playSound('blip');
 			updateSel();
 		}
 
-		if (FlxG.keys.justReleased.DOWN)
+		if (Controls.UI_MOVE_DOWN)
 		{
 			curSelected += 1;
 			Global.playSound('blip');
 			updateSel();
 		}
 
-		if (FlxG.keys.justReleased.ESCAPE)
+		if (Controls.UI_LEAVE)
 		{
 			PolymodHandler.loadMods();
 			Global.playSound('select');

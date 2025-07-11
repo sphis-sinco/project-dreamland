@@ -53,9 +53,9 @@ class LevelSelect extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		key_left = FlxG.keys.justReleased.LEFT;
-		key_right = FlxG.keys.justReleased.RIGHT;
-		key_enter = FlxG.keys.justReleased.ENTER;
+		key_left = Controls.UI_MOVE_LEFT;
+		key_right = Controls.UI_MOVE_RIGHT;
+		key_enter = Controls.UI_SELECT;
 
 		if (key_left)
 		{
@@ -85,7 +85,7 @@ class LevelSelect extends FlxState
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
 			FlxG.switchState(() -> new PlayState(level_json));
 		}
-		else if (FlxG.keys.justReleased.ESCAPE)
+		else if (Controls.UI_LEAVE)
 		{
 			Global.playSound('select');
 			FlxG.switchState(MenuState.new);

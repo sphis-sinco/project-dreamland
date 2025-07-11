@@ -72,7 +72,7 @@ class ControlsMenu extends TextSelecting
 
 		popupText.text = 'Change the keybind for "${texts[CURRENT_SELECTION]}"'
 			+ '\n(Current: ${Controls.getKey(control_id.get(texts[CURRENT_SELECTION]))})'
-			+ '\n\nPress [ESCAPE] to leave';
+			+ '\n\nPress ${Controls.getKey('ui_leave')} to leave';
 		popupText.screenCenter();
 
 		super.update(elapsed);
@@ -86,7 +86,7 @@ class ControlsMenu extends TextSelecting
 		}
 		else
 		{
-			if (FlxG.keys.justReleased.ESCAPE)
+			if (Controls.UI_LEAVE)
 			{
 				buttonRemapping = false;
 			}
@@ -96,7 +96,7 @@ class ControlsMenu extends TextSelecting
 
 				if (key != NONE)
 				{
-					if (key != BACKSPACE)
+					if (key != Controls.ui_leave_keybind)
 						Controls.setKey(control_id.get(texts[CURRENT_SELECTION]), key);
 				}
 			}
