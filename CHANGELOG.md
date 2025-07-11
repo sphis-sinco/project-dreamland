@@ -16,6 +16,7 @@
 - BACKSPACE escape key for OutdatedState
 ## Changed
 - The player assets are now JSON-driven
+- More playstate variables were made public and available for it's singleton
 - The mod menu now lists all contributors in a mod
 - The mod menu mod description text has been moved
 - The mod menu mod description box has been widened
