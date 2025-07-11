@@ -19,7 +19,7 @@ class PlayState extends FlxState
 
 	public var bullets_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var bullet_offscreen_addition:Float = 16;
-	public var bullets_max_onscreen:Float = 2;
+	public var bullets_max_onscreen:Null<Int> = 2; // Why was this a float
 
 	public var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var enemy_offscreen_padding:Float = 40;
@@ -49,6 +49,9 @@ class PlayState extends FlxState
 			trace('Null level data');
 			level_data = LevelDataManager.defaultJSON;
 		}
+
+		bullets_max_onscreen = level_data.ammo;
+		bullets_max_onscreen ??= 2;
 
 		player_json = FileManager.getJSON(FileManager.getDataFile('players/${level_data.assets.player}.json'));
 
