@@ -4,8 +4,7 @@ import data.LevelData;
 
 class LevelSelect extends FlxState
 {
-	var levels:Array<String> = ['earth', 'heaven', 'hell', 'jujin'];
-	var level_diffs:Array<String> = ['easy-ish', 'medium', 'hard', 'medium-hard'];
+	var levels:Array<String> = ['earth', 'heaven', 'hell', 'jujin', 'hiku'];
 	var level_sprite:FlxSprite = new FlxSprite();
 
 	var level_json:LevelData;
@@ -96,30 +95,15 @@ class LevelSelect extends FlxState
 	function updateSelections()
 	{
 		difficulty.size = 32;
-		try
-		{
-			var filepath:String = (!levels[CURRENT_SELECTION].contains('levels/')) ? 'levels/' : '';
-			filepath += levels[CURRENT_SELECTION];
-			filepath += (!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : '';
+		var filepath:String = (!levels[CURRENT_SELECTION].contains('levels/')) ? 'levels/' : '';
+		filepath += levels[CURRENT_SELECTION];
+		filepath += (!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : '';
 
-			var filename:String = (!filepath.contains('data/levels/')) ? FileManager.getDataFile(filepath) : filepath;
-			FlxG.log.add(filename);
-			level_json = Json.parse(FileManager.readFile(filename));
-			difficulty.text = level_json.name + ' - ' + level_json.difficulty;
-			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
-		}
-		catch (e)
-		{
-			FlxG.log.warn(e);
-			#if web
-			difficulty.text = levels[CURRENT_SELECTION].split('.dream')[0] + ' - ' + level_diffs[CURRENT_SELECTION];
-			#else
-			difficulty.size = Std.int(difficulty.size / 2);
-			difficulty.text = "parsing error: " + e;
-			#end
-			level_json = LevelDataManager.defaultJSON;
-			level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
-		}
+		var filename:String = (!filepath.contains('data/levels/')) ? FileManager.getDataFile(filepath) : filepath;
+		FlxG.log.add(filename);
+		level_json = Json.parse(FileManager.readFile(filename));
+		difficulty.text = level_json.name + ' - ' + level_json.difficulty;
+		level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
 		difficulty.screenCenter(X);
 	}
 }

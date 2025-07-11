@@ -1,5 +1,6 @@
 # 0.8.0 (7/11/2025)
 ## Added
+- **NEW LEVEL: HIKU**
 - Player JSON System
 - `ammo`, and `player` field to level data.
   - `ammo` controls the amount of bullets possible onscreen
