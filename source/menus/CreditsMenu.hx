@@ -68,6 +68,8 @@ class CreditsMenu extends TextSelecting
 		{
 			FlxG.switchState(MenuState.new);
 		}
+
+		customCamEnabled = true;
 	}
 
 	override function create()
