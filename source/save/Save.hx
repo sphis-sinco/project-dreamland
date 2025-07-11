@@ -8,7 +8,7 @@ class Save
 {
 	public static var save:FlxSave;
 
-	public static final SAVEDATA_VERSION:Int = 4;
+	public static final SAVEDATA_VERSION:Int = 6;
 
 	public static function initalize()
 	{

@@ -1,3 +1,10 @@
+
+# version 6 - 7/11/2025
+This version added control stuff
+
+# version 5 - 7/10/2025
+This version added mod stuff
+
 # version 4 - 7/9/2025
 - Added an enum for save keys
 
