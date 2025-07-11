@@ -117,9 +117,9 @@ class PlayState extends FlxState
 	{
 		score_text.text = "Score: " + SCORE;
 
-		key_up = FlxG.keys.pressed.UP;
-		key_down = FlxG.keys.pressed.DOWN;
-		key_shoot = FlxG.keys.justReleased.SPACE;
+		key_up = Controls.GAMEPLAY_MOVE_UP;
+		key_down = Controls.GAMEPLAY_MOVE_DOWN;
+		key_shoot = Controls.GAMEPLAY_SHOOT;
 
 		inputCheck();
 
