@@ -197,6 +197,7 @@ class FileManager
 			});
 		}
 
+		#if POLYMOD_MODDING
 		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 		{
 			TryCatch.tryCatch(() ->
@@ -213,6 +214,7 @@ class FileManager
 					traceErr: false
 			});
 		}
+		#end
 		for (path in typePaths)
 		{
 			#if EXCESS_TRACES

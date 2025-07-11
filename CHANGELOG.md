@@ -10,6 +10,7 @@
 - Options menu
 - The mod menu now says if a mod is outdated or not
 ## Fixed
+- Game can now be compiles on `neko`
 - The game no longer crashes when a background cannot be found (it uses the default)
 ## Removed
 - BACKSPACE escape key for OutdatedState

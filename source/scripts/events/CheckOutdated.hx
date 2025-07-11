@@ -7,7 +7,7 @@ class CheckOutdated
 	public static function call()
 	{
 		onInit();
-		#if !hl
+		#if (!hl && !neko)
 		trace('checking for update');
 		var http = new haxe.Http('https://raw.githubusercontent.com/$gitUser/$gitRepo/refs/heads/master/version.txt');
 
