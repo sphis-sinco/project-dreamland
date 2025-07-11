@@ -5,6 +5,7 @@ typedef LevelData =
 	var name:String;
 	var difficulty:String;
 	var ?author:String;
+	var ?ammo:Int;
 	var ?assets:LevelDataAssetsInfo;
 	var ?settings:LevelDataSettings;
 }
@@ -53,6 +54,7 @@ class LevelDataManager
 		"name": "the original earth i think",
 		"difficulty": "medium",
 		"author": "Sphis_Sinco",
+		"ammo": 4,
 		"assets": {
 			"directory": "",
 			"player": "player",
