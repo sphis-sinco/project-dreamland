@@ -25,7 +25,7 @@ class ControlsMenu extends TextSelecting
 
 		texts = [];
 
-		newControl('// GAMEPLAY CONTROLS \\', null);
+		newControl('// GAMEPLAY CONTROLS \\\\', null);
 		CURRENT_SELECTION = 1;
 
 		newControl('Gameplay Shoot', 'gameplay_shoot');
@@ -36,7 +36,7 @@ class ControlsMenu extends TextSelecting
 		newControl('Gameplay Move Down', 'gameplay_move_down');
 		newControl('Gameplay Move Down (Alt)', 'gameplay_move_down_alt');
 
-		newControl('// UI CONTROLS \\', null);
+		newControl('// UI CONTROLS \\\\', null);
 
 		newControl('UI Move Left', 'ui_move_left');
 		newControl('UI Move Left (Alt)', 'ui_move_left_alt');
