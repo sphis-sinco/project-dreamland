@@ -103,7 +103,16 @@ class LevelSelect extends FlxState
 		FlxG.log.add(filename);
 		level_json = Json.parse(FileManager.readFile(filename));
 		difficulty.text = level_json.name + ' - ' + level_json.difficulty;
-		level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
+		var bgpath = level_json.assets.directory + 'background';
+		TryCatch.tryCatch(() ->
+		{
+			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));
+		}, {
+				errFunc: () ->
+				{
+					level_sprite.loadGraphic(FileManager.getImageFile('background'));
+				}
+		});
 		difficulty.screenCenter(X);
 	}
 }

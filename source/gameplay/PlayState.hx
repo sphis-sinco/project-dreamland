@@ -53,7 +53,15 @@ class PlayState extends FlxState
 
 		var bg:FlxSprite = new FlxSprite();
 		add(bg);
-		bg.loadGraphic(FileManager.getImageFile(level_data.assets.directory + "background"));
+		TryCatch.tryCatch(() ->
+		{
+			bg.loadGraphic(FileManager.getImageFile(level_data.assets.directory + "background"));
+		}, {
+				errFunc: () ->
+				{
+					bg.loadGraphic(FileManager.getImageFile('background'));
+				}
+		});
 		bg.scale.set(4, 4);
 		bg.screenCenter();
 		bg.color = 0xcccccc;
