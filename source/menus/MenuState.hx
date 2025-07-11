@@ -63,7 +63,7 @@ class MenuState extends FlxState
 				FlxG.switchState(ModMenu.new);
 				#end
 			}
-			if (FlxG.mouse.overlaps(modBtn))
+			if (FlxG.mouse.overlaps(optionBtn))
 			{
 				Global.playSound('select');
 				FlxG.switchState(OptionsMenuMain.new);
