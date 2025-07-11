@@ -7,6 +7,8 @@ class OptionsMenuMain extends FlxState
 	public static var optionMenuNames:Array<String> = [];
 	public static var optionMenuDestinations:Map<String, NextState> = [];
 
+	public static var currentSelection:Int = 0;
+
 	public static function newOptionMenu(name:String, destination:NextState)
 	{
 		optionMenuNames.push(name);
@@ -27,5 +29,10 @@ class OptionsMenuMain extends FlxState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (FlxG.keys.justReleased.ENTER)
+		{
+			FlxG.switchState(optionMenuDestinations.get(optionMenuNames[currentSelection]));
+		}
 	}
 }
