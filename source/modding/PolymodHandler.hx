@@ -40,19 +40,23 @@ class PolymodHandler
 			}
 		});
 
+		outdatedMods = [];
 		for (metadata in tempArray)
 		{
 			if (metadata.title == null)
 				return;
 			metadataArrays.push(metadata.id);
 			ModList.modMetadatas.set(metadata.id, metadata);
+
+			if (!metadata.apiVersion.satisfies('>=${MINIMUM_MOD_VERSION} <${MAXIMUM_MOD_VERSION}'))
+				outdatedMods.push(metadata.id);
 		}
 		trace(metadataArrays);
+		trace(outdatedMods);
 	}
 
 	static function init()
 	{
-		outdatedMods = [];
 		Polymod.init({
 			modRoot: "mods/",
 			dirs: ModList.getActiveMods(metadataArrays),
@@ -83,7 +87,6 @@ class PolymodHandler
 					var mod = ModList.modMetadatas.get(msgList[1]);
 
 					trace('${mod.title} uses an outdated API (${mod.apiVersion}). Expected API minimum of ${MINIMUM_MOD_VERSION}.');
-					outdatedMods.push(mod.id);
 
 					return;
 				}
