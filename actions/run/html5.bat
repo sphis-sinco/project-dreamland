@@ -1,0 +1,1 @@
+haxe -main Compiler --interp -D PLATFORM=html5 -D comments
