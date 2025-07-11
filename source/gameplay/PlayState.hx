@@ -91,8 +91,6 @@ class PlayState extends FlxState
 		}
 
 		super.create();
-
-		Controls.setKey('gameplay_shoot', ENTER);
 	}
 
 	var spacebar:FlxSprite;
