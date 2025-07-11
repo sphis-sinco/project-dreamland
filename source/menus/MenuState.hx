@@ -88,9 +88,7 @@ class MenuState extends FlxState
 			if (FlxG.mouse.overlaps(optionBtn))
 				FlxG.switchState(OptionsMenuMain.new);
 			if (FlxG.mouse.overlaps(creditsBtn))
-			{
-				// FlxG.switchState(OptionsMenuMain.new);
-			}
+				FlxG.switchState(CreditsMenu.new);
 		}
 		else if (FlxG.keys.justReleased.SEVEN)
 		{
