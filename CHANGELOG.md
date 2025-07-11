@@ -1,5 +1,9 @@
 # 0.8.0 (7/11/2025)
 ## Added
+- Player JSON System
+- `ammo`, and `player` field to level data.
+  - `ammo` controls the amount of bullets possible onscreen
+  - `player` controls the json that the game targets for the player
 - Control remapping
 - WASD Support (WS but whatever)
 - Options menu
@@ -7,6 +11,7 @@
 ## Removed
 - BACKSPACE escape key for OutdatedState
 ## Changed
+- The player assets are now JSON-driven
 - The mod menu now lists all contributors in a mod
 - The mod menu mod description text has been moved
 - The mod menu mod description box has been widened
