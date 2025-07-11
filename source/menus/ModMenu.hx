@@ -74,7 +74,7 @@ class ModMenu extends FlxState
 			descriptionText.alignment = CENTER;
 		}
 
-		var leText:String = "Press ENTER to enable / disable the currently selected mod.";
+		var leText:String = 'Press ${Controls.getKey('ui_select')} to enable / disable the currently selected mod.';
 
 		var text:FlxText = new FlxText(0, FlxG.height - 22, FlxG.width, leText, 16);
 		text.scrollFactor.set();
@@ -136,7 +136,7 @@ class ModMenu extends FlxState
 			FlxG.switchState(MenuState.new);
 		}
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (Controls.UI_SELECT)
 		{
 			savedSelection = curSelected;
 			ModList.setModEnabled(curModId, !ModList.getModEnabled(curModId));

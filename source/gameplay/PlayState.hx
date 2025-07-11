@@ -83,7 +83,7 @@ class PlayState extends FlxState
 
 			spacebartext = new FlxText();
 			spacebartext.setPosition(spacebar.x, spacebar.y);
-			spacebartext.text = "PRESS SPACEBAR TO SHOOT!";
+			spacebartext.text = 'PRESS ${Controls.getKey('gameplay_shoot')} TO SHOOT!';
 			spacebartext.size = 32;
 			spacebartext.screenCenter(X);
 			spacebartext.y += spacebar.width * 1.1;
