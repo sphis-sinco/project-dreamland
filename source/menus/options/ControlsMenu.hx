@@ -24,8 +24,12 @@ class ControlsMenu extends TextSelecting
 
 		texts = [];
 		newControl('Gameplay Shoot', 'gameplay_shoot');
+
 		newControl('Gameplay Move Up', 'gameplay_move_up');
+		newControl('Gameplay Move Up (Alt)', 'gameplay_move_up_alt');
+
 		newControl('Gameplay Move Down', 'gameplay_move_down');
+		newControl('Gameplay Move Down (Alt)', 'gameplay_move_down_alt');
 
 		backKey = function()
 		{
@@ -39,8 +43,12 @@ class ControlsMenu extends TextSelecting
 			buttonRemapping = true;
 		}
 
+		popupText = new FlxText(0, 0, popup.width, '', 16);
+		popupText.alignment = CENTER;
+
 		popup.screenCenter();
 		add(popup);
+		add(popupText);
 	}
 
 	override public function create()
@@ -53,11 +61,19 @@ class ControlsMenu extends TextSelecting
 	}
 
 	public var popup:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('menus/Yellowpopup'));
+	public var popupText:FlxText;
 	public var buttonRemapping:Bool = false;
 
 	override function update(elapsed:Float)
 	{
 		popup.visible = buttonRemapping;
+		popupText.visible = popup.visible;
+
+		popupText.text = 'Change the keybind for "${texts[CURRENT_SELECTION]}"'
+			+ '\n(Current: ${Controls.getKey(control_id.get(texts[CURRENT_SELECTION]))})'
+			+ '\n\nPress [ESCAPE] to leave';
+		popupText.screenCenter();
+
 		super.update(elapsed);
 	}
 
