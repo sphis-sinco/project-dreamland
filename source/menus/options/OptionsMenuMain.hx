@@ -34,11 +34,13 @@ class OptionsMenuMain extends TextSelecting
 
 	override function backKey()
 	{
+		instance = null;
 		FlxG.switchState(MenuState.new);
 	}
 
 	override function enterKey()
 	{
+		instance = null;
 		FlxG.switchState(optionMenuDestinations.get(texts[currentSelection]));
 	}
 }
