@@ -3,7 +3,7 @@ class Compiler
 	static var appends:String = '';
 	static var properCompile:Bool = false;
 
-	static var availiblePlatforms:Array<String> = ['hl', 'windows', 'mac', 'linux'];
+	static var availiblePlatforms:Array<String> = ['neko', 'hashlink', 'windows', 'mac', 'linux', 'html5'];
 
 	public static function main():Void
 	{
