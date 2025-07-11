@@ -20,6 +20,8 @@ class OptionsMenuMain extends TextSelecting
 	override public function new()
 	{
 		super();
+
+		texts = [];
 		newOptionMenu('Controls Menu', () -> new ControlsMenu());
 	}
 
@@ -28,6 +30,11 @@ class OptionsMenuMain extends TextSelecting
 		instance = this;
 
 		super.create();
+	}
+
+	override function backKey()
+	{
+		FlxG.switchState(MenuState.new);
 	}
 
 	override function enterKey()

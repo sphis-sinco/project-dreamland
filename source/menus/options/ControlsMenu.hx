@@ -6,6 +6,8 @@ class ControlsMenu extends TextSelecting
 {
 	override public function create()
 	{
+		texts = [];
+
 		#if (discord_rpc && !hl)
 		Discord.changePresence('In the control menu', 'Probably trying to adjust their controls');
 		#end
@@ -13,7 +15,10 @@ class ControlsMenu extends TextSelecting
 		super.create();
 	}
 
-	override function backKey() {}
+	override function backKey()
+	{
+		FlxG.switchState(OptionsMenuMain.new);
+	}
 
 	override function enterKey() {}
 }
