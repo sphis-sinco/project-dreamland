@@ -1,4 +1,4 @@
-# 0.8.0 (7/10/2025)
+# 0.8.0 (7/11/2025)
 ## Added
 - The mod menu now says if a mod is outdated or not
 ## Changed
