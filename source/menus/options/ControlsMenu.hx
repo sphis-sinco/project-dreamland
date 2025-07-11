@@ -25,6 +25,9 @@ class ControlsMenu extends TextSelecting
 
 		texts = [];
 
+		newControl('// GAMEPLAY CONTROLS \\', null);
+		CURRENT_SELECTION = 1;
+
 		newControl('Gameplay Shoot', 'gameplay_shoot');
 
 		newControl('Gameplay Move Up', 'gameplay_move_up');
@@ -32,6 +35,8 @@ class ControlsMenu extends TextSelecting
 
 		newControl('Gameplay Move Down', 'gameplay_move_down');
 		newControl('Gameplay Move Down (Alt)', 'gameplay_move_down_alt');
+
+		newControl('// UI CONTROLS \\', null);
 
 		newControl('UI Move Left', 'ui_move_left');
 		newControl('UI Move Left (Alt)', 'ui_move_left_alt');
@@ -56,8 +61,8 @@ class ControlsMenu extends TextSelecting
 
 		enterKey = function()
 		{
-			trace('buttonBULLSHIT');
-			buttonRemapping = true;
+			if (control_id.get(texts[CURRENT_SELECTION]) != null)
+				buttonRemapping = true;
 		}
 
 		popupText = new FlxText(0, 0, popup.width, '', 16);
@@ -87,9 +92,12 @@ class ControlsMenu extends TextSelecting
 		popup.visible = buttonRemapping;
 		popupText.visible = popup.visible;
 
-		popupText.text = 'Change the keybind for "${texts[CURRENT_SELECTION]}"'
-			+ '\n(Current: ${Controls.getKey(control_id.get(texts[CURRENT_SELECTION]))})'
-			+ '\n\nPress ${Controls.getKey('ui_leave')} to leave';
+		if (control_id.get(texts[CURRENT_SELECTION]) != null)
+		{
+			popupText.text = 'Change the keybind for "${texts[CURRENT_SELECTION]}"'
+				+ '\n(Current: ${Controls.getKey(control_id.get(texts[CURRENT_SELECTION]))})'
+				+ '\n\nPress ${Controls.getKey('ui_leave')} to leave';
+		}
 		popupText.screenCenter();
 
 		super.update(elapsed);
@@ -100,6 +108,20 @@ class ControlsMenu extends TextSelecting
 		if (!buttonRemapping)
 		{
 			super.controls();
+
+			if (control_id.get(texts[CURRENT_SELECTION]) == null)
+			{
+				if (key_up)
+					CURRENT_SELECTION--;
+				if (key_down)
+					CURRENT_SELECTION++;
+
+				if (CURRENT_SELECTION < 0)
+					CURRENT_SELECTION = 1;
+
+				if (CURRENT_SELECTION > texts.length - 1)
+					CURRENT_SELECTION -= 2;
+			}
 		}
 		else
 		{

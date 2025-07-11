@@ -51,6 +51,7 @@ class TextSelecting extends FlxState
 		if (canPressKeys())
 		{
 			controls();
+			outOfBoundsCheck();
 		}
 
 		for (text in text_group)
@@ -71,6 +72,15 @@ class TextSelecting extends FlxState
 		return new FlxPoint(FlxG.width / 2, text.getGraphicMidpoint().y);
 	}
 
+	public function outOfBoundsCheck()
+	{
+		if (CURRENT_SELECTION < 0)
+			CURRENT_SELECTION = 0;
+
+		if (CURRENT_SELECTION > texts.length - 1)
+			CURRENT_SELECTION--;
+	}
+
 	public dynamic function backKey() {}
 
 	public dynamic function enterKey() {}
@@ -85,14 +95,10 @@ class TextSelecting extends FlxState
 		if (key_up)
 		{
 			CURRENT_SELECTION--;
-			if (CURRENT_SELECTION < 0)
-				CURRENT_SELECTION = 0;
 		}
 		else if (key_down)
 		{
 			CURRENT_SELECTION++;
-			if (CURRENT_SELECTION > texts.length - 1)
-				CURRENT_SELECTION--;
 		}
 		else if (key_enter)
 		{
