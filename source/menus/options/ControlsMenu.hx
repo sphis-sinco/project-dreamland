@@ -31,6 +31,21 @@ class ControlsMenu extends TextSelecting
 		newControl('Gameplay Move Down', 'gameplay_move_down');
 		newControl('Gameplay Move Down (Alt)', 'gameplay_move_down_alt');
 
+		newControl('UI Move Left', 'ui_move_left');
+		newControl('UI Move Left (Alt)', 'ui_move_left_alt');
+
+		newControl('UI Move Right', 'ui_move_right');
+		newControl('UI Move Right (Alt)', 'ui_move_right_alt');
+
+		newControl('UI Move Up', 'ui_move_up');
+		newControl('UI Move Up (Alt)', 'ui_move_up_alt');
+
+		newControl('UI Move Down', 'ui_move_down');
+		newControl('UI Move Down (Alt)', 'ui_move_down_alt');
+
+		newControl('UI Select', 'ui_select');
+		newControl('UI Leave', 'ui_leave');
+
 		backKey = function()
 		{
 			instance = null;
