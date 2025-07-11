@@ -47,8 +47,6 @@ class ControlsMenu extends TextSelecting
 		popupText.alignment = CENTER;
 
 		popup.screenCenter();
-		add(popup);
-		add(popupText);
 	}
 
 	override public function create()
@@ -58,6 +56,9 @@ class ControlsMenu extends TextSelecting
 		#end
 
 		super.create();
+
+		add(popup);
+		add(popupText);
 	}
 
 	public var popup:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile('menus/Yellowpopup'));
