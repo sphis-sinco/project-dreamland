@@ -1,5 +1,7 @@
 # 0.8.0 (7/10/2025)
 ## Changed
+- The mod menu mod description text has been moved
+- The mod menu mod description box has been widened
 - Project.xml fps has been set to "144" (no idea if it actually changed anything)
 
 # 0.7.0 (7/10/2025)

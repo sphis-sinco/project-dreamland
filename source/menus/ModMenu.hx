@@ -52,7 +52,7 @@ class ModMenu extends FlxState
 
 		loadMods();
 
-		descBg = new FlxSprite(0, FlxG.height - 120).makeGraphic(FlxG.width, 90, 0xFF000000);
+		descBg = new FlxSprite(0, FlxG.height - 160).makeGraphic(FlxG.width, 160, 0xFF000000);
 		descBg.alpha = 0.6;
 		add(descBg);
 
@@ -64,7 +64,6 @@ class ModMenu extends FlxState
 
 		descriptionText = new FlxText(descBg.x, descBg.y + 4, FlxG.width, "Template Description", 16);
 		descriptionText.scrollFactor.set();
-		descriptionText.screenCenter(X);
 		add(descriptionText);
 
 		if (PolymodHandler.metadataArrays.length < 1)
