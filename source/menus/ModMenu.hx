@@ -166,8 +166,17 @@ class ModMenu extends FlxState
 				if (curSelected == x.ID)
 				{
 					@:privateAccess
-					descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nAuthor: " + ModList.modMetadatas.get(curModId).author
-						+ "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + "\nMod Version: "
+					descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nContributors: ";
+
+					var i = 0;
+					var len = ModList.modMetadatas.get(curModId).contributors.length - 1;
+					for (contributor in ModList.modMetadatas.get(curModId).contributors)
+					{
+						i++;
+						descriptionText.text += '${contributor.name} (${contributor.role})${i < len ? ', ' : ''}';
+					}
+
+					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + "\nMod Version: "
 						+ ModList.modMetadatas.get(curModId).modVersion + "\n";
 				}
 
