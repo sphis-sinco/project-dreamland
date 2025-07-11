@@ -68,6 +68,9 @@ class ControlsMenu extends TextSelecting
 		popupText = new FlxText(0, 0, popup.width, '', 16);
 		popupText.alignment = CENTER;
 
+		popup.scrollFactor.set(0, 0);
+		popupText.scrollFactor.set(0, 0);
+
 		popup.screenCenter();
 	}
 
