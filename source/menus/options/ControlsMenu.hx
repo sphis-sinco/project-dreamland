@@ -97,7 +97,6 @@ class ControlsMenu extends TextSelecting
 				{
 					if (key != BACKSPACE)
 						Controls.setKey(control_id.get(texts[CURRENT_SELECTION]), key);
-					buttonRemapping = false;
 				}
 			}
 		}
