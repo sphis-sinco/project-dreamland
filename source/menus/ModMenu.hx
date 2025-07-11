@@ -2,6 +2,8 @@ package menus;
 
 import openfl.display.BitmapData;
 import polymod.Polymod;
+import thx.semver.Version.SemVer;
+import thx.semver.Version;
 #if polymod
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -166,6 +168,15 @@ class ModMenu extends FlxState
 				if (curSelected == x.ID)
 				{
 					@:privateAccess
+					var outdatedText:String = '';
+
+					descriptionText.color = FlxColor.WHITE;
+
+					if (PolymodHandler.outdatedMods.contains(curModId))
+					{
+						outdatedText = ' %(Outdated)%';
+					}
+
 					descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nContributors: ";
 
 					var i = 0;
@@ -176,8 +187,9 @@ class ModMenu extends FlxState
 						descriptionText.text += '${contributor.name} (${contributor.role})${i < len ? ', ' : ''}';
 					}
 
-					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + "\nMod Version: "
+					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + outdatedText + "\nMod Version: "
 						+ ModList.modMetadatas.get(curModId).modVersion + "\n";
+					descriptionText.applyMarkup(descriptionText.text, [new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.YELLOW, true, true), '%')]);
 				}
 
 				bruh++;

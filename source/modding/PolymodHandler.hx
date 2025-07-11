@@ -10,6 +10,7 @@ class PolymodHandler
 	public static var MAXIMUM_MOD_VERSION:String = "0.9.0";
 
 	public static var metadataArrays:Array<String> = [];
+	public static var outdatedMods:Array<String> = [];
 
 	public static function loadMods()
 	{
@@ -51,6 +52,7 @@ class PolymodHandler
 
 	static function init()
 	{
+		outdatedMods = [];
 		Polymod.init({
 			modRoot: "mods/",
 			dirs: ModList.getActiveMods(metadataArrays),
@@ -81,6 +83,7 @@ class PolymodHandler
 					var mod = ModList.modMetadatas.get(msgList[1]);
 
 					trace('${mod.title} uses an outdated API (${mod.apiVersion}). Expected API minimum of ${MINIMUM_MOD_VERSION}.');
+					outdatedMods.push(mod.id);
 
 					return;
 				}
