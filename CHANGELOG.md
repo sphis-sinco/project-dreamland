@@ -1,5 +1,6 @@
 # 0.8.0 (7/11/2025)
 ## Added
+- Option menu
 - The mod menu now says if a mod is outdated or not
 ## Changed
 - The mod menu now lists all contributors in a mod

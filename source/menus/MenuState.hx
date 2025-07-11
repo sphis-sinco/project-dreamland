@@ -1,6 +1,7 @@
 package menus;
 
 import menus.editors.EditorMenu;
+import menus.options.OptionsMenuMain;
 
 class MenuState extends FlxState
 {
@@ -9,6 +10,7 @@ class MenuState extends FlxState
 
 	public var levelBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 	public var modBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
+	public var optionBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 
 	override public function create()
 	{
@@ -37,6 +39,11 @@ class MenuState extends FlxState
 		modBtn.screenCenter();
 		add(modBtn);
 
+		optionBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-options'));
+		optionBtn.screenCenter();
+		optionBtn.x += optionBtn.width;
+		add(optionBtn);
+
 		super.create();
 	}
 
@@ -55,6 +62,11 @@ class MenuState extends FlxState
 				Global.playSound('select');
 				FlxG.switchState(ModMenu.new);
 				#end
+			}
+			if (FlxG.mouse.overlaps(modBtn))
+			{
+				Global.playSound('select');
+				FlxG.switchState(OptionsMenuMain.new);
 			}
 		}
 		else if (FlxG.keys.justReleased.SEVEN)
