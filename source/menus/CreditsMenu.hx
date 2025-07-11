@@ -69,4 +69,12 @@ class CreditsMenu extends TextSelecting
 			FlxG.switchState(MenuState.new);
 		}
 	}
+
+	override function create()
+	{
+		super.create();
+
+		for (text in text_group)
+			text.size = 16;
+	}
 }
