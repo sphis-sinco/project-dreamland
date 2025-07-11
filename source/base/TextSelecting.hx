@@ -1,11 +1,16 @@
 package base;
 
+import flixel.math.FlxPoint;
+
 class TextSelecting extends FlxState
 {
-	var texts:Array<String> = ['uno', 'dos', 'tres', 'cuatro'];
-	var text_group:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
+	public var texts:Array<String> = ['uno', 'dos', 'tres', 'cuatro'];
+	public var text_group:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
-	var CURRENT_SELECTION:Int = 0;
+	public var CURRENT_SELECTION:Int = 0;
+
+	public var customCamEnabled:Bool = false;
+	public var customCam:FlxObject;
 
 	override public function create()
 	{
@@ -21,13 +26,20 @@ class TextSelecting extends FlxState
 			int++;
 		}
 
+		customCam = new FlxObject(0, 0, 1, 1);
+		if (customCamEnabled)
+		{
+			add(customCam);
+			FlxG.camera.follow(customCam, null, 0.05);
+		}
+
 		super.create();
 	}
 
-	var key_up:Bool;
-	var key_down:Bool;
-	var key_enter:Bool;
-	var key_back:Bool;
+	public var key_up:Bool;
+	public var key_down:Bool;
+	public var key_enter:Bool;
+	public var key_back:Bool;
 
 	override public function update(elapsed:Float)
 	{
@@ -46,9 +58,17 @@ class TextSelecting extends FlxState
 			text.x = (CURRENT_SELECTION == text.ID) ? 10 : 0;
 			text.color = (CURRENT_SELECTION == text.ID) ? FlxColor.YELLOW : FlxColor.WHITE;
 			text.alpha = (CURRENT_SELECTION == text.ID) ? 1.0 : 0.6;
+
+			if (CURRENT_SELECTION == text.ID)
+				customCam.setPosition(getCamPos(text).x, getCamPos(text).y);
 		}
 
 		super.update(elapsed);
+	}
+
+	public function getCamPos(text:FlxText)
+	{
+		return new FlxPoint(FlxG.width / 2, text.getGraphicMidpoint().y);
 	}
 
 	public dynamic function backKey() {}

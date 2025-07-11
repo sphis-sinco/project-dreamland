@@ -21,8 +21,10 @@ class ControlsMenu extends TextSelecting
 		super();
 
 		instance = this;
+		customCamEnabled = true;
 
 		texts = [];
+
 		newControl('Gameplay Shoot', 'gameplay_shoot');
 
 		newControl('Gameplay Move Up', 'gameplay_move_up');
@@ -101,7 +103,7 @@ class ControlsMenu extends TextSelecting
 		}
 		else
 		{
-			if (Controls.UI_LEAVE)
+			if (key_back)
 			{
 				buttonRemapping = false;
 			}
