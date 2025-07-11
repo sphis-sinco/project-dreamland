@@ -1,4 +1,6 @@
 # 0.8.0 (7/10/2025)
+## Changed
+- Project.xml fps has been set to "144" (no idea if it actually changed anything)
 
 # 0.7.0 (7/10/2025)
 This update counts yes as a content update but it mostly works as a patch
