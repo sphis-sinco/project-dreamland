@@ -1,5 +1,6 @@
 package save;
 
+import flixel.input.keyboard.FlxKey;
 import modding.ModList;
 import modding.PolymodHandler;
 
@@ -32,7 +33,8 @@ class Save
 			save.data.savedata = {
 				saveVer: SAVEDATA_VERSION,
 				firstTime: true,
-				highscore: 0
+				highscore: 0,
+				controls: Controls.defaultControls
 			};
 		}
 		else
@@ -40,7 +42,11 @@ class Save
 			save.data.savedata.saveVer ??= SAVEDATA_VERSION;
 			save.data.savedata.firstTime ??= true;
 			save.data.savedata.highscore ??= 0;
+			save.data.savedata.controls ??= Controls.defaultControls;
 		}
+
+		trace(save.data.savedata.controls);
+		Controls.loadControlSave();
 
 		flushData();
 	}
@@ -57,6 +63,8 @@ class Save
 				return saveD.firstTime;
 			case highscore:
 				return saveD.highscore;
+			case controls:
+				return saveD.controls;
 		}
 
 		return null;
@@ -72,6 +80,8 @@ class Save
 				save.data.savedata.firstTime = newval;
 			case highscore:
 				save.data.savedata.highscore = newval;
+			case controls:
+				save.data.savedata.controls = newval;
 		}
 	}
 
@@ -85,6 +95,8 @@ typedef SaveData =
 
 	var firstTime:Bool;
 	var highscore:Int;
+
+	var controls:Map<String, FlxKey>;
 }
 
 enum SaveKeys
@@ -93,4 +105,5 @@ enum SaveKeys
 	firsttime;
 	firstTime;
 	highscore;
+	controls;
 }

@@ -119,6 +119,8 @@ class Controls
 			case 'ui_leave':
 				ui_leave_keybind = newKey;
 		}
+
+		saveControls();
 	}
 
 	public static function getKey(key_id:String):String
@@ -165,5 +167,57 @@ class Controls
 		}
 
 		return 'Unknown';
+	}
+
+	public static var defaultControls:Map<String, FlxKey> = getControlMap();
+
+	public static function loadControlSave()
+	{
+		gameplay_shoot_keybind = Save.getSavedataInfo(controls).get('gameplay_shoot');
+
+		gameplay_move_up_keybind = Save.getSavedataInfo(controls).get('gameplay_up');
+		gameplay_move_up_keybind_alt = Save.getSavedataInfo(controls).get('gameplay_up_alt');
+
+		gameplay_move_down_keybind = Save.getSavedataInfo(controls).get('gameplay_down');
+		gameplay_move_down_keybind_alt = Save.getSavedataInfo(controls).get('gameplay_down_alt');
+
+		ui_move_up_keybind = Save.getSavedataInfo(controls).get('ui_up');
+		ui_move_up_keybind_alt = Save.getSavedataInfo(controls).get('ui_up_alt');
+		ui_move_down_keybind = Save.getSavedataInfo(controls).get('ui_down');
+		ui_move_down_keybind_alt = Save.getSavedataInfo(controls).get('ui_down_alt');
+		ui_move_left_keybind = Save.getSavedataInfo(controls).get('ui_left');
+		ui_move_left_keybind_alt = Save.getSavedataInfo(controls).get('ui_left_alt');
+		ui_move_right_keybind = Save.getSavedataInfo(controls).get('ui_right');
+		ui_move_right_keybind_alt = Save.getSavedataInfo(controls).get('ui_right_alt');
+
+		ui_select_keybind = Save.getSavedataInfo(controls).get('ui_select');
+		ui_leave_keybind = Save.getSavedataInfo(controls).get('ui_leave');
+	}
+
+	public static function saveControls()
+	{
+		Save.setSavedataInfo(controls, getControlMap());
+		Save.flushData();
+	}
+
+	public static function getControlMap():Map<String, FlxKey>
+	{
+		return [
+			'gameplay_up' => gameplay_move_up_keybind,
+			'gameplay_up_alt' => gameplay_move_up_keybind_alt,
+			'gameplay_down' => gameplay_move_down_keybind,
+			'gameplay_down_alt' => gameplay_move_down_keybind_alt,
+			'gameplay_shoot' => gameplay_shoot_keybind,
+			'ui_left' => ui_move_left_keybind,
+			'ui_down' => ui_move_down_keybind,
+			'ui_up' => ui_move_up_keybind,
+			'ui_right' => ui_move_right_keybind,
+			'ui_left_alt' => ui_move_left_keybind_alt,
+			'ui_down_alt' => ui_move_down_keybind_alt,
+			'ui_up_alt' => ui_move_up_keybind_alt,
+			'ui_right_alt' => ui_move_right_keybind_alt,
+			'ui_select' => ui_select_keybind,
+			'ui_leave' => ui_leave_keybind
+		];
 	}
 }
