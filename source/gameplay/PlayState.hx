@@ -53,10 +53,8 @@ class PlayState extends FlxState
 		bullets_max_onscreen = level_data.ammo;
 		bullets_max_onscreen ??= 2;
 
-		player_json = FileManager.getJSON(FileManager.getDataFile('players/${level_data.assets.player}.json'));
-
-		if (player_json == null)
-			FileManager.getJSON(FileManager.getDataFile('players/player.json'));
+		var player_json_path = FileManager.getDataFile('players/${level_data.assets.player ?? 'player'}.json');
+		player_json = FileManager.getJSON(player_json_path);
 
 		#if (discord_rpc && !hl)
 		Discord.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
@@ -110,14 +108,18 @@ class PlayState extends FlxState
 
 	function playerSetup()
 	{
-		player.loadGraphic(FileManager.getImageFile(player_json.path), true, player_json.dimensions[0], player_json.dimensions[1]);
+		player.loadGraphic(FileManager.getImageFile(player_json.path ?? 'player'), true, player_json.dimensions[0] ?? 32, player_json.dimensions[1] ?? 32);
 
+		var i = 0;
 		for (animation in player_json.animations)
-			player.animation.add(animation.name, animation.frames, animation.fps, animation.looping);
+		{
+			i++;
+			player.animation.add(animation.name ?? 'animation$i', animation.frames ?? [0], animation.fps ?? 30, animation.looping ?? false);
+		}
 
-		player.animation.play(player_json.default_animation);
+		player.animation.play(player_json.default_animation ?? player.animation.getNameList()[0]);
 
-		player.scale.set(player_json.scale[0], player_json.scale[1]);
+		player.scale.set(player_json.scale[0] ?? 1, player_json.scale[1] ?? 1);
 		player.screenCenter();
 		player.x -= player.width * 8;
 	}

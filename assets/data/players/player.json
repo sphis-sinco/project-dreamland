@@ -3,6 +3,7 @@
         "dimensions": [32,32],
         "scale": [2,2],
 
+        "default_animation": "idle",
         "animations": [
                 {
                         "name": "idle",

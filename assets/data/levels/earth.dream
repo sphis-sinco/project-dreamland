@@ -5,6 +5,8 @@
     "assets": {
         "directory": "",
 
+        "player": "player-hiku",
+
         "enemy_rare": "enemy-rare",
         "enemy_easy": "enemy-easy",
         "enemy_common": "enemy-common"
