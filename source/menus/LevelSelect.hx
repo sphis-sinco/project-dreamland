@@ -4,7 +4,7 @@ import data.LevelData;
 
 class LevelSelect extends FlxState
 {
-	var levels:Array<String> = ['earth', 'heaven', 'hell', 'jujin', 'hiku'];
+	var levels:Array<String> = ['earth', 'heaven', 'hell', 'hiku', 'jujin'];
 	var level_sprite:FlxSprite = new FlxSprite();
 
 	var level_json:LevelData;
