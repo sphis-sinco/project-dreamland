@@ -5,6 +5,7 @@ typedef PlayerData =
 	var path:String;
 	var dimensions:Array<Int>;
 	var scale:Array<Float>;
+	var default_animation:String;
 	var animations:Array<
 		{
 			var name:String;
@@ -20,6 +21,7 @@ class PlayerDataManager
 		"path": "player",
 		"dimensions": [32, 32],
 		"scale": [2, 2],
+		"default_animation": "idle",
 		"animations": [
 			{
 				"name": "idle",

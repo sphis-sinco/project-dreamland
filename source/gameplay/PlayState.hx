@@ -2,6 +2,7 @@ package gameplay;
 
 import data.LevelData.LevelData;
 import data.LevelData.LevelDataManager;
+import data.PlayerData;
 
 class PlayState extends FlxState
 {
@@ -48,6 +49,12 @@ class PlayState extends FlxState
 			trace('Null level data');
 			level_data = LevelDataManager.defaultJSON;
 		}
+
+		player_json = FileManager.getJSON(FileManager.getDataFile('players/${level_data.assets.player}.json'));
+
+		if (player_json == null)
+			FileManager.getJSON(FileManager.getDataFile('players/player.json'));
+
 		#if (discord_rpc && !hl)
 		Discord.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
@@ -96,15 +103,18 @@ class PlayState extends FlxState
 	var spacebar:FlxSprite;
 	var spacebartext:FlxText;
 
+	public var player_json:PlayerData = null;
+
 	function playerSetup()
 	{
-		player.loadGraphic(FileManager.getImageFile('player'), true, 32, 32);
-		player.animation.add('idle', [0]);
-		player.animation.add('shoot-a2', [1, 2], 4, false);
-		player.animation.add('shoot-a1', [2, 3], 4, false);
-		player.animation.add('shoot-a0', [3, 3], 4, false);
-		player.animation.play('idle');
-		player.scale.set(2, 2);
+		player.loadGraphic(FileManager.getImageFile(player_json.path), true, player_json.dimensions[0], player_json.dimensions[1]);
+
+		for (animation in player_json.animations)
+			player.animation.add(animation.name, animation.frames, animation.fps, animation.looping);
+
+		player.animation.play(player_json.default_animation);
+
+		player.scale.set(player_json.scale[0], player_json.scale[1]);
 		player.screenCenter();
 		player.x -= player.width * 8;
 	}
