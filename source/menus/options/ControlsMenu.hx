@@ -111,20 +111,6 @@ class ControlsMenu extends TextSelecting
 		if (!buttonRemapping)
 		{
 			super.controls();
-
-			if (control_id.get(texts[CURRENT_SELECTION]) == null)
-			{
-				if (key_up)
-					CURRENT_SELECTION--;
-				if (key_down)
-					CURRENT_SELECTION++;
-
-				if (CURRENT_SELECTION < 0)
-					CURRENT_SELECTION = 1;
-
-				if (CURRENT_SELECTION > texts.length - 1)
-					CURRENT_SELECTION -= 2;
-			}
 		}
 		else
 		{
