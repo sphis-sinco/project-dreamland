@@ -13,6 +13,8 @@ typedef LevelDataAssetsInfo =
 {
 	var ?directory:String;
 
+	var ?player_asset:String;
+
 	var ?enemy_rare:String;
 	var ?enemy_easy:String;
 	var ?enemy_common:String;
@@ -53,6 +55,7 @@ class LevelDataManager
 		"author": "Sphis_Sinco",
 		"assets": {
 			"directory": "",
+			"player_asset": "player",
 			"enemy_rare": "enemy-rare",
 			"enemy_easy": "enemy-easy",
 			"enemy_common": "enemy-common"
