@@ -8,9 +8,12 @@ class MenuState extends FlxState
 	public var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);
 	public var highscoreText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
 
+	public var btnGrp:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
+
 	public var levelBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 	public var modBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 	public var optionBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
+	public var creditsBtn:FlxSprite = new FlxSprite(0, 0).loadGraphic(FileManager.getImageFile('menus/menubutton-unknown'));
 
 	override public function create()
 	{
@@ -28,21 +31,34 @@ class MenuState extends FlxState
 		Discord.changePresence('In the menus', 'Navigating');
 		#end
 
+		add(btnGrp);
+
 		levelBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-levels'));
 		levelBtn.screenCenter();
 		levelBtn.x -= levelBtn.width;
-		add(levelBtn);
+		btnGrp.add(levelBtn);
 
 		#if POLYMOD_MODDING
 		modBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-mods'));
 		#end
 		modBtn.screenCenter();
-		add(modBtn);
+		btnGrp.add(modBtn);
 
 		optionBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-options'));
 		optionBtn.screenCenter();
 		optionBtn.x += optionBtn.width;
-		add(optionBtn);
+		btnGrp.add(optionBtn);
+
+		creditsBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-credits'));
+		creditsBtn.screenCenter();
+		creditsBtn.x -= creditsBtn.width;
+		creditsBtn.y += creditsBtn.height;
+		btnGrp.add(creditsBtn);
+
+		for (member in btnGrp.members)
+		{
+			member.y -= member.height / 2;
+		}
 
 		super.create();
 	}
@@ -51,11 +67,17 @@ class MenuState extends FlxState
 	{
 		if (FlxG.mouse.justReleased)
 		{
-			if (FlxG.mouse.overlaps(levelBtn))
+			for (member in btnGrp.members)
 			{
-				Global.playSound('select');
-				FlxG.switchState(LevelSelect.new);
+				if (member != modBtn && FlxG.mouse.overlaps(member))
+				{
+					Global.playSound('select');
+					break;
+				}
 			}
+
+			if (FlxG.mouse.overlaps(levelBtn))
+				FlxG.switchState(LevelSelect.new);
 			if (FlxG.mouse.overlaps(modBtn))
 			{
 				#if POLYMOD_MODDING
@@ -64,9 +86,10 @@ class MenuState extends FlxState
 				#end
 			}
 			if (FlxG.mouse.overlaps(optionBtn))
-			{
-				Global.playSound('select');
 				FlxG.switchState(OptionsMenuMain.new);
+			if (FlxG.mouse.overlaps(creditsBtn))
+			{
+				// FlxG.switchState(OptionsMenuMain.new);
 			}
 		}
 		else if (FlxG.keys.justReleased.SEVEN)
