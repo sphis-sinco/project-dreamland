@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- Warning for outdated modds using the old level select level entry system
 - `bullet` field to player JSON's
 - **OVERDRIVE VARIATIONS**
   - **EARTH (OVERDRIVE)**
@@ -11,7 +12,8 @@
 ## Changed
 - Player JSON's now have more control over bullet information
 - Hiku's difficulty is now "hard-ish"
-- Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
+- Overhauled the level select level entries system:
+  - Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
 
 # 0.8.0 (7/11/2025)
 ## Added
