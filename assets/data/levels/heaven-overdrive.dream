@@ -3,9 +3,9 @@
     "assets": {
         "directory": "heaven/overdrive/",
 
-        "enemy_rare": "../enemy-rare",
-        "enemy_easy": "../enemy-easy",
-        "enemy_common": "../enemy-common"
+        "enemy_rare": "enemy-rare",
+        "enemy_easy": "enemy-easy",
+        "enemy_common": "enemy-common"
     },
     "settings": {
         "scores": {
