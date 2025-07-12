@@ -1,0 +1,37 @@
+import flixel.FlxSprite;
+import gameplay.PlayState;
+import save.Save;
+import shaders.AdjustColorShader;
+
+var playerShader:AdjustColorShader = new AdjustColorShader();
+var enemyShader:AdjustColorShader = new AdjustColorShader();
+
+function stateCreate()
+{
+	// trace(PlayState.CURRENT_LEVEL);
+
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'jujin-overdrive')
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		playerShader.hue = -23;
+		playerShader.saturation = 8;
+		playerShader.brightness = -2;
+
+		enemyShader.hue = playerShader.hue;
+		enemyShader.saturation = playerShader.saturation;
+		enemyShader.brightness = playerShader.brightness;
+
+		PlayState.instance.player.shader = playerShader;
+
+		PlayState.instance.onNewBullet = function(bullet:FlxSprite)
+		{
+			bullet.shader = playerShader;
+		}
+		PlayState.instance.onNewEnemy = function(enemy:FlxSprite)
+		{
+			enemy.shader = enemyShader;
+		}
+	}
+}

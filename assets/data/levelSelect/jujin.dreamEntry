@@ -1,9 +1,9 @@
 {
         "name": "Jujin",
 
-        "filenames": ["jujin"],
-        "difficulties": ["medium-hard"],
-        "variations": ["Default"],
-        "fileSuffixes": [null],
-        "filePrefixes": ["jujin/"]        
+        "filenames": ["jujin", "jujin"],
+        "difficulties": ["medium-hard", "hard"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, null],
+        "filePrefixes": ["jujin/", "jujin/overdrive/"]        
 }
