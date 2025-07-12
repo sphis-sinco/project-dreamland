@@ -4,5 +4,10 @@
                 "role": "Programmer, Artist, Animator",
                 "email": "sinconsistencia@gmail.com",
                 "url": "https://www.youtube.com/@sphis_sinco"
+        },
+        {
+                "name": "CoreCat",
+                "role": "Title text selection prevention code",
+                "url": "https://corecathx.github.io"
         }
 ]
