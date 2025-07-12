@@ -1,7 +1,7 @@
 {
         "name": "Hiku",
 
-        "filenames": ["hiku", "hiku"],
+        "filenames": ["hiku", "hiku-overdrive"],
         "difficulties": ["hard-ish", "difficult"],
         "variations": ["Default", "Overdrive"],
         "fileSuffixes": [null, null],
