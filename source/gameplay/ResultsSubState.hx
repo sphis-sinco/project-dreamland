@@ -12,7 +12,9 @@ class ResultsSubState extends FlxSubState
 	public var backdrop:FlxSprite;
 	public var player:FlxSprite;
 
-	public var highScoreText:FlxText = new FlxText();
+	public var scoreText:FlxText = new FlxText(0, 0, new Screen().width * 4, 'score: 0', 16);
+
+	public var TransitionComplete:Bool = false;
 
 	override public function new()
 	{
@@ -54,11 +56,15 @@ class ResultsSubState extends FlxSubState
 			ease: FlxEase.smoothStepInOut,
 			onComplete: tween ->
 			{
+				TransitionComplete = true;
 				player.setPosition(screenX, screen.y);
 				player.animation.play('anim');
 				player.visible = true;
 			}
 		});
+
+		scoreText.setPosition(80, 420);
+		add(scoreText);
 	}
 
 	override function create()
