@@ -42,6 +42,7 @@ class PreferencesMenu extends TextSelecting
 					lastSelection = 0;
 					previousCameraPosition = null;
 
+					PlayState.HIGHSCORE = false;
 					Global.NEW_HIGHSCORE = false;
 					Global.HIGHSCORE = 0;
 
