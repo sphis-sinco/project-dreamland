@@ -98,11 +98,8 @@ class LevelSelect extends FlxState
 		else if (key_down)
 		{
 			VARIATION_INDEX++;
-			if (VARIATION_INDEX > level_json.variations.length - 1)
-			{
-				VARIATION_INDEX--;
-			}
-			else
+
+			if (VARIATION_INDEX <= level_json.variations.length - 1)
 				Global.playSound('blip');
 			updateSelections();
 		}
@@ -126,14 +123,20 @@ class LevelSelect extends FlxState
 
 	function updateSelections()
 	{
-		difficulty.size = 32;
 		var filepath:String = (!levels[CURRENT_SELECTION].contains('levelSelect/')) ? 'levelSelect/' : '';
 		filepath += levels[CURRENT_SELECTION];
 		filepath += (!levels[CURRENT_SELECTION].endsWith('.dreamEntry')) ? '.dreamEntry' : '';
 
 		var filename:String = (!filepath.contains('data/levelSelect/')) ? FileManager.getDataFile(filepath) : filepath;
 		FlxG.log.add(filename);
+
 		level_json = Json.parse(FileManager.readFile(filename));
+
+		if (VARIATION_INDEX > level_json.variations.length - 1)
+			VARIATION_INDEX = level_json.variations.length - 1;
+
+		difficulty.size = 32;
+
 		difficulty.text = level_json.name + ' (${level_json.variations[VARIATION_INDEX]})' + ' - ' + level_json.difficulties[VARIATION_INDEX];
 		var bgpath = LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background');
 		TryCatch.tryCatch(() ->
