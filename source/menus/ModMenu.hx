@@ -174,7 +174,14 @@ class ModMenu extends FlxState
 
 					if (PolymodHandler.outdatedMods.contains(curModId))
 					{
-						outdatedText = ' %(Outdated)%';
+						var old_level_system_version = ModList.modMetadatas.get(curModId).apiVersion.major == 0
+							&& ModList.modMetadatas.get(curModId).apiVersion.major < 9;
+
+						outdatedText = ' \n%(Outdated';
+
+						if (old_level_system_version)
+							outdatedText += ', new levels added won\'t work';
+						outdatedText += ')%';
 					}
 
 					descriptionText.text = ModList.modMetadatas.get(curModId).description + "\nContributors: ";
