@@ -36,9 +36,9 @@ class LevelSelect extends FlxState
 		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 
-		level_json = LevelSelectEntryDataManager.defaultJSON;
+		level_json ??= LevelSelectEntryDataManager.defaultJSON;
 
-		level_sprite.loadGraphic(FileManager.getImageFile(level_json.filePrefixes[VARIATION_INDEX] ?? '' + 'background'));
+		level_sprite.loadGraphic(FileManager.getImageFile(LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background')));
 		level_sprite.scale.set(1.25, 1.25);
 		level_sprite.screenCenter();
 		add(level_sprite);
@@ -135,7 +135,7 @@ class LevelSelect extends FlxState
 		FlxG.log.add(filename);
 		level_json = Json.parse(FileManager.readFile(filename));
 		difficulty.text = level_json.name + ' (${level_json.variations[VARIATION_INDEX]})' + ' - ' + level_json.difficulties[VARIATION_INDEX];
-		var bgpath = level_json.filePrefixes[VARIATION_INDEX] ?? '' + 'background';
+		var bgpath = LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background');
 		TryCatch.tryCatch(() ->
 		{
 			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));
