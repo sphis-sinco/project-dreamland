@@ -25,12 +25,10 @@ function stateCreate()
 		PlayState.instance.onNewBullet = function(bullet:FlxSprite)
 		{
 			bullet.shader = playerShader;
-			trace(bullet.shader);
 		}
 		PlayState.instance.onNewEnemy = function(enemy:FlxSprite)
 		{
 			enemy.shader = enemyShader;
-			trace(enemy.shader);
 		}
 	}
 }
