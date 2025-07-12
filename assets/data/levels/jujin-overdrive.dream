@@ -5,9 +5,9 @@
 
         "player": "player-hiku",
 
-        "enemy_rare": "pore",
-        "enemy_easy": "haye",
-        "enemy_common": "kikin"
+        "enemy_rare": "bmix",
+        "enemy_easy": "nor",
+        "enemy_common": "grounew"
     },
     "settings": {
         "ammo": 4,
