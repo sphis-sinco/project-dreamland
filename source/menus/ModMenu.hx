@@ -195,8 +195,8 @@ class ModMenu extends FlxState
 						descriptionText.text += '${contributor.name} (${contributor.role})${i < len ? ', ' : ''}';
 					}
 
-					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + outdatedText + "\nMod Version: "
-						+ ModList.modMetadatas.get(curModId).modVersion + "\n";
+					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + outdatedText
+						+ "\nMod Version: " + ModList.modMetadatas.get(curModId).modVersion + "\n";
 					descriptionText.applyMarkup(descriptionText.text, [
 						new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.YELLOW, true, true), '%'),
 						new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.ORANGE, true, true), '$')

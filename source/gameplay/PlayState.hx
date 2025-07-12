@@ -114,7 +114,8 @@ class PlayState extends FlxState
 
 	function playerSetup()
 	{
-		player.loadGraphic(FileManager.getImageFile(player_json.path ?? 'player'), true, player_json.dimensions[0] ?? 32, player_json.dimensions[1] ?? 32);
+		player.loadGraphic(FileManager.getImageFile(player_json.path ?? 'player'), true, player_json.dimensions[0] ?? 32,
+			player_json.dimensions[1] ?? 32);
 
 		var i = 0;
 		for (animation in player_json.animations)
