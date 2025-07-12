@@ -8,6 +8,7 @@ class PlayState extends FlxState
 {
 	public static var CURRENT_LEVEL:String = 'earth';
 
+	public static var HIGHSCORE:Bool = false;
 	public static var SCORE:Int = 0;
 
 	public static var instance:PlayState = null;
@@ -36,6 +37,8 @@ class PlayState extends FlxState
 			new_leveldata = LevelDataManager.defaultJSON;
 
 		level_data = new_leveldata;
+
+		HIGHSCORE = false;
 	}
 
 	override public function create()
@@ -276,8 +279,12 @@ class PlayState extends FlxState
 					case 2:
 						SCORE += level_data.settings.scores.enemy_rare;
 				}
+
 				if (Global.HIGHSCORE < SCORE && score_text.color != FlxColor.LIME)
 				{
+					HIGHSCORE = true;
+					Global.HIGHSCORE = SCORE;
+
 					score_text.color = FlxColor.LIME;
 					Global.playSound('blip');
 				}

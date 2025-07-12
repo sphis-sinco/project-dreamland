@@ -1,9 +1,12 @@
 # 0.11.0 (7/12/2025)
 ## Added
+- `HIGHSCORE` variable to PlayState for scripts and for the results screen
 - **RESULTS SCREEN**
   - `resultsAssetName` field to player JSONS
 - **JUJIN (OVERDRIVE)**
 - **HIKU (OVERDRIVE)**
+## Fixed
+- Highscore not being tracked as new by `Global`
 ## Changed
 - Playstate variables `level_data` and `player_json` are public static variables, allowing for them to be easily used by scripts without needed to reference playstate's `instance` variable / singleton
 ## Removed

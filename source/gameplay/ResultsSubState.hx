@@ -12,6 +12,8 @@ class ResultsSubState extends FlxSubState
 
 	public var screen:Screen;
 	public var screen_pulse:Screen;
+	public var HIGHSCORE:Screen;
+
 	public var backdrop:FlxSprite;
 	public var player:FlxSprite;
 
@@ -92,6 +94,11 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.visible = false;
 		screen_pulse.alpha = 0.5;
 		// add(screen_pulse);
+
+		HIGHSCORE = new Screen(false, true);
+		HIGHSCORE.visible = false;
+		HIGHSCORE.scale.set(3.75, 3.75);
+		add(HIGHSCORE);
 	}
 
 	override function create()
@@ -107,6 +114,7 @@ class ResultsSubState extends FlxSubState
 		super.update(elapsed);
 
 		screen_pulse.setPosition(screen.x, screen.y);
+		HIGHSCORE.setPosition(screen.x, screen.y);
 		scoreText.text = 'score: $score';
 
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
@@ -141,5 +149,16 @@ class ResultsSubState extends FlxSubState
 	{
 		scoreText.color = FlxColor.YELLOW;
 		FlxTween.color(scoreText, 1, scoreText.color, FlxColor.WHITE);
+
+		if (PlayState.HIGHSCORE)
+		{
+			HIGHSCORE.visible = true;
+			FlxTween.tween(HIGHSCORE, {
+				'scale.x': 4,
+				'scale.y': 4,
+			}, .25, {
+				ease: FlxEase.bounceInOut
+			});
+		}
 	}
 }
