@@ -11,6 +11,8 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hell-overdrive')
 	{
+		if (!Save.getSavedataInfo(shaders)) return;
+
 		playerShader.hue = -12;
 		playerShader.saturation = -14;
 		playerShader.brightness = -26;

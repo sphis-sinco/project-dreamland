@@ -11,6 +11,8 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'earth-overdrive')
 	{
+		if (!Save.getSavedataInfo(shaders)) return;
+
 		playerShader.hue = 34;
 		playerShader.saturation = 20;
 		playerShader.brightness = -36;
