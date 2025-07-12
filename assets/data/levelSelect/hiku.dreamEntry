@@ -5,5 +5,5 @@
         "difficulties": ["hard-ish", "difficult"],
         "variations": ["Default", "Overdrive"],
         "fileSuffixes": [null, null],
-        "filePrefixes": ["hiku/", "hiku/overdrive"]        
+        "filePrefixes": ["hiku/", "hiku/overdrive/"]        
 }
