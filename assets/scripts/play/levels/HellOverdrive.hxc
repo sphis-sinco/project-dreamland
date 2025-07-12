@@ -2,7 +2,8 @@ import gameplay.PlayState;
 import shaders.AdjustColorShader;
 import shaders.MultiplyColorShader;
 
-var shader:AdjustColorShader = new AdjustColorShader();
+var playerShader:AdjustColorShader = new AdjustColorShader();
+var enemyShader:AdjustColorShader = new AdjustColorShader();
 
 function stateCreate()
 {
@@ -10,10 +11,23 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hell-overdrive')
 	{
-		shader.hue = -12;
-		shader.saturation = -14;
-		shader.brightness = -26;
+		playerShader.hue = -12;
+		playerShader.saturation = -14;
+		playerShader.brightness = -26;
 
-		PlayState.instance.player.shader = shader;
+		enemyShader.hue = -24;
+		enemyShader.saturation = -28;
+		enemyShader.brightness = -52
+
+		PlayState.instance.player.shader = playerShader;
+
+		PlayState.instance.onNewBullet = function(bullet:FlxSprite) {
+			bullet.shader = playerShader;
+			trace(bullet.shader);
+		}
+		PlayState.instance.onNewEnemy = function(enemy:FlxSprite) {
+			enemy.shader = enemyShader;
+			trace(enemy.shader);
+		}
 	}
 }
