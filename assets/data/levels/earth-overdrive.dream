@@ -1,0 +1,31 @@
+{
+    "name": "earth (overdrive)",
+    "difficulty": "hard",
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "",
+
+        "player": "player",
+
+        "enemy_rare": "enemy-rare-overdrive",
+        "enemy_easy": "enemy-easy-overdrive",
+        "enemy_common": "enemy-common-overdrive"
+    },
+    "settings": {
+        "ammo": 2,
+        "scores": {
+            "enemy_rare": 150,
+            "enemy_easy": 75,
+            "enemy_common": 50
+        },
+        "chances": {
+            "enemy_rare": 5,
+            "enemy_easy": 90
+        },
+        "speed_additions": {
+            "enemy_common": 4,
+            "enemy_easy": 2,
+            "enemy_rare": 10
+        }
+    }
+}
