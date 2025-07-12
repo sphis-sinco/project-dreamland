@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- `bullet` field to player JSON's
 - **OVERDRIVE VARIATIONS**
   - **EARTH (OVERDRIVE)**
 ## Removed
@@ -8,6 +9,7 @@
 - [Title texts on the controls menu are no longer selectable (#1)](https://github.com/sphis-sinco/project-dreamland/commit/789a2d443e676e029eb0c3bdba7b8b0bb1c093ca)
 - Crashes when the level data is blank
 ## Changed
+- Player JSON's now have more control over bullet information
 - Hiku's difficulty is now "hard-ish"
 - Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
 
