@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- Instruction text to the credits
 - Warning for outdated modds using the old level select level entry system
 - `bullet` field to player JSON's
 - **OVERDRIVE VARIATIONS**
