@@ -1,0 +1,9 @@
+{
+        "name": "Heaven",
+
+        "filenames": ["heaven"],
+        "difficulties": ["medium"],
+        "variations": ["Default"],
+        "fileSuffixes": [null],
+        "filePrefixes": ["heaven/"]        
+}

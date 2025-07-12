@@ -1,0 +1,9 @@
+{
+        "name": "Hiku",
+
+        "filenames": ["hiku"],
+        "difficulties": ["hard-ish"],
+        "variations": ["Default"],
+        "fileSuffixes": [null],
+        "filePrefixes": ["hiku/"]        
+}

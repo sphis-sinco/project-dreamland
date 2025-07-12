@@ -5,6 +5,7 @@
 ## Fixed
 - Crashes when the level data is blank
 ## Changed
+- Hiku's difficulty is now "hard-ish"
 - Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
 
 # 0.8.0 (7/11/2025)

@@ -1,0 +1,9 @@
+{
+        "name": "Jujin",
+
+        "filenames": ["jujin"],
+        "difficulties": ["medium-hard"],
+        "variations": ["Default"],
+        "fileSuffixes": [null],
+        "filePrefixes": ["jujin/"]        
+}

@@ -1,0 +1,9 @@
+{
+        "name": "Hell",
+
+        "filenames": ["hell"],
+        "difficulties": ["hard"],
+        "variations": ["Default"],
+        "fileSuffixes": [null],
+        "filePrefixes": ["hell/"]        
+}

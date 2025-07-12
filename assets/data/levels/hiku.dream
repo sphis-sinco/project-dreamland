@@ -1,6 +1,6 @@
 {
     "name": "hiku",
-    "difficulty": "hard",
+    "difficulty": "hard-ish",
     "author": "Sphis_Sinco",
     "assets": {
         "directory": "hiku/",
