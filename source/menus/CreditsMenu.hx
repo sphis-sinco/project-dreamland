@@ -39,7 +39,11 @@ class CreditsMenu extends TextSelecting
 			if (openEmail && openUrl)
 				urlEmailText = 'email and url';
 
-			texts.push(entry.name + entry.role != null ? ' (${entry.role})' : '' + ' (' + urlEmailText + ')');
+			final name = entry.name;
+			final role = entry.role != null ? ' (${entry.role})' : '';
+			final urlemail = ' (' + urlEmailText + ')';
+
+			texts.push('$name$role$urlemail');
 		}
 
 		enterKey = function()
