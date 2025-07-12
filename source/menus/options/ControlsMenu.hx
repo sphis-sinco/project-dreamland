@@ -127,7 +127,6 @@ class ControlsMenu extends TextSelecting
 			{
 				backKey();
 			}
-			// we overridin' super.controls();
 		}
 		else
 		{
@@ -150,7 +149,9 @@ class ControlsMenu extends TextSelecting
 
 	function changeSelection(add:Int = 0)
 	{
-		// skip texts that doesn't have control id, used for titles.
+		/**
+		 * skip texts that don't have control id, used for titles.
+		**/
 		var tempSelection:Int = CURRENT_SELECTION + add;
 		if (control_id.get(texts[tempSelection]) == null)
 		{

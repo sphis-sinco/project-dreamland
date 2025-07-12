@@ -112,7 +112,6 @@ class TextSelecting extends FlxState
 
 	function set_CURRENT_SELECTION(val:Int):Int
 	{
-		// bounding
 		return CURRENT_SELECTION = Std.int(FlxMath.bound(val, 0, texts.length - 1));
 	}
 }
