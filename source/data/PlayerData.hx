@@ -19,6 +19,7 @@ typedef PlayerData =
 			var size:Array<Int>;
 		}
 	var resultsAssetName:String;
+	var resultsFrameArray:Array<Int>;
 }
 
 class PlayerDataManager
@@ -58,6 +59,7 @@ class PlayerDataManager
 			"color": [255, 255, 0],
 			"size": [24, 24]
 		},
-		"resultsAssetName": "player"
+		"resultsAssetName": "player",
+		"resultsFrameArray": [0, 1, 2, 3, 4, 5]
 	};
 }

@@ -46,5 +46,6 @@
                 "color": [255, 255, 0, 255],
                 "size": [24, 24]
         },
-        "resultsAssetName": "player"
+        "resultsAssetName": "player",
+        "resultsFrameArray": [0,1,2,3,4,5]
 }
