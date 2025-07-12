@@ -3,24 +3,27 @@
     "assets": {
         "directory": "jujin/overdrive/",
 
+        "player": "player-hiku",
+
         "enemy_rare": "pore",
         "enemy_easy": "haye",
         "enemy_common": "kikin"
     },
     "settings": {
+        "ammo": 4,
         "scores": {
-            "enemy_rare": 125,
-            "enemy_easy": 10,
-            "enemy_common": 45
+            "enemy_rare": 150,
+            "enemy_easy": 35,
+            "enemy_common": 60
         },
         "chances": {
-            "enemy_rare": 5,
-            "enemy_easy": 95
+            "enemy_rare": 10,
+            "enemy_easy": 25
         },
         "speed_additions": {
-            "enemy_common": 3,
-            "enemy_easy": 6,
-            "enemy_rare": 10
+            "enemy_common": 5,
+            "enemy_easy": 17,
+            "enemy_rare": 20
         }
     }
 }

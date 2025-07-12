@@ -3,27 +3,27 @@
     "assets": {
         "directory": "hiku/overdrive/",
 
-        "player": "player-hiku",
+        "player": "player",
 
         "enemy_rare": "pnooly",
         "enemy_easy": "carem",
         "enemy_common": "loi"
     },
     "settings": {
-        "ammo": 4,
+        "ammo": 2,
         "scores": {
-            "enemy_rare": 150,
-            "enemy_easy": 30,
-            "enemy_common": 90
+            "enemy_rare": 175,
+            "enemy_easy": 50,
+            "enemy_common": 120
         },
         "chances": {
-            "enemy_rare": 1,
-            "enemy_easy": 25
+            "enemy_rare": 2,
+            "enemy_easy": 10
         },
         "speed_additions": {
-            "enemy_common": 5,
-            "enemy_easy": 8,
-            "enemy_rare": 10
+            "enemy_common": 20,
+            "enemy_easy": 15,
+            "enemy_rare": 25
         }
     }
 }
