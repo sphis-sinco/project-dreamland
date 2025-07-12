@@ -12,7 +12,7 @@ class ModList
 	public static function setModEnabled(mod:String, enabled:Bool):Void
 	{
 		modList.set(mod, enabled);
-		FlxG.save.data.modList = modList;
+		Save.save.data.modList = modList;
 		Save.flushData();
 	}
 
@@ -39,9 +39,9 @@ class ModList
 
 	public static function load():Void
 	{
-		if (FlxG.save.data.modList != null)
+		if (Save.save.data.modList != null)
 		{
-			modList = FlxG.save.data.modList;
+			modList = Save.save.data.modList;
 			trace(modList);
 		}
 	}
