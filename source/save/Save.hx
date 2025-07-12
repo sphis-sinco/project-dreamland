@@ -55,7 +55,6 @@ class Save
 		}
 		#end
 
-		FlxG.save.flush();
 		flushData();
 	}
 
@@ -98,7 +97,12 @@ class Save
 	}
 
 	public static function flushData()
+	{
 		save.flush();
+
+		FlxG.save.mergeData(save.data, true);
+		FlxG.save.flush();
+	}
 }
 
 typedef SaveData =
