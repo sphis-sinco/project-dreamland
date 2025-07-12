@@ -52,7 +52,6 @@ class ScriptManager
 		setScript('AdjustColorShader', AdjustColorShader);
 		setScript('MultiplyColorShader', MultiplyColorShader);
 
-		setScript('Save', Save);
 		setScript('getSavedataInfo', function(field:String):Dynamic
 		{
 			var finalfield:SaveKeys = null;
@@ -73,14 +72,6 @@ class ScriptManager
 
 			return Save.getSavedataInfo(finalfield);
 		});
-		setScript('SaveKeys', SaveKeys);
-
-		/**setScript('SaveKeys.savever', SaveKeys.savever);
-			setScript('SaveKeys.firsttime', SaveKeys.firsttime);
-			setScript('SaveKeys.firstTime', SaveKeys.firstTime);
-			setScript('SaveKeys.highscore', SaveKeys.highscore);
-			setScript('SaveKeys.controls', SaveKeys.controls);
-			setScript('SaveKeys.shaders', SaveKeys.shaders);**/
 
 		// init mod
 		ScriptManager.callScript('onCreate');
