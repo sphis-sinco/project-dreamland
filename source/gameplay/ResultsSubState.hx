@@ -21,6 +21,7 @@ class ResultsSubState extends FlxSubState
 	public var TransitionComplete:Bool = false;
 
 	public var blip:FlxSound = new FlxSound().loadEmbedded(FileManager.getSoundFile('sounds/blip-results'));
+	public var blip_finished:FlxSound = new FlxSound().loadEmbedded(FileManager.getSoundFile('sounds/blip-results-finished'));
 
 	override public function new()
 	{
@@ -113,9 +114,6 @@ class ResultsSubState extends FlxSubState
 			var prevScore = score;
 			score = Std.int(FlxMath.lerp(score, PlayState.SCORE, scoreLerpVal));
 
-			if (score != prevScore)
-				blip.play(true);
-
 			scoreLerpVal = scoreLerpVal * 1.05;
 			scoreLerpVal = FlxMath.bound(scoreLerpVal, scoreLerpVal, 1.0);
 
@@ -123,6 +121,14 @@ class ResultsSubState extends FlxSubState
 
 			if (lerpComplete)
 				lerpCompleteFlash();
+
+			if (score != prevScore)
+			{
+				if (!lerpComplete)
+					blip.play(true);
+				if (lerpComplete)
+					blip_finished.play(true);
+			}
 		}
 
 		if (Controls.UI_SELECT && lerpComplete)
