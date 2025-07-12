@@ -2,8 +2,6 @@ package data;
 
 typedef LevelData =
 {
-	var name:String;
-	var difficulty:String;
 	var ?author:String;
 	var ?assets:LevelDataAssetsInfo;
 	var ?settings:LevelDataSettings;
@@ -51,8 +49,6 @@ typedef LDSSpeeds =
 class LevelDataManager
 {
 	public static var defaultJSON:LevelData = {
-		"name": "the original earth i think",
-		"difficulty": "medium",
 		"author": "Sphis_Sinco",
 		"assets": {
 			"directory": "",

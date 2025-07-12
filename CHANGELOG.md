@@ -2,6 +2,8 @@
 ## Added
 - **OVERDRIVE VARIATIONS**
   - **EARTH (OVERDRIVE)**
+## Removed
+- `name` and `difficulty` fields from ".dream" files
 ## Fixed
 - Crashes when the level data is blank
 ## Changed
