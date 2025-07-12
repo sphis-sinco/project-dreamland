@@ -14,6 +14,8 @@ class CreditsMenu extends TextSelecting
 {
 	public var creditsJSON:Array<CreditsEntry> = [];
 
+	public var instructionText:FlxText = new FlxText(10, 10, FlxG.width);
+
 	override public function new()
 	{
 		super();
@@ -78,5 +80,14 @@ class CreditsMenu extends TextSelecting
 
 		for (text in text_group)
 			text.size = 16;
+
+		instructionText.text = '(${Controls.getKey('gameplay_move_up')}/${Controls.getKey('gameplay_move_up_alt')})'
+			+ '/(${Controls.getKey('gameplay_move_down')}/${Controls.getKey('gameplay_move_down_alt')}) '
+			+ 'to navigate, '
+			+ '${Controls.getKey('ui_select')}'
+			+ ' to go to their url/email. ${Controls.getKey('ui_select')} + SHIFT to go to the email if both are availible';
+		instructionText.size = 16;
+		instructionText.scrollFactor.set(0, 0);
+		add(instructionText);
 	}
 }
