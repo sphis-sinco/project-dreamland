@@ -5,9 +5,9 @@
 
         "player": "player",
 
-        "enemy_rare": "pnooly",
-        "enemy_easy": "carem",
-        "enemy_common": "loi"
+        "enemy_rare": "mearin",
+        "enemy_easy": "sernch",
+        "enemy_common": "twen"
     },
     "settings": {
         "ammo": 2,
@@ -17,7 +17,7 @@
             "enemy_common": 120
         },
         "chances": {
-            "enemy_rare": 2,
+            "enemy_rare": 0.001,
             "enemy_easy": 10
         },
         "speed_additions": {
