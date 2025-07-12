@@ -1,9 +1,9 @@
 {
         "name": "Hell",
 
-        "filenames": ["hell"],
-        "difficulties": ["hard"],
-        "variations": ["Default"],
-        "fileSuffixes": [null],
-        "filePrefixes": ["hell/"]        
+        "filenames": ["hell","hell-overdrive"],
+        "difficulties": ["hard", "hard"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, null],
+        "filePrefixes": ["hell/", "hell-overdrive/"]        
 }
