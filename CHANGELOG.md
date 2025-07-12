@@ -1,4 +1,9 @@
 # 0.9.0 (7/12/2025)
+## Added
+- **OVERDRIVE VARIATIONS**
+  - **EARTH (OVERDRIVE)**
+## Changed
+- Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
 
 # 0.8.0 (7/11/2025)
 ## Added
