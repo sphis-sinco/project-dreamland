@@ -77,7 +77,7 @@ class ResultsSubState extends FlxSubState
 
 		screen_pulse.visible = false;
 		screen_pulse.alpha = 0.5;
-		add(screen_pulse);
+		// add(screen_pulse);
 	}
 
 	override function create()
