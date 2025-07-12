@@ -23,8 +23,8 @@
             "enemy_easy": 90
         },
         "speed_additions": {
-            "enemy_common": 4,
-            "enemy_easy": 2,
+            "enemy_common": 7,
+            "enemy_easy": 5,
             "enemy_rare": 10
         }
     }
