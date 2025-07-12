@@ -24,7 +24,22 @@ class CreditsMenu extends TextSelecting
 		texts = [];
 		for (entry in creditsJSON)
 		{
-			texts.push('${entry.name}${entry.role != null ? ' (${entry.role})' : ''}');
+			final email = creditsJSON[CURRENT_SELECTION].email;
+			final url = creditsJSON[CURRENT_SELECTION].url;
+
+			final openUrl = url != null;
+			final openEmail = email != null;
+
+			var urlEmailText = 'no email or url';
+
+			if (openEmail && !openUrl)
+				urlEmailText = 'email, no url';
+			if (!openEmail && openUrl)
+				urlEmailText = 'url, no email';
+			if (openEmail && openUrl)
+				urlEmailText = 'email and url';
+
+			texts.push(entry.name + entry.role != null ? ' (${entry.role})' : '' + ' (' + urlEmailText + ')');
 		}
 
 		enterKey = function()
