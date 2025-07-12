@@ -5,5 +5,5 @@
         "difficulties": ["hard", "hard"],
         "variations": ["Default", "Overdrive"],
         "fileSuffixes": [null, null],
-        "filePrefixes": ["hell/", "hell-overdrive/"]        
+        "filePrefixes": ["hell/", "hell/overdrive/"]        
 }

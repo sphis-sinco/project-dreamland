@@ -1,7 +1,7 @@
 {
     "author": "Sphis_Sinco",
     "assets": {
-        "directory": "hell-overdrive/",
+        "directory": "hell/overdrive/",
 
         "enemy_rare": "enemy-rare",
         "enemy_easy": "enemy-easy",
