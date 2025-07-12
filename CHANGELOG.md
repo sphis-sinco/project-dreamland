@@ -1,5 +1,7 @@
 # 0.10.0 (7/12/2025)
 ## Added
+- Shaders option to the Preferences menu
+- Preferences menu to the options menu
 - **HEAVEN (OVERDRIVE)**
 ## Changed
 - Re-exported earth enemies
