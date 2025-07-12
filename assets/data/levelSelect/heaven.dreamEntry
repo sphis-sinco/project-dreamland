@@ -1,9 +1,9 @@
 {
         "name": "Heaven",
 
-        "filenames": ["heaven"],
-        "difficulties": ["medium"],
-        "variations": ["Default"],
-        "fileSuffixes": [null],
-        "filePrefixes": ["heaven/"]        
+        "filenames": ["heaven", "heaven-overdrive"],
+        "difficulties": ["medium", "hard"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, null],
+        "filePrefixes": ["heaven/","heaven/overdrive/"]        
 }
