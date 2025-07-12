@@ -3,9 +3,9 @@
     "difficulty": "hard",
     "author": "Sphis_Sinco",
     "assets": {
-        "directory": "",
+        "directory": "earth-overdrive/",
 
-        "player": "player",
+        "player": "player-underwater",
 
         "enemy_rare": "enemy-rare-overdrive",
         "enemy_easy": "enemy-easy-overdrive",

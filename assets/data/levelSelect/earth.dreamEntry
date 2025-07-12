@@ -4,6 +4,6 @@
         "filenames": ["earth","earth"],
         "difficulties": ["easy-ish", "hard"],
         "variations": ["Default", "Overdrive"],
-        "fileSuffixes": [null, "-overdrive"],
-        "filePrefixes": [null, null]        
+        "fileSuffixes": [null, null],
+        "filePrefixes": [null, "earth-overdrive/"]        
 }
