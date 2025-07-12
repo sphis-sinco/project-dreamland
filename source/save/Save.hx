@@ -79,7 +79,7 @@ class Save
 		return null;
 	}
 
-	public static function setSavedataInfo(field:SaveKeys, newval:Dynamic)
+	public static function setSavedataInfo(field:SaveKeys, newval:Dynamic, ?flush:Bool = true)
 	{
 		switch (field)
 		{
@@ -95,11 +95,18 @@ class Save
 				save.data.savedata.shaders = newval;
 		}
 
-		flushData();
+		if (flush)
+			flushData();
 	}
 
 	public static function flushData()
+	{
+		setSavedataInfo(savever, SAVEDATA_VERSION, false);
+		setSavedataInfo(highscore, Global.HIGHSCORE, false);
+		setSavedataInfo(controls, Controls.getControlMap(), false);
+		setSavedataInfo(shaders, getSavedataInfo(shaders), false);
 		save.flush();
+	}
 }
 
 typedef SaveData =
