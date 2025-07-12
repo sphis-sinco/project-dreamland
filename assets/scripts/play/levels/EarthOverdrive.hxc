@@ -9,15 +9,15 @@ function stateCreate()
 {
 	// trace(PlayState.CURRENT_LEVEL);
 
-	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hell-overdrive')
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'earth-overdrive')
 	{
-		playerShader.hue = -12;
-		playerShader.saturation = -14;
-		playerShader.brightness = -26;
+		playerShader.hue = 34;
+		playerShader.saturation = 20;
+		playerShader.brightness = -36;
 
-		enemyShader.hue = playerShader.hue * 2;
-		enemyShader.saturation = playerShader.saturation * 2;
-		enemyShader.brightness = playerShader.brightness * 2;
+		enemyShader.hue = playerShader.hue;
+		enemyShader.saturation = playerShader.saturation;
+		enemyShader.brightness = playerShader.brightness;
 
 		PlayState.instance.player.shader = playerShader;
 
