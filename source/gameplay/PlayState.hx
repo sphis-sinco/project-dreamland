@@ -289,7 +289,9 @@ class PlayState extends FlxState
 	function newBullet():FlxSprite
 	{
 		var new_bullet:FlxSprite = new FlxSprite();
-		new_bullet.makeGraphic(24, 24, FlxColor.YELLOW);
+		new_bullet.makeGraphic(player_json.bullet.size[0] ?? 24, player_json.bullet.size[1] ?? 24,
+			FlxColor.fromRGB(player_json.bullet.color[0] ?? 255, player_json.bullet.color[1] ?? 255, player_json.bullet.color[2] ?? 0,
+				player_json.bullet.color[3] ?? 255));
 		new_bullet.setPosition(player.x, player.y);
 
 		return new_bullet;
