@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- Multiply Color Shader
 - Adjust Color Shader
 - Display to the credits if the email or url are availible
 - Instruction text to the credits

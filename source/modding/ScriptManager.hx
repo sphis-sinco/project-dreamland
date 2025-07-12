@@ -2,6 +2,7 @@ package modding;
 
 import crowplexus.iris.Iris;
 import shaders.AdjustColorShader;
+import shaders.MultiplyColorShader;
 
 // THANK YOU FNF-Doido-Engine
 class ScriptManager
@@ -45,6 +46,7 @@ class ScriptManager
 		setScript('FileManager', FileManager);
 
 		setScript('AdjustColorShader', AdjustColorShader);
+		setScript('MultiplyColorShader', MultiplyColorShader);
 
 		// init mod
 		ScriptManager.callScript('onCreate');
