@@ -46,8 +46,12 @@ class PreferencesMenu extends TextSelecting
 					Global.HIGHSCORE = 0;
 					PlayState.HIGHSCORE = false;
 					PlayState.SCORE = 0;
-					FlxG.save.erase();
+					FlxG.save.destroy();
+
 					FlxG.save.bind('dreamland', Application.current.meta.get('company'));
+					FlxG.save.erase();
+					FlxG.save.flush();
+
 					FlxG.resetGame();
 			}
 

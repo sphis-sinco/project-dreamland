@@ -52,6 +52,7 @@ class Save
 		}
 		#end
 
+		FlxG.save.flush();
 		flushData();
 	}
 
