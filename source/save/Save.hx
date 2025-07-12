@@ -94,6 +94,8 @@ class Save
 			case shaders:
 				save.data.savedata.shaders = newval;
 		}
+
+		flushData();
 	}
 
 	public static function flushData()

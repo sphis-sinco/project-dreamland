@@ -8,6 +8,7 @@
 - **HIKU (OVERDRIVE)**
 - `InitState` (this allows for compiler flags!)
 ## Changed
+- The save class now saves the save on every change
 - Playstate variables `level_data` and `player_json` are public static variables, allowing for them to be easily used by scripts without needed to reference playstate's `instance` variable / singleton
 ## Removed
 - ":" from Outdated text in the mod menu (properly)
