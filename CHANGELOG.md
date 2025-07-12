@@ -1,14 +1,17 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- New PlayState functions for scripts:
+  - `onNewEnemy(enemy:FlxSprite)`
+  - `onNewBullet(bullet:FlxSprite)`
+- **OVERDRIVE VARIATIONS**
+  - **EARTH (OVERDRIVE)**
+  - **HELL (OVERDRIVE)**
 - Multiply Color Shader
 - Adjust Color Shader
 - Display to the credits if the email or url are availible
 - Instruction text to the credits
 - Warning for outdated modds using the old level select level entry system
 - `bullet` field to player JSON's
-- **OVERDRIVE VARIATIONS**
-  - **EARTH (OVERDRIVE)**
-  - **HELL (OVERDRIVE)**
 ## Removed
 - `name` and `difficulty` fields from ".dream" files
 ## Fixed

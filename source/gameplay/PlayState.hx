@@ -149,6 +149,7 @@ class PlayState extends FlxState
 		if (FlxG.random.int(0, 20) == 10)
 		{
 			var new_enemy:FlxSprite = newEnemy();
+			onNewEnemy(new_enemy);
 			enemies_group.add(new_enemy);
 		}
 
@@ -178,9 +179,12 @@ class PlayState extends FlxState
 		if (key_shoot && bullets_group.members.length != bullets_max_onscreen)
 		{
 			Global.playSound('shoot' + FlxG.random.int(1, 3));
+
 			var new_bullet:FlxSprite = newBullet();
+			onNewBullet(new_bullet);
 			player.animation.play('shoot-a${bullets_max_onscreen - bullets_group.members.length}');
 			bullets_group.add(new_bullet);
+
 			if (Save.getSavedataInfo(firsttime))
 			{
 				Save.setSavedataInfo(firsttime, false);
@@ -324,4 +328,8 @@ class PlayState extends FlxState
 
 		return new_enemy;
 	}
+
+	public dynamic function onNewEnemy(enemy:FlxSprite) {}
+
+	public dynamic function onNewBullet(bullet:FlxSprite) {}
 }
