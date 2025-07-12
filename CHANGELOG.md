@@ -2,6 +2,7 @@
 ## Added
 - **HEAVEN (OVERDRIVE)**
 ## Changed
+- Re-exported hell enemies
 - Re-exported heaven enemies
 
 # 0.9.0 (7/12/2025)
