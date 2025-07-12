@@ -65,7 +65,8 @@ class Compiler
 
 		try
 		{
-			final json:Array<Library> = Json.parse(File.getContent('./${haxe.macro.Compiler.getDefine('LIBFILENAME') ?? 'hmm'}.json')).dependencies;
+			final json:Array<Library> = Json.parse(File.getContent('./${haxe.macro.Compiler.getDefine('LIBFILENAME') ?? 'hmm'}.json'))
+				.dependencies;
 
 			for (lib in json)
 			{
