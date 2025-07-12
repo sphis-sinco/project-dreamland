@@ -47,7 +47,7 @@ class Save
 			save.data.savedata.shaders ??= true;
 		}
 
-		trace(save.data.savedata.controls);
+		trace(save.data.savedata);
 		Controls.loadControlSave();
 
 		flushData();

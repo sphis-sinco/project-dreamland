@@ -9,8 +9,6 @@ class OptionsMenuMain extends TextSelecting
 
 	public var optionMenuDestinations:Map<String, NextState> = [];
 
-	public var currentSelection:Int = 0;
-
 	public function newOptionMenu(name:String, destination:NextState)
 	{
 		texts.push(name);
@@ -23,6 +21,7 @@ class OptionsMenuMain extends TextSelecting
 
 		texts = [];
 		newOptionMenu('Controls Menu', () -> new ControlsMenu());
+		newOptionMenu('Preferences Menu', () -> new PreferencesMenu());
 	}
 
 	override function create()
@@ -41,6 +40,6 @@ class OptionsMenuMain extends TextSelecting
 	override function enterKey()
 	{
 		instance = null;
-		FlxG.switchState(optionMenuDestinations.get(texts[currentSelection]));
+		FlxG.switchState(optionMenuDestinations.get(texts[CURRENT_SELECTION]));
 	}
 }
