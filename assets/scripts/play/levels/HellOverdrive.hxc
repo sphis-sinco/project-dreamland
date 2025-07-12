@@ -1,6 +1,7 @@
 import flixel.FlxSprite;
 import gameplay.PlayState;
 import shaders.AdjustColorShader;
+import save.Save;
 
 var playerShader:AdjustColorShader = new AdjustColorShader();
 var enemyShader:AdjustColorShader = new AdjustColorShader();
@@ -11,7 +12,7 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hell-overdrive')
 	{
-		if (!Save.getSavedataInfo(shaders)) return;
+		if (!getSavedataInfo('shaders')) return;
 
 		playerShader.hue = -12;
 		playerShader.saturation = -14;

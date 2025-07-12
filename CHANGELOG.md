@@ -1,8 +1,9 @@
 # 0.10.0 (7/12/2025)
 ## Added
+- **HEAVEN (OVERDRIVE)**
+- Save classes to scripts
 - Shaders option to the Preferences menu
 - Preferences menu to the options menu
-- **HEAVEN (OVERDRIVE)**
 ## Changed
 - Re-exported earth enemies
 - Re-exported hell enemies

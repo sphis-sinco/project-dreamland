@@ -1,5 +1,6 @@
 import flixel.FlxSprite;
 import gameplay.PlayState;
+import save.Save;
 import shaders.AdjustColorShader;
 
 var playerShader:AdjustColorShader = new AdjustColorShader();
@@ -11,7 +12,8 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'earth-overdrive')
 	{
-		if (!Save.getSavedataInfo(shaders)) return;
+		if (!getSavedataInfo('shaders'))
+			return;
 
 		playerShader.hue = 34;
 		playerShader.saturation = 20;
