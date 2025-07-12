@@ -1,4 +1,9 @@
 # 0.11.0 (7/12/2025)
+## Added
+- **JUJIN (OVERDRIVE)**
+- **HIKU (OVERDRIVE)**
+## Removed
+- ":" from Outdated text in the mod menu (properly)
 
 # 0.10.0 (7/12/2025)
 ## Added
