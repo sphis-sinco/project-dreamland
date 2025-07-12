@@ -1,6 +1,5 @@
 # 0.11.0 (7/12/2025)
 ## Added
-- "Save clear" option
 - **RESULTS SCREEN**
   - `resultsAssetName` field to player JSONS
   - `HIGHSCORE` variable to PlayState for scripts and for the results screen

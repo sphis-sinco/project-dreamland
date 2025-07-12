@@ -25,7 +25,7 @@ class PreferencesMenu extends TextSelecting
 		texts = [];
 
 		newPref('shaders', 'Shaders', Save.getSavedataInfo(shaders));
-		newPref('save-clear', 'Save clear', null);
+		// newPref('save-clear', 'Save clear', null);
 
 		enterKey = function()
 		{
