@@ -15,12 +15,12 @@ function stateCreate()
 		if (!getSavedataInfo('shaders'))
 			return;
 
-		playerShader.hue = -23;
-		playerShader.saturation = 8;
-		playerShader.brightness = -2;
+		playerShader.hue = 50;
+		playerShader.saturation = -75;
+		playerShader.brightness = -25;
 
 		enemyShader.hue = playerShader.hue;
-		enemyShader.saturation = playerShader.saturation;
+		enemyShader.saturation = -25;
 		enemyShader.brightness = playerShader.brightness;
 
 		PlayState.instance.player.shader = playerShader;
