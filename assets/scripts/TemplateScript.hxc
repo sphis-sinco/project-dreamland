@@ -2,8 +2,8 @@ function onLoad():Void {}
 function onCreate():Void {}
 
 // EVERY STATE
-function stateCreate():String {}
-function stateUpdate(elapsed:Float):String {}
+function stateCreate() {}
+function stateUpdate(elapsed:Float) {}
 
 // Check outdated
 function setGitUser():String {}

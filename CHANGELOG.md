@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- Adjust Color Shader
 - Display to the credits if the email or url are availible
 - Instruction text to the credits
 - Warning for outdated modds using the old level select level entry system
@@ -10,6 +11,7 @@
 ## Removed
 - `name` and `difficulty` fields from ".dream" files
 ## Fixed
+- Template script no longer has `stateCreate` and `stateUpdate` as functions returning a string
 - [Title texts on the controls menu are no longer selectable (#1)](https://github.com/sphis-sinco/project-dreamland/commit/789a2d443e676e029eb0c3bdba7b8b0bb1c093ca)
 - Crashes when the level data is blank
 ## Changed
