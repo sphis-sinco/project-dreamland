@@ -1,0 +1,9 @@
+{
+        "name": "Example",
+
+        "filenames": ["example"],
+        "difficulties": ["impossible"],
+        "variations": ["Default"],
+        "fileSuffixes": [null],
+        "filePrefixes": [null]        
+}
