@@ -21,7 +21,7 @@ class MenuState extends FlxState
 		add(menuText);
 
 		Global.set_HIGHSCORE();
-		highscoreText.text = 'Highscore: ${Global.HIGHSCORE}${(Global.NEW_HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
+		highscoreText.text = 'Highscore: ${Global.HIGHSCORE}${(PlayState.HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
 		highscoreText.color = (Global.NEW_HIGHSCORE) ? 0x00ff00 : 0xffffff;
 		add(highscoreText);
 

@@ -6,19 +6,16 @@ import modding.PolymodHandler;
 
 class Save
 {
-	public static var save:FlxSave;
-
 	public static final SAVEDATA_VERSION:Int = 6;
 
 	public static function initalize()
 	{
-		save = new FlxSave();
-		save.bind('dreamland', Application.current.meta.get('company'));
+		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
 
-		if (save.data.savedata == null)
+		if (FlxG.save.data.savedata == null)
 		{
 			trace('SAVEDATA IS NULL. SETTING TO A COMPLETELY NEW SAVE.');
-			save.data.savedata = {
+			FlxG.save.data.savedata = {
 				saveVer: SAVEDATA_VERSION,
 				firstTime: true,
 				highscore: 0,
@@ -28,27 +25,27 @@ class Save
 		}
 		else
 		{
-			save.data.savedata.saveVer ??= SAVEDATA_VERSION;
-			save.data.savedata.firstTime ??= true;
-			save.data.savedata.highscore ??= 0;
-			save.data.savedata.controls ??= Controls.defaultControls;
-			save.data.savedata.shaders ??= true;
+			FlxG.save.data.savedata.saveVer ??= SAVEDATA_VERSION;
+			FlxG.save.data.savedata.firstTime ??= true;
+			FlxG.save.data.savedata.highscore ??= 0;
+			FlxG.save.data.savedata.controls ??= Controls.defaultControls;
+			FlxG.save.data.savedata.shaders ??= true;
 		}
 
-		trace(save.data.savedata);
+		trace(FlxG.save.data.savedata);
 		Controls.loadControlSave();
 
 		#if polymod
-		if (save.data.modList != null)
+		if (FlxG.save.data.modList != null)
 		{
-			trace(save.data.modList);
+			trace(FlxG.save.data.modList);
 			for (mod in PolymodHandler.metadataArrays)
 			{
 				TryCatch.tryCatch(() ->
 				{
 					trace(mod);
 
-					if (save.data.modlist.exists(mod))
+					if (FlxG.save.data.modlist.exists(mod))
 						ModList.setModEnabled(mod, true);
 				});
 			}
@@ -60,7 +57,7 @@ class Save
 
 	public static function getSavedataInfo(field:SaveKeys):Dynamic
 	{
-		var saveD:SaveData = save.data.savedata;
+		var saveD:SaveData = FlxG.save.data.savedata;
 
 		switch (field)
 		{
@@ -79,25 +76,36 @@ class Save
 		return null;
 	}
 
-	public static function setSavedataInfo(field:SaveKeys, newval:Dynamic)
+	public static function setSavedataInfo(field:SaveKeys, newval:Dynamic, ?flush:Bool = true)
 	{
 		switch (field)
 		{
 			case savever:
-				save.data.savedata.saveVer = newval;
+				FlxG.save.data.savedata.saveVer = newval;
 			case firsttime, firstTime:
-				save.data.savedata.firstTime = newval;
+				FlxG.save.data.savedata.firstTime = newval;
 			case highscore:
-				save.data.savedata.highscore = newval;
+				FlxG.save.data.savedata.highscore = newval;
 			case controls:
-				save.data.savedata.controls = newval;
+				FlxG.save.data.savedata.controls = newval;
 			case shaders:
-				save.data.savedata.shaders = newval;
+				FlxG.save.data.savedata.shaders = newval;
 		}
+
+		if (flush)
+			flushData();
 	}
 
 	public static function flushData()
-		save.flush();
+	{
+		setSavedataInfo(savever, SAVEDATA_VERSION, false);
+		setSavedataInfo(highscore, getSavedataInfo(highscore), false);
+		setSavedataInfo(controls, getSavedataInfo(controls), false);
+		setSavedataInfo(shaders, getSavedataInfo(shaders), false);
+
+		trace('SAVE PLEASE');
+		FlxG.save.flush();
+	}
 }
 
 typedef SaveData =
