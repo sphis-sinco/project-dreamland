@@ -109,6 +109,19 @@ class FlxState extends FlxContainer
 	override function update(elapsed:Float):Void
 	{
 		super.update(elapsed);
+
+		if (FlxG.keys.justReleased.R)
+		{
+			if (!FlxG.keys.pressed.CONTROL)
+				return;
+			if (!FlxG.keys.pressed.SHIFT)
+				return;
+
+			PolymodHandler.loadMods();
+			ScriptManager.loadScripts();
+			FlxG.resetState();
+		}
+
 		ScriptManager.callScript('stateUpdate', [elapsed]);
 	}
 

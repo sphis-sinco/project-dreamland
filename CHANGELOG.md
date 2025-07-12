@@ -1,5 +1,6 @@
 # 0.9.0 (7/12/2025)
 ## Added
+- `Ctrl+Shift+R` keybind to reset the state, reload scripts, and reload mods
 - New PlayState functions for scripts:
   - `onNewEnemy(enemy:FlxSprite)`
   - `onNewBullet(bullet:FlxSprite)`
