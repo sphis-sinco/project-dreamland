@@ -31,6 +31,8 @@ class LevelSelectEntryDataManager
 		var prefix = json.filePrefixes[index] ?? '';
 		var suffix = json.fileSuffixes[index] ?? '';
 
-		return prefix + filename + suffix;
+		var results = prefix + filename + suffix;
+		trace(results);
+		return results;
 	}
 }
