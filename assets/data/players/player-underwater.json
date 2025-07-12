@@ -12,20 +12,14 @@
                         "looping": false
                 },
                 {
-                        "name": "shoot-a2",
+                        "name": "shoot-a1",
                         "frames": [1,2],
                         "fps": 4,
                         "looping": false
                 },
                 {
-                        "name": "shoot-a1",
-                        "frames": [2,3],
-                        "fps": 4,
-                        "looping": false
-                },
-                {
                         "name": "shoot-a0",
-                        "frames": [3,3],
+                        "frames": [2,2],
                         "fps": 4,
                         "looping": false
                 }

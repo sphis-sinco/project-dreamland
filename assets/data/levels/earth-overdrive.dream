@@ -10,7 +10,7 @@
         "enemy_common": "enemy-common-overdrive"
     },
     "settings": {
-        "ammo": 2,
+        "ammo": 1,
         "scores": {
             "enemy_rare": 150,
             "enemy_easy": 75,
