@@ -26,7 +26,6 @@ class ControlsMenu extends TextSelecting
 		texts = [];
 
 		newControl('// GAMEPLAY CONTROLS \\\\', null);
-		CURRENT_SELECTION = 1;
 
 		newControl('Gameplay Shoot', 'gameplay_shoot');
 
@@ -52,6 +51,8 @@ class ControlsMenu extends TextSelecting
 
 		newControl('UI Select', 'ui_select');
 		newControl('UI Leave', 'ui_leave');
+
+		CURRENT_SELECTION = 1;
 
 		backKey = function()
 		{
@@ -110,7 +111,23 @@ class ControlsMenu extends TextSelecting
 	{
 		if (!buttonRemapping)
 		{
-			super.controls();
+			if (key_up)
+			{
+				changeSelection(-1);
+			}
+			else if (key_down)
+			{
+				changeSelection(1);
+			}
+			else if (key_enter)
+			{
+				enterKey();
+			}
+			else if (key_back)
+			{
+				backKey();
+			}
+			// we overridin' super.controls();
 		}
 		else
 		{
@@ -129,5 +146,23 @@ class ControlsMenu extends TextSelecting
 				}
 			}
 		}
+	}
+
+	function changeSelection(add:Int = 0)
+	{
+		// skip texts that doesn't have control id, used for titles.
+		var tempSelection:Int = CURRENT_SELECTION + add;
+		if (control_id.get(texts[tempSelection]) == null)
+		{
+			if (tempSelection + add < 0 || tempSelection + add > texts.length - 1)
+				return;
+			else
+			{
+				CURRENT_SELECTION = tempSelection;
+				changeSelection(add);
+				return;
+			}
+		}
+		CURRENT_SELECTION += add;
 	}
 }
