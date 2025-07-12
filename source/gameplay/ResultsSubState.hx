@@ -9,6 +9,7 @@ class ResultsSubState extends FlxSubState
 	public static var instance:ResultsSubState = null;
 
 	public var screen:Screen;
+	public var screen_pulse:Screen;
 	public var backdrop:FlxSprite;
 	public var player:FlxSprite;
 
@@ -44,8 +45,11 @@ class ResultsSubState extends FlxSubState
 		player.scale.set(4, 4);
 		add(player);
 
-		screen = new Screen();
+		screen = new Screen(false);
 		screen.screenCenter();
+
+		screen_pulse = new Screen(true);
+		screen_pulse.screenCenter();
 
 		var screenX = screen.x;
 		screen.x = -(screen.width * 4);
@@ -57,14 +61,23 @@ class ResultsSubState extends FlxSubState
 			onComplete: tween ->
 			{
 				TransitionComplete = true;
+
 				player.setPosition(screenX, screen.y);
 				player.animation.play('anim');
 				player.visible = true;
+
+				screen_pulse.visible = true;
+				scoreText.visible = true;
 			}
 		});
 
 		scoreText.setPosition(80, 420);
+		scoreText.visible = false;
 		add(scoreText);
+
+		screen_pulse.visible = false;
+		screen_pulse.alpha = 0.5;
+		add(screen_pulse);
 	}
 
 	override function create()
@@ -75,5 +88,7 @@ class ResultsSubState extends FlxSubState
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		screen_pulse.setPosition(screen.x, screen.y);
 	}
 }
