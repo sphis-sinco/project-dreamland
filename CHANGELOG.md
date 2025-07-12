@@ -4,6 +4,10 @@
 - `getSavedataInfo` function to scripts
 - Shaders option to the Preferences menu
 - Preferences menu to the options menu
+## Removed
+- ":" from Outdated text in the mod menu
+## Fixed
+- Mod menu not properly detecting of a mod's api version is less then 0.9.0
 ## Changed
 - Re-exported earth enemies
 - Re-exported hell enemies
