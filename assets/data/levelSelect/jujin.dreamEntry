@@ -2,7 +2,7 @@
         "name": "Jujin",
 
         "filenames": ["jujin", "jujin-overdrive"],
-        "difficulties": ["medium-hard", "hard"],
+        "difficulties": ["medium-hard", "hard-er"],
         "variations": ["Default", "Overdrive"],
         "fileSuffixes": [null, null],
         "filePrefixes": ["jujin/", "jujin/overdrive/"]        
