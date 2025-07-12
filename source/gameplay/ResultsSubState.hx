@@ -113,8 +113,8 @@ class ResultsSubState extends FlxSubState
 	{
 		super.update(elapsed);
 
-		screen_pulse.setPosition(screen.x, screen.y);
-		HIGHSCORE.setPosition(screen.x, screen.y);
+		screen_pulse.screenCenter();
+		HIGHSCORE.screenCenter();
 		scoreText.text = 'score: $score';
 
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
