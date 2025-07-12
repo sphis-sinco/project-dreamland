@@ -5,9 +5,9 @@
 	"[haxe]": {
 		"editor.formatOnSave": true,
 		"editor.formatOnSaveMode":"file",
-		"editor.formatOnPaste": false,
+		"editor.formatOnPaste": true,
 		"editor.codeActionsOnSave": {
-			"source.sortImports": "explicit"
+			"source.sortImports": "always"
 		}
 	},
 	"haxe.enableExtendedIndentation": true,
@@ -15,5 +15,5 @@
 	"files.associations": {
                 "*.hxc": "haxe",
                 "*.dream": "json"
-	}
+	},
 }

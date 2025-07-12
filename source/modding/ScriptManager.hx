@@ -27,7 +27,11 @@ class ScriptManager
 		{
 			TryCatch.tryCatch(function()
 			{
-				var newScript:Iris = new Iris(FileManager.readFile('$path'), {name: path, autoRun: true, autoPreset: true});
+				var newScript:Iris = new Iris(FileManager.readFile('$path'), {
+					name: path,
+					autoRun: true,
+					autoPreset: true
+				});
 				#if EXCESS_TRACES
 				trace('New script: $path');
 				#end
