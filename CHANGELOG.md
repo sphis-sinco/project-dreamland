@@ -7,8 +7,6 @@
 - **JUJIN (OVERDRIVE)**
 - **HIKU (OVERDRIVE)**
 - `InitState` (this allows for compiler flags!)
-## Fixed
-- Highscore not being tracked as new by `Global`
 ## Changed
 - Playstate variables `level_data` and `player_json` are public static variables, allowing for them to be easily used by scripts without needed to reference playstate's `instance` variable / singleton
 ## Removed
