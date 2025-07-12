@@ -1,5 +1,6 @@
 package base;
 
+import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 
 class TextSelecting extends FlxState
@@ -7,7 +8,7 @@ class TextSelecting extends FlxState
 	public var texts:Array<String> = ['uno', 'dos', 'tres', 'cuatro'];
 	public var text_group:FlxTypedGroup<FlxText> = new FlxTypedGroup<FlxText>();
 
-	public var CURRENT_SELECTION:Int = 0;
+	public var CURRENT_SELECTION(default, set):Int = 0;
 
 	public var customCamEnabled:Bool = false;
 	public var customCam:FlxObject;
@@ -51,7 +52,7 @@ class TextSelecting extends FlxState
 		if (canPressKeys())
 		{
 			controls();
-			outOfBoundsCheck();
+			// outOfBoundsCheck();
 		}
 
 		for (text in text_group)
@@ -72,15 +73,14 @@ class TextSelecting extends FlxState
 		return new FlxPoint(FlxG.width / 2, text.getGraphicMidpoint().y);
 	}
 
-	public function outOfBoundsCheck()
-	{
-		if (CURRENT_SELECTION < 0)
-			CURRENT_SELECTION = 0;
+	/*public function outOfBoundsCheck()
+		{
+			if (CURRENT_SELECTION < 0)
+				CURRENT_SELECTION = 0;
 
-		if (CURRENT_SELECTION > texts.length - 1)
-			CURRENT_SELECTION--;
-	}
-
+			if (CURRENT_SELECTION > texts.length - 1)
+				CURRENT_SELECTION--;
+	}*/
 	public dynamic function backKey() {}
 
 	public dynamic function enterKey() {}
@@ -108,5 +108,11 @@ class TextSelecting extends FlxState
 		{
 			backKey();
 		}
+	}
+
+	function set_CURRENT_SELECTION(val:Int):Int
+	{
+		// bounding
+		return CURRENT_SELECTION = Std.int(FlxMath.bound(val, 0, texts.length - 1));
 	}
 }
