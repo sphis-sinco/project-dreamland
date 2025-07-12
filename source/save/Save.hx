@@ -105,6 +105,8 @@ class Save
 		setSavedataInfo(highscore, Global.HIGHSCORE, false);
 		setSavedataInfo(controls, Controls.getControlMap(), false);
 		setSavedataInfo(shaders, getSavedataInfo(shaders), false);
+
+		trace('SAVE PLEASE');
 		save.flush();
 	}
 }
