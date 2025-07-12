@@ -117,7 +117,9 @@ class FlxState extends FlxContainer
 			if (!FlxG.keys.pressed.SHIFT)
 				return;
 
+			#if POLYMOD_MODDING
 			PolymodHandler.loadMods();
+			#end
 			ScriptManager.loadScripts();
 			FlxG.resetState();
 		}
