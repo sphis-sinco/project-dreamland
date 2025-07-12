@@ -1,3 +1,4 @@
+import flixel.FlxSprite;
 import gameplay.PlayState;
 import shaders.AdjustColorShader;
 import shaders.MultiplyColorShader;
