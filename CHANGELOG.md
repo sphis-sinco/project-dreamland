@@ -10,6 +10,7 @@
 - [Title texts on the controls menu are no longer selectable (#1)](https://github.com/sphis-sinco/project-dreamland/commit/789a2d443e676e029eb0c3bdba7b8b0bb1c093ca)
 - Crashes when the level data is blank
 ## Changed
+- Main player assets (removed extra pixels)
 - Player JSON's now have more control over bullet information
 - Hiku's difficulty is now "hard-ish"
 - Overhauled the level select level entries system:
