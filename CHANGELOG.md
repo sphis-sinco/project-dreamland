@@ -1,5 +1,7 @@
 # 0.11.0 (7/12/2025)
 ## Added
+- **RESULTS SCREEN**
+  - `resultsAssetName` field to player JSONS
 - **JUJIN (OVERDRIVE)**
 - **HIKU (OVERDRIVE)**
 ## Removed

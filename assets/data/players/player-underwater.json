@@ -27,5 +27,6 @@
         "bullet": {
                 "color": [0, 255, 255, 255],
                 "size": [12, 12]
-        }
+        },
+        "resultsAssetName": "player"
 }

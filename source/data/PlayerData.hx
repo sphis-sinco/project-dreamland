@@ -18,6 +18,7 @@ typedef PlayerData =
 			var color:Array<Int>;
 			var size:Array<Int>;
 		}
+	var resultsAssetName:String;
 }
 
 class PlayerDataManager
@@ -56,6 +57,7 @@ class PlayerDataManager
 		"bullet": {
 			"color": [255, 255, 0],
 			"size": [24, 24]
-		}
+		},
+		"resultsAssetName": "player"
 	};
 }
