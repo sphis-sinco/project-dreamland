@@ -107,9 +107,10 @@ class LevelSelect extends FlxState
 		if (key_enter)
 		{
 			Global.playSound('select');
-			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
+			var levelName = LevelSelectEntryDataManager.getJsonFileName(level_json, VARIATION_INDEX);
+			PlayState.CURRENT_LEVEL = levelName;
 
-			var path = 'levels/' + LevelSelectEntryDataManager.getJsonFileName(level_json, VARIATION_INDEX) + '.dream';
+			var path = 'levels/' + levelName + '.dream';
 			var finalPath = FileManager.getDataFile(path);
 
 			if (level_json.modded)
