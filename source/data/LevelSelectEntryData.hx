@@ -23,7 +23,7 @@ class LevelSelectEntryDataManager
 
 	public static function getJsonFileName(json:LevelSelectEntryData, index:Int = 0)
 	{
-		return getFileName(json, 0, json.filenames[index]);
+		return getFileName(json, index, json.filenames[index]);
 	}
 
 	public static function getFileName(json:LevelSelectEntryData, index:Int = 0, filename:String)
