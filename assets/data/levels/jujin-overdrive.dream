@@ -1,0 +1,26 @@
+{
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "jujin/overdrive/",
+
+        "enemy_rare": "pore",
+        "enemy_easy": "haye",
+        "enemy_common": "kikin"
+    },
+    "settings": {
+        "scores": {
+            "enemy_rare": 125,
+            "enemy_easy": 10,
+            "enemy_common": 45
+        },
+        "chances": {
+            "enemy_rare": 5,
+            "enemy_easy": 95
+        },
+        "speed_additions": {
+            "enemy_common": 3,
+            "enemy_easy": 6,
+            "enemy_rare": 10
+        }
+    }
+}

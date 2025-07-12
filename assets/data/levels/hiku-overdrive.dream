@@ -1,0 +1,29 @@
+{
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "hiku/overdrive/",
+
+        "player": "player-hiku",
+
+        "enemy_rare": "pnooly",
+        "enemy_easy": "carem",
+        "enemy_common": "loi"
+    },
+    "settings": {
+        "ammo": 4,
+        "scores": {
+            "enemy_rare": 150,
+            "enemy_easy": 30,
+            "enemy_common": 90
+        },
+        "chances": {
+            "enemy_rare": 1,
+            "enemy_easy": 25
+        },
+        "speed_additions": {
+            "enemy_common": 5,
+            "enemy_easy": 8,
+            "enemy_rare": 10
+        }
+    }
+}
