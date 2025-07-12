@@ -50,12 +50,16 @@ class LevelSelect extends FlxState
 
 	var key_left:Bool;
 	var key_right:Bool;
+	var key_up:Bool;
+	var key_down:Bool;
 	var key_enter:Bool;
 
 	override public function update(elapsed:Float)
 	{
 		key_left = Controls.UI_MOVE_LEFT;
 		key_right = Controls.UI_MOVE_RIGHT;
+		key_up = Controls.UI_MOVE_UP;
+		key_down = Controls.UI_MOVE_DOWN;
 		key_enter = Controls.UI_SELECT;
 
 		if (key_left)
@@ -75,6 +79,28 @@ class LevelSelect extends FlxState
 			if (CURRENT_SELECTION > levels.length - 1)
 			{
 				CURRENT_SELECTION--;
+			}
+			else
+				Global.playSound('blip');
+			updateSelections();
+		}
+		else if (key_up)
+		{
+			VARIATION_INDEX--;
+			if (VARIATION_INDEX < 0)
+			{
+				VARIATION_INDEX = 0;
+			}
+			else
+				Global.playSound('blip');
+			updateSelections();
+		}
+		else if (key_right)
+		{
+			VARIATION_INDEX++;
+			if (VARIATION_INDEX > level_json.variations.length - 1)
+			{
+				VARIATION_INDEX--;
 			}
 			else
 				Global.playSound('blip');
