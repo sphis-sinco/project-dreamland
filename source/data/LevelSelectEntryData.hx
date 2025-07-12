@@ -3,11 +3,15 @@ package data;
 typedef LevelSelectEntryData =
 {
 	var name:String;
+
 	var filenames:Array<String>;
 	var difficulties:Array<String>;
 	var variations:Array<String>;
 	var fileSuffixes:Array<String>;
 	var filePrefixes:Array<String>;
+
+	var ?modded:Bool;
+	var ?modFolder:String;
 }
 
 class LevelSelectEntryDataManager

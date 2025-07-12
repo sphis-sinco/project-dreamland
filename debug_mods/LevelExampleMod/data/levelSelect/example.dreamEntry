@@ -5,5 +5,8 @@
         "difficulties": ["impossible"],
         "variations": ["Default"],
         "fileSuffixes": [null],
-        "filePrefixes": [null]        
+        "filePrefixes": [null],
+        
+        "modded": true,
+        "modFolder": "LevelExampleMod"
 }
