@@ -102,8 +102,8 @@ class Save
 	public static function flushData()
 	{
 		setSavedataInfo(savever, SAVEDATA_VERSION, false);
-		setSavedataInfo(highscore, Global.HIGHSCORE, false);
-		setSavedataInfo(controls, Controls.getControlMap(), false);
+		setSavedataInfo(highscore, getSavedataInfo(highscore), false);
+		setSavedataInfo(controls, getSavedataInfo(controls), false);
 		setSavedataInfo(shaders, getSavedataInfo(shaders), false);
 
 		trace('SAVE PLEASE');
