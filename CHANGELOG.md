@@ -2,6 +2,7 @@
 ## Added
 - **HEAVEN (OVERDRIVE)**
 ## Changed
+- Re-exported earth enemies
 - Re-exported hell enemies
 - Re-exported heaven enemies
 
