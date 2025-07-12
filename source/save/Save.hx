@@ -34,7 +34,8 @@ class Save
 				saveVer: SAVEDATA_VERSION,
 				firstTime: true,
 				highscore: 0,
-				controls: Controls.defaultControls
+				controls: Controls.defaultControls,
+				shaders: true,
 			};
 		}
 		else
@@ -43,6 +44,7 @@ class Save
 			save.data.savedata.firstTime ??= true;
 			save.data.savedata.highscore ??= 0;
 			save.data.savedata.controls ??= Controls.defaultControls;
+			save.data.savedata.shaders ??= true;
 		}
 
 		trace(save.data.savedata.controls);
@@ -65,6 +67,8 @@ class Save
 				return saveD.highscore;
 			case controls:
 				return saveD.controls;
+			case shaders:
+				return saveD.shaders;
 		}
 
 		return null;
@@ -82,6 +86,8 @@ class Save
 				save.data.savedata.highscore = newval;
 			case controls:
 				save.data.savedata.controls = newval;
+			case shaders:
+				save.data.savedata.shaders = newval;
 		}
 	}
 
@@ -97,6 +103,7 @@ typedef SaveData =
 	var highscore:Int;
 
 	var controls:Map<String, FlxKey>;
+	var shaders:Bool;
 }
 
 enum SaveKeys
@@ -105,5 +112,7 @@ enum SaveKeys
 	firsttime;
 	firstTime;
 	highscore;
+	// settings
 	controls;
+	shaders;
 }
