@@ -42,11 +42,14 @@ class PreferencesMenu extends TextSelecting
 					lastSelection = 0;
 					previousCameraPosition = null;
 
+					Save.save.data.modList = null;
+					Save.setSavedataInfo(SaveKeys.controls, Controls.getControlMap());
+					Controls.loadControlSave();
 					PlayState.HIGHSCORE = false;
 					Global.NEW_HIGHSCORE = false;
 					Global.HIGHSCORE = 0;
 
-					Save.save.destroy();
+					Save.save.erase();
 					FlxG.resetGame();
 			}
 
