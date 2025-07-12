@@ -6,6 +6,7 @@
 - `bullet` field to player JSON's
 - **OVERDRIVE VARIATIONS**
   - **EARTH (OVERDRIVE)**
+  - **HELL (OVERDRIVE)**
 ## Removed
 - `name` and `difficulty` fields from ".dream" files
 ## Fixed
