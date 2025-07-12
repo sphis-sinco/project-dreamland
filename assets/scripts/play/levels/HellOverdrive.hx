@@ -17,15 +17,17 @@ function stateCreate()
 
 		enemyShader.hue = -24;
 		enemyShader.saturation = -28;
-		enemyShader.brightness = -52
+		enemyShader.brightness = -52;
 
 		PlayState.instance.player.shader = playerShader;
 
-		PlayState.instance.onNewBullet = function(bullet:FlxSprite) {
+		PlayState.instance.onNewBullet = function(bullet:FlxSprite)
+		{
 			bullet.shader = playerShader;
 			trace(bullet.shader);
 		}
-		PlayState.instance.onNewEnemy = function(enemy:FlxSprite) {
+		PlayState.instance.onNewEnemy = function(enemy:FlxSprite)
+		{
 			enemy.shader = enemyShader;
 			trace(enemy.shader);
 		}
