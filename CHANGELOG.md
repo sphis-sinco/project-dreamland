@@ -2,6 +2,8 @@
 ## Added
 - **OVERDRIVE VARIATIONS**
   - **EARTH (OVERDRIVE)**
+## Fixed
+- Crashes when the level data is blank
 ## Changed
 - Level select level entries are now driven by JSONS with the "dreamEntry" extension. Allowing for variation support.
 

@@ -32,6 +32,9 @@ class PlayState extends FlxState
 
 		var new_leveldata = levelData ?? LevelDataManager.defaultJSON;
 
+		if (new_leveldata == null)
+			new_leveldata = LevelDataManager.defaultJSON;
+
 		level_data = new_leveldata;
 	}
 
@@ -44,6 +47,7 @@ class PlayState extends FlxState
 		}
 		instance = this;
 
+		// trace(level_data);
 		var bmos = level_data.settings.ammo ?? 2;
 		bullets_max_onscreen = bmos;
 
