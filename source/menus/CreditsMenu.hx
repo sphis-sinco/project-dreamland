@@ -24,7 +24,7 @@ class CreditsMenu extends TextSelecting
 		texts = [];
 		for (entry in creditsJSON)
 		{
-			texts.push('${entry.name}${entry.role != null ? '(${entry.role})' : ''}');
+			texts.push('${entry.name}${entry.role != null ? ' (${entry.role})' : ''}');
 		}
 
 		enterKey = function()
