@@ -12,7 +12,8 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'heaven-overdrive')
 	{
-		if (!getSavedataInfo('shaders')) return;
+		if (!getSavedataInfo('shaders'))
+			return;
 
 		playerShader.hue = -15;
 		playerShader.saturation = -15;
