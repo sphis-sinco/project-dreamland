@@ -50,6 +50,9 @@
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>
+	
+	<define name="IRIS_DEBUG"/>
+	<define name="hscriptPos" if="IRIS_DEBUG"/>
 
 
 	<!-- _______________________________ Libraries ______________________________ -->
