@@ -42,8 +42,10 @@ class PreferencesMenu extends TextSelecting
 					lastSelection = 0;
 					previousCameraPosition = null;
 
+					Global.NEW_HIGHSCORE = false;
 					Global.HIGHSCORE = 0;
-					// Save.save.erase();
+
+					Save.save.destroy();
 					FlxG.resetGame();
 			}
 
