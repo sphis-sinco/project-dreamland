@@ -180,7 +180,7 @@ class ModMenu extends FlxState
 						outdatedText = ' \n%Outdated: ';
 
 						if (old_level_system_version)
-							outdatedText += '\n* Any new levels added might not work';
+							outdatedText += '\n$* Any new levels added might not work$';
 
 						outdatedText += '%';
 					}
@@ -197,7 +197,10 @@ class ModMenu extends FlxState
 
 					descriptionText.text += "\nDreamland Version: " + ModList.modMetadatas.get(curModId).apiVersion + outdatedText + "\nMod Version: "
 						+ ModList.modMetadatas.get(curModId).modVersion + "\n";
-					descriptionText.applyMarkup(descriptionText.text, [new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.YELLOW, true, true), '%')]);
+					descriptionText.applyMarkup(descriptionText.text, [
+						new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.YELLOW, true, true), '%'),
+						new FlxTextFormatMarkerPair(new FlxTextFormat(FlxColor.ORANGE, true, true), '$')
+					]);
 				}
 
 				bruh++;
