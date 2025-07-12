@@ -1,7 +1,7 @@
 {
         "path": "earth-overdrive/player",
-        "dimensions": [32,32],
-        "scale": [2,2],
+        "dimensions": [32, 32],
+        "scale": [2, 2],
 
         "default_animation": "idle",
         "animations": [
@@ -13,15 +13,19 @@
                 },
                 {
                         "name": "shoot-a1",
-                        "frames": [1,2,3],
+                        "frames": [1, 2, 3],
                         "fps": 4,
                         "looping": false
                 },
                 {
                         "name": "shoot-a0",
-                        "frames": [3,3],
+                        "frames": [3, 3],
                         "fps": 4,
                         "looping": false
                 }
-        ]
+        ],
+        "bullet": {
+                "color": [0, 255, 255],
+                "size": [12, 12]
+        }
 }

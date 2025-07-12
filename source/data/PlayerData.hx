@@ -13,6 +13,11 @@ typedef PlayerData =
 			var fps:Int;
 			var looping:Bool;
 		}>;
+	var bullet:
+		{
+			var color:Array<Int>;
+			var size:Array<Int>;
+		}
 }
 
 class PlayerDataManager
@@ -47,6 +52,10 @@ class PlayerDataManager
 				"fps": 4,
 				"looping": false
 			}
-		]
+		],
+		"bullet": {
+			"color": [255, 255, 0],
+			"size": [24, 24]
+		}
 	};
 }

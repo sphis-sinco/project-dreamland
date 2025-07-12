@@ -41,5 +41,9 @@
                         "fps": 4,
                         "looping": false
                 }
-        ]
+        ],
+        "bullet": {
+                "color": [255, 255, 0],
+                "size": [24, 24]
+        }
 }
