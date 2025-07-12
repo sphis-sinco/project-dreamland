@@ -113,7 +113,9 @@ class LevelSelect extends FlxState
 			var finalPath = FileManager.getDataFile(path);
 
 			if (level_json.modded)
-				finalPath.replace('assets/', 'mods/${level_json.modFolder}/');
+				finalPath = 'mods/${level_json.modFolder}/data/' + path;
+
+			trace(finalPath);
 
 			FlxG.switchState(() -> new PlayState(FileManager.getJSON(finalPath)));
 		}
