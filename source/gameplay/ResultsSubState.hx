@@ -6,13 +6,21 @@ import gameplay.results.Screen;
 
 class ResultsSubState extends FlxSubState
 {
-	var screen:Screen;
-	var backdrop:FlxSprite;
-	var player:FlxSprite;
+	public static var instance:ResultsSubState = null;
+
+	public var screen:Screen;
+	public var backdrop:FlxSprite;
+	public var player:FlxSprite;
+
+	public var highScoreText:FlxText = new FlxText();
 
 	override public function new()
 	{
 		super();
+
+		if (instance != null)
+			instance = null;
+		instance = this;
 
 		backdrop = new FlxSprite().loadGraphic(FileManager.getImageFile('menus/Yellowpopup'));
 		backdrop.scale.set(2, 2);
