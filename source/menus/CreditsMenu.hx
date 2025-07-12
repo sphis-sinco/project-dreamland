@@ -22,10 +22,11 @@ class CreditsMenu extends TextSelecting
 
 		creditsJSON = FileManager.getJSON(FileManager.getDataFile('credits.json'));
 		texts = [];
+		var i = 0;
 		for (entry in creditsJSON)
 		{
-			final email = creditsJSON[CURRENT_SELECTION].email;
-			final url = creditsJSON[CURRENT_SELECTION].url;
+			final email = creditsJSON[i].email;
+			final url = creditsJSON[i].url;
 
 			final openUrl = url != null;
 			final openEmail = email != null;
@@ -44,6 +45,7 @@ class CreditsMenu extends TextSelecting
 			final urlemail = ' (' + urlEmailText + ')';
 
 			texts.push('$name$role$urlemail');
+			i++;
 		}
 
 		enterKey = function()
