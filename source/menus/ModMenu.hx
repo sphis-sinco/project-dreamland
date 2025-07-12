@@ -177,10 +177,10 @@ class ModMenu extends FlxState
 						var old_level_system_version = ModList.modMetadatas.get(curModId).apiVersion.major == 0
 							&& ModList.modMetadatas.get(curModId).apiVersion.major < 9;
 
-						outdatedText = ' \n%(Outdated';
+						outdatedText = ' \n%Outdated: ';
 
 						if (old_level_system_version)
-							outdatedText += ', new levels added won\'t work';
+							outdatedText += '\n* Any new levels added might not work';
 						outdatedText += ')%';
 					}
 
