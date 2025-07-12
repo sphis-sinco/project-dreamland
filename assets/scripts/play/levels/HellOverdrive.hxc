@@ -2,7 +2,7 @@ import gameplay.PlayState;
 import shaders.AdjustColorShader;
 import shaders.MultiplyColorShader;
 
-var shader:MultiplyColorShader = new MultiplyColorShader();
+var shader:AdjustColorShader = new AdjustColorShader();
 
 function stateCreate()
 {
@@ -10,7 +10,9 @@ function stateCreate()
 
 	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hell-overdrive')
 	{
-		shader.color = 0xFF8385CF;
+		shader.hue = -12;
+		shader.saturation = -14;
+		shader.brightness = -26;
 
 		PlayState.instance.player.shader = shader;
 	}
