@@ -1,10 +1,12 @@
 # 0.11.0 (7/12/2025)
 ## Added
-- `HIGHSCORE` variable to PlayState for scripts and for the results screen
+- "Save clear" option
 - **RESULTS SCREEN**
   - `resultsAssetName` field to player JSONS
+  - `HIGHSCORE` variable to PlayState for scripts and for the results screen
 - **JUJIN (OVERDRIVE)**
 - **HIKU (OVERDRIVE)**
+- `InitState` (this allows for compiler flags!)
 ## Fixed
 - Highscore not being tracked as new by `Global`
 ## Changed

@@ -283,7 +283,6 @@ class PlayState extends FlxState
 				if (Global.HIGHSCORE < SCORE && score_text.color != FlxColor.LIME)
 				{
 					HIGHSCORE = true;
-					Global.HIGHSCORE = SCORE;
 
 					score_text.color = FlxColor.LIME;
 					Global.playSound('blip');

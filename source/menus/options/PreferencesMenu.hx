@@ -25,6 +25,7 @@ class PreferencesMenu extends TextSelecting
 		texts = [];
 
 		newPref('shaders', 'Shaders', Save.getSavedataInfo(shaders));
+		newPref('save-clear', 'Save clear', null);
 
 		enterKey = function()
 		{
@@ -35,6 +36,15 @@ class PreferencesMenu extends TextSelecting
 				case 'shaders':
 					valid = true;
 					Save.setSavedataInfo(shaders, !Save.getSavedataInfo(shaders));
+				case 'save-clear':
+					valid = true;
+
+					lastSelection = 0;
+					previousCameraPosition = null;
+
+					Global.HIGHSCORE = 0;
+					Save.save.erase();
+					FlxG.resetGame();
 			}
 
 			if (valid)
@@ -53,7 +63,7 @@ class PreferencesMenu extends TextSelecting
 
 	public function newPref(id:String, name:String, value:Dynamic)
 	{
-		texts.push('$name : $value');
+		texts.push('$name${value != null ? ' : $value' : ''}');
 		ids.push(id);
 	}
 

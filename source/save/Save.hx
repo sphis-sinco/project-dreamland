@@ -15,18 +15,6 @@ class Save
 		save = new FlxSave();
 		save.bind('dreamland', Application.current.meta.get('company'));
 
-		#if polymod
-		if (save.data.modList != null)
-		{
-			trace(save.data.modList);
-			for (mod in PolymodHandler.metadataArrays)
-			{
-				if (save.data.modlist.exists(mod))
-					ModList.setModEnabled(mod, true);
-			}
-		}
-		#end
-
 		if (save.data.savedata == null)
 		{
 			trace('SAVEDATA IS NULL. SETTING TO A COMPLETELY NEW SAVE.');
@@ -49,6 +37,23 @@ class Save
 
 		trace(save.data.savedata);
 		Controls.loadControlSave();
+
+		#if polymod
+		if (save.data.modList != null)
+		{
+			trace(save.data.modList);
+			for (mod in PolymodHandler.metadataArrays)
+			{
+				TryCatch.tryCatch(() ->
+				{
+					trace(mod);
+
+					if (save.data.modlist.exists(mod))
+						ModList.setModEnabled(mod, true);
+				});
+			}
+		}
+		#end
 
 		flushData();
 	}
