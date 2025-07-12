@@ -75,7 +75,7 @@ class ResultsSubState extends FlxSubState
 				screen_pulse.visible = true;
 
 				scoreText.visible = true;
-				scoreLerpVal = 0.1;
+				scoreLerpVal = 0.001;
 
 				if (PlayState.SCORE == 0)
 				{
