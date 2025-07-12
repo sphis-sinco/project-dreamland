@@ -16,6 +16,9 @@ class Main
 {
 	public static function main():Void
 	{
+		if (haxe.macro.Compiler.getDefine('NOT_GITHUB') == "1")
+			Sys.command('cd ../../');
+
 		if (!FileSystem.exists('.haxelib'))
 			FileSystem.createDirectory('.haxelib');
 
