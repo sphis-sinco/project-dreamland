@@ -1,6 +1,7 @@
 package gameplay;
 
 import flixel.math.FlxMath;
+import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import gameplay.results.Screen;
@@ -18,6 +19,8 @@ class ResultsSubState extends FlxSubState
 	public var score:Int = 0;
 
 	public var TransitionComplete:Bool = false;
+
+	public var blip:FlxSound = new FlxSound().loadEmbedded(FileManager.getSoundFile('sounds/blip-results'));
 
 	override public function new()
 	{
@@ -69,8 +72,15 @@ class ResultsSubState extends FlxSubState
 				player.visible = true;
 
 				screen_pulse.visible = true;
+
 				scoreText.visible = true;
 				scoreLerpVal = 0.1;
+
+				if (PlayState.SCORE == 0)
+				{
+					lerpComplete = true;
+					lerpCompleteFlash();
+				}
 			}
 		});
 
@@ -98,27 +108,32 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.setPosition(screen.x, screen.y);
 		scoreText.text = 'score: $score';
 
-		if (TransitionComplete && score != PlayState.SCORE)
+		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
 		{
-			if (lerpComplete)
-				return;
-
+			var prevScore = score;
 			score = Std.int(FlxMath.lerp(score, PlayState.SCORE, scoreLerpVal));
+
+			if (score != prevScore)
+				blip.play(true);
+
 			scoreLerpVal = scoreLerpVal * 1.05;
 			scoreLerpVal = FlxMath.bound(scoreLerpVal, scoreLerpVal, 1.0);
 
 			lerpComplete = score == PlayState.SCORE;
 
 			if (lerpComplete)
-			{
-				scoreText.color = FlxColor.YELLOW;
-				FlxTween.color(scoreText, 1, scoreText.color, FlxColor.WHITE);
-			}
+				lerpCompleteFlash();
 		}
 
 		if (Controls.UI_SELECT && lerpComplete)
 		{
 			FlxG.switchState(LevelSelect.new);
 		}
+	}
+
+	public function lerpCompleteFlash()
+	{
+		scoreText.color = FlxColor.YELLOW;
+		FlxTween.color(scoreText, 1, scoreText.color, FlxColor.WHITE);
 	}
 }
