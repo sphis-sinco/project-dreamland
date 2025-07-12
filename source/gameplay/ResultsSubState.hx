@@ -8,6 +8,7 @@ class ResultsSubState extends FlxSubState
 {
 	var screen:Screen;
 	var backdrop:FlxSprite;
+	var player:FlxSprite;
 
 	override public function new()
 	{
@@ -26,6 +27,13 @@ class ResultsSubState extends FlxSubState
 			ease: FlxEase.smoothStepInOut
 		});
 
+		player = new FlxSprite();
+		player.loadGraphic(FileManager.getImageFile('results/player/${PlayState.player_json.resultsAssetName ?? 'player'}'), true, 160, 140);
+		player.animation.add('anim', PlayState.player_json.resultsFrameArray ?? [0, 1, 2, 3, 4, 5], 24, false);
+		player.visible = false;
+		player.scale.set(4, 4);
+		add(player);
+
 		screen = new Screen();
 		screen.screenCenter();
 
@@ -35,7 +43,13 @@ class ResultsSubState extends FlxSubState
 		add(screen);
 
 		FlxTween.tween(screen, {x: screenX}, 1.0, {
-			ease: FlxEase.smoothStepInOut
+			ease: FlxEase.smoothStepInOut,
+			onComplete: tween ->
+			{
+				player.setPosition(screenX, screen.y);
+				player.animation.play('anim');
+				player.visible = true;
+			}
 		});
 	}
 

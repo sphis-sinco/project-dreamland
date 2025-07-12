@@ -24,7 +24,7 @@ class PlayState extends FlxState
 	public var enemies_group:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 	public var enemy_offscreen_padding:Float = 40;
 
-	public var level_data:LevelData = null;
+	public static var level_data:LevelData = null;
 
 	override public function new(levelData:LevelData)
 	{
@@ -110,7 +110,7 @@ class PlayState extends FlxState
 	public var spacebar:FlxSprite;
 	public var spacebartext:FlxText;
 
-	public var player_json:PlayerData = null;
+	public static var player_json:PlayerData = null;
 
 	function playerSetup()
 	{

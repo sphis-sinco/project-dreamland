@@ -4,6 +4,8 @@
   - `resultsAssetName` field to player JSONS
 - **JUJIN (OVERDRIVE)**
 - **HIKU (OVERDRIVE)**
+## Changed
+- Playstate variables `level_data` and `player_json` are public static variables, allowing for them to be easily used by scripts without needed to reference playstate's `instance` variable / singleton
 ## Removed
 - ":" from Outdated text in the mod menu (properly)
 
