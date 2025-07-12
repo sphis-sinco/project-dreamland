@@ -32,7 +32,7 @@ class LevelSelectEntryDataManager
 		var suffix = json.fileSuffixes[index] ?? '';
 
 		var results = prefix + filename + suffix;
-		trace(results);
+		// trace(results);
 		return results;
 	}
 }
