@@ -21,6 +21,8 @@ class InitState extends FlxState
 		var needUpdate = false;
 		needUpdate = CheckOutdated.call();
 
+		Global.HIGHSCORE = Save.getSavedataInfo(highscore);
+
 		FlxG.switchState((needUpdate) ? OutdatedState.new : Splash.new);
 	}
 }
