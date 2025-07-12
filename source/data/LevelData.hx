@@ -78,5 +78,5 @@ class LevelDataManager
 				"enemy_rare": 10
 			}
 		}
-	}
+	};
 }

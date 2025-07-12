@@ -1,27 +1,29 @@
 package menus;
 
 import data.LevelData;
+import data.LevelSelectEntryData;
 
 class LevelSelect extends FlxState
 {
 	var levels:Array<String> = ['earth', 'heaven', 'hell', 'hiku', 'jujin'];
 	var level_sprite:FlxSprite = new FlxSprite();
 
-	var level_json:LevelData;
+	var level_json:LevelSelectEntryData;
 
 	var difficulty:FlxText = new FlxText(0, 0, 0, "", 32);
 
 	var CURRENT_SELECTION:Int = 0;
+	var VARIATION_INDEX:Int = 0;
 
 	override public function create()
 	{
 		#if !web
-		var oglevels = FileManager.getTypeArray('level files', 'data/levels', ['.dream'], ['assets/data/levels/']);
+		var oglevels = FileManager.getTypeArray('level files', 'data/levelSelect', ['.dreamEntry'], ['assets/data/levelSelect/']);
 
 		levels = [];
 		for (level in oglevels)
 		{
-			var newlevel = level.replace('assets/data/levels/', '');
+			var newlevel = level.replace('assets/data/levelSelect/', '');
 
 			levels.push(newlevel);
 		}
@@ -34,9 +36,9 @@ class LevelSelect extends FlxState
 		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 
-		level_json = LevelDataManager.defaultJSON;
+		level_json = LevelSelectEntryDataManager.defaultJSON;
 
-		level_sprite.loadGraphic(FileManager.getImageFile(level_json.assets.directory + 'background'));
+		level_sprite.loadGraphic(FileManager.getImageFile(level_json.filePrefixes[VARIATION_INDEX] ?? '' + 'background'));
 		level_sprite.scale.set(1.25, 1.25);
 		level_sprite.screenCenter();
 		add(level_sprite);
@@ -82,7 +84,9 @@ class LevelSelect extends FlxState
 		{
 			Global.playSound('select');
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
-			FlxG.switchState(() -> new PlayState(level_json));
+			FlxG.switchState(() -> new PlayState(FileManager.getJSON(FileManager.getDataFile('levels/'
+				+ LevelSelectEntryDataManager.getJsonFileName(level_json, VARIATION_INDEX)
+				+ '.dream'))));
 		}
 		else if (Controls.UI_LEAVE)
 		{
@@ -95,15 +99,15 @@ class LevelSelect extends FlxState
 	function updateSelections()
 	{
 		difficulty.size = 32;
-		var filepath:String = (!levels[CURRENT_SELECTION].contains('levels/')) ? 'levels/' : '';
+		var filepath:String = (!levels[CURRENT_SELECTION].contains('levelSelect/')) ? 'levelSelect/' : '';
 		filepath += levels[CURRENT_SELECTION];
-		filepath += (!levels[CURRENT_SELECTION].endsWith('.dream')) ? '.dream' : '';
+		filepath += (!levels[CURRENT_SELECTION].endsWith('.dreamEntry')) ? '.dreamEntry' : '';
 
-		var filename:String = (!filepath.contains('data/levels/')) ? FileManager.getDataFile(filepath) : filepath;
+		var filename:String = (!filepath.contains('data/levelSelect/')) ? FileManager.getDataFile(filepath) : filepath;
 		FlxG.log.add(filename);
 		level_json = Json.parse(FileManager.readFile(filename));
-		difficulty.text = level_json.name + ' - ' + level_json.difficulty;
-		var bgpath = level_json.assets.directory + 'background';
+		difficulty.text = level_json.name + ' - ' + level_json.difficulties[VARIATION_INDEX];
+		var bgpath = level_json.filePrefixes[VARIATION_INDEX] ?? '' + 'background';
 		TryCatch.tryCatch(() ->
 		{
 			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));

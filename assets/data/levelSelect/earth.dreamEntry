@@ -1,0 +1,9 @@
+{
+        "name": "Earth",
+
+        "filenames": ["earth","earth"],
+        "difficulties": ["easy-ish", "hard"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, "-overdrive"],
+        "filePrefixes": [null, null]        
+}

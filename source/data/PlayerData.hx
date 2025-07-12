@@ -48,5 +48,5 @@ class PlayerDataManager
 				"looping": false
 			}
 		]
-	}
+	};
 }
