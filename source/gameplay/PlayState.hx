@@ -30,7 +30,9 @@ class PlayState extends FlxState
 	{
 		super();
 
-		level_data = levelData ?? LevelDataManager.defaultJSON;
+		var new_leveldata = levelData ?? LevelDataManager.defaultJSON;
+
+		level_data = new_leveldata;
 	}
 
 	override public function create()
@@ -42,7 +44,8 @@ class PlayState extends FlxState
 		}
 		instance = this;
 
-		bullets_max_onscreen = level_data.settings.ammo ?? 2;
+		var bmos = level_data.settings.ammo ?? 2;
+		bullets_max_onscreen = bmos;
 
 		var player_json_path = FileManager.getDataFile('players/${level_data.assets.player ?? 'player'}.json');
 		player_json = FileManager.getJSON(player_json_path);

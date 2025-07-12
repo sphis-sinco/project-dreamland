@@ -95,7 +95,7 @@ class LevelSelect extends FlxState
 				Global.playSound('blip');
 			updateSelections();
 		}
-		else if (key_right)
+		else if (key_down)
 		{
 			VARIATION_INDEX++;
 			if (VARIATION_INDEX > level_json.variations.length - 1)
@@ -106,7 +106,8 @@ class LevelSelect extends FlxState
 				Global.playSound('blip');
 			updateSelections();
 		}
-		else if (key_enter)
+
+		if (key_enter)
 		{
 			Global.playSound('select');
 			PlayState.CURRENT_LEVEL = levels[CURRENT_SELECTION];
@@ -119,6 +120,7 @@ class LevelSelect extends FlxState
 			Global.playSound('select');
 			FlxG.switchState(MenuState.new);
 		}
+
 		super.update(elapsed);
 	}
 
@@ -132,7 +134,7 @@ class LevelSelect extends FlxState
 		var filename:String = (!filepath.contains('data/levelSelect/')) ? FileManager.getDataFile(filepath) : filepath;
 		FlxG.log.add(filename);
 		level_json = Json.parse(FileManager.readFile(filename));
-		difficulty.text = level_json.name + ' - ' + level_json.difficulties[VARIATION_INDEX];
+		difficulty.text = level_json.name + ' (${level_json.variations[VARIATION_INDEX]})' + ' - ' + level_json.difficulties[VARIATION_INDEX];
 		var bgpath = level_json.filePrefixes[VARIATION_INDEX] ?? '' + 'background';
 		TryCatch.tryCatch(() ->
 		{

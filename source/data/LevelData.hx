@@ -62,7 +62,7 @@ class LevelDataManager
 			"enemy_common": "enemy-common"
 		},
 		"settings": {
-			"ammo": 4,
+			"ammo": 2,
 			"scores": {
 				"enemy_rare": 125,
 				"enemy_easy": 50,
