@@ -1,9 +1,9 @@
 {
         "name": "Hiku",
 
-        "filenames": ["hiku"],
-        "difficulties": ["hard-ish"],
-        "variations": ["Default"],
-        "fileSuffixes": [null],
-        "filePrefixes": ["hiku/"]        
+        "filenames": ["hiku", "hiku"],
+        "difficulties": ["hard-ish", "difficult"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, null],
+        "filePrefixes": ["hiku/", "hiku/overdrive"]        
 }

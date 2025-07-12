@@ -1,0 +1,37 @@
+import flixel.FlxSprite;
+import gameplay.PlayState;
+import save.Save;
+import shaders.AdjustColorShader;
+
+var playerShader:AdjustColorShader = new AdjustColorShader();
+var enemyShader:AdjustColorShader = new AdjustColorShader();
+
+function stateCreate()
+{
+	// trace(PlayState.CURRENT_LEVEL);
+
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'hiku-overdrive')
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		playerShader.hue = -1;
+		playerShader.saturation = 0;
+		playerShader.brightness = -26;
+
+		enemyShader.hue = playerShader.hue;
+		enemyShader.saturation = playerShader.saturation;
+		enemyShader.brightness = playerShader.brightness;
+
+		PlayState.instance.player.shader = playerShader;
+
+		PlayState.instance.onNewBullet = function(bullet:FlxSprite)
+		{
+			bullet.shader = playerShader;
+		}
+		PlayState.instance.onNewEnemy = function(enemy:FlxSprite)
+		{
+			enemy.shader = enemyShader;
+		}
+	}
+}
