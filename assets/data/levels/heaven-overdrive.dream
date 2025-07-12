@@ -1,0 +1,26 @@
+{
+    "author": "Sphis_Sinco",
+    "assets": {
+        "directory": "heaven/overdrive/",
+
+        "enemy_rare": "../enemy-rare",
+        "enemy_easy": "../enemy-easy",
+        "enemy_common": "../enemy-common"
+    },
+    "settings": {
+        "scores": {
+            "enemy_rare": 100,
+            "enemy_easy": 40,
+            "enemy_common": 25
+        },
+        "chances": {
+            "enemy_rare": 0.1,
+            "enemy_easy": 100
+        },
+        "speed_additions": {
+            "enemy_common": 5,
+            "enemy_easy": 5,
+            "enemy_rare": 10
+        }
+    }
+}
