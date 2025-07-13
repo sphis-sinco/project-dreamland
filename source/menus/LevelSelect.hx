@@ -30,9 +30,9 @@ class LevelSelect extends FlxState
 		leave.x = FlxG.width - leave.width * MobileButton.scaleVal;
 
 		left.x = left.width * (MobileButton.scaleVal - 2);
-		right.x = left.x + right.width * (MobileButton.scaleVal * 2);
+		right.x = left.x + (right.width * (MobileButton.scaleVal * 2));
 
-		down.x = left.width + down.width * MobileButton.scaleVal;
+		down.x = left.width - left.width;
 		up.x = down.x;
 		up.y -= up.height * MobileButton.scaleVal;
 
