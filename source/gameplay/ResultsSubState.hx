@@ -190,7 +190,14 @@ class ResultsSubState extends FlxSubState
 			if (FlxMath.roundDecimal(score, 2) != FlxMath.roundDecimal(prevScore, 2))
 			{
 				if (!lerpComplete)
+				{
 					blip.play(true);
+
+					#if MOBILE_BUILD
+					// if vibrator
+					lime.ui.Haptic.vibrate(100, 10);
+					#end
+				}
 			}
 		}
 

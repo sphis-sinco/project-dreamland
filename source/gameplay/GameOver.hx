@@ -6,6 +6,11 @@ class GameOver extends FlxState
 
 	override public function create()
 	{
+		#if MOBILE_BUILD
+		// if vibrator
+		lime.ui.Haptic.vibrate(500, 50);
+		#end
+
 		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal);
 
 		var diedtext:FlxText = new FlxText(0, 0, 0, "You died.", 16);

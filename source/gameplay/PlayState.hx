@@ -308,6 +308,11 @@ class PlayState extends FlxState
 					Global.playSound('blip');
 				}
 
+				#if MOBILE_BUILD
+				// if vibrator
+				lime.ui.Haptic.vibrate(100, 10);
+				#end
+
 				Global.playSound('explosion' + FlxG.random.int(1, 3));
 				enemy.destroy();
 				enemies_group.members.remove(enemy);

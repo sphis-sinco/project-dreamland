@@ -16,7 +16,9 @@ class Main extends Sprite
 
 		haxe.Log.trace = function(v:Dynamic, ?infos:PosInfos)
 		{
-			Log.info('[${infos.fileName}/${infos.className}:${infos.lineNumber}] $v');
+			infos.className = 'source/' + infos.className.replace('.', '/') + '.hx:${infos.lineNumber}';
+
+			Log.info(v, infos);
 		}
 
 		Application.current.window.title = 'Dreamland (${Application.current.meta.get('version')})';
