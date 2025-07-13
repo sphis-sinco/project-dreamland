@@ -6,9 +6,9 @@
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster
 ## Application
+- Added (kinda) support for mobile platforms, you can't play levels tho
+  - Added custom icon for the mobile version
 - The game version now is in the window title
-- Added custom icon for the mobile app
-- Added support for mobile platforms (Ios prob wouldn't work)
 - The icon for the application has been updated. no more transparent background
 ## Options
 - Controls menu is blocked on Android Builds
