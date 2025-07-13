@@ -32,7 +32,8 @@ class LevelEditorMenu extends FlxState
 		addAssetsTab();
 		addSettingsTab();
 
-		DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
+		ASSETS_DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
+		ASSETS_PLAYER_TEXT.text = SONG_JSON.assets.player;
 	}
 
 	function addSettingsTab()
@@ -43,17 +44,23 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public var DIRECTORY_TEXT:FlxInputText;
+	public var ASSETS_DIRECTORY_TEXT:FlxInputText;
+	public var ASSETS_PLAYER_TEXT:FlxInputText;
 
 	function addAssetsTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
 		tab_group.name = '_Assets';
 
-		DIRECTORY_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
+		ASSETS_DIRECTORY_TEXT = new FlxInputText(10, 10, 200, 'Directory', 16);
+		ASSETS_PLAYER_TEXT = new FlxInputText(10, ASSETS_DIRECTORY_TEXT.y + ASSETS_DIRECTORY_TEXT.height + 10, 200, 'player', 16);
 
-		tab_group.add(DIRECTORY_TEXT);
-		tab_group.add(new FlxText(DIRECTORY_TEXT.x + DIRECTORY_TEXT.width + 10, DIRECTORY_TEXT.y, 0, 'Directory (ex: "earth-overdrive/")', 16));
+		tab_group.add(ASSETS_DIRECTORY_TEXT);
+		tab_group.add(new FlxText(ASSETS_DIRECTORY_TEXT.x + ASSETS_DIRECTORY_TEXT.width + 10, ASSETS_DIRECTORY_TEXT.y, 0,
+			'Art directory (ex: "earth-overdrive/")', 16));
+		tab_group.add(ASSETS_PLAYER_TEXT);
+		tab_group.add(new FlxText(ASSETS_PLAYER_TEXT.x + ASSETS_PLAYER_TEXT.width + 10, ASSETS_PLAYER_TEXT.y, 0,
+			'Player filename (ex: "player-hiku")', 16));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -73,7 +80,8 @@ class LevelEditorMenu extends FlxState
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
 			SONG_JSON.author = AUTHOR_TEXT.text;
-			SONG_JSON.assets.directory = DIRECTORY_TEXT.text;
+			SONG_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
+			SONG_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
 
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(SONG_JSON));
