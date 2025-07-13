@@ -29,6 +29,8 @@ class OutdatedState extends FlxState
 		outdatedText.size = 8;
 		#end
 
+		outdatedText.text += '\n${Sys.systemName}';
+
 		outdatedText.text = outdatedText.text.toUpperCase();
 		outdatedText.alignment = CENTER;
 		outdatedText.screenCenter();
