@@ -28,14 +28,5 @@
                 "color": [0, 255, 255, 255],
                 "size": [12, 12]
         },
-        "resultsAssetNames": {
-                "bad": "player-bad",
-                "good": "player",
-                "new_highscore": "player-newHighscore"
-        },
-        "resultsFrameArrays": {
-                "bad": [0, 1, 2, 3, 4, 5],
-                "good": [0, 1, 2, 3, 4, 5],
-                "new_highscore": [0, 1, 2, 3, 4, 5, 6]
-        }
+        "resultsChar": "player"
 }

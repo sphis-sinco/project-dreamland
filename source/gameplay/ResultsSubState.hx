@@ -1,5 +1,7 @@
 package gameplay;
 
+import data.PlayerData.PlayerResultsData;
+import data.PlayerData.PlayerResultsDataManager;
 import flixel.math.FlxMath;
 import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
@@ -26,6 +28,8 @@ class ResultsSubState extends FlxSubState
 	public var blip:FlxSound = new FlxSound().loadEmbedded(FileManager.getSoundFile('sounds/blip-results'));
 	public var blip_finished:FlxSound = new FlxSound().loadEmbedded(FileManager.getSoundFile('sounds/blip-results-finished'));
 
+	public var player_results_json:PlayerResultsData;
+
 	override public function new()
 	{
 		super();
@@ -49,8 +53,11 @@ class ResultsSubState extends FlxSubState
 
 		player = new FlxSprite();
 
+		player_results_json = FileManager.getJSON(FileManager.getDataFile('players/results/${PlayState.player_json.resultsChar ?? 'player'}.json'));
+		player_results_json ??= PlayerResultsDataManager.defaultJSON;
+
 		var resultsAssetName = null;
-		var resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
+		var resultsFrameArray = null;
 
 		trace(PlayState.SCORE < Save.getSavedataInfo(highscore) / 2);
 		Global.set_HIGHSCORE();
@@ -61,22 +68,22 @@ class ResultsSubState extends FlxSubState
 		{
 			trace('new highscore anim');
 
-			resultsAssetName = PlayState.player_json.resultsAssetNames.new_highscore;
-			resultsFrameArray = PlayState.player_json.resultsFrameArrays.new_highscore;
+			resultsAssetName = player_results_json.assetNames.new_highscore;
+			resultsFrameArray = player_results_json.frameArrays.new_highscore;
 		}
 		else if (PlayState.SCORE < Save.getSavedataInfo(highscore) / 2)
 		{
 			trace('Bad anim');
 
-			resultsAssetName = PlayState.player_json.resultsAssetNames.bad;
-			resultsFrameArray = PlayState.player_json.resultsFrameArrays.bad;
+			resultsAssetName = player_results_json.assetNames.bad;
+			resultsFrameArray = player_results_json.frameArrays.bad;
 		}
 		else
 		{
 			trace('Good anim');
 
-			resultsAssetName = PlayState.player_json.resultsAssetNames.good;
-			resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
+			resultsAssetName = player_results_json.assetNames.good;
+			resultsFrameArray = player_results_json.frameArrays.good;
 		}
 
 		resultsAssetName ??= 'player';

@@ -23,6 +23,7 @@ A new team member was added to the team: HeroEyad
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
 ## Results
+- The player JSON results fields have been split into a "results/" folder in the "player/"
 - Added bad and new highscore player animations
 - The player now appears after the score counts up
 - The score is formated like this / money: "18,000" <!-- ITS OVER NINE THOUSAND! -->

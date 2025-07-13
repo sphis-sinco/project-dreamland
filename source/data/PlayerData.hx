@@ -18,13 +18,18 @@ typedef PlayerData =
 			var color:Array<Int>;
 			var size:Array<Int>;
 		}
-	var resultsAssetNames:
+	var resultsChar:String;
+}
+
+typedef PlayerResultsData =
+{
+	var assetNames:
 		{
 			var bad:String;
 			var good:String;
 			var new_highscore:String;
 		};
-	var resultsFrameArrays:
+	var frameArrays:
 		{
 			// TODO: add loop stuff
 			var bad:Array<Int>;
@@ -34,6 +39,22 @@ typedef PlayerData =
 			var new_highscore:Array<Int>;
 			var ?new_highscore_loop:Array<Int>;
 		};
+}
+
+class PlayerResultsDataManager
+{
+	public static var defaultJSON:PlayerResultsData = {
+		"assetNames": {
+			"bad": "player-bad",
+			"good": "player",
+			"new_highscore": "player-newHighscore"
+		},
+		"frameArrays": {
+			"bad": [0, 1, 2, 3, 4, 5],
+			"good": [0, 1, 2, 3, 4, 5],
+			"new_highscore": [0, 1, 2, 3, 4, 5, 6]
+		}
+	};
 }
 
 class PlayerDataManager
@@ -73,15 +94,6 @@ class PlayerDataManager
 			"color": [255, 255, 0],
 			"size": [24, 24]
 		},
-		"resultsAssetNames": {
-			"bad": "player-bad",
-			"good": "player",
-			"new_highscore": "player"
-		},
-		"resultsFrameArrays": {
-			"bad": [0, 1, 2, 3, 4, 5],
-			"good": [0, 1, 2, 3, 4, 5],
-			"new_highscore": [0, 1, 2, 3, 4, 5]
-		}
+		"resultsChar": "player"
 	};
 }
