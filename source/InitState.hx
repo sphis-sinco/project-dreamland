@@ -25,7 +25,7 @@ class InitState extends FlxState
 		}
 		else
 		{
-			#if (html5 || ANDROID_BUILD)
+			#if (html5)
 			FlxG.switchState(OutdatedState.new);
 			#else
 			FlxG.switchState(Splash.new);
