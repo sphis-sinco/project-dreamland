@@ -6,6 +6,7 @@ class MobileButton extends FlxSprite
 	{
 		super();
 
+		#if MOBILE_BUILD
 		loadGraphic(FileManager.getImageFile('buttons', MOBILE), true, 32, 32);
 		scrollFactor.set(0, 0);
 
@@ -36,6 +37,7 @@ class MobileButton extends FlxSprite
 		scale.set(2, 2);
 
 		y = FlxG.height - height * 2;
+		#end
 	}
 
 	public var pressed:Bool = false;
