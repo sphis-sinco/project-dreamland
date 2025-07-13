@@ -177,8 +177,6 @@ class ResultsSubState extends FlxSubState
 			{
 				if (!lerpComplete)
 					blip.play(true);
-				if (lerpComplete)
-					blip_finished.play(true);
 			}
 		}
 
@@ -197,6 +195,9 @@ class ResultsSubState extends FlxSubState
 
 		player.animation.play('anim');
 		player.visible = PlayState.SCORE != 0;
+
+		if (player.visible)
+			blip_finished.play(true);
 
 		if (PlayState.HIGHSCORE)
 		{
