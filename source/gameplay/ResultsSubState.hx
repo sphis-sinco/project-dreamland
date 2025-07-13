@@ -48,22 +48,34 @@ class ResultsSubState extends FlxSubState
 
 		player = new FlxSprite();
 
-		var resultsAssetName = PlayState.player_json.resultsAssetNames.good;
+		var resultsAssetName = null;
 		var resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
 
 		trace(PlayState.SCORE < Save.getSavedataInfo(highscore) / 2);
+		Global.set_HIGHSCORE();
 		trace(Save.getSavedataInfo(highscore) / 2);
 		trace(PlayState.SCORE);
-		if (PlayState.SCORE < Save.getSavedataInfo(highscore) / 2)
-		{
-			resultsAssetName = PlayState.player_json.resultsAssetNames.bad;
-			resultsFrameArray = PlayState.player_json.resultsFrameArrays.bad;
-		}
 
 		if (PlayState.HIGHSCORE)
 		{
+			trace('new highscore anim');
+
 			resultsAssetName = PlayState.player_json.resultsAssetNames.new_highscore;
 			resultsFrameArray = PlayState.player_json.resultsFrameArrays.new_highscore;
+		}
+		else if (PlayState.SCORE < Save.getSavedataInfo(highscore) / 2)
+		{
+			trace('Bad anim');
+
+			resultsAssetName = PlayState.player_json.resultsAssetNames.bad;
+			resultsFrameArray = PlayState.player_json.resultsFrameArrays.bad;
+		}
+		else
+		{
+			trace('Good anim');
+
+			resultsAssetName = PlayState.player_json.resultsAssetNames.good;
+			resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
 		}
 
 		resultsAssetName ??= 'player';
