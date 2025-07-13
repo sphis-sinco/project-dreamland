@@ -5,8 +5,8 @@ import menus.options.OptionsMenuMain;
 
 class MenuState extends FlxState
 {
-	public var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", 32);
-	public var highscoreText:FlxText = new FlxText(0, 32, 0, "Highscore: 0", 16);
+	public var menuText:FlxText = new FlxText(0, 0, 0, "Dreamland", #if MOBILE_BUILD 64 #else 32 #end);
+	public var highscoreText:FlxText = new FlxText(0, 0, 0, "Highscore: 0", #if MOBILE_BUILD 32 #else 16 #end);
 
 	public var btnGrp:FlxTypedGroup<FlxSprite> = new FlxTypedGroup<FlxSprite>();
 
@@ -22,6 +22,7 @@ class MenuState extends FlxState
 
 		highscoreText.text = 'Highscore: ${Global.HIGHSCORE}${(PlayState.HIGHSCORE) ? ' (NEW HIGHSCORE)' : ''}';
 		highscoreText.color = (PlayState.HIGHSCORE) ? 0x00ff00 : 0xffffff;
+		highscoreText.y = menuText.size;
 		add(highscoreText);
 
 		menuText.text += ' v${Global.APP_VERSION}';
@@ -32,26 +33,32 @@ class MenuState extends FlxState
 
 		add(btnGrp);
 
+		var btnScaleStuff:Int = #if MOBILE_BUILD 2 #else 1 #end;
+
 		levelBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-levels'));
 		levelBtn.screenCenter();
-		levelBtn.x -= levelBtn.width;
+		levelBtn.scale.set(btnScaleStuff, btnScaleStuff);
+		levelBtn.x -= levelBtn.width * btnScaleStuff;
 		btnGrp.add(levelBtn);
 
 		#if POLYMOD_MODDING
 		modBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-mods'));
 		#end
+		modBtn.scale.set(btnScaleStuff, btnScaleStuff);
 		modBtn.screenCenter();
 		btnGrp.add(modBtn);
 
 		optionBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-options'));
 		optionBtn.screenCenter();
-		optionBtn.x += optionBtn.width;
+		optionBtn.scale.set(btnScaleStuff, btnScaleStuff);
+		optionBtn.x += optionBtn.width * btnScaleStuff;
 		btnGrp.add(optionBtn);
 
 		creditsBtn.loadGraphic(FileManager.getImageFile('menus/menubutton-credits'));
 		creditsBtn.screenCenter();
-		creditsBtn.x -= creditsBtn.width;
-		creditsBtn.y += creditsBtn.height;
+		creditsBtn.scale.set(btnScaleStuff, btnScaleStuff);
+		creditsBtn.x = levelBtn.x;
+		creditsBtn.y += creditsBtn.height * btnScaleStuff;
 		btnGrp.add(creditsBtn);
 
 		for (member in btnGrp.members)
