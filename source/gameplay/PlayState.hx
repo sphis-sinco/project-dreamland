@@ -83,7 +83,11 @@ class PlayState extends FlxState
 					bg.loadGraphic(FileManager.getImageFile('background'));
 				}
 		});
+		#if MOBILE_BUILD
 		bg.scale.set(4, 4);
+		#else
+		bg.scale.set(2, 2);
+		#end
 		bg.screenCenter();
 		bg.color = 0xcccccc;
 
