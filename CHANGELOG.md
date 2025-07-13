@@ -1,4 +1,6 @@
 # 1.0.0 (7/13/2025)
+A new team member was added to the team: HeroEyad
+
 ## Level Select
 - The level name, variation, and difficulty text has been moved up
 - Level sprite's scale has been set to 1 for the x and y
