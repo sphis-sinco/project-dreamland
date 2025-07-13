@@ -27,6 +27,6 @@ class Screen extends FlxSprite
 			animation.play('HIGHSCORE');
 		}
 
-		scale.set(4, 4);
+		scale.set(#if MOBILE_BUILD 8, 8 #else 4, 4 #end);
 	}
 }

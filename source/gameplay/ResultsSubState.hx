@@ -35,14 +35,14 @@ class ResultsSubState extends FlxSubState
 		instance = this;
 
 		backdrop = new FlxSprite().loadGraphic(FileManager.getImageFile('menus/Yellowpopup'));
-		backdrop.scale.set(2, 2);
+		backdrop.scale.set(#if MOBILE_BUILD 4, 4 #else 2, 2 #end);
 		backdrop.screenCenter();
 
 		var backdropY = backdrop.y;
 
 		add(backdrop);
 
-		backdrop.y = -(backdrop.height * 2);
+		backdrop.y = -(backdrop.height * #if MOBILE_BUILD 4 + #end 2);
 		FlxTween.tween(backdrop, {y: backdropY}, 1.0, {
 			ease: FlxEase.smoothStepInOut
 		});
@@ -85,7 +85,7 @@ class ResultsSubState extends FlxSubState
 		player.loadGraphic(FileManager.getImageFile('results/player/$resultsAssetName'), true, 160, 140);
 		player.animation.add('anim', resultsFrameArray, 24, false);
 		player.visible = false;
-		player.scale.set(4, 4);
+		player.scale.set(#if MOBILE_BUILD 8, 8 #else 4, 4 #end);
 		add(player);
 
 		screen = new Screen(false);
@@ -95,7 +95,11 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.screenCenter();
 
 		var screenX = screen.x;
-		screen.x = -(screen.width * 4);
+		screen.x = -(screen.width * #if MOBILE_BUILD 8 + #end 4);
+
+		#if MOBILE_BUILD
+		screen.y -= screen.height;
+		#end
 
 		add(screen);
 
@@ -118,7 +122,7 @@ class ResultsSubState extends FlxSubState
 			}
 		});
 
-		scoreText.setPosition(80, 420);
+		scoreText.setPosition(#if MOBILE_BUILD 160, 600 #else 80, 420 #end);
 		scoreText.visible = false;
 		add(scoreText);
 
@@ -128,7 +132,14 @@ class ResultsSubState extends FlxSubState
 
 		HIGHSCORE = new Screen(false, true);
 		HIGHSCORE.visible = false;
-		HIGHSCORE.scale.set(3.75, 3.75);
+		HIGHSCORE.scale.x -= .25;
+		HIGHSCORE.scale.y -= .25;
+
+		#if MOBILE_BUILD
+		HIGHSCORE.scale.x -= 1;
+		HIGHSCORE.scale.y -= 1;
+		#end
+
 		add(HIGHSCORE);
 	}
 
@@ -158,6 +169,9 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.screenCenter();
 		HIGHSCORE.screenCenter();
 		player.screenCenter();
+		#if MOBILE_BUILD
+		player.y -= 20 * 5;
+		#end
 		scoreText.text = 'score: ${FlxStringUtil.formatMoney(score)}';
 
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
@@ -203,8 +217,8 @@ class ResultsSubState extends FlxSubState
 		{
 			HIGHSCORE.visible = true;
 			FlxTween.tween(HIGHSCORE, {
-				'scale.x': 4,
-				'scale.y': 4,
+				'scale.x': HIGHSCORE.scale.x + .25,
+				'scale.y': HIGHSCORE.scale.y + .25,
 			}, .25, {
 				ease: FlxEase.bounceInOut
 			});
