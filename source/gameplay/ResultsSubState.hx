@@ -83,6 +83,7 @@ class ResultsSubState extends FlxSubState
 
 		player.loadGraphic(FileManager.getImageFile('results/player/$resultsAssetName'), true, 160, 140);
 		player.animation.add('anim', resultsFrameArray, 24, false);
+		player.animation.add('loop', [resultsFrameArray[resultsFrameArray.length]], 24, true);
 		player.visible = false;
 		player.scale.set(4, 4);
 		add(player);
@@ -151,7 +152,10 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.screenCenter();
 		HIGHSCORE.screenCenter();
 		player.screenCenter();
-		scoreText.text = 'score: $score';
+		scoreText.text = 'score: ${score}';
+
+		if (player.animation.finished && player.animation.name == 'anim')
+			player.animation.play('loop');
 
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
 		{
