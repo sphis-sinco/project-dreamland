@@ -3,7 +3,6 @@ package menus.editors;
 import data.LevelData;
 import flixel.addons.ui.*;
 import flixel.ui.FlxButton;
-import menus.options.ControlsMenu;
 
 class LevelEditorMenu extends FlxState
 {
@@ -32,6 +31,8 @@ class LevelEditorMenu extends FlxState
 		addMiscTab();
 		addAssetsTab();
 		addSettingsTab();
+
+		DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
 	}
 
 	function addSettingsTab()
@@ -42,29 +43,37 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
+	public var DIRECTORY_TEXT:FlxInputText;
+
 	function addAssetsTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
 		tab_group.name = '_Assets';
 
+		DIRECTORY_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
+
+		tab_group.add(DIRECTORY_TEXT);
+		tab_group.add(new FlxText(DIRECTORY_TEXT.x + DIRECTORY_TEXT.width + 10, DIRECTORY_TEXT.y, 0, 'Directory (ex: "earth-overdrive/")', 16));
+
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public var AUTHOR_NAME_TEXT:FlxInputText;
+	public var AUTHOR_TEXT:FlxInputText;
 
 	function addMiscTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
 		tab_group.name = 'Misc';
 
-		AUTHOR_NAME_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
+		AUTHOR_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
 
-		tab_group.add(AUTHOR_NAME_TEXT);
-		tab_group.add(new FlxText(AUTHOR_NAME_TEXT.x + AUTHOR_NAME_TEXT.width + 10, AUTHOR_NAME_TEXT.y, 0, 'Author Name', 16));
+		tab_group.add(AUTHOR_TEXT);
+		tab_group.add(new FlxText(AUTHOR_TEXT.x + AUTHOR_TEXT.width + 10, AUTHOR_TEXT.y, 0, 'Author Name', 16));
 
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
-			SONG_JSON.author = AUTHOR_NAME_TEXT.text;
+			SONG_JSON.author = AUTHOR_TEXT.text;
+			SONG_JSON.assets.directory = DIRECTORY_TEXT.text;
 
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(SONG_JSON));
