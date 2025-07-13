@@ -1,6 +1,7 @@
 package menus.editors;
 
 import flixel.addons.ui.FlxUITabMenu;
+import menus.options.ControlsMenu;
 
 class LevelEditorMenu extends FlxState
 {
@@ -23,10 +24,25 @@ class LevelEditorMenu extends FlxState
 
 		UI_BOX.selected_tab = 0;
 		add(UI_BOX);
+
+		addMiscTab();
+		addAssetsTab();
+		addSettingsTab();
 	}
+
+	function addSettingsTab() {}
+
+	function addAssetsTab() {}
+
+	function addMiscTab() {}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (Controls.UI_LEAVE)
+		{
+			FlxG.switchState(EditorMenu.new);
+		}
 	}
 }
