@@ -26,8 +26,7 @@ class LevelSelect extends FlxState
 
 	override public function create()
 	{
-		// TODO: THIS ISNT THERE FOR SOME REASON
-		interact.x = FlxG.width - interact.width * 2;
+		interact.x = FlxG.width - interact.width * 4;
 		leave.x = FlxG.width - leave.width * 2;
 
 		left.x = left.width;
@@ -50,7 +49,7 @@ class LevelSelect extends FlxState
 		#end
 
 		#if ANDROID_BUILD
-		difficulty.y = difficulty.height;
+		difficulty.y = difficulty.height / 2;
 		#else
 		difficulty.y = FlxG.height - difficulty.height;
 		#end
