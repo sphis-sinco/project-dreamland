@@ -12,7 +12,8 @@ class Global
 		var savedHighscore:Int = Save.getSavedataInfo(SaveKeys.highscore);
 		var currentScore:Int = PlayState.SCORE;
 
-		var newHighscore:Int = Math.max(savedHighscore, currentScore, HIGHSCORE);
+		var newHighscore:Int = 0; // vsc was bitching
+		newHighscore = Std.int(Math.max(savedHighscore, currentScore));
 
 		NEW_HIGHSCORE = newHighscore > HIGHSCORE;
 		HIGHSCORE = newHighscore;
@@ -22,7 +23,6 @@ class Global
 
 		trace("Highscore updated to: " + HIGHSCORE);
 	}
-
 
 	public static var APP_VERSION(get, never):String;
 
