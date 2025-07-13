@@ -18,7 +18,7 @@ class ResultsSubState extends FlxSubState
 	public var player:FlxSprite;
 
 	public var scoreText:FlxText = new FlxText(0, 0, new Screen().width * 4, 'score: 0', 32);
-	public var score:Int = 0;
+	public var score:Float = 0;
 
 	public var TransitionComplete:Bool = false;
 
@@ -151,7 +151,7 @@ class ResultsSubState extends FlxSubState
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
 		{
 			var prevScore = score;
-			score = Std.int(FlxMath.lerp(score, PlayState.SCORE, scoreLerpVal));
+			score = FlxMath.lerp(score, PlayState.SCORE, scoreLerpVal);
 
 			scoreLerpVal = scoreLerpVal * 1.05;
 			scoreLerpVal = FlxMath.bound(scoreLerpVal, scoreLerpVal, 1.0);
