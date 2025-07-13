@@ -48,6 +48,10 @@ class LevelEditorMenu extends FlxState
 
 		SETTINGS_CHANCES_ENEMY_EASY_NUM.value = SONG_JSON.settings.chances.enemy_easy;
 		SETTINGS_CHANCES_ENEMY_RARE_NUM.value = SONG_JSON.settings.chances.enemy_rare;
+
+		SETTINGS_SPEED_ENEMY_COMMON_NUM.value = SONG_JSON.settings.speed_additions.enemy_common;
+		SETTINGS_SPEED_ENEMY_EASY_NUM.value = SONG_JSON.settings.speed_additions.enemy_easy;
+		SETTINGS_SPEED_ENEMY_RARE_NUM.value = SONG_JSON.settings.speed_additions.enemy_rare;
 	}
 
 	function addSettingsTab2()
@@ -67,22 +71,35 @@ class LevelEditorMenu extends FlxState
 	public var SETTINGS_CHANCES_ENEMY_RARE_NUM:FlxUINumericStepper;
 	public var SETTINGS_CHANCES_ENEMY_EASY_NUM:FlxUINumericStepper;
 
+	public var SETTINGS_SPEED_ENEMY_RARE_NUM:FlxUINumericStepper;
+	public var SETTINGS_SPEED_ENEMY_EASY_NUM:FlxUINumericStepper;
+	public var SETTINGS_SPEED_ENEMY_COMMON_NUM:FlxUINumericStepper;
+
 	function addSettingsTab1()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
 		tab_group.name = '_Settings1';
 
 		SETTINGS_AMMO_NUM = new FlxUINumericStepper(10, 10, 1, 2, 1, 10);
-		SETTINGS_SCORE_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_AMMO_NUM.y + SETTINGS_AMMO_NUM.height + 5, 5, 2, 0, FlxMath.MAX_VALUE_INT);
+
+		SETTINGS_SCORE_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_AMMO_NUM.y + SETTINGS_AMMO_NUM.height + 15, 5, 2, 0,
+			FlxMath.MAX_VALUE_INT);
 		SETTINGS_SCORE_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_RARE_NUM.y + SETTINGS_SCORE_ENEMY_RARE_NUM.height + 5, 5, 2,
 			0, FlxMath.MAX_VALUE_INT);
 		SETTINGS_SCORE_ENEMY_COMMON_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_EASY_NUM.y + SETTINGS_SCORE_ENEMY_EASY_NUM.height + 5, 5,
 			2, 0, FlxMath.MAX_VALUE_INT);
 
-		SETTINGS_CHANCES_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y + SETTINGS_SCORE_ENEMY_COMMON_NUM.height + 5,
+		SETTINGS_CHANCES_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y + SETTINGS_SCORE_ENEMY_COMMON_NUM.height + 15,
 			0.5, 2, 0, 100, 1);
 		SETTINGS_CHANCES_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_CHANCES_ENEMY_RARE_NUM.y + SETTINGS_CHANCES_ENEMY_RARE_NUM.height + 5,
 			0.5, 2, 0, 100, 1);
+
+		SETTINGS_SPEED_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_CHANCES_ENEMY_EASY_NUM.y + SETTINGS_CHANCES_ENEMY_EASY_NUM.height + 15,
+			0.1, 2, -7, 20, 1);
+		SETTINGS_SPEED_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_SPEED_ENEMY_RARE_NUM.y + SETTINGS_SPEED_ENEMY_RARE_NUM.height + 5, 5,
+			0.1, -7, 20, 1);
+		SETTINGS_SPEED_ENEMY_COMMON_NUM = new FlxUINumericStepper(10, SETTINGS_SPEED_ENEMY_EASY_NUM.y + SETTINGS_SPEED_ENEMY_EASY_NUM.height + 5, 0.1,
+			2, -7, 20, 1);
 
 		tab_group.add(SETTINGS_AMMO_NUM);
 		tab_group.add(new FlxText(SETTINGS_AMMO_NUM.x + SETTINGS_AMMO_NUM.width + 10, SETTINGS_AMMO_NUM.y, 0,
@@ -103,6 +120,16 @@ class LevelEditorMenu extends FlxState
 		tab_group.add(SETTINGS_CHANCES_ENEMY_EASY_NUM);
 		tab_group.add(new FlxText(SETTINGS_CHANCES_ENEMY_EASY_NUM.x + SETTINGS_CHANCES_ENEMY_EASY_NUM.width + 10, SETTINGS_CHANCES_ENEMY_EASY_NUM.y,
 			0, 'Chances for a easy enemy to appear', 8));
+
+		tab_group.add(SETTINGS_SPEED_ENEMY_RARE_NUM);
+		tab_group.add(new FlxText(SETTINGS_SPEED_ENEMY_RARE_NUM.x + SETTINGS_SPEED_ENEMY_RARE_NUM.width + 10, SETTINGS_SPEED_ENEMY_RARE_NUM.y, 0,
+			'Speed increase for rare enemies', 8));
+		tab_group.add(SETTINGS_SPEED_ENEMY_EASY_NUM);
+		tab_group.add(new FlxText(SETTINGS_SPEED_ENEMY_EASY_NUM.x + SETTINGS_SPEED_ENEMY_EASY_NUM.width + 10, SETTINGS_SPEED_ENEMY_EASY_NUM.y, 0,
+			'Speed increase for easy enemies', 8));
+		tab_group.add(SETTINGS_SPEED_ENEMY_COMMON_NUM);
+		tab_group.add(new FlxText(SETTINGS_SPEED_ENEMY_COMMON_NUM.x + SETTINGS_SPEED_ENEMY_COMMON_NUM.width + 10, SETTINGS_SPEED_ENEMY_COMMON_NUM.y,
+			0, 'Speed increase for common enemies', 8));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -192,6 +219,10 @@ class LevelEditorMenu extends FlxState
 
 		SONG_JSON.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
 		SONG_JSON.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
+
+		SONG_JSON.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
+		SONG_JSON.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
+		SONG_JSON.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
 	}
 
 	override function update(elapsed:Float)
