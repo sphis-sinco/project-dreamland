@@ -1,5 +1,6 @@
 export/
-export-android/
+export-*/
+
 .haxelib/
 dump/
 
