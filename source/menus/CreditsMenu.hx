@@ -90,8 +90,10 @@ class CreditsMenu extends TextSelecting
 	override function create()
 	{super.create();
 
+		#if !MOBILE_BUILD
 		for (text in text_group)
-			text.size = #if !MOBILE_BUILD 16 #end;
+			text.size = 16;
+		#end
 
 		instructionText.text = #if MOBILE_BUILD 'UP' #else '(${Controls.getKey('gameplay_move_up')}/${Controls.getKey('gameplay_move_up_alt')})' #end
 		+ #if MOBILE_BUILD '/DOWN ' #else '/(${Controls.getKey('gameplay_move_down')}/${Controls.getKey('gameplay_move_down_alt')}) ' #end
