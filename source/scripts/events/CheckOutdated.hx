@@ -18,6 +18,7 @@ class CheckOutdated
 			trace('CheckOutdated.onData(curVersion: $curVersion, updateVersion: $updateVersion)');
 			if (updateVersion != curVersion)
 			{
+				trace('Outdated!');
 				return true;
 			}
 
