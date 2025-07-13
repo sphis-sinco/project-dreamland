@@ -11,6 +11,8 @@ class Main extends Sprite
 	{
 		super();
 
+		Application.current.window.title = 'Dreamland (${Application.current.meta.get('version')})';
+
 		CheckOutdated.call();
 
 		addChild(new FlxGame(0, 0, InitState, 60, 60, true));
