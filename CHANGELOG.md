@@ -6,6 +6,7 @@
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster
 ## Application
+- Added custom icon for the mobile app
 - Added support for mobile platforms (Ios prob wouldn't work)
 - The icon for the application has been updated. no more transparent background
 ## Options
