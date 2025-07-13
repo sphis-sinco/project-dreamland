@@ -17,6 +17,7 @@ class MenuState extends FlxState
 
 	override public function create()
 	{
+		Save.setSavedataInfo(highscore, Global.HIGHSCORE);
 		Save.flushData();
 		add(menuText);
 

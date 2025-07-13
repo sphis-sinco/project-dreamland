@@ -1,4 +1,7 @@
 
+# version 7 - 7/13/2025
+Fixed saving FINALLY (Thank you HeroEyad!)
+
 # version 6 - 7/11/2025
 This version added control stuff
 

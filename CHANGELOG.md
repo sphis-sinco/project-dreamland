@@ -5,6 +5,8 @@ A new team member was added to the team: HeroEyad
 - The level name, variation, and difficulty text has been moved up
 - Level sprite's scale has been set to 1 for the x and y
 ## Gameplay
+- The highscore variable is initalized after the save is initalized
+- THE SAVING IS FINALLY FIXED (THANK YOU HEROEYAD)
 - The background is scaled down in non-mobile builds
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster

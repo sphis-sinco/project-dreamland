@@ -8,7 +8,7 @@ class Save
 {
 	public static var save:FlxSave;
 
-	public static final SAVEDATA_VERSION:Int = 6;
+	public static final SAVEDATA_VERSION:Int = 7;
 
 	public static function initalize()
 	{
@@ -46,7 +46,8 @@ class Save
 			trace(save.data.modList);
 			for (mod in PolymodHandler.metadataArrays)
 			{
-				TryCatch.tryCatch(() -> {
+				TryCatch.tryCatch(() ->
+				{
 					trace(mod);
 					if (save.data.modList.exists(mod))
 						ModList.setModEnabled(mod, true);
@@ -54,6 +55,8 @@ class Save
 			}
 		}
 		#end
+
+		Global.HIGHSCORE = getSavedataInfo(highscore);
 
 		flushData();
 	}
@@ -76,11 +79,16 @@ class Save
 	{
 		switch (field)
 		{
-			case savever: save.data.savedata.saveVer = newval;
-			case firsttime, firstTime: save.data.savedata.firstTime = newval;
-			case highscore: save.data.savedata.highscore = newval;
-			case controls: save.data.savedata.controls = newval;
-			case shaders: save.data.savedata.shaders = newval;
+			case savever:
+				save.data.savedata.saveVer = newval;
+			case firsttime, firstTime:
+				save.data.savedata.firstTime = newval;
+			case highscore:
+				save.data.savedata.highscore = newval;
+			case controls:
+				save.data.savedata.controls = newval;
+			case shaders:
+				save.data.savedata.shaders = newval;
 		}
 	}
 
