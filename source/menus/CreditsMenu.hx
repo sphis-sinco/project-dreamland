@@ -1,6 +1,7 @@
 package menus;
 
 import base.TextSelecting;
+import shaders.AdjustColorShader;
 
 typedef CreditsEntry =
 {
@@ -110,11 +111,21 @@ class CreditsMenu extends TextSelecting
 
 		#if MOBILE_BUILD
 		emailBtn.x = FlxG.width - interact.width * (MobileButton.scaleVal * 2);
+		emailBtn.shader = emailBtn_shader;
 		interact.y -= interact.height * MobileButton.scaleVal;
 		leave.y -= leave.height * MobileButton.scaleVal;
 		add(emailBtn);
 		#end
 	}
 
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		emailBtn_shader.saturation = (creditsJSON[CURRENT_SELECTION].email != null
+			&& creditsJSON[CURRENT_SELECTION].url != null) ? 0 : -50;
+	}
+
 	public var emailBtn:MobileButton = new MobileButton(X_BUTTON);
+	public var emailBtn_shader:AdjustColorShader = new AdjustColorShader();
 }
