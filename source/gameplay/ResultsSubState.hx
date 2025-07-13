@@ -152,7 +152,7 @@ class ResultsSubState extends FlxSubState
 		screen_pulse.screenCenter();
 		HIGHSCORE.screenCenter();
 		player.screenCenter();
-		scoreText.text = 'score: ${score}';
+		scoreText.text = 'score: ${FlxStringUtil.formatMoney(score)}';
 
 		if (player.animation.finished && player.animation.name == 'anim')
 			player.animation.play('loop');
