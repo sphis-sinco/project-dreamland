@@ -14,6 +14,7 @@ class Save
 	{
 		save = new FlxSave();
 		save.bind('dreamland', Application.current.meta.get('company'));
+		FlxG.save.bind('dreamland', Application.current.meta.get('company'));
 
 		if (save.data.savedata == null)
 		{
