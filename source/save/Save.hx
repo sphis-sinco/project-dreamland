@@ -94,6 +94,7 @@ class Save
 
 	public static function flushData()
 	{
+		setSavedataInfo(savever, Save.SAVEDATA_VERSION);
 		save.flush();
 		trace("Save flushed!");
 		trace(save.data.savedata);

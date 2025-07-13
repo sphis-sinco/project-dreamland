@@ -4,6 +4,12 @@ class InitState extends FlxState
 	{
 		super.create();
 
+		Application.current.onExit.add(function(exitCode)
+		{
+			Save.setSavedataInfo(highscore, Global.HIGHSCORE);
+			Save.flushData();
+		}, false, 1000);
+
 		Save.initalize();
 		#if polymod
 		modding.PolymodHandler.loadMods();
