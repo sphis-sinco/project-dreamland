@@ -1,4 +1,6 @@
 # 1.0.0 (7/13/2025)
+## Level Select
+- Level sprite's scale has been set to 1 for the x and y
 ## Gameplay
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster

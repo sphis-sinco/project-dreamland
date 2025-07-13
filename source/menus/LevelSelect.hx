@@ -32,7 +32,7 @@ class LevelSelect extends FlxState
 		left.x = left.width * (MobileButton.scaleVal - 2);
 		right.x = left.x + (right.width * (MobileButton.scaleVal * 2));
 
-		down.x = left.width - left.width;
+		down.x = left.x + (down.width * MobileButton.scaleVal);
 		up.x = down.x;
 		up.y -= up.height * MobileButton.scaleVal;
 
@@ -62,7 +62,7 @@ class LevelSelect extends FlxState
 		level_json ??= LevelSelectEntryDataManager.defaultJSON;
 
 		level_sprite.loadGraphic(FileManager.getImageFile(LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background')));
-		level_sprite.scale.set(1.25, 1.25);
+		level_sprite.scale.set(1, 1);
 		level_sprite.screenCenter();
 		add(level_sprite);
 
