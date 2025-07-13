@@ -7,6 +7,7 @@ import gameplay.*;
 import haxe.*;
 import lime.app.Application;
 import menus.*;
+import mobile.MobileButton;
 import modding.*;
 import save.Save;
 import scripts.*;

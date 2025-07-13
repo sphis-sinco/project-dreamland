@@ -13,8 +13,21 @@ class TextSelecting extends FlxState
 	public var customCamEnabled:Bool = false;
 	public var customCam:FlxObject;
 
+	public var interact:MobileButton = new MobileButton(A_BUTTON);
+	public var leave:MobileButton = new MobileButton(B_BUTTON);
+
+	public var up:MobileButton = new MobileButton(UP_BUTTON);
+	public var down:MobileButton = new MobileButton(DOWN_BUTTON);
+
 	override public function create()
 	{
+		interact.x = FlxG.width - interact.width * 4;
+		leave.x = FlxG.width - leave.width * 2;
+
+		up.x = up.width * 2;
+		up.y -= up.height * 2;
+		down.x = up.width * 2;
+
 		add(text_group);
 
 		var int:Int = 0;
@@ -35,6 +48,13 @@ class TextSelecting extends FlxState
 		}
 
 		super.create();
+
+		#if ANDROID_BUILD
+		add(interact);
+		add(leave);
+		add(up);
+		add(down);
+		#end
 	}
 
 	public var key_up:Bool;
@@ -44,10 +64,10 @@ class TextSelecting extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		key_up = Controls.UI_MOVE_UP;
-		key_down = Controls.UI_MOVE_DOWN;
-		key_enter = Controls.UI_SELECT;
-		key_back = Controls.UI_LEAVE;
+		key_up = Controls.UI_MOVE_UP || up.justReleased;
+		key_down = Controls.UI_MOVE_DOWN || down.justReleased;
+		key_enter = Controls.UI_SELECT || interact.justReleased;
+		key_back = Controls.UI_LEAVE || leave.justReleased;
 
 		if (canPressKeys())
 		{

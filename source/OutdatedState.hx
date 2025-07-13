@@ -1,7 +1,5 @@
 package;
 
-import mobile.MobileButton;
-
 class OutdatedState extends FlxState
 {
 	public var openURL:MobileButton = new MobileButton(A_BUTTON);
@@ -40,14 +38,11 @@ class OutdatedState extends FlxState
 		#end
 
 		#if ANDROID_BUILD
-		openURL.screenCenter();
-		closeState.screenCenter();
+		openURL.screenCenter(X);
+		closeState.screenCenter(X);
 
 		openURL.x -= openURL.width * 2;
 		closeState.x += closeState.width * 2;
-
-		openURL.y = FlxG.height - openURL.height * 2;
-		closeState.y = openURL.y;
 
 		add(openURL);
 		add(closeState);
