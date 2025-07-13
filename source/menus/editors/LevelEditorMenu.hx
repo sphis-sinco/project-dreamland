@@ -2,6 +2,7 @@ package menus.editors;
 
 import data.LevelData;
 import flixel.addons.ui.*;
+import flixel.math.FlxMath;
 import flixel.ui.FlxButton;
 
 class LevelEditorMenu extends FlxState
@@ -36,20 +37,55 @@ class LevelEditorMenu extends FlxState
 
 		ASSETS_DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
 		ASSETS_PLAYER_TEXT.text = SONG_JSON.assets.player;
-	}
 
-	function addSettingsTab1()
-	{
-		var tab_group = new FlxUI(null, UI_BOX);
-		tab_group.name = '_Settings1';
+		ASSETS_ENEMY_COMMON_TEXT.text = SONG_JSON.assets.enemy_common;
+		ASSETS_ENEMY_EASY_TEXT.text = SONG_JSON.assets.enemy_easy;
+		ASSETS_ENEMY_RARE_TEXT.text = SONG_JSON.assets.enemy_rare;
 
-		UI_BOX.addGroup(tab_group);
+		SETTINGS_AMMO_NUM.value = SONG_JSON.settings.ammo;
+
+		SETTINGS_SCORE_ENEMY_COMMON_NUM.value = SONG_JSON.settings.scores.enemy_common;
+		SETTINGS_SCORE_ENEMY_EASY_NUM.value = SONG_JSON.settings.scores.enemy_easy;
+		SETTINGS_SCORE_ENEMY_RARE_NUM.value = SONG_JSON.settings.scores.enemy_rare;
 	}
 
 	function addSettingsTab2()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
 		tab_group.name = '_Settings2';
+
+		UI_BOX.addGroup(tab_group);
+	}
+
+	public var SETTINGS_AMMO_NUM:FlxUINumericStepper;
+	public var SETTINGS_SCORE_ENEMY_RARE_NUM:FlxUINumericStepper;
+	public var SETTINGS_SCORE_ENEMY_EASY_NUM:FlxUINumericStepper;
+	public var SETTINGS_SCORE_ENEMY_COMMON_NUM:FlxUINumericStepper;
+
+	function addSettingsTab1()
+	{
+		var tab_group = new FlxUI(null, UI_BOX);
+		tab_group.name = '_Settings1';
+
+		SETTINGS_AMMO_NUM = new FlxUINumericStepper(10, 10, 1, 2, 1, 10);
+		SETTINGS_SCORE_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_AMMO_NUM.y + SETTINGS_AMMO_NUM.height + 5, 5, 2, 0, FlxMath.MAX_VALUE_INT);
+		SETTINGS_SCORE_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_RARE_NUM.y + SETTINGS_SCORE_ENEMY_RARE_NUM.height + 5, 5, 2,
+			0, FlxMath.MAX_VALUE_INT);
+		SETTINGS_SCORE_ENEMY_COMMON_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_EASY_NUM.y + SETTINGS_SCORE_ENEMY_EASY_NUM.height + 5, 5,
+			2, 0, FlxMath.MAX_VALUE_INT);
+
+		tab_group.add(SETTINGS_AMMO_NUM);
+		tab_group.add(new FlxText(SETTINGS_AMMO_NUM.x + SETTINGS_AMMO_NUM.width + 10, SETTINGS_AMMO_NUM.y, 0,
+			'Ammo amount, recommended for your player to have the right animations for this amount of ammo', 8));
+		tab_group.add(SETTINGS_SCORE_ENEMY_RARE_NUM);
+		tab_group.add(new FlxText(SETTINGS_SCORE_ENEMY_RARE_NUM.x + SETTINGS_SCORE_ENEMY_RARE_NUM.width + 10, SETTINGS_SCORE_ENEMY_RARE_NUM.y, 0,
+			'Score from a rare enemy', 8));
+		tab_group.add(SETTINGS_SCORE_ENEMY_EASY_NUM);
+		tab_group.add(new FlxText(SETTINGS_SCORE_ENEMY_EASY_NUM.x + SETTINGS_SCORE_ENEMY_EASY_NUM.width + 10, SETTINGS_SCORE_ENEMY_EASY_NUM.y, 0,
+			'Score from a easy enemy', 8));
+		tab_group.add(SETTINGS_SCORE_ENEMY_COMMON_NUM);
+		tab_group.add(new FlxText(SETTINGS_SCORE_ENEMY_COMMON_NUM.x + SETTINGS_SCORE_ENEMY_COMMON_NUM.width + 10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y,
+			0, 'Score from a common enemy', 8));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -130,6 +166,12 @@ class LevelEditorMenu extends FlxState
 		SONG_JSON.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
 		SONG_JSON.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
 		SONG_JSON.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
+
+		SONG_JSON.settings.ammo = Std.int(SETTINGS_AMMO_NUM.value);
+
+		SONG_JSON.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
+		SONG_JSON.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
+		SONG_JSON.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
 	}
 
 	override function update(elapsed:Float)
