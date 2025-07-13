@@ -19,6 +19,7 @@ class OutdatedState extends FlxState
 			+ '\nYou can press ${Controls.getKey('ui_select')} to go to the github to update.'
 			+ '\nor you can press ${Controls.getKey('ui_leave')} to continue.'
 			+ '\n\nIt is your choice.';
+		outdatedText.size = 24;
 		#end
 
 		outdatedText.text = outdatedText.text.toUpperCase();
