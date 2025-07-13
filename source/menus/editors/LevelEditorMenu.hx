@@ -1,6 +1,6 @@
 package menus.editors;
 
-import flixel.addons.ui.FlxUITabMenu;
+import flixel.addons.ui.*;
 import menus.options.ControlsMenu;
 
 class LevelEditorMenu extends FlxState
@@ -30,11 +30,29 @@ class LevelEditorMenu extends FlxState
 		addSettingsTab();
 	}
 
-	function addSettingsTab() {}
+	function addSettingsTab()
+	{
+		var tab_group = new FlxUI(null, UI_BOX);
+		tab_group.name = "_Setting";
 
-	function addAssetsTab() {}
+		UI_BOX.addGroup(tab_group);
+	}
 
-	function addMiscTab() {}
+	function addAssetsTab()
+	{
+		var tab_group = new FlxUI(null, UI_BOX);
+		tab_group.name = "_Assets";
+
+		UI_BOX.addGroup(tab_group);
+	}
+
+	function addMiscTab()
+	{
+		var tab_group = new FlxUI(null, UI_BOX);
+		tab_group.name = "Misc";
+
+		UI_BOX.addGroup(tab_group);
+	}
 
 	override function update(elapsed:Float)
 	{
