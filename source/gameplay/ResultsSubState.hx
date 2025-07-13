@@ -59,11 +59,6 @@ class ResultsSubState extends FlxSubState
 		var resultsAssetName = null;
 		var resultsFrameArray = null;
 
-		trace(PlayState.SCORE < Save.getSavedataInfo(highscore) / 2);
-		Global.set_HIGHSCORE();
-		trace(Save.getSavedataInfo(highscore) / 2);
-		trace(PlayState.SCORE);
-
 		if (PlayState.HIGHSCORE)
 		{
 			trace('new highscore anim');
@@ -71,7 +66,7 @@ class ResultsSubState extends FlxSubState
 			resultsAssetName = player_results_json.assetNames.new_highscore;
 			resultsFrameArray = player_results_json.frameArrays.new_highscore;
 		}
-		else if (PlayState.SCORE < Save.getSavedataInfo(highscore) / 2)
+		else if (PlayState.SCORE < Global.HIGHSCORE / 2)
 		{
 			trace('Bad anim');
 
@@ -85,6 +80,8 @@ class ResultsSubState extends FlxSubState
 			resultsAssetName = player_results_json.assetNames.good;
 			resultsFrameArray = player_results_json.frameArrays.good;
 		}
+
+		Global.set_HIGHSCORE();
 
 		resultsAssetName ??= 'player';
 		resultsFrameArray ??= [0, 1, 2, 3, 4, 5];
