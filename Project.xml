@@ -5,8 +5,8 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Dreamland" file="dreamland" main="Main" version="1.0.0" company="Sinco" />
-	<app title="Dreamland (debug)" if="debug"/>
+	<app title="Dreamland" file="dreamland" main="Main" version="1.0.0" company="Sinco"
+		packageName="com.sinco.dreamland" package="com.sinco.dreamland" />
 
 	<!--The
 	flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf
@@ -18,16 +18,17 @@
 	without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
 	<set name="SWF_VERSION" value="11.8" />
 
-	<define name="MOBILE_BUILD_TESTING" if="android_testing"/>
-	
-	<define name="MOBILE_BUILD" if="android"/>
-	<define name="MOBILE_BUILD" if="MOBILE_BUILD_TESTING" unless="MOBILE_BUILD"/>
+	<define name="MOBILE_BUILD_TESTING" if="android_testing" />
+
+	<define name="MOBILE_BUILD" if="android" />
+	<define name="MOBILE_BUILD" if="MOBILE_BUILD_TESTING" unless="MOBILE_BUILD" />
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These
 	window settings apply to all targets-->
-	<window width="640" height="480" fps="144" background="#000000" hardware="true" vsync="false" />
+	<window width="640" height="480" fps="144" background="#000000" hardware="true"
+		vsync="false" />
 
 	<!--HTML5-specific-->
 	<window if="html5" resizable="true" />
@@ -36,9 +37,10 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" unless="MOBILE_BUILD_TESTING"/>
-	
-	<window height="720" width="1280" orientation="landscape" if="MOBILE_BUILD_TESTING"/>
+	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0"
+		unless="MOBILE_BUILD_TESTING" />
+
+	<window height="720" width="1280" orientation="landscape" if="MOBILE_BUILD_TESTING" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
@@ -49,8 +51,8 @@
 	<set name="BUILD_DIR" value="${BUILD_DIR}/release" unless="debug" />
 
 	<source path="source" />
-	<assets path="assets" exclude="assets/exclude/"/>
-	<assets path="exclusives/mobile" rename="assets/mobile" if="MOBILE_BUILD"/>
+	<assets path="assets" exclude="assets/exclude/" />
+	<assets path="exclusives/mobile" rename="assets/mobile" if="MOBILE_BUILD" />
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko || MOBILE_BUILD" />
 	<define name="POLYMOD_MODDING" unless="html5 || neko || MOBILE_BUILD" />
@@ -62,9 +64,9 @@
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>
-	
-	<define name="IRIS_DEBUG"/>
-	<define name="hscriptPos" if="IRIS_DEBUG"/>
+
+	<define name="IRIS_DEBUG" />
+	<define name="hscriptPos" if="IRIS_DEBUG" />
 
 
 	<!-- _______________________________ Libraries ______________________________ -->
