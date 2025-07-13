@@ -37,8 +37,11 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
+	<set name="BUILD_DIR" value="export-android/debug" if="debug android" />
+	<set name="BUILD_DIR" value="export-android/release" if="android" unless="debug"/>
+
 	<source path="source" />
-	<assets path="assets" />
+	<assets path="assets" exclude="assets/mobile"/>
 	<assets path="assets/mobile" rename="assets/" if="android"/>
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko" />
