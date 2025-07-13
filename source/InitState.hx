@@ -6,6 +6,7 @@ class InitState extends FlxState
 
 		Application.current.onExit.add(function(exitCode)
 		{
+			Global.set_HIGHSCORE();
 			Save.setSavedataInfo(highscore, Global.HIGHSCORE);
 			Save.flushData();
 		}, false, 1000);
