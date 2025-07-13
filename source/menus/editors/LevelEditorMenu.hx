@@ -10,8 +10,6 @@ class LevelEditorMenu extends FlxState
 	{
 		super.create();
 
-		trace('Level Editor');
-
 		var tabs = [
 			{name: "Misc", label: 'Misc'},
 			{name: "Assets", label: 'Assets'},
@@ -22,6 +20,8 @@ class LevelEditorMenu extends FlxState
 
 		UI_BOX.resize(FlxG.width, FlxG.height - 128);
 		UI_BOX.screenCenter();
+
+		UI_BOX.selected_tab = 0;
 		add(UI_BOX);
 	}
 
