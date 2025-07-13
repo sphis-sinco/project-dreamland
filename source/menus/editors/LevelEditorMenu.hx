@@ -7,7 +7,7 @@ import flixel.ui.FlxButton;
 
 class LevelEditorMenu extends FlxState
 {
-	public var SONG_JSON:LevelData = LevelDataManager.defaultJSON;
+	public var LEVEL_JSON:LevelData = LevelDataManager.defaultJSON;
 
 	public var UI_BOX:FlxUITabMenu;
 
@@ -33,25 +33,25 @@ class LevelEditorMenu extends FlxState
 		addAssetsTab();
 		addSettingsTab1();
 
-		ASSETS_DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
-		ASSETS_PLAYER_TEXT.text = SONG_JSON.assets.player;
+		ASSETS_DIRECTORY_TEXT.text = LEVEL_JSON.assets.directory;
+		ASSETS_PLAYER_TEXT.text = LEVEL_JSON.assets.player;
 
-		ASSETS_ENEMY_COMMON_TEXT.text = SONG_JSON.assets.enemy_common;
-		ASSETS_ENEMY_EASY_TEXT.text = SONG_JSON.assets.enemy_easy;
-		ASSETS_ENEMY_RARE_TEXT.text = SONG_JSON.assets.enemy_rare;
+		ASSETS_ENEMY_COMMON_TEXT.text = LEVEL_JSON.assets.enemy_common;
+		ASSETS_ENEMY_EASY_TEXT.text = LEVEL_JSON.assets.enemy_easy;
+		ASSETS_ENEMY_RARE_TEXT.text = LEVEL_JSON.assets.enemy_rare;
 
-		SETTINGS_AMMO_NUM.value = SONG_JSON.settings.ammo;
+		SETTINGS_AMMO_NUM.value = LEVEL_JSON.settings.ammo;
 
-		SETTINGS_SCORE_ENEMY_COMMON_NUM.value = SONG_JSON.settings.scores.enemy_common;
-		SETTINGS_SCORE_ENEMY_EASY_NUM.value = SONG_JSON.settings.scores.enemy_easy;
-		SETTINGS_SCORE_ENEMY_RARE_NUM.value = SONG_JSON.settings.scores.enemy_rare;
+		SETTINGS_SCORE_ENEMY_COMMON_NUM.value = LEVEL_JSON.settings.scores.enemy_common;
+		SETTINGS_SCORE_ENEMY_EASY_NUM.value = LEVEL_JSON.settings.scores.enemy_easy;
+		SETTINGS_SCORE_ENEMY_RARE_NUM.value = LEVEL_JSON.settings.scores.enemy_rare;
 
-		SETTINGS_CHANCES_ENEMY_EASY_NUM.value = SONG_JSON.settings.chances.enemy_easy;
-		SETTINGS_CHANCES_ENEMY_RARE_NUM.value = SONG_JSON.settings.chances.enemy_rare;
+		SETTINGS_CHANCES_ENEMY_EASY_NUM.value = LEVEL_JSON.settings.chances.enemy_easy;
+		SETTINGS_CHANCES_ENEMY_RARE_NUM.value = LEVEL_JSON.settings.chances.enemy_rare;
 
-		SETTINGS_SPEED_ENEMY_COMMON_NUM.value = SONG_JSON.settings.speed_additions.enemy_common;
-		SETTINGS_SPEED_ENEMY_EASY_NUM.value = SONG_JSON.settings.speed_additions.enemy_easy;
-		SETTINGS_SPEED_ENEMY_RARE_NUM.value = SONG_JSON.settings.speed_additions.enemy_rare;
+		SETTINGS_SPEED_ENEMY_COMMON_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_common;
+		SETTINGS_SPEED_ENEMY_EASY_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_easy;
+		SETTINGS_SPEED_ENEMY_RARE_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_rare;
 	}
 
 	function addSettingsTab2()
@@ -178,6 +178,7 @@ class LevelEditorMenu extends FlxState
 	}
 
 	public var AUTHOR_TEXT:FlxInputText;
+	public var INFO_TEXT:FlxText;
 
 	function addMiscTab()
 	{
@@ -186,15 +187,19 @@ class LevelEditorMenu extends FlxState
 
 		AUTHOR_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
 
+		INFO_TEXT = new FlxText(10, AUTHOR_TEXT.y + AUTHOR_TEXT.height + 40, 0, "", 16);
+
 		tab_group.add(AUTHOR_TEXT);
 		tab_group.add(new FlxText(AUTHOR_TEXT.x + AUTHOR_TEXT.width + 10, AUTHOR_TEXT.y, 0, 'Author Name', 16));
+		tab_group.add(INFO_TEXT);
+		tab_group.add(new FlxText(INFO_TEXT.x, INFO_TEXT.y + INFO_TEXT.height - 40, 0, 'Information about this level:', 16));
 
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
 			saveSongJson();
 
 			PlayState.GOTO_LEVEL_EDITOR = true;
-			FlxG.switchState(() -> new PlayState(SONG_JSON));
+			FlxG.switchState(() -> new PlayState(LEVEL_JSON));
 		}));
 
 		UI_BOX.addGroup(tab_group);
@@ -202,36 +207,49 @@ class LevelEditorMenu extends FlxState
 
 	public dynamic function saveSongJson()
 	{
-		SONG_JSON.author = AUTHOR_TEXT.text;
+		LEVEL_JSON.author = AUTHOR_TEXT.text;
 
-		SONG_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
-		SONG_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
+		LEVEL_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
+		LEVEL_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
 
-		SONG_JSON.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
-		SONG_JSON.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
-		SONG_JSON.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
+		LEVEL_JSON.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
+		LEVEL_JSON.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
+		LEVEL_JSON.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
 
-		SONG_JSON.settings.ammo = Std.int(SETTINGS_AMMO_NUM.value);
+		LEVEL_JSON.settings.ammo = Std.int(SETTINGS_AMMO_NUM.value);
 
-		SONG_JSON.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
-		SONG_JSON.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
-		SONG_JSON.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
+		LEVEL_JSON.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
+		LEVEL_JSON.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
+		LEVEL_JSON.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
 
-		SONG_JSON.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
-		SONG_JSON.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
+		LEVEL_JSON.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
+		LEVEL_JSON.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
 
-		SONG_JSON.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
-		SONG_JSON.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
-		SONG_JSON.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
+		LEVEL_JSON.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
+		LEVEL_JSON.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
+		LEVEL_JSON.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
+		INFO_TEXT.text = '';
+		infoTextFileCheck('background image', 'images/${LEVEL_JSON.assets.directory}background.png');
+		infoTextFileCheck('player data file', 'data/players/${LEVEL_JSON.assets.player}.json');
+
+		infoTextFileCheck('enemy (common) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_common}.png');
+		infoTextFileCheck('enemy (easy) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_easy}.png');
+		infoTextFileCheck('enemy (rare) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_rare}.png');
+
 		if (Controls.UI_LEAVE)
 		{
 			FlxG.switchState(EditorMenu.new);
 		}
+	}
+
+	public function infoTextFileCheck(name:String = 'file', path:String, indent:Bool = true)
+	{
+		INFO_TEXT.text += '${indent ? '\n' : ''}* $name exists: ${FileManager.exists(FileManager.getAssetFile(path))}';
 	}
 }
