@@ -2,6 +2,7 @@
 This is the last web-compatable version
 
 ## Added
+- Outdated HTML5 builds special message
 - "Save clear" option
 - **RESULTS SCREEN**
   - `resultsAssetName` field to player JSONS

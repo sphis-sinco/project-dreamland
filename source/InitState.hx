@@ -21,6 +21,17 @@ class InitState extends FlxState
 		var needUpdate = false;
 		needUpdate = CheckOutdated.call();
 
-		FlxG.switchState((needUpdate) ? OutdatedState.new : Splash.new);
+		if (needUpdate)
+		{
+			FlxG.switchState(OutdatedState.new);
+		}
+		else
+		{
+			#if html5
+			FlxG.switchState(OutdatedState.new);
+			#else
+			FlxG.switchState(Splash.new);
+			#end
+		}
 	}
 }
