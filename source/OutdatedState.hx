@@ -41,8 +41,8 @@ class OutdatedState extends FlxState
 		openURL.screenCenter(X);
 		closeState.screenCenter(X);
 
-		openURL.x -= openURL.width * 2;
-		closeState.x += closeState.width * 2;
+		openURL.x -= openURL.width * MobileButton.scaleVal;
+		closeState.x += closeState.width * MobileButton.scaleVal;
 
 		add(openURL);
 		add(closeState);

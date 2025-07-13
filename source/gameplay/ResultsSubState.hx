@@ -139,7 +139,7 @@ class ResultsSubState extends FlxSubState
 	{
 		super.create();
 
-		interact.x = FlxG.width - interact.width * 4;
+		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal);
 		interact_shader.saturation = -50;
 		interact.shader = interact_shader;
 

@@ -6,7 +6,7 @@ class GameOver extends FlxState
 
 	override public function create()
 	{
-		interact.x = FlxG.width - interact.width * 4;
+		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal);
 
 		var diedtext:FlxText = new FlxText(0, 0, 0, "You died.", 16);
 

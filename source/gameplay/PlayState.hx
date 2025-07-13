@@ -48,11 +48,11 @@ class PlayState extends FlxState
 
 	override public function create()
 	{
-		interact.x = FlxG.width - interact.width * 4;
+		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal * 2);
 
-		up.x = up.width * 2;
-		up.y -= up.height * 2;
-		down.x = down.width * 2;
+		up.x = up.width * MobileButton.scaleVal;
+		up.y -= up.height * MobileButton.scaleVal;
+		down.x = down.width * MobileButton.scaleVal;
 
 		if (instance != null)
 		{

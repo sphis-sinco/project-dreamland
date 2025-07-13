@@ -26,15 +26,15 @@ class LevelSelect extends FlxState
 
 	override public function create()
 	{
-		interact.x = FlxG.width - interact.width * 4;
-		leave.x = FlxG.width - leave.width * 2;
+		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal * 2);
+		leave.x = FlxG.width - leave.width * MobileButton.scaleVal;
 
-		left.x = left.width;
-		right.x = left.x + right.width * 4;
+		left.x = left.width * (MobileButton.scaleVal - 2);
+		right.x = left.x + right.width * (MobileButton.scaleVal * 2);
 
-		down.x = left.width + down.width * 2;
+		down.x = left.width + down.width * MobileButton.scaleVal;
 		up.x = down.x;
-		up.y -= up.height * 2;
+		up.y -= up.height * MobileButton.scaleVal;
 
 		#if !web
 		var oglevels = FileManager.getTypeArray('level files', 'data/levelSelect', ['.dreamEntry'], ['assets/data/levelSelect/']);

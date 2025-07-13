@@ -2,6 +2,8 @@ package mobile;
 
 class MobileButton extends FlxSprite
 {
+	public static var scaleVal:Float = 4;
+
 	override public function new(btnInt:ButtonEnum)
 	{
 		super();
@@ -34,9 +36,9 @@ class MobileButton extends FlxSprite
 				animation.frameIndex = 5;
 		}
 
-		scale.set(2, 2);
+		scale.set(scaleVal, scaleVal);
 
-		y = FlxG.height - height * 2;
+		y = FlxG.height - height * scaleVal;
 		#end
 	}
 

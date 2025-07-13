@@ -17,8 +17,10 @@
 	without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
 	<set name="SWF_VERSION" value="11.8" />
 
+	<define name="MOBILE_BUILD_TESTING" if="android_testing"/>
+	
 	<define name="MOBILE_BUILD" if="android"/>
-	<define name="MOBILE_BUILD" if="android_testing" unless="MOBILE_BUILD"/>
+	<define name="MOBILE_BUILD" if="MOBILE_BUILD_TESTING" unless="MOBILE_BUILD"/>
 
 	<!-- ____________________________ Window Settings ___________________________ -->
 
@@ -33,7 +35,9 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" />
+	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" unless="MOBILE_BUILD_TESTING"/>
+	
+	<window height="720" width="1280" orientation="landscape" if="MOBILE_BUILD_TESTING"/>
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 

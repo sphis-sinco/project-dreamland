@@ -21,12 +21,12 @@ class TextSelecting extends FlxState
 
 	override public function create()
 	{
-		interact.x = FlxG.width - interact.width * 4;
-		leave.x = FlxG.width - leave.width * 2;
+		interact.x = FlxG.width - interact.width * (MobileButton.scaleVal * 2);
+		leave.x = FlxG.width - leave.width * MobileButton.scaleVal;
 
-		up.x = up.width * 2;
-		up.y -= up.height * 2;
-		down.x = down.width * 2;
+		up.x = up.width * MobileButton.scaleVal;
+		up.y -= up.height * MobileButton.scaleVal;
+		down.x = down.width * MobileButton.scaleVal;
 
 		add(text_group);
 

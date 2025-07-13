@@ -107,9 +107,9 @@ class CreditsMenu extends TextSelecting
 		add(instructionText);
 
 		#if MOBILE_BUILD
-		emailBtn.x = FlxG.width - interact.width * 4;
-		interact.y -= interact.height * 2;
-		leave.y -= leave.height * 2;
+		emailBtn.x = FlxG.width - interact.width * (MobileButton.scaleVal * 2);
+		interact.y -= interact.height * MobileButton.scaleVal;
+		leave.y -= leave.height * MobileButton.scaleVal;
 		add(emailBtn);
 		#end
 	}
