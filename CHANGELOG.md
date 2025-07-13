@@ -1,4 +1,6 @@
 # 0.11.0 (7/12/2025)
+This is the last web-compatable version
+
 ## Added
 - "Save clear" option
 - **RESULTS SCREEN**
