@@ -41,8 +41,8 @@
 	<set name="BUILD_DIR" value="export-android/release" if="android || android_testing" unless="debug"/>
 
 	<source path="source" />
-	<assets path="assets" exclude="assets/mobile"/>
-	<assets path="assets/mobile" rename="assets/" if="android"/>
+	<assets path="assets" exclude="assets/exclude/"/>
+	<assets path="exclusives/mobile" rename="assets/" if="android || android_testing"/>
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko" />
 	<define name="POLYMOD_MODDING" unless="html5 || neko" />
