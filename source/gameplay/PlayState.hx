@@ -41,8 +41,19 @@ class PlayState extends FlxState
 		HIGHSCORE = false;
 	}
 
+	public var interact:MobileButton = new MobileButton(A_BUTTON);
+
+	public var up:MobileButton = new MobileButton(UP_BUTTON);
+	public var down:MobileButton = new MobileButton(DOWN_BUTTON);
+
 	override public function create()
 	{
+		interact.x = FlxG.width - interact.width * 4;
+
+		up.x = up.width * 2;
+		up.y -= up.height * 2;
+		down.x = down.width * 2;
+
 		if (instance != null)
 		{
 			trace('WARNING: PlayState instance already exists. This should not happen. Set it back to null.');
@@ -101,6 +112,9 @@ class PlayState extends FlxState
 			spacebartext = new FlxText();
 			spacebartext.setPosition(spacebar.x, spacebar.y);
 			spacebartext.text = 'PRESS ${Controls.getKey('gameplay_shoot')} TO SHOOT!';
+			#if ANDROID_BUILD
+			spacebartext.text = 'PRESS A TO SHOOT!';
+			#end
 			spacebartext.size = 32;
 			spacebartext.screenCenter(X);
 			spacebartext.y += spacebar.width * 1.1;
@@ -108,6 +122,12 @@ class PlayState extends FlxState
 		}
 
 		super.create();
+
+		#if ANDROID_BUILD
+		add(interact);
+		add(up);
+		add(down);
+		#end
 	}
 
 	public var spacebar:FlxSprite;
@@ -142,9 +162,9 @@ class PlayState extends FlxState
 	{
 		score_text.text = "Score: " + SCORE;
 
-		key_up = Controls.GAMEPLAY_MOVE_UP;
-		key_down = Controls.GAMEPLAY_MOVE_DOWN;
-		key_shoot = Controls.GAMEPLAY_SHOOT;
+		key_up = Controls.GAMEPLAY_MOVE_UP || up.pressed;
+		key_down = Controls.GAMEPLAY_MOVE_DOWN || down.pressed;
+		key_shoot = Controls.GAMEPLAY_SHOOT || interact.justReleased;
 
 		inputCheck();
 

@@ -5,6 +5,7 @@ import flixel.sound.FlxSound;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import gameplay.results.Screen;
+import shaders.AdjustColorShader;
 
 class ResultsSubState extends FlxSubState
 {
@@ -131,9 +132,20 @@ class ResultsSubState extends FlxSubState
 		add(HIGHSCORE);
 	}
 
-	override function create()
+	public var interact:MobileButton = new MobileButton(A_BUTTON);
+	public var interact_shader:AdjustColorShader = new AdjustColorShader();
+
+	override public function create()
 	{
 		super.create();
+
+		interact.x = FlxG.width - interact.width * 4;
+		interact_shader.saturation = -50;
+		interact.shader = interact_shader;
+
+		#if ANDROID_BUILD
+		add(interact);
+		#end
 	}
 
 	public var scoreLerpVal:Float = 0.0;
@@ -170,7 +182,7 @@ class ResultsSubState extends FlxSubState
 			}
 		}
 
-		if (Controls.UI_SELECT && lerpComplete)
+		if ((Controls.UI_SELECT || interact.justReleased) && lerpComplete)
 		{
 			FlxG.switchState(LevelSelect.new);
 		}
@@ -178,6 +190,8 @@ class ResultsSubState extends FlxSubState
 
 	public function lerpCompleteFlash()
 	{
+		interact_shader.saturation = 0;
+
 		scoreText.color = FlxColor.YELLOW;
 		FlxTween.color(scoreText, 1, scoreText.color, FlxColor.WHITE);
 
