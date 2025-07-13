@@ -78,7 +78,7 @@ class PlayState extends FlxState
 		{
 			bg.loadGraphic(FileManager.getImageFile(level_data.assets.directory + "background"));
 		}, {
-				errFunc: () ->
+				errFunc: d ->
 				{
 					bg.loadGraphic(FileManager.getImageFile('background'));
 				}

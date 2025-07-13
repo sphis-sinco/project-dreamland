@@ -2,7 +2,7 @@ package;
 
 typedef TryCatchParamaters =
 {
-	var ?errFunc:Dynamic;
+	var ?errFunc:Dynamic->Void;
 	var ?traceErr:Bool;
 }
 
@@ -26,7 +26,7 @@ class TryCatch
 				if (options.traceErr)
 					trace('Error: $e');
 				if (options.errFunc != null)
-					options.errFunc();
+					options.errFunc(e);
 			}
 			return null;
 		}

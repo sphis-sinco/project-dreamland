@@ -507,7 +507,7 @@ class FileManager
 		{
 			json = Json.parse(file);
 		}, {
-				errFunc: function()
+				errFunc: d ->
 				{
 					json = file;
 				}

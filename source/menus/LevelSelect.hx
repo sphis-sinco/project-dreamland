@@ -55,7 +55,8 @@ class LevelSelect extends FlxState
 		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 
-		level_json ??= LevelSelectEntryDataManager.defaultJSON;
+		if (level_json == null)
+			level_json = LevelSelectEntryDataManager.defaultJSON;
 
 		level_sprite.loadGraphic(FileManager.getImageFile(LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background')));
 		level_sprite.scale.set(1, 1);
@@ -159,6 +160,11 @@ class LevelSelect extends FlxState
 
 	function updateSelections()
 	{
+		TryCatch.tryCatch(() -> updateSelMainFunc(), {traceErr: true, errFunc: d -> updateSelSecondFunc(d)});
+	}
+
+	function updateSelMainFunc()
+	{
 		var filepath:String = (!levels[CURRENT_SELECTION].contains('levelSelect/')) ? 'levelSelect/' : '';
 		filepath += levels[CURRENT_SELECTION];
 		filepath += (!levels[CURRENT_SELECTION].endsWith('.dreamEntry')) ? '.dreamEntry' : '';
@@ -179,11 +185,18 @@ class LevelSelect extends FlxState
 		{
 			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));
 		}, {
-				errFunc: () ->
+				errFunc: d ->
 				{
 					level_sprite.loadGraphic(FileManager.getImageFile('background'));
 				}
 		});
+		difficulty.screenCenter(X);
+	}
+
+	function updateSelSecondFunc(d:Dynamic)
+	{
+		difficulty.text = d;
+		difficulty.size = 16;
 		difficulty.screenCenter(X);
 	}
 }
