@@ -17,7 +17,7 @@ class Compiler
 	static var appends:String = '';
 	static var properCompile:Bool = false;
 
-	static var availiblePlatforms:Array<String> = ['neko', 'hashlink', 'windows', 'mac', 'linux', 'html5'];
+	static var availiblePlatforms:Array<String> = ['neko', 'hashlink', 'windows', 'mac', 'linux', 'html5', 'android'];
 
 	public static function main():Void
 	{
@@ -57,6 +57,12 @@ class Compiler
 
 	public static function installLibraries():Void
 	{
+		if (!FileSystem.exists('${haxe.macro.Compiler.getDefine('LIBFILENAME') ?? 'hmm'}.json'))
+		{
+			Sys.println('[LIBRARY INSTALLER] Missing lib-installer file: "${haxe.macro.Compiler.getDefine('LIBFILENAME') ?? 'hmm'}.json"');
+			return;
+		}
+
 		if (!FileSystem.exists('.haxelib'))
 		{
 			FileSystem.createDirectory('.haxelib');

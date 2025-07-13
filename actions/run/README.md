@@ -6,8 +6,9 @@ To run linux: `haxe -main Compiler --interp -D PLATFORM=linux`
 To run hashlink: `haxe -main Compiler --interp -D PLATFORM=hashlink`
 To run html5: `haxe -main Compiler --interp -D PLATFORM=html5`
 To run neko: `haxe -main Compiler --interp -D PLATFORM=neko`
+To run android: `haxe -main Compiler --interp -D PLATFORM=android`
 
-To run in "debug" mode add `-D debug`
+To run in "debug" mode add `-debug`
 To have comments add `-D comments`
 
 Add "LIBFILENAME=" and then the name of the file with your haxelibs  
