@@ -47,6 +47,10 @@ class LevelEditorMenu extends FlxState
 	public var ASSETS_DIRECTORY_TEXT:FlxInputText;
 	public var ASSETS_PLAYER_TEXT:FlxInputText;
 
+	public var ASSETS_ENEMY_RARE_TEXT:FlxInputText;
+	public var ASSETS_ENEMY_EASY_TEXT:FlxInputText;
+	public var ASSETS_ENEMY_COMMON_TEXT:FlxInputText;
+
 	function addAssetsTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
@@ -55,12 +59,30 @@ class LevelEditorMenu extends FlxState
 		ASSETS_DIRECTORY_TEXT = new FlxInputText(10, 10, 200, 'Directory', 16);
 		ASSETS_PLAYER_TEXT = new FlxInputText(10, ASSETS_DIRECTORY_TEXT.y + ASSETS_DIRECTORY_TEXT.height + 10, 200, 'player', 16);
 
+		ASSETS_ENEMY_RARE_TEXT = new FlxInputText(10, ASSETS_PLAYER_TEXT.y + ASSETS_PLAYER_TEXT.height + 40, 200, 'enemy-rare', 16);
+		ASSETS_ENEMY_EASY_TEXT = new FlxInputText(10, ASSETS_ENEMY_RARE_TEXT.y + ASSETS_ENEMY_RARE_TEXT.height + 10, 200, 'enemy-easy', 16);
+		ASSETS_ENEMY_COMMON_TEXT = new FlxInputText(10, ASSETS_ENEMY_EASY_TEXT.y + ASSETS_ENEMY_EASY_TEXT.height + 10, 200, 'enemy-common', 16);
+
 		tab_group.add(ASSETS_DIRECTORY_TEXT);
 		tab_group.add(new FlxText(ASSETS_DIRECTORY_TEXT.x + ASSETS_DIRECTORY_TEXT.width + 10, ASSETS_DIRECTORY_TEXT.y, 0,
 			'Art directory (ex: "earth-overdrive/")\nINCLUDE THE "/" AT THE END', 12));
 		tab_group.add(ASSETS_PLAYER_TEXT);
 		tab_group.add(new FlxText(ASSETS_PLAYER_TEXT.x + ASSETS_PLAYER_TEXT.width + 10, ASSETS_PLAYER_TEXT.y, 0,
 			'Player filename (ex: "player-hiku")', 16));
+
+		tab_group.add(ASSETS_ENEMY_RARE_TEXT);
+		tab_group.add(new FlxText(ASSETS_ENEMY_RARE_TEXT.x + ASSETS_ENEMY_RARE_TEXT.width + 10, ASSETS_ENEMY_RARE_TEXT.y, 0, 'Rare enemy art path',
+			16));
+		tab_group.add(new FlxText(ASSETS_ENEMY_RARE_TEXT.x, ASSETS_ENEMY_RARE_TEXT.y - ASSETS_ENEMY_RARE_TEXT.height - 10, 0,
+			'(Relative to the art directory)', 16));
+
+		tab_group.add(ASSETS_ENEMY_EASY_TEXT);
+		tab_group.add(new FlxText(ASSETS_ENEMY_EASY_TEXT.x + ASSETS_ENEMY_EASY_TEXT.width + 10, ASSETS_ENEMY_EASY_TEXT.y, 0, 'Easy enemy art path',
+			16));
+
+		tab_group.add(ASSETS_ENEMY_COMMON_TEXT);
+		tab_group.add(new FlxText(ASSETS_ENEMY_COMMON_TEXT.x + ASSETS_ENEMY_COMMON_TEXT.width + 10, ASSETS_ENEMY_COMMON_TEXT.y, 0,
+			'Common enemy art path', 16));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -79,15 +101,25 @@ class LevelEditorMenu extends FlxState
 
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
-			SONG_JSON.author = AUTHOR_TEXT.text;
-			SONG_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
-			SONG_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
+			saveSongJson();
 
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(SONG_JSON));
 		}));
 
 		UI_BOX.addGroup(tab_group);
+	}
+
+	public dynamic function saveSongJson()
+	{
+		SONG_JSON.author = AUTHOR_TEXT.text;
+
+		SONG_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
+		SONG_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
+
+		SONG_JSON.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
+		SONG_JSON.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
+		SONG_JSON.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
 	}
 
 	override function update(elapsed:Float)
