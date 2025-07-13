@@ -70,10 +70,6 @@ class ResultsSubState extends FlxSubState
 			{
 				TransitionComplete = true;
 
-				player.setPosition(screenX, screen.y);
-				player.animation.play('anim');
-				player.visible = true;
-
 				screen_pulse.visible = true;
 
 				scoreText.visible = true;
@@ -83,6 +79,11 @@ class ResultsSubState extends FlxSubState
 				{
 					lerpComplete = true;
 					lerpCompleteFlash();
+				}
+				else
+				{
+					player.animation.play('anim');
+					player.visible = true;
 				}
 			}
 		});
@@ -113,8 +114,9 @@ class ResultsSubState extends FlxSubState
 	{
 		super.update(elapsed);
 
-		screen_pulse.setPosition(screen.x, screen.y);
-		HIGHSCORE.setPosition(screen.x, screen.y);
+		screen_pulse.screenCenter();
+		HIGHSCORE.screenCenter();
+		player.screenCenter();
 		scoreText.text = 'score: $score';
 
 		if (TransitionComplete && score != PlayState.SCORE && !lerpComplete)
