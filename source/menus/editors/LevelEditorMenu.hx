@@ -57,7 +57,7 @@ class LevelEditorMenu extends FlxState
 
 		tab_group.add(ASSETS_DIRECTORY_TEXT);
 		tab_group.add(new FlxText(ASSETS_DIRECTORY_TEXT.x + ASSETS_DIRECTORY_TEXT.width + 10, ASSETS_DIRECTORY_TEXT.y, 0,
-			'Art directory (ex: "earth-overdrive/")', 16));
+			'Art directory (ex: "earth-overdrive/")\nINCLUDE THE "/" AT THE END', 12));
 		tab_group.add(ASSETS_PLAYER_TEXT);
 		tab_group.add(new FlxText(ASSETS_PLAYER_TEXT.x + ASSETS_PLAYER_TEXT.width + 10, ASSETS_PLAYER_TEXT.y, 0,
 			'Player filename (ex: "player-hiku")', 16));
