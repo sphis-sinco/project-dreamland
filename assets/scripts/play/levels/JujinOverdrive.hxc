@@ -1,16 +1,18 @@
 import flixel.FlxSprite;
 import gameplay.PlayState;
+import gameplay.ResultsSubState;
 import save.Save;
 import shaders.AdjustColorShader;
 
 var playerShader:AdjustColorShader = new AdjustColorShader();
 var enemyShader:AdjustColorShader = new AdjustColorShader();
+var desiredLevel = 'jujin-overdrive';
 
 function stateCreate()
 {
 	// trace(PlayState.CURRENT_LEVEL);
 
-	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'jujin-overdrive')
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == desiredLevel)
 	{
 		if (!getSavedataInfo('shaders'))
 			return;
@@ -33,5 +35,21 @@ function stateCreate()
 		{
 			enemy.shader = enemyShader;
 		}
+	}
+}
+
+function substateCreate()
+{
+	if (Global.CurrentSubState == 'ResultsSubState' && PlayState.CURRENT_LEVEL == desiredLevel)
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		ResultsSubState.instance.player.shader = playerShader;
+		ResultsSubState.instance.screen.shader = playerShader;
+		ResultsSubState.instance.screen_pulse.shader = playerShader;
+		ResultsSubState.instance.HIGHSCORE.shader = playerShader;
+		ResultsSubState.instance.backdrop.shader = playerShader;
+		ResultsSubState.instance.scoreText.shader = playerShader;
 	}
 }

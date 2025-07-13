@@ -17,7 +17,8 @@ A new team member was added to the team: HeroEyad
 ## Options
 - Controls menu is blocked on Android Builds
 ## Global
-- Global now has a `goToUrl` public static function so you can rickroll people to your hearts content with scripts
+- Global now has a `CurrentSubState` variable you can use in scripts
+- Global now has a `goToUrl` function so you can rickroll people to your hearts content with scripts
 ## Outdated screen
 - Linux can now properly go to the github now thanks to Global's new `goToUrl` function
 ## Modding
@@ -25,6 +26,7 @@ A new team member was added to the team: HeroEyad
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
 ## Results
+- Shaders from the overdrive varients for the player are applied to the results sub state
 - Added underwater varient to the player results
 - The player JSON results fields have been split into a "results/" folder in the "player/"
 - Added bad and new highscore player animations

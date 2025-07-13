@@ -1,16 +1,18 @@
 import flixel.FlxSprite;
 import gameplay.PlayState;
+import gameplay.ResultsSubState;
 import shaders.AdjustColorShader;
 import save.Save;
 
 var playerShader:AdjustColorShader = new AdjustColorShader();
 var enemyShader:AdjustColorShader = new AdjustColorShader();
+var desiredLevel = 'heaven-overdrive';
 
 function stateCreate()
 {
 	// trace(PlayState.CURRENT_LEVEL);
 
-	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == 'heaven-overdrive')
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == desiredLevel)
 	{
 		if (!getSavedataInfo('shaders'))
 			return;
@@ -35,3 +37,20 @@ function stateCreate()
 		}
 	}
 }
+
+function substateCreate()
+{
+	if (Global.CurrentSubState == 'ResultsSubState' && PlayState.CURRENT_LEVEL == desiredLevel)
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		ResultsSubState.instance.player.shader = playerShader;
+		ResultsSubState.instance.screen.shader = playerShader;
+		ResultsSubState.instance.screen_pulse.shader = playerShader;
+		ResultsSubState.instance.HIGHSCORE.shader = playerShader;
+		ResultsSubState.instance.backdrop.shader = playerShader;
+		ResultsSubState.instance.scoreText.shader = playerShader;
+	}
+}
+

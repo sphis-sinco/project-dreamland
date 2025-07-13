@@ -43,6 +43,13 @@ class Global
 		return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
 	}
 
+	public static var CurrentSubState(get, never):String;
+
+	static function get_CurrentSubState():String
+	{
+		return Type.getClassName(Type.getClass(FlxG.state.subState)).split(".").pop();
+	}
+
 	public static function goToUrl(url:String)
 	{
 		System.openURL(url);
