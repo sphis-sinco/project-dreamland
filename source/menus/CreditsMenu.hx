@@ -91,7 +91,7 @@ class CreditsMenu extends TextSelecting
 	{super.create();
 
 		for (text in text_group)
-			text.size = 16;
+			text.size = #if !MOBILE_BUILD 16 #end;
 
 		instructionText.text = #if MOBILE_BUILD 'UP' #else '(${Controls.getKey('gameplay_move_up')}/${Controls.getKey('gameplay_move_up_alt')})' #end
 		+ #if MOBILE_BUILD '/DOWN ' #else '/(${Controls.getKey('gameplay_move_down')}/${Controls.getKey('gameplay_move_down_alt')}) ' #end
