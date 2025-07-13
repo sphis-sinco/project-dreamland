@@ -6,7 +6,7 @@ class MobileButton extends FlxSprite
 	{
 		super();
 
-		loadGraphic(FileManager.getImageFile('mobile/buttons'), true, 32, 32);
+		loadGraphic(FileManager.getImageFile('buttons', MOBILE), true, 32, 32);
 
 		animation.add('btn', [0, 1, 2, 3, 4, 5], 0);
 		animation.frameIndex = 0;
@@ -28,7 +28,33 @@ class MobileButton extends FlxSprite
 				animation.frameIndex = 5;
 		}
 
-		scale.set(4, 4);
+		scale.set(2, 2);
+	}
+
+	public var pressed:Bool = false;
+	public var released:Bool = false;
+
+	public var justPressed:Bool = false;
+	public var justReleased:Bool = false;
+
+	override function update(elapsed:Float)
+	{
+		super.update(elapsed);
+
+		pressed = false;
+		released = false;
+
+		justPressed = false;
+		justReleased = false;
+
+		if (FlxG.mouse.overlaps(this) && FlxG.mouse.justPressed)
+			justPressed = true;
+		if (FlxG.mouse.overlaps(this) && FlxG.mouse.pressed)
+			pressed = true;
+		if (FlxG.mouse.overlaps(this) && FlxG.mouse.justReleased)
+			justReleased = true;
+		if (FlxG.mouse.overlaps(this) && FlxG.mouse.released)
+			released = true;
 	}
 }
 

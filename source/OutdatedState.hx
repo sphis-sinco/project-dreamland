@@ -1,7 +1,12 @@
 package;
 
+import mobile.MobileButton;
+
 class OutdatedState extends FlxState
 {
+	public var openURL:MobileButton = new MobileButton(A_BUTTON);
+	public var closeState:MobileButton = new MobileButton(B_BUTTON);
+
 	override public function create()
 	{
 		var outdatedText:FlxText = new FlxText(0, 0, 0, "blah", 16);
@@ -30,19 +35,33 @@ class OutdatedState extends FlxState
 		Discord.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${CheckOutdated.updateVersion}');
 		#end
 
+		#if ANDROID_BUILD
+		openURL.screenCenter();
+		closeState.screenCenter();
+
+		openURL.x -= openURL.width * 2;
+		closeState.x += closeState.width * 2;
+
+		openURL.y = FlxG.height - openURL.height * 2;
+		closeState.y = openURL.y;
+
+		add(openURL);
+		add(closeState);
+		#end
+
 		super.create();
 	}
 
 	override public function update(elapsed:Float)
 	{
-		if (Controls.UI_SELECT)
+		if (Controls.UI_SELECT || openURL.justReleased)
 		{
 			FlxG.openURL('https://github.com/sphis-Sinco/project-dreamland/releases/latest');
 			#if sys
 			Sys.exit(0);
 			#end
 		}
-		else if (Controls.UI_LEAVE)
+		else if (Controls.UI_LEAVE || closeState.justReleased)
 		{
 			FlxG.switchState(MenuState.new);
 		}

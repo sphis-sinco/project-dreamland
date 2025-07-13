@@ -576,4 +576,5 @@ class FileManager
 enum abstract PathTypes(String) from String to String
 {
 	public var DEFAULT:String = '';
+	public var MOBILE:String = 'mobile/';
 }
