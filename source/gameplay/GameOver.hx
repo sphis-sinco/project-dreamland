@@ -18,7 +18,7 @@ class GameOver extends FlxState
 		diedtext.screenCenter();
 		add(diedtext);
 
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.changePresence('Died.', 'Died.');
 		#end
 

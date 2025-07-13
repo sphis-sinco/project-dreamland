@@ -36,7 +36,7 @@ class LevelSelect extends FlxState
 		up.x = down.x;
 		up.y -= up.height * MobileButton.scaleVal;
 
-		#if !web
+		#if !(web || MOBILE_BUILD)
 		var oglevels = FileManager.getTypeArray('level files', 'data/levelSelect', ['.dreamEntry'], ['assets/data/levelSelect/']);
 
 		levels = [];
@@ -51,7 +51,7 @@ class LevelSelect extends FlxState
 		difficulty.y = difficulty.height / 2;
 		add(difficulty);
 
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.changePresence('In the menus', 'Looking for a Level to play');
 		#end
 

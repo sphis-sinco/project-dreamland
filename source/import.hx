@@ -15,6 +15,6 @@ import scripts.events.*;
 
 using StringTools;
 
-#if (discord_rpc && !hl)
+#if DISCORDRPC
 import clients.DiscordClient as Discord;
 #end

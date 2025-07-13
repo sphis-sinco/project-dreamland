@@ -77,7 +77,7 @@ class ControlsMenu extends TextSelecting
 
 	override public function create()
 	{
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.changePresence('In the control menu', 'Probably trying to adjust their controls');
 		#end
 

@@ -9,7 +9,7 @@ class InitState extends FlxState
 		modding.PolymodHandler.loadMods();
 		#end
 
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.initialize();
 		#end
 

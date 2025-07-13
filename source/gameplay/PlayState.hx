@@ -68,7 +68,7 @@ class PlayState extends FlxState
 		var player_json_path = FileManager.getDataFile('players/${level_data.assets.player ?? 'player'}.json');
 		player_json = FileManager.getJSON(player_json_path);
 
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.changePresence('In the level ${CURRENT_LEVEL.split('.json')[0]} by ${level_data.author}', 'Blasting Creatures');
 		#end
 

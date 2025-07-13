@@ -33,7 +33,7 @@ class OutdatedState extends FlxState
 		outdatedText.alignment = CENTER;
 		outdatedText.screenCenter();
 
-		#if (discord_rpc && !hl)
+		#if DISCORDRPC
 		Discord.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${CheckOutdated.updateVersion}');
 		#end
 
