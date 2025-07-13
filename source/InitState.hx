@@ -18,11 +18,9 @@ class InitState extends FlxState
 		else if (Save.getSavedataInfo(firsttime) == null)
 			Save.setSavedataInfo(firsttime, true);
 
-		var needUpdate = false;
-		needUpdate = CheckOutdated.call();
-
-		if (needUpdate)
+		if (CheckOutdated.updateNeeded)
 		{
+			trace('GO TO OUTDATED');
 			FlxG.switchState(OutdatedState.new);
 		}
 		else

@@ -2,10 +2,12 @@ package scripts.events;
 
 class CheckOutdated
 {
+	public static var updateNeeded:Bool = false;
 	public static var updateVersion:String;
 
 	public static function call()
 	{
+		var value = false;
 		onInit();
 		#if (!hl && !neko)
 		trace('checking for update');
@@ -19,22 +21,19 @@ class CheckOutdated
 			if (updateVersion != curVersion)
 			{
 				trace('Outdated!');
-				return true;
+				value = true;
 			}
-
-			return false;
 		}
 
 		http.onError = function(error)
 		{
 			trace('CheckOutdated.onError("$error")');
-			return false;
 		}
 
 		http.request();
 		#end
 
-		return false;
+		updateNeeded = value;
 	}
 
 	static function onInit()

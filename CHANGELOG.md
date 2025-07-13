@@ -11,6 +11,7 @@ This is the last web-compatable version
 - **HIKU (OVERDRIVE)**
 - `InitState` (this allows for compiler flags!)
 ## Fixed
+- Outdated state not appearing
 - Saving: It now works properly and saves between sessions
 - Highscore not being tracked as new by `Global`
 ## Changed
