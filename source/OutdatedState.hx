@@ -14,8 +14,12 @@ class OutdatedState extends FlxState
 
 		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Global.APP_VERSION}) IS OUTDATED!\n'
 			+ 'THE CURRENT PUBLIC RELEASE IS v${CheckOutdated.updateVersion},\n AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
-			+ 'You can press ${Controls.getKey('ui_select')} to go to the github to update.\n'
-			+ 'or you can press ${Controls.getKey('ui_leave')} to continue.';
+			+ 'You can '
+			+ #if ANDROID_BUILD 'press A' #else 'press ${Controls.getKey('ui_select')}' #end
+			+ ' to go to the github to update.\n'
+			+ 'or you can '
+			+ #if ANDROID_BUILD 'press B' #else 'press ${Controls.getKey('ui_select')}' #end
+			+ ' to continue.';
 
 		#if html5
 		outdatedText.text = 'Right now, the full-game (v1.0+) is/will be coming out.'
