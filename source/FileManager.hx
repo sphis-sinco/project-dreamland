@@ -481,7 +481,7 @@ class FileManager
 			// https://community.openfl.org/t/android-read-and-load-a-txt-file/10779/22
 			var dapath = #if android lime.system.System.applicationStorageDirectory + #end
 			path.replace('data/data/', 'data/');
-			trace(dapath);
+			// trace(dapath);
 			return File.getContent(dapath);
 		}, {
 				traceErr: true
