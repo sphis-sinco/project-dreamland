@@ -3,6 +3,7 @@ package gameplay;
 import data.LevelData.LevelData;
 import data.LevelData.LevelDataManager;
 import data.PlayerData;
+import menus.editors.LevelEditorMenu;
 
 class PlayState extends FlxState
 {
@@ -26,6 +27,8 @@ class PlayState extends FlxState
 	public var enemy_offscreen_padding:Float = 40;
 
 	public static var level_data:LevelData = null;
+
+	public static var GOTO_LEVEL_EDITOR:Bool = false;
 
 	override public function new(levelData:LevelData)
 	{
@@ -277,7 +280,7 @@ class PlayState extends FlxState
 				enemyBeingShotCheck(enemy);
 				if (enemy.overlaps(player))
 				{
-					FlxG.switchState(GameOver.new);
+					FlxG.switchState((!GOTO_LEVEL_EDITOR) ? GameOver.new : LevelEditorMenu.new);
 					instance = null;
 				}
 			}

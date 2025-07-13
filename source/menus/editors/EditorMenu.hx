@@ -1,12 +1,21 @@
 package menus.editors;
 
-class EditorMenu extends FlxState
+import menus.options.OptionsMenuMain;
+
+class EditorMenu extends OptionsMenuMain
 {
+	override public function new()
+	{
+		super();
+		ScriptManager.callScript('editorMenuStart');
+
+		texts = [];
+		newOptionMenu('Level editor', LevelEditorMenu.new);
+	}
+
 	override function create()
 	{
 		super.create();
-
-		ScriptManager.callScript('editorMenuStart');
 	}
 
 	override function update(elapsed:Float)

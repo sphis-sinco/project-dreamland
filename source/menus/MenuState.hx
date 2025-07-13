@@ -99,7 +99,9 @@ class MenuState extends FlxState
 		}
 		else if (FlxG.keys.justReleased.SEVEN)
 		{
-			// FlxG.switchState(EditorMenu.new);
+			#if !html5
+			FlxG.switchState(EditorMenu.new);
+			#end
 		}
 
 		super.update(elapsed);
