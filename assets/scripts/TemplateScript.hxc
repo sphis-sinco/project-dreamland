@@ -9,5 +9,8 @@ function stateUpdate(elapsed:Float) {}
 function setGitUser():String {}
 function setGitRepo():String {}
 
+// Gameplay init
+function SetupPlayer(player_json:PlayerData) {}
+
 // Editor menu
 function editorMenuStart() {}

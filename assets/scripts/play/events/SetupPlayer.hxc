@@ -1,0 +1,24 @@
+import data.PlayerData;
+import flixel.FlxSprite;
+import gameplay.PlayState;
+
+function SetupPlayer(player_json:PlayerData)
+{
+	var player:FlxSprite = new FlxSprite().loadGraphic(FileManager.getImageFile(player_json.path ?? 'player'), true, player_json.dimensions[0] ?? 32,
+		player_json.dimensions[1] ?? 32);
+
+	var i = 0;
+	for (animation in player_json.animations)
+	{
+		i++;
+		player.animation.add(animation.name ?? 'animation$i', animation.frames ?? [0], animation.fps ?? 30, animation.looping ?? false);
+	}
+
+	player.animation.play(player_json.default_animation ?? player.animation.getNameList()[0]);
+
+	player.scale.set(player_json.scale[0] ?? 1, player_json.scale[1] ?? 1);
+	player.screenCenter();
+	player.x -= player.width * 8;
+
+	PlayState.instance.player = player;
+}
