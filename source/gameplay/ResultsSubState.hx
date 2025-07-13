@@ -47,8 +47,27 @@ class ResultsSubState extends FlxSubState
 		});
 
 		player = new FlxSprite();
-		player.loadGraphic(FileManager.getImageFile('results/player/${PlayState.player_json.resultsAssetName ?? 'player'}'), true, 160, 140);
-		player.animation.add('anim', PlayState.player_json.resultsFrameArray ?? [0, 1, 2, 3, 4, 5], 24, false);
+
+		var resultsAssetName = PlayState.player_json.resultsAssetNames.good;
+		var resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
+
+		if (PlayState.SCORE < Global.HIGHSCORE / 2)
+		{
+			resultsAssetName = PlayState.player_json.resultsAssetNames.bad;
+			resultsFrameArray = PlayState.player_json.resultsFrameArrays.bad;
+		}
+
+		if (PlayState.HIGHSCORE)
+		{
+			resultsAssetName = PlayState.player_json.resultsAssetNames.new_highscore;
+			resultsFrameArray = PlayState.player_json.resultsFrameArrays.new_highscore;
+		}
+
+		resultsAssetName ??= 'player';
+		resultsFrameArray ??= [0, 1, 2, 3, 4, 5];
+
+		player.loadGraphic(FileManager.getImageFile('results/player/$resultsAssetName'), true, 160, 140);
+		player.animation.add('anim', resultsFrameArray, 24, false);
 		player.visible = false;
 		player.scale.set(4, 4);
 		add(player);

@@ -28,6 +28,10 @@
                 "color": [0, 255, 255, 255],
                 "size": [12, 12]
         },
-        "resultsAssetName": "player",
-        "resultsFrameArray": [0,1,2,3,4,5]
+        "resultsAssetNames": {
+                "bad": "player",
+                "good": "player",
+                "new_highscore": "player"
+        },
+        "resultsFrameArray": [0, 1, 2, 3, 4, 5]
 }

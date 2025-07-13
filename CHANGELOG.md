@@ -1,4 +1,16 @@
 # 1.0.0 (7/13/2025)
+## Modding
+- The mod menu now gives message(s) for versions below 1.0.0
+  - "Custom player results assets won't work"
+## Results
+- The player JSON fields `resultsAssetName` and `resultsFrameArray` are `resultsAssetNames` and `resultsFrameArrays` and require a format like this:
+```json
+{
+    "bad": value,
+    "good": value,
+    "new_highscore": value,
+}
+```
 
 # 0.11.0 (7/12/2025)
 This is the last web-compatable version

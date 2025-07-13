@@ -18,8 +18,18 @@ typedef PlayerData =
 			var color:Array<Int>;
 			var size:Array<Int>;
 		}
-	var resultsAssetName:String;
-	var resultsFrameArray:Array<Int>;
+	var resultsAssetNames:
+		{
+			var bad:String;
+			var good:String;
+			var new_highscore:String;
+		};
+	var resultsFrameArrays:
+		{
+			var bad:Array<Int>;
+			var good:Array<Int>;
+			var new_highscore:Array<Int>;
+		};
 }
 
 class PlayerDataManager
@@ -59,7 +69,15 @@ class PlayerDataManager
 			"color": [255, 255, 0],
 			"size": [24, 24]
 		},
-		"resultsAssetName": "player",
-		"resultsFrameArray": [0, 1, 2, 3, 4, 5]
+		"resultsAssetNames": {
+			"bad": "player-bad",
+			"good": "player",
+			"new_highscore": "player"
+		},
+		"resultsFrameArrays": {
+			"bad": [0, 1, 2, 3, 4, 5],
+			"good": [0, 1, 2, 3, 4, 5],
+			"new_highscore": [0, 1, 2, 3, 4, 5]
+		}
 	};
 }

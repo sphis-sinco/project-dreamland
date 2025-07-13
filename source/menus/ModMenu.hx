@@ -174,11 +174,15 @@ class ModMenu extends FlxState
 
 					if (PolymodHandler.outdatedMods.contains(curModId))
 					{
-						var old_level_system_version = !ModList.modMetadatas.get(curModId)
-							.apiVersion.greaterThan(Version.arrayToVersion([0, 8, 0]));
+						var old_level_system_version = ModList.modMetadatas.get(curModId)
+							.apiVersion.lessThan(Version.arrayToVersion([0, 9, 0]));
+						var old_player_results_version = !ModList.modMetadatas.get(curModId)
+							.apiVersion.lessThan(Version.arrayToVersion([1, 0, 0]));
 
 						outdatedText = ' \n%Outdated ';
 
+						if (old_player_results_version)
+							outdatedText += '\n$* Custom player results assets won\'t work$';
 						if (old_level_system_version)
 							outdatedText += '\n$* Any new levels added won\'t work$';
 
