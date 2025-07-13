@@ -1,3 +1,5 @@
+# 1.0.0 (7/13/2025)
+
 # 0.11.0 (7/12/2025)
 This is the last web-compatable version
 

@@ -5,7 +5,7 @@
 
 	<!-- _________________________ Application Settings _________________________ -->
 
-	<app title="Dreamland" file="dreamland" main="Main" version="0.11.0" company="Sinco" />
+	<app title="Dreamland" file="dreamland" main="Main" version="1.0.0" company="Sinco" />
 
 	<!--The
 	flixel preloader is not accurate in Chrome. You can use it regularly if you embed the swf
