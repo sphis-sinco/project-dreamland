@@ -14,7 +14,7 @@ class Main extends Sprite
 	{
 		super();
 
-		haxe.Log.trace = function(v, ?infos)
+		haxe.Log.trace = function(v:Dynamic, ?infos:PosInfos)
 		{
 			Log.info('[${infos.fileName}/${infos.className}:${infos.lineNumber}] $v');
 		}
