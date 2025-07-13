@@ -1,5 +1,7 @@
 package;
 
+import lime.system.System;
+
 class Global
 {
 	public static var HIGHSCORE:Int = 0;
@@ -33,10 +35,6 @@ class Global
 
 	public static function goToUrl(url:String)
 	{
-		#if linux
-		Sys.command('/usr/bin/xdg-open', [url, "&"]);
-		#else
-		FlxG.openURL(url);
-		#end
+		System.openURL(url);
 	}
 }
