@@ -64,6 +64,8 @@ class LevelEditorMenu extends FlxState
 
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
+			SONG_JSON.author = AUTHOR_NAME_TEXT.text;
+
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(SONG_JSON));
 		}));
