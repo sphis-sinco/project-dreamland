@@ -20,7 +20,7 @@ class OptionsMenuMain extends TextSelecting
 		super();
 
 		texts = [];
-		#if !ANDROID_BUILD
+		#if !MOBILE_BUILD
 		newOptionMenu('Controls Menu', () -> new ControlsMenu());
 		#end
 		newOptionMenu('Preferences Menu', () -> new PreferencesMenu());

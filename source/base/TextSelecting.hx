@@ -49,7 +49,7 @@ class TextSelecting extends FlxState
 
 		super.create();
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		add(interact);
 		add(leave);
 		add(up);

@@ -93,20 +93,20 @@ class CreditsMenu extends TextSelecting
 		for (text in text_group)
 			text.size = 16;
 
-		instructionText.text = #if ANDROID_BUILD 'UP' #else '(${Controls.getKey('gameplay_move_up')}/${Controls.getKey('gameplay_move_up_alt')})' #end
-		+ #if ANDROID_BUILD '/DOWN ' #else '/(${Controls.getKey('gameplay_move_down')}/${Controls.getKey('gameplay_move_down_alt')}) ' #end
+		instructionText.text = #if MOBILE_BUILD 'UP' #else '(${Controls.getKey('gameplay_move_up')}/${Controls.getKey('gameplay_move_up_alt')})' #end
+		+ #if MOBILE_BUILD '/DOWN ' #else '/(${Controls.getKey('gameplay_move_down')}/${Controls.getKey('gameplay_move_down_alt')}) ' #end
 		+ 'to navigate, '
-		+ #if ANDROID_BUILD 'A' #else '${Controls.getKey('ui_select')}' #end
+		+ #if MOBILE_BUILD 'A' #else '${Controls.getKey('ui_select')}' #end
 		+ ' to go to their url/email. '
-		+ #if ANDROID_BUILD 'A' #else '${Controls.getKey('ui_select')}' #end
+		+ #if MOBILE_BUILD 'A' #else '${Controls.getKey('ui_select')}' #end
 		+ ' + '
-		+ #if ANDROID_BUILD 'X' #else 'SHIFT' #end
+		+ #if MOBILE_BUILD 'X' #else 'SHIFT' #end
 		+ ' to go to the email if both are availible';
 		instructionText.size = 16;
 		instructionText.scrollFactor.set(0, 0);
 		add(instructionText);
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		emailBtn.x = FlxG.width - interact.width * 4;
 		interact.y -= interact.height * 2;
 		leave.y -= leave.height * 2;

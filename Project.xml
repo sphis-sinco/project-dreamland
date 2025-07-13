@@ -34,17 +34,18 @@
 
 	<!-- _____________________________ Path Settings ____________________________ -->
 
-	<define name="ANDROID_BUILD" if="android || android_testing"/>
+	<define name="MOBILE_BUILD" if="android"/>
+	<define name="MOBILE_BUILD" if="android_testing" unless="MOBILE_BUILD"/>
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
-	<set name="BUILD_DIR" value="export-android/debug" if="debug ANDROID_BUILD" />
-	<set name="BUILD_DIR" value="export-android/release" if="ANDROID_BUILD" unless="debug"/>
+	<set name="BUILD_DIR" value="export-android/debug" if="debug MOBILE_BUILD" />
+	<set name="BUILD_DIR" value="export-android/release" if="MOBILE_BUILD" unless="debug"/>
 
 	<source path="source" />
 	<assets path="assets" exclude="assets/exclude/"/>
-	<assets path="exclusives/mobile" rename="assets/mobile" if="ANDROID_BUILD"/>
+	<assets path="exclusives/mobile" rename="assets/mobile" if="MOBILE_BUILD"/>
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko" />
 	<define name="POLYMOD_MODDING" unless="html5 || neko" />
@@ -170,5 +171,6 @@
 
 	<!--Place
 	custom nodes like icons here-->
-	<icon path=".dev/icon.png" />
+	<icon path=".dev/icon.png" unless="MOBILE_BUILD" />
+	<icon path=".dev/mobileIcon.png" if="MOBILE_BUILD" />
 </project>

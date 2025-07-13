@@ -13,10 +13,10 @@ class OutdatedState extends FlxState
 		outdatedText.text = 'YOUR BUILD OF THE GAME (v${Global.APP_VERSION}) IS OUTDATED!\n'
 			+ 'THE CURRENT PUBLIC RELEASE IS v${CheckOutdated.updateVersion},\n AND IS AVAILIABLE FOR DOWNLOAD.\n\n'
 			+ 'You can '
-			+ #if ANDROID_BUILD 'press A' #else 'press ${Controls.getKey('ui_select')}' #end
+			+ #if MOBILE_BUILD 'press A' #else 'press ${Controls.getKey('ui_select')}' #end
 			+ ' to go to the github to update.\n'
 			+ 'or you can '
-			+ #if ANDROID_BUILD 'press B' #else 'press ${Controls.getKey('ui_select')}' #end
+			+ #if MOBILE_BUILD 'press B' #else 'press ${Controls.getKey('ui_select')}' #end
 			+ ' to continue.';
 
 		#if html5
@@ -37,7 +37,7 @@ class OutdatedState extends FlxState
 		Discord.changePresence('Playing an outdated Version (v${Global.APP_VERSION})', 'Needs to update to v${CheckOutdated.updateVersion}');
 		#end
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		openURL.screenCenter(X);
 		closeState.screenCenter(X);
 

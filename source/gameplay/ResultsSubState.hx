@@ -143,7 +143,7 @@ class ResultsSubState extends FlxSubState
 		interact_shader.saturation = -50;
 		interact.shader = interact_shader;
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		add(interact);
 		#end
 	}

@@ -48,7 +48,7 @@ class LevelSelect extends FlxState
 		}
 		#end
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		difficulty.y = difficulty.height / 2;
 		#else
 		difficulty.y = FlxG.height - difficulty.height;
@@ -70,7 +70,7 @@ class LevelSelect extends FlxState
 
 		super.create();
 
-		#if ANDROID_BUILD
+		#if MOBILE_BUILD
 		add(interact);
 		add(leave);
 		add(up);
