@@ -51,6 +51,9 @@ class ResultsSubState extends FlxSubState
 		var resultsAssetName = PlayState.player_json.resultsAssetNames.good;
 		var resultsFrameArray = PlayState.player_json.resultsFrameArrays.good;
 
+		trace(PlayState.SCORE < Save.getSavedataInfo(highscore) / 2);
+		trace(Save.getSavedataInfo(highscore) / 2);
+		trace(PlayState.SCORE);
 		if (PlayState.SCORE < Save.getSavedataInfo(highscore) / 2)
 		{
 			resultsAssetName = PlayState.player_json.resultsAssetNames.bad;
