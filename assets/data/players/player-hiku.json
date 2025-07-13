@@ -51,5 +51,9 @@
                 "good": "player",
                 "new_highscore": "player"
         },
-        "resultsFrameArray": [0, 1, 2, 3, 4, 5]
+        "resultsFrameArrays": {
+                "bad": [0, 1, 2, 3, 4, 5],
+                "good": [0, 1, 2, 3, 4, 5],
+                "new_highscore": [0, 1, 2, 3, 4, 5]
+        }
 }
