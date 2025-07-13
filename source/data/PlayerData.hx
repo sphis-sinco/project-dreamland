@@ -26,9 +26,13 @@ typedef PlayerData =
 		};
 	var resultsFrameArrays:
 		{
+			// TODO: add loop stuff
 			var bad:Array<Int>;
+			var ?bad_loop:Array<Int>;
 			var good:Array<Int>;
+			var ?good_loop:Array<Int>;
 			var new_highscore:Array<Int>;
+			var ?new_highscore_loop:Array<Int>;
 		};
 }
 
