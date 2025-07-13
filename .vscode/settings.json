@@ -16,4 +16,12 @@
                 "*.hxc": "haxe",
                 "*.dream": "json"
 	},
+
+	"vscord.app.name": "Visual Studio Code",
+	"vscord.file.size.humanReadable": false,
+	"vscord.file.size.round": 0,
+
+	"vscord.status.details.text.notInFile": "Being a lazy bastard.",
+	"vscord.status.problems.text": "- {problems_count} sanity losses detected",
+	"vscord.status.state.text.notInFile": "Being a lazy bastard."
 }
