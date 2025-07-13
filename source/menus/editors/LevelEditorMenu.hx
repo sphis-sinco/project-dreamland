@@ -12,8 +12,8 @@ class LevelEditorMenu extends FlxState
 
 		var tabs = [
 			{name: "Misc", label: 'Misc'},
-			{name: "Assets", label: 'Assets'},
-			{name: "Settings", label: 'Settings'}
+			{name: "_Assets", label: 'Assets'},
+			{name: "_Settings", label: 'Settings'}
 		];
 
 		UI_BOX = new FlxUITabMenu(null, tabs, true);
