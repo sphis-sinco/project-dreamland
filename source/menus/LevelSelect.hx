@@ -48,11 +48,7 @@ class LevelSelect extends FlxState
 		}
 		#end
 
-		#if MOBILE_BUILD
 		difficulty.y = difficulty.height / 2;
-		#else
-		difficulty.y = FlxG.height - difficulty.height;
-		#end
 		add(difficulty);
 
 		#if (discord_rpc && !hl)

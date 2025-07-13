@@ -1,10 +1,12 @@
 # 1.0.0 (7/13/2025)
 ## Level Select
+- The level name, variation, and difficulty text has been moved up
 - Level sprite's scale has been set to 1 for the x and y
 ## Gameplay
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster
 ## Application
+- Added support for mobile platforms (Ios prob wouldn't work)
 - The icon for the application has been updated. no more transparent background
 ## Options
 - Controls menu is blocked on Android Builds
