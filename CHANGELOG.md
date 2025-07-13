@@ -3,7 +3,7 @@
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
 ## Results
-- The score is formated like this: "10,000" <!-- ITS OVER NINE THOUSAND! -->
+- The score is formated like this / money: "18,000" <!-- ITS OVER NINE THOUSAND! -->
 - The player JSON fields `resultsAssetName` and `resultsFrameArray` are `resultsAssetNames` and `resultsFrameArrays` and require a format like this:
 ```json
 {
