@@ -80,9 +80,9 @@ class LevelEditorMenu extends FlxState
 			2, 0, FlxMath.MAX_VALUE_INT);
 
 		SETTINGS_CHANCES_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y + SETTINGS_SCORE_ENEMY_COMMON_NUM.height + 5,
-			0.5, 2, 0, 100);
+			0.5, 2, 0, 100, 1);
 		SETTINGS_CHANCES_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_CHANCES_ENEMY_RARE_NUM.y + SETTINGS_CHANCES_ENEMY_RARE_NUM.height + 5,
-			0.5, 2, 0, 100);
+			0.5, 2, 0, 100, 1);
 
 		tab_group.add(SETTINGS_AMMO_NUM);
 		tab_group.add(new FlxText(SETTINGS_AMMO_NUM.x + SETTINGS_AMMO_NUM.width + 10, SETTINGS_AMMO_NUM.y, 0,
