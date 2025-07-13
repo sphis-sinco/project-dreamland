@@ -18,8 +18,7 @@ class LevelEditorMenu extends FlxState
 		var tabs = [
 			{name: 'Misc', label: 'Misc'},
 			{name: '_Assets', label: 'Assets'},
-			{name: '_Settings1', label: 'Settings (Ammo & Scores)'},
-			{name: '_Settings2', label: 'Settings (Chances & Spd. adds.)'}
+			{name: '_Settings1', label: 'Settings'},
 		];
 
 		UI_BOX = new FlxUITabMenu(null, tabs, true);
@@ -33,7 +32,6 @@ class LevelEditorMenu extends FlxState
 		addMiscTab();
 		addAssetsTab();
 		addSettingsTab1();
-		addSettingsTab2();
 
 		ASSETS_DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
 		ASSETS_PLAYER_TEXT.text = SONG_JSON.assets.player;
@@ -47,6 +45,9 @@ class LevelEditorMenu extends FlxState
 		SETTINGS_SCORE_ENEMY_COMMON_NUM.value = SONG_JSON.settings.scores.enemy_common;
 		SETTINGS_SCORE_ENEMY_EASY_NUM.value = SONG_JSON.settings.scores.enemy_easy;
 		SETTINGS_SCORE_ENEMY_RARE_NUM.value = SONG_JSON.settings.scores.enemy_rare;
+
+		SETTINGS_CHANCES_ENEMY_EASY_NUM.value = SONG_JSON.settings.chances.enemy_easy;
+		SETTINGS_CHANCES_ENEMY_RARE_NUM.value = SONG_JSON.settings.chances.enemy_rare;
 	}
 
 	function addSettingsTab2()
@@ -58,9 +59,13 @@ class LevelEditorMenu extends FlxState
 	}
 
 	public var SETTINGS_AMMO_NUM:FlxUINumericStepper;
+
 	public var SETTINGS_SCORE_ENEMY_RARE_NUM:FlxUINumericStepper;
 	public var SETTINGS_SCORE_ENEMY_EASY_NUM:FlxUINumericStepper;
 	public var SETTINGS_SCORE_ENEMY_COMMON_NUM:FlxUINumericStepper;
+
+	public var SETTINGS_CHANCES_ENEMY_RARE_NUM:FlxUINumericStepper;
+	public var SETTINGS_CHANCES_ENEMY_EASY_NUM:FlxUINumericStepper;
 
 	function addSettingsTab1()
 	{
@@ -74,6 +79,11 @@ class LevelEditorMenu extends FlxState
 		SETTINGS_SCORE_ENEMY_COMMON_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_EASY_NUM.y + SETTINGS_SCORE_ENEMY_EASY_NUM.height + 5, 5,
 			2, 0, FlxMath.MAX_VALUE_INT);
 
+		SETTINGS_CHANCES_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y + SETTINGS_SCORE_ENEMY_COMMON_NUM.height + 5,
+			0.5, 2, 0, 100);
+		SETTINGS_CHANCES_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_CHANCES_ENEMY_RARE_NUM.y + SETTINGS_CHANCES_ENEMY_RARE_NUM.height + 5,
+			0.5, 2, 0, 100);
+
 		tab_group.add(SETTINGS_AMMO_NUM);
 		tab_group.add(new FlxText(SETTINGS_AMMO_NUM.x + SETTINGS_AMMO_NUM.width + 10, SETTINGS_AMMO_NUM.y, 0,
 			'Ammo amount, recommended for your player to have the right animations for this amount of ammo', 8));
@@ -86,6 +96,13 @@ class LevelEditorMenu extends FlxState
 		tab_group.add(SETTINGS_SCORE_ENEMY_COMMON_NUM);
 		tab_group.add(new FlxText(SETTINGS_SCORE_ENEMY_COMMON_NUM.x + SETTINGS_SCORE_ENEMY_COMMON_NUM.width + 10, SETTINGS_SCORE_ENEMY_COMMON_NUM.y,
 			0, 'Score from a common enemy', 8));
+
+		tab_group.add(SETTINGS_CHANCES_ENEMY_RARE_NUM);
+		tab_group.add(new FlxText(SETTINGS_CHANCES_ENEMY_RARE_NUM.x + SETTINGS_CHANCES_ENEMY_RARE_NUM.width + 10, SETTINGS_CHANCES_ENEMY_RARE_NUM.y,
+			0, 'Chances for a rare enemy to appear', 8));
+		tab_group.add(SETTINGS_CHANCES_ENEMY_EASY_NUM);
+		tab_group.add(new FlxText(SETTINGS_CHANCES_ENEMY_EASY_NUM.x + SETTINGS_CHANCES_ENEMY_EASY_NUM.width + 10, SETTINGS_CHANCES_ENEMY_EASY_NUM.y,
+			0, 'Chances for a easy enemy to appear', 8));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -172,6 +189,9 @@ class LevelEditorMenu extends FlxState
 		SONG_JSON.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
 		SONG_JSON.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
 		SONG_JSON.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
+
+		SONG_JSON.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
+		SONG_JSON.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
 	}
 
 	override function update(elapsed:Float)
