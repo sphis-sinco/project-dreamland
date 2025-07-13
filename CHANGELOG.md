@@ -10,6 +10,8 @@ A new team member was added to the team: HeroEyad
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster
 ## Application
+- Added a `STARTING_STATE` define which accepts these values:
+  - `LEVELEDITOR`
 - Added (kinda) support for mobile platforms, you can't play levels tho
   - Added custom icon for the mobile version
 - The game version now is in the window title

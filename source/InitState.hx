@@ -1,3 +1,5 @@
+import menus.editors.LevelEditorMenu;
+
 class InitState extends FlxState
 {
 	override function create()
@@ -32,11 +34,20 @@ class InitState extends FlxState
 		}
 		else
 		{
-			#if (html5)
-			FlxG.switchState(OutdatedState.new);
-			#else
-			FlxG.switchState(Splash.new);
-			#end
+			var starting_state = haxe.macro.Compiler.getDefine('STARTING_STATE');
+			trace(starting_state);
+
+			switch (starting_state)
+			{
+				case 'LEVELEDITOR':
+					FlxG.switchState(LevelEditorMenu.new);
+				case null, '1':
+					#if (html5)
+					FlxG.switchState(OutdatedState.new);
+					#else
+					FlxG.switchState(Splash.new);
+					#end
+			}
 		}
 	}
 }
