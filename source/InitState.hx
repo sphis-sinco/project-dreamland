@@ -37,7 +37,7 @@ class InitState extends FlxState
 			var starting_state = haxe.macro.Compiler.getDefine('STARTING_STATE');
 			trace(starting_state);
 
-			switch (starting_state)
+			switch (starting_state.split('=')[0])
 			{
 				case 'LEVELEDITOR':
 					FlxG.switchState(LevelEditorMenu.new);
