@@ -35,7 +35,7 @@
                 "size": [24, 24]
         },
         "resultsAssetNames": {
-                "bad": "player",
+                "bad": "player-bad",
                 "good": "player",
                 "new_highscore": "player"
         },
