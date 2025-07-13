@@ -37,8 +37,8 @@
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
 
-	<set name="BUILD_DIR" value="export-android/debug" if="debug android" />
-	<set name="BUILD_DIR" value="export-android/release" if="android" unless="debug"/>
+	<set name="BUILD_DIR" value="export-android/debug" if="debug android || debug android_testing" />
+	<set name="BUILD_DIR" value="export-android/release" if="android || android_testing" unless="debug"/>
 
 	<source path="source" />
 	<assets path="assets" exclude="assets/mobile"/>
