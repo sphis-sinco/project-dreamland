@@ -115,11 +115,6 @@ class ResultsSubState extends FlxSubState
 					lerpComplete = true;
 					lerpCompleteFlash();
 				}
-				else
-				{
-					player.animation.play('anim');
-					player.visible = true;
-				}
 			}
 		});
 
@@ -189,6 +184,9 @@ class ResultsSubState extends FlxSubState
 	{
 		scoreText.color = FlxColor.YELLOW;
 		FlxTween.color(scoreText, 1, scoreText.color, FlxColor.WHITE);
+
+		player.animation.play('anim');
+		player.visible = PlayState.SCORE != 0;
 
 		if (PlayState.HIGHSCORE)
 		{
