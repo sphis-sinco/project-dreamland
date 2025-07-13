@@ -1,4 +1,6 @@
 # 1.0.0 (7/13/2025)
+## Gameplay
+- Level 1 easy enemies are 3 integers faster
 ## Application
 - The icon for the application has been updated. no more transparent background
 ## Options
