@@ -17,6 +17,9 @@
 	without FLX_NO_GAMEPAD: 11.8, without FLX_NO_NATIVE_CURSOR: 11.2-->
 	<set name="SWF_VERSION" value="11.8" />
 
+	<define name="MOBILE_BUILD" if="android"/>
+	<define name="MOBILE_BUILD" if="android_testing" unless="MOBILE_BUILD"/>
+
 	<!-- ____________________________ Window Settings ___________________________ -->
 
 	<!--These
@@ -30,12 +33,9 @@
 	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
 
 	<!--Mobile-specific-->
-	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
+	<window if="MOBILE_BUILD" orientation="landscape" fullscreen="true" width="0" height="0" />
 
 	<!-- _____________________________ Path Settings ____________________________ -->
-
-	<define name="MOBILE_BUILD" if="android"/>
-	<define name="MOBILE_BUILD" if="android_testing" unless="MOBILE_BUILD"/>
 
 	<set name="BUILD_DIR" value="export/debug" if="debug" />
 	<set name="BUILD_DIR" value="export/release" unless="debug" />
@@ -47,8 +47,8 @@
 	<assets path="assets" exclude="assets/exclude/"/>
 	<assets path="exclusives/mobile" rename="assets/mobile" if="MOBILE_BUILD"/>
 
-	<define name="DISCORDRPC" if="windows" unless="hl || neko" />
-	<define name="POLYMOD_MODDING" unless="html5 || neko" />
+	<define name="DISCORDRPC" if="windows" unless="hl || neko || MOBILE_BUILD" />
+	<define name="POLYMOD_MODDING" unless="html5 || neko || MOBILE_BUILD" />
 	<define name="BLOCK_SOME_POLYMOD_TRACES" if="blockSomePolymodTraces" />
 
 	<section if="POLYMOD_MODDING">
