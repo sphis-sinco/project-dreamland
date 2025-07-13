@@ -184,7 +184,7 @@ class LevelSelect extends FlxState
 		var filename:String = (!filepath.contains('data/levelSelect/')) ? FileManager.getDataFile(filepath) : filepath;
 		FlxG.log.add(filename);
 
-		level_json = Json.parse(FileManager.readFile(filename));
+		level_json = FileManager.getJSON(filename);
 
 		if (VARIATION_INDEX > level_json.variations.length - 1)
 			VARIATION_INDEX = level_json.variations.length - 1;

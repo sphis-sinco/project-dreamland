@@ -507,6 +507,7 @@ class FileManager
 		{
 			json = Json.parse(file);
 		}, {
+				traceErr: true,
 				errFunc: d ->
 				{
 					json = file;

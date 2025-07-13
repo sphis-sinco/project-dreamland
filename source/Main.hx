@@ -18,6 +18,7 @@ class Main extends Sprite
 		{
 			infos.className = 'source/' + infos.className.replace('.', '/') + '.hx:${infos.lineNumber}';
 
+			FlxG.log.add(v);
 			Log.info(v, infos);
 		}
 
