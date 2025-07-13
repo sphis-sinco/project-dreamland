@@ -281,6 +281,8 @@ class PlayState extends FlxState
 				if (enemy.overlaps(player))
 				{
 					FlxG.switchState((!GOTO_LEVEL_EDITOR) ? GameOver.new : LevelEditorMenu.new);
+					GOTO_LEVEL_EDITOR = false;
+
 					instance = null;
 				}
 			}
@@ -307,7 +309,7 @@ class PlayState extends FlxState
 						SCORE += level_data.settings.scores.enemy_rare;
 				}
 
-				if (Global.HIGHSCORE < SCORE && score_text.color != FlxColor.LIME)
+				if (Global.HIGHSCORE < SCORE && score_text.color != FlxColor.LIME && !GOTO_LEVEL_EDITOR)
 				{
 					HIGHSCORE = true;
 
