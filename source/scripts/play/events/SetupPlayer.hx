@@ -1,11 +1,9 @@
 package scripts.play.events;
 
-import data.PlayerData;
-
 class SetupPlayer
 {
-	public static function call(player_json:PlayerData)
+	public static function call():FlxSprite
 	{
-		ScriptManager.callScript('setupPlayer', [player_json]);
+		return null;
 	}
 }

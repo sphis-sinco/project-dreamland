@@ -3,7 +3,6 @@ package gameplay;
 import data.LevelData.LevelData;
 import data.LevelData.LevelDataManager;
 import data.PlayerData;
-import scripts.play.events.SetupPlayer;
 
 class PlayState extends FlxState
 {
@@ -94,12 +93,7 @@ class PlayState extends FlxState
 
 		add(bullets_group);
 
-		playerSetup(); // this is the fallback
-		SetupPlayer.call(player_json);
-
-		if (player == null)
-			playerSetup();
-
+		playerSetup();
 		add(player);
 
 		add(enemies_group);

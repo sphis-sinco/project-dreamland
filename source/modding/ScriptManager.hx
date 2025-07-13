@@ -73,8 +73,6 @@ class ScriptManager
 			return Save.getSavedataInfo(finalfield);
 		});
 
-		setScript('PlayerData', data.PlayerData.PlayerData);
-
 		// init mod
 		ScriptManager.callScript('onCreate');
 	}
