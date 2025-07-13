@@ -9,11 +9,20 @@ class Global
 
 	public static function set_HIGHSCORE()
 	{
-		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
-		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < Save.getSavedataInfo(highscore)) ? Save.getSavedataInfo(highscore) : HIGHSCORE;
-		Save.setSavedataInfo(highscore, HIGHSCORE);
+		var savedHighscore:Int = Save.getSavedataInfo(SaveKeys.highscore);
+		var currentScore:Int = PlayState.SCORE;
+
+		var newHighscore:Int = Math.max(savedHighscore, currentScore, HIGHSCORE);
+
+		NEW_HIGHSCORE = newHighscore > HIGHSCORE;
+		HIGHSCORE = newHighscore;
+
+		Save.setSavedataInfo(SaveKeys.highscore, HIGHSCORE);
 		Save.flushData();
+
+		trace("Highscore updated to: " + HIGHSCORE);
 	}
+
 
 	public static var APP_VERSION(get, never):String;
 
