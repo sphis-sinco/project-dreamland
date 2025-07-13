@@ -161,7 +161,7 @@ class ResultsSubState extends FlxSubState
 			if (lerpComplete)
 				lerpCompleteFlash();
 
-			if (score != prevScore)
+			if (FlxMath.roundDecimal(score, 2) != FlxMath.roundDecimal(prevScore, 2))
 			{
 				if (!lerpComplete)
 					blip.play(true);

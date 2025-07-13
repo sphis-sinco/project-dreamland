@@ -26,7 +26,7 @@ class TextSelecting extends FlxState
 
 		up.x = up.width * 2;
 		up.y -= up.height * 2;
-		down.x = up.width * 2;
+		down.x = down.width * 2;
 
 		add(text_group);
 

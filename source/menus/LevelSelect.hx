@@ -15,8 +15,28 @@ class LevelSelect extends FlxState
 	var CURRENT_SELECTION:Int = 0;
 	var VARIATION_INDEX:Int = 0;
 
+	public var interact:MobileButton = new MobileButton(A_BUTTON);
+	public var leave:MobileButton = new MobileButton(B_BUTTON);
+
+	public var left:MobileButton = new MobileButton(LEFT_BUTTON);
+	public var right:MobileButton = new MobileButton(RIGHT_BUTTON);
+
+	public var up:MobileButton = new MobileButton(UP_BUTTON);
+	public var down:MobileButton = new MobileButton(DOWN_BUTTON);
+
 	override public function create()
 	{
+		// TODO: THIS ISNT THERE FOR SOME REASON
+		interact.x = FlxG.width - interact.width * 2;
+		leave.x = FlxG.width - leave.width * 2;
+
+		left.x = left.width;
+		right.x = left.x + right.width * 4;
+
+		down.x = left.width + down.width * 2;
+		up.x = down.x;
+		up.y -= up.height * 2;
+
 		#if !web
 		var oglevels = FileManager.getTypeArray('level files', 'data/levelSelect', ['.dreamEntry'], ['assets/data/levelSelect/']);
 
@@ -29,7 +49,11 @@ class LevelSelect extends FlxState
 		}
 		#end
 
+		#if ANDROID_BUILD
+		difficulty.y = difficulty.height;
+		#else
 		difficulty.y = FlxG.height - difficulty.height;
+		#end
 		add(difficulty);
 
 		#if (discord_rpc && !hl)
@@ -46,6 +70,15 @@ class LevelSelect extends FlxState
 		updateSelections();
 
 		super.create();
+
+		#if ANDROID_BUILD
+		add(interact);
+		add(leave);
+		add(up);
+		add(down);
+		add(left);
+		add(right);
+		#end
 	}
 
 	var key_left:Bool;
@@ -56,11 +89,11 @@ class LevelSelect extends FlxState
 
 	override public function update(elapsed:Float)
 	{
-		key_left = Controls.UI_MOVE_LEFT;
-		key_right = Controls.UI_MOVE_RIGHT;
-		key_up = Controls.UI_MOVE_UP;
-		key_down = Controls.UI_MOVE_DOWN;
-		key_enter = Controls.UI_SELECT;
+		key_left = Controls.UI_MOVE_LEFT || left.justReleased;
+		key_right = Controls.UI_MOVE_RIGHT || right.justReleased;
+		key_up = Controls.UI_MOVE_UP || up.justReleased;
+		key_down = Controls.UI_MOVE_DOWN || down.justReleased;
+		key_enter = Controls.UI_SELECT || interact.justReleased;
 
 		if (key_left)
 		{
@@ -120,7 +153,7 @@ class LevelSelect extends FlxState
 
 			FlxG.switchState(() -> new PlayState(FileManager.getJSON(finalPath)));
 		}
-		else if (Controls.UI_LEAVE)
+		else if (Controls.UI_LEAVE || leave.justReleased)
 		{
 			Global.playSound('select');
 			FlxG.switchState(MenuState.new);
