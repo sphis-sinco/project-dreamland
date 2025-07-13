@@ -12,9 +12,9 @@ class LevelEditorMenu extends FlxState
 		super.create();
 
 		var tabs = [
-			{name: "Misc", label: 'Misc'},
-			{name: "_Assets", label: 'Assets'},
-			{name: "_Settings", label: 'Settings'}
+			{name: 'Misc', label: 'Misc'},
+			{name: '_Assets', label: 'Assets'},
+			{name: '_Settings', label: 'Settings'}
 		];
 
 		UI_BOX = new FlxUITabMenu(null, tabs, true);
@@ -33,7 +33,7 @@ class LevelEditorMenu extends FlxState
 	function addSettingsTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
-		tab_group.name = "_Setting";
+		tab_group.name = '_Setting';
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -41,15 +41,22 @@ class LevelEditorMenu extends FlxState
 	function addAssetsTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
-		tab_group.name = "_Assets";
+		tab_group.name = '_Assets';
 
 		UI_BOX.addGroup(tab_group);
 	}
 
+	public var AUTHOR_NAME_TEXT:FlxInputText;
+
 	function addMiscTab()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
-		tab_group.name = "Misc";
+		tab_group.name = 'Misc';
+
+		AUTHOR_NAME_TEXT = new FlxInputText(10, 10, 200, 'Person', 16);
+
+		tab_group.add(AUTHOR_NAME_TEXT);
+		tab_group.add(new FlxText(AUTHOR_NAME_TEXT.x + AUTHOR_NAME_TEXT.width + 10, AUTHOR_NAME_TEXT.y, 0, 'Author Name', 16));
 
 		UI_BOX.addGroup(tab_group);
 	}
