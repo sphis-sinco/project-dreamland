@@ -39,6 +39,7 @@
 
 	<source path="source" />
 	<assets path="assets" />
+	<assets path="assets/mobile" rename="assets/" if="android"/>
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko" />
 	<define name="POLYMOD_MODDING" unless="html5 || neko" />
