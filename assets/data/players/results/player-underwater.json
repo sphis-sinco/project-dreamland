@@ -1,0 +1,12 @@
+{
+        "assetNames": {
+                "bad": "player-underwater-bad",
+                "good": "player-underwater",
+                "new_highscore": "player-underwater-newHighscore"
+        },
+        "frameArrays": {
+                "bad": [0, 1, 2, 3, 4, 5],
+                "good": [0, 1, 2, 3, 4, 5],
+                "new_highscore": [0, 1, 2, 3, 4, 5, 6]
+        }
+}

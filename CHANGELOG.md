@@ -6,7 +6,6 @@ A new team member was added to the team: HeroEyad
 - Level sprite's scale has been set to 1 for the x and y
 ## Gameplay
 - The highscore variable is initalized after the save is initalized
-- THE SAVING IS FINALLY FIXED (THANK YOU HEROEYAD)
 - The background is scaled down in non-mobile builds
 - All backgrounds have been extended
 - Level 1 easy enemies are 3 integers faster
@@ -25,6 +24,7 @@ A new team member was added to the team: HeroEyad
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
 ## Results
+- Added underwater varient to the player results
 - The player JSON results fields have been split into a "results/" folder in the "player/"
 - Added bad and new highscore player animations
 - The player now appears after the score counts up

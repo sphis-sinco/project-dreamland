@@ -28,5 +28,5 @@
                 "color": [0, 255, 255, 255],
                 "size": [12, 12]
         },
-        "resultsChar": "player"
+        "resultsChar": "player-underwater"
 }
