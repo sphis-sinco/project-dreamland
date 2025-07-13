@@ -5,6 +5,10 @@ function onCreate():Void {}
 function stateCreate() {}
 function stateUpdate(elapsed:Float) {}
 
+// EVERY SUBSTATE
+function substateCreate() {}
+function substateUpdate(elapsed:Float) {}
+
 // Check outdated
 function setGitUser():String {}
 function setGitRepo():String {}

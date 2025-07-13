@@ -17,10 +17,11 @@ A new team member was added to the team: HeroEyad
 ## Options
 - Controls menu is blocked on Android Builds
 ## Global
-- Global now has a `goToUrl` **public static** function so you can rickroll people to your hearts content with scripts
+- Global now has a `goToUrl` public static function so you can rickroll people to your hearts content with scripts
 ## Outdated screen
 - Linux can now properly go to the github now thanks to Global's new `goToUrl` function
 ## Modding
+- A FlxSubState copy has been made allowing for the new script functions `substateCreate` and `substateUpdate` to exist/work
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
 ## Results
