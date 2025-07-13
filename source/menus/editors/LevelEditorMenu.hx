@@ -17,12 +17,13 @@ class LevelEditorMenu extends FlxState
 		var tabs = [
 			{name: 'Misc', label: 'Misc'},
 			{name: '_Assets', label: 'Assets'},
-			{name: '_Settings', label: 'Settings'}
+			{name: '_Settings1', label: 'Settings (Ammo & Scores)'},
+			{name: '_Settings2', label: 'Settings (Chances & Spd. adds.)'}
 		];
 
 		UI_BOX = new FlxUITabMenu(null, tabs, true);
 
-		UI_BOX.resize(FlxG.width, FlxG.height - 128);
+		UI_BOX.resize(FlxG.width, FlxG.height - 96);
 		UI_BOX.screenCenter();
 
 		UI_BOX.selected_tab = 0;
@@ -30,16 +31,25 @@ class LevelEditorMenu extends FlxState
 
 		addMiscTab();
 		addAssetsTab();
-		addSettingsTab();
+		addSettingsTab1();
+		addSettingsTab2();
 
 		ASSETS_DIRECTORY_TEXT.text = SONG_JSON.assets.directory;
 		ASSETS_PLAYER_TEXT.text = SONG_JSON.assets.player;
 	}
 
-	function addSettingsTab()
+	function addSettingsTab1()
 	{
 		var tab_group = new FlxUI(null, UI_BOX);
-		tab_group.name = '_Setting';
+		tab_group.name = '_Settings1';
+
+		UI_BOX.addGroup(tab_group);
+	}
+
+	function addSettingsTab2()
+	{
+		var tab_group = new FlxUI(null, UI_BOX);
+		tab_group.name = '_Settings2';
 
 		UI_BOX.addGroup(tab_group);
 	}
