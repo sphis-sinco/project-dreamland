@@ -58,20 +58,12 @@ class CreditsMenu extends TextSelecting
 
 			final openUrlFunc = function()
 			{
-				#if linux
-				Sys.command('/usr/bin/xdg-open', [url, "&"]);
-				#else
-				FlxG.openURL(url);
-				#end
+				Global.goToUrl(url);
 			}
 
 			final openEmailFunc = function()
 			{
-				#if linux
-				Sys.command('/usr/bin/xdg-open', ['mailto:$email', "&"]);
-				#else
-				FlxG.openURL('mailto:$email');
-				#end
+				Global.goToUrl('mailto:$email');
 			}
 
 			if (!openEmail && openUrl)

@@ -56,7 +56,7 @@ class OutdatedState extends FlxState
 	{
 		if (Controls.UI_SELECT || openURL.justReleased)
 		{
-			FlxG.openURL('https://github.com/sphis-Sinco/project-dreamland/releases/latest');
+			Global.goToUrl('https://github.com/sphis-Sinco/project-dreamland/releases/latest');
 			#if sys
 			Sys.exit(0);
 			#end

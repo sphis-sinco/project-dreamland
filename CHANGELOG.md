@@ -1,4 +1,8 @@
 # 1.0.0 (7/13/2025)
+## Global
+- Global now has a `goToUrl` **public static** function so you can rickroll people to your hearts content with scripts
+## Outdated screen
+- Linux can now properly go to the github now thanks to Global's new `goToUrl` function
 ## Modding
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"

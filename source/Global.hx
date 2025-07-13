@@ -30,4 +30,13 @@ class Global
 	{
 		return Type.getClassName(Type.getClass(FlxG.state)).split(".").pop();
 	}
+
+	public static function goToUrl(url:String)
+	{
+		#if linux
+		Sys.command('/usr/bin/xdg-open', [url, "&"]);
+		#else
+		FlxG.openURL(url);
+		#end
+	}
 }
