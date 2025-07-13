@@ -5,7 +5,7 @@ A game born from meditation.
 This video game project was created by Sphis_Sinco in January 25th, 2025. After attempting meditation for the first time. Now the project has risen from the grave in July of 2025. After 6 months of a hiatus. He returned to the project after noting that it had gathered more interest then the rest of his projects. And now here it stands. Old plans risen from the grave and being put into fruition.
 
 ## Modding
-As of version 0.6.0 and onwards the game supports modding via `polymod` and `hscript-iris`. This allows for mods to be loaded by `polmod` in the "mods" folder, and for scripts to be loaded from the mods *and game's* "scripts" folder by the file manager, which will allow `hscript-iris` to parse it as it's own script.
+As of version 0.6.0 and onwards the game supports modding via `polymod` and `hscript-iris`. This allows for mods to be loaded by `polymod` in the "mods" folder, and for scripts to be loaded from the mods *and game's* "scripts" folder by the file manager, which will allow `hscript-iris` to parse it as it's own script.
 
 In order to be recognized by Polymod, a mod folder must contain a metadata file. This file is located at `_polymod_meta.json` within the root of the mods folder. A mod’s metadata contains all the information needed for the game to not only recognize a mod and validate its compatibility, but also display it to other players in the mod menu. It includes a title, description, contributors list, and even optionally an icon you can display through `_polymod_icon.png`.
 
