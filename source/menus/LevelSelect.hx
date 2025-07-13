@@ -162,17 +162,6 @@ class LevelSelect extends FlxState
 	{
 		TryCatch.tryCatch(() -> updateSelMainFunc(), {traceErr: true, errFunc: d -> updateSelSecondFunc(d)});
 		difficulty.screenCenter(X);
-
-		var bgpath = LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background');
-		TryCatch.tryCatch(() ->
-		{
-			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));
-		}, {
-				errFunc: d ->
-				{
-					level_sprite.loadGraphic(FileManager.getImageFile('background'));
-				}
-		});
 	}
 
 	function updateSelMainFunc()
@@ -192,11 +181,27 @@ class LevelSelect extends FlxState
 		difficulty.size = 32;
 
 		difficulty.text = level_json.name + ' (${level_json.variations[VARIATION_INDEX]})' + ' - ' + level_json.difficulties[VARIATION_INDEX];
+		loadBG();
 	}
 
 	function updateSelSecondFunc(d:Dynamic)
 	{
-		FlxG.log.warn(d);
+		FlxG.log.add(d);
 		difficulty.text = levels[CURRENT_SELECTION] + ': $d';
+		loadBG();
+	}
+
+	function loadBG()
+	{
+		var bgpath = LevelSelectEntryDataManager.getFileName(level_json, VARIATION_INDEX, 'background');
+		TryCatch.tryCatch(() ->
+		{
+			level_sprite.loadGraphic(FileManager.getImageFile(bgpath));
+		}, {
+				errFunc: d ->
+				{
+					level_sprite.loadGraphic(FileManager.getImageFile('background'));
+				}
+		});
 	}
 }
