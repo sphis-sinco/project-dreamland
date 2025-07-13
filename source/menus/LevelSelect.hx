@@ -188,7 +188,7 @@ class LevelSelect extends FlxState
 	{
 		FlxG.log.add(d);
 		difficulty.text = levels[CURRENT_SELECTION] + ': $d';
-		loadBG();
+		// loadBG();
 	}
 
 	function loadBG()

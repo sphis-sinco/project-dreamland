@@ -478,7 +478,8 @@ class FileManager
 		#if sys
 		return TryCatch.tryCatch(function()
 		{
-			return File.getContent(path);
+			// https://community.openfl.org/t/android-read-and-load-a-txt-file/10779/22
+			return File.getContent(#if android lime.system.System.applicationStorageDirectory + #end path);
 		}, {
 				traceErr: true
 		});
