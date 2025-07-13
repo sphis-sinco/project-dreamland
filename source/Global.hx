@@ -12,6 +12,7 @@ class Global
 		NEW_HIGHSCORE = HIGHSCORE < PlayState.SCORE;
 		HIGHSCORE = (NEW_HIGHSCORE) ? PlayState.SCORE : (HIGHSCORE < Save.getSavedataInfo(highscore)) ? Save.getSavedataInfo(highscore) : HIGHSCORE;
 		Save.setSavedataInfo(highscore, HIGHSCORE);
+		Save.flushData();
 	}
 
 	public static var APP_VERSION(get, never):String;
