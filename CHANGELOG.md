@@ -1,4 +1,6 @@
 # 1.0.0 (7/13/2025)
+## Application
+- The icon for the application has been updated. no more transparent background
 ## Options
 - Controls menu is blocked on Android Builds
 ## Global
