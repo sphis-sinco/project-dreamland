@@ -1,3 +1,6 @@
+# 1.0.1 (7/14/2025)
+TODO: Fix **windows only** crash where mod folders don't work
+
 # 1.0.0 (7/13/2025)
 A new team member was added to the team: HeroEyad
 
