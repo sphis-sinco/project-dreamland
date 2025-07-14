@@ -24,6 +24,8 @@ A new team member was added to the team: HeroEyad
 ## Outdated screen
 - Linux can now properly go to the github now thanks to Global's new `goToUrl` function
 ## Modding
+- Added Editor menu accessable in the main menu by pressing 7 on the main menu.
+  - Added level editor that allows for easily making levels.
 - A FlxSubState copy has been made allowing for the new script functions `substateCreate` and `substateUpdate` to exist/work
 - The mod menu now gives message(s) for versions below 1.0.0
   - "Custom player results assets won't work"
