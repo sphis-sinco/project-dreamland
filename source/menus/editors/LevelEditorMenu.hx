@@ -5,9 +5,14 @@ import flixel.addons.ui.*;
 import flixel.math.FlxMath;
 import flixel.text.FlxInputText;
 import flixel.ui.FlxButton;
+import openfl.events.Event;
+import openfl.events.IOErrorEvent;
+import openfl.net.FileReference;
 
 class LevelEditorMenu extends FlxState
 {
+	var _file:FileReference;
+
 	public var LEVEL_JSON:LevelData = LevelDataManager.defaultJSON;
 
 	public var UI_BOX:FlxUITabMenu;
@@ -210,6 +215,10 @@ class LevelEditorMenu extends FlxState
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(LEVEL_JSON));
 		}));
+		tab_group.add(new FlxButton(100, UI_BOX.height - 60, 'Save level', () ->
+		{
+			saveLevel();
+		}));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -277,5 +286,53 @@ class LevelEditorMenu extends FlxState
 	public function infoTextFileCheck(name:String = 'file', path:String, indent:Bool = true)
 	{
 		INFO_TEXT.text += '${indent ? '\n' : ''}* $name exists: ${FileManager.exists(FileManager.getAssetFile(path))}';
+	}
+
+	private function saveLevel()
+	{
+		var json = LEVEL_JSON;
+
+		var data:String = Json.stringify(json);
+
+		if ((data != null) && (data.length > 0))
+		{
+			_file = new FileReference();
+			_file.addEventListener(Event.COMPLETE, onSaveComplete);
+			_file.addEventListener(Event.CANCEL, onSaveCancel);
+			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
+			_file.save(data.trim(), '${LEVEL_JSON.author}s-level.json');
+		}
+	}
+
+	function onSaveComplete(_):Void
+	{
+		_file.removeEventListener(Event.COMPLETE, onSaveComplete);
+		_file.removeEventListener(Event.CANCEL, onSaveCancel);
+		_file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
+		_file = null;
+		FlxG.log.notice("Successfully saved LEVEL DATA.");
+	}
+
+	/**
+	 * Called when the save file dialog is cancelled.
+	 */
+	function onSaveCancel(_):Void
+	{
+		_file.removeEventListener(Event.COMPLETE, onSaveComplete);
+		_file.removeEventListener(Event.CANCEL, onSaveCancel);
+		_file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
+		_file = null;
+	}
+
+	/**
+	 * Called if there is an error while saving the gameplay recording.
+	 */
+	function onSaveError(_):Void
+	{
+		_file.removeEventListener(Event.COMPLETE, onSaveComplete);
+		_file.removeEventListener(Event.CANCEL, onSaveCancel);
+		_file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
+		_file = null;
+		FlxG.log.error("Problem saving Level data");
 	}
 }
