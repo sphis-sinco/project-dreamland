@@ -1,4 +1,6 @@
 # 1.0.2 (7/14/2025)
+## Gameplay
+- Fixed level scripts not being loaded
 ## Application
 - Fixed version
 ## General

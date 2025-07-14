@@ -130,103 +130,82 @@ class FileManager
 		var typePaths:Array<String> = paths;
 		var typeExtensions:Array<String> = ext;
 
-		var readFolder:Dynamic = function(folder:String, ogdir:String) {};
+		var readFileFolder:Dynamic = function(folder:String, ogdir:String) {};
+		var readFolder:Dynamic = function(folder:String, ogdir:String)
+		{
+			trace('reading ${ogdir}${folder}');
 
-		var readFileFolder:Dynamic = function(folder:String, ogdir:String)
+			TryCatch.tryCatch(function()
+			{
+				if (!folder.contains('.'))
+					readFileFolder('$folder/', '${ogdir}');
+				else
+					readFileFolder(ogdir, '');
+			}, {
+					traceErr: true
+			});
+		}
+
+		readFileFolder = function(folder:String, ogdir:String)
 		{
 			#if EXCESS_TRACES
 			trace('${ogdir}${folder}');
 			#end
 
-			for (file in readDirectory('${ogdir}${folder}'))
+			for (file in FileSystem.readDirectory('${ogdir}${folder}'))
 			{
 				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
-				for (extension in typeExtensions)
-				{
-					if (file.endsWith(extension))
-					{
-						final path:String = '${ogdir}${folder}${endsplitter}${file}';
-
-						if (!arr.contains(path))
-						{
-							arr.push('${path}');
-						}
-					}
-				}
-
 				if (!file.contains('.'))
 				{
 					readFolder('${file}', '${ogdir}${folder}${endsplitter}');
 				}
-			}
-		}
-
-		readFolder = function(folder:String, ogdir:String)
-		{
-			#if EXCESS_TRACES
-			trace('reading ${ogdir}${folder}');
-			#end
-
-			TryCatch.tryCatch(function()
-			{
-				if (!folder.contains('.'))
-				{
-					readFileFolder(folder, '${ogdir}');
-				}
 				else
 				{
-					readFileFolder(ogdir, '');
+					for (extension in typeExtensions)
+					{
+						if (file.endsWith(extension))
+						{
+							final path:String = '${ogdir}${folder}${endsplitter}${file}';
+
+							if (!arr.contains(path))
+								arr.push('${path}');
+						}
+					}
 				}
-			}, {
-					traceErr: true
-			});
-		}
-		var readDir:Dynamic = function(directory:String)
-		{
-			#if EXCESS_TRACES
-			trace('reading ${directory}');
-			#end
-			TryCatch.tryCatch(() ->
-			{
-				for (folder in FileSystem.readDirectory(directory))
-				{
-					return readFolder(folder, directory);
-				}
-			}, {
-					traceErr: true
-			});
+			}
 		}
 
 		#if POLYMOD_MODDING
-		TryCatch.tryCatch(() ->
+		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 		{
-			for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
+			TryCatch.tryCatch(() ->
 			{
-				TryCatch.tryCatch(() ->
+				var prefix:String = 'mods/';
+				var modDir:Array<String> = FileSystem.readDirectory('$prefix${folder}/');
+				trace('Checking "$prefix${folder}/" for a $type_folder folder');
+				if (modDir.contains('$type_folder'))
 				{
-					var prefix:String = 'mods/';
-					var modDir:Array<String> = FileSystem.readDirectory('$prefix${folder}/');
-					trace('Checking "$prefix${folder}/" for a $type_folder folder');
-					if (modDir.contains('$type_folder'))
-					{
-						trace('$folder has a $type_folder folder');
-						typePaths.push('$prefix${folder}/$type_folder/');
-					}
-				}, {
-						traceErr: true,
-						errFunc: d -> {}
-				});
-			}
-		}, {
-				traceErr: true,
-		});
+					trace('$folder has a $type_folder folder');
+					typePaths.push('$prefix${folder}/$type_folder/');
+				}
+			}, {
+					traceErr: true,
+					errFunc: d -> {}
+			});
+		}
 		#end
 		for (path in typePaths)
 		{
 			#if EXCESS_TRACES
 			trace('reading $type path: $path');
 			#end
-			readDir(path);
+			TryCatch.tryCatch(() ->
+			{
+				for (folder in FileSystem.readDirectory(path))
+					readFolder(folder, path);
+			}, {
+					traceErr: true
+			});
 		}
 
 		var prevPath:String = null;
@@ -309,9 +288,7 @@ class FileManager
 		var spacing = '    |    ';
 		trace('Loaded ${traceArr.length} $type file(s)');
 		for (file in arr)
-		{
 			trace('$spacing"$file"');
-		}
 		trace('Replaced ${scriptReplacements_replaced.length} $type file(s)');
 		var i = 0;
 		for (file in scriptReplacements_replaced)
