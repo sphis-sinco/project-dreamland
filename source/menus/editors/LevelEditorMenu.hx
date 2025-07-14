@@ -7,6 +7,7 @@ import flixel.text.FlxInputText;
 import flixel.ui.FlxButton;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
+import openfl.net.FileFilter;
 import openfl.net.FileReference;
 
 class LevelEditorMenu extends FlxState
@@ -43,7 +44,15 @@ class LevelEditorMenu extends FlxState
 		addAssetsTab();
 		addSettingsTab1();
 
+		loadJSON();
 		AUTHOR_TEXT.text = 'Person';
+
+		initalized = true;
+	}
+
+	function loadJSON()
+	{
+		AUTHOR_TEXT.text = LEVEL_JSON.author;
 
 		ASSETS_DIRECTORY_TEXT.text = LEVEL_JSON.assets.directory;
 		ASSETS_PLAYER_TEXT.text = LEVEL_JSON.assets.player;
@@ -64,8 +73,6 @@ class LevelEditorMenu extends FlxState
 		SETTINGS_SPEED_ENEMY_COMMON_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_common;
 		SETTINGS_SPEED_ENEMY_EASY_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_easy;
 		SETTINGS_SPEED_ENEMY_RARE_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_rare;
-
-		initalized = true;
 	}
 
 	function addSettingsTab2()
@@ -219,6 +226,10 @@ class LevelEditorMenu extends FlxState
 		{
 			saveLevel();
 		}));
+		tab_group.add(new FlxButton(190, UI_BOX.height - 60, 'Load level', () ->
+		{
+			loadLevel();
+		}));
 
 		UI_BOX.addGroup(tab_group);
 	}
@@ -334,5 +345,34 @@ class LevelEditorMenu extends FlxState
 		_file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 		_file = null;
 		FlxG.log.error("Problem saving Level data");
+	}
+
+	function loadLevel()
+	{
+		var fr:FileReference = new FileReference();
+		fr.addEventListener(Event.SELECT, _onSelect, false, 0, true);
+		fr.addEventListener(Event.CANCEL, _onCancel, false, 0, true);
+		var filters:Array<FileFilter> = new Array<FileFilter>();
+		filters.push(new FileFilter("Level Files", "*.dream"));
+		fr.browse();
+	}
+
+	function _onSelect(E:Event):Void
+	{
+		var fr:FileReference = cast(E.target, FileReference);
+		fr.addEventListener(Event.COMPLETE, _onLoad, false, 0, true);
+		fr.load();
+	}
+
+	function _onCancel(_):Void {}
+
+	function _onLoad(E:Event):Void
+	{
+		var fr:FileReference = cast E.target;
+		fr.removeEventListener(Event.COMPLETE, _onLoad);
+
+		trace(fr.data);
+		LEVEL_JSON = Json.parse(fr.data.toString());
+		loadJSON();
 	}
 }
