@@ -316,7 +316,7 @@ class LevelEditorMenu extends FlxState
 			_file.addEventListener(Event.COMPLETE, onSaveComplete);
 			_file.addEventListener(Event.CANCEL, onSaveCancel);
 			_file.addEventListener(IOErrorEvent.IO_ERROR, onSaveError);
-			_file.save(data.trim(), '${LEVEL_JSON.author}s-level.json');
+			_file.save(data.trim(), '${LEVEL_JSON.author}s-level.dream');
 		}
 	}
 
