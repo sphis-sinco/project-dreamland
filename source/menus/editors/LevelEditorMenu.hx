@@ -16,7 +16,7 @@ class LevelEditorMenu extends FlxState
 
 	public var _file:FileReference;
 
-	public var LEVEL_JSON:LevelData = LevelDataManager.defaultJSON;
+	public static var LEVEL_JSON:LevelData = null;
 
 	public var UI_BOX:FlxUITabMenu;
 
@@ -25,6 +25,8 @@ class LevelEditorMenu extends FlxState
 	override function create()
 	{
 		instance = this;
+
+		LEVEL_JSON = (LEVEL_JSON == null) ? LevelDataManager.defaultJSON : LEVEL_JSON;
 
 		initalized = false;
 
