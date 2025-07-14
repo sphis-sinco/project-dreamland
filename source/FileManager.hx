@@ -190,7 +190,7 @@ class FileManager
 			{
 				for (folder in FileSystem.readDirectory(directory))
 				{
-					readFolder(folder, directory);
+					return readFolder(folder, directory);
 				}
 			}, {
 					traceErr: true
@@ -198,22 +198,28 @@ class FileManager
 		}
 
 		#if POLYMOD_MODDING
-		for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
+		TryCatch.tryCatch(() ->
 		{
-			TryCatch.tryCatch(() ->
+			for (folder in ModList.getActiveMods(PolymodHandler.metadataArrays))
 			{
-				var prefix:String = 'mods/';
-				var modDir:Array<String> = readDir('$prefix${folder}/');
-				trace('Checking "$prefix${folder}/" for a $type_folder folder');
-				if (modDir.contains('$type_folder'))
+				TryCatch.tryCatch(() ->
 				{
-					trace('$folder has a $type_folder folder');
-					typePaths.push('$prefix${folder}/$type_folder/');
-				}
-			}, {
-					traceErr: false
-			});
-		}
+					var prefix:String = 'mods/';
+					var modDir:Array<String> = FileSystem.readDirectory('$prefix${folder}/');
+					trace('Checking "$prefix${folder}/" for a $type_folder folder');
+					if (modDir.contains('$type_folder'))
+					{
+						trace('$folder has a $type_folder folder');
+						typePaths.push('$prefix${folder}/$type_folder/');
+					}
+				}, {
+						traceErr: true,
+						errFunc: d -> {}
+				});
+			}
+		}, {
+				traceErr: true,
+		});
 		#end
 		for (path in typePaths)
 		{
