@@ -282,7 +282,7 @@ class PlayState extends FlxState
 				{
 					FlxG.switchState((!GOTO_LEVEL_EDITOR) ? GameOver.new : LevelEditorMenu.new);
 					if (GOTO_LEVEL_EDITOR)
-						PlayState.SCORE = 0;
+						PlayState.SCORE = Global.HIGHSCORE;
 					GOTO_LEVEL_EDITOR = false;
 
 					instance = null;

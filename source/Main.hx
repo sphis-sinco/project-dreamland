@@ -22,7 +22,7 @@ class Main extends Sprite
 			Log.info(v, infos);
 		}
 
-		Application.current.window.title = 'Dreamland (${Application.current.meta.get('version')})';
+		Application.current.window.title = 'Dreamland (${Global.APP_VERSION})';
 
 		CheckOutdated.call();
 
