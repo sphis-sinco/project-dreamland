@@ -1,0 +1,28 @@
+{
+	"settings": {
+		"ammo": 4,
+		"chances": {
+			"enemy_easy": 10,
+			"enemy_rare": 0.1
+		},
+		"scores": {
+			"enemy_common": 40,
+			"enemy_easy": 100,
+			"enemy_rare": 200
+		},
+		"speed_additions": {
+			"enemy_common": 8,
+			"enemy_easy": 5,
+			"enemy_rare": 20
+		}
+	},
+	"generatedBy": "Dreamland (1.0.0) LevelEditorMenu",
+	"assets": {
+		"directory": "kirpa/overdrive/",
+		"enemy_common": "trinre",
+		"enemy_easy": "qui",
+		"enemy_rare": "popo",
+		"player": "player-hiku"
+	},
+	"author": "Sphis_Sinco"
+}

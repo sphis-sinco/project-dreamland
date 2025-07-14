@@ -51,7 +51,6 @@ class LevelEditorMenu extends FlxState
 		addSettingsTab1();
 
 		loadJSON();
-		AUTHOR_TEXT.text = 'Person';
 
 		initalized = true;
 	}
@@ -267,12 +266,12 @@ class LevelEditorMenu extends FlxState
 		returnJson.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
 		returnJson.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
 
-		returnJson.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
-		returnJson.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
+		returnJson.settings.chances.enemy_easy = SETTINGS_CHANCES_ENEMY_EASY_NUM.value;
+		returnJson.settings.chances.enemy_rare = SETTINGS_CHANCES_ENEMY_RARE_NUM.value;
 
-		returnJson.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
-		returnJson.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
-		returnJson.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
+		returnJson.settings.speed_additions.enemy_common = SETTINGS_SPEED_ENEMY_COMMON_NUM.value;
+		returnJson.settings.speed_additions.enemy_easy = SETTINGS_SPEED_ENEMY_EASY_NUM.value;
+		returnJson.settings.speed_additions.enemy_rare = SETTINGS_SPEED_ENEMY_RARE_NUM.value;
 
 		return returnJson;
 	}
@@ -311,7 +310,7 @@ class LevelEditorMenu extends FlxState
 		var json = LEVEL_JSON;
 		json.generatedBy = 'Dreamland (${Global.APP_VERSION}) LevelEditorMenu';
 
-		var data:String = Json.stringify(json);
+		var data:String = Json.stringify(json, "\t");
 
 		if ((data != null) && (data.length > 0))
 		{

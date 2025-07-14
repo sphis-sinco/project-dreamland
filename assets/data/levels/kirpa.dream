@@ -1,0 +1,28 @@
+{
+        "assets": {
+                "directory": "kirpa/",
+                "enemy_common": "poyin",
+                "enemy_easy": "deqa",
+                "enemy_rare": "meno",
+                "player": "player-hiku"
+        },
+        "author": "Sphis_Sinco",
+        "settings": {
+                "ammo": 4,
+                "chances": {
+                        "enemy_easy": 20,
+                        "enemy_rare": 6
+                },
+                "scores": {
+                        "enemy_common": 30,
+                        "enemy_easy": 12,
+                        "enemy_rare": 80
+                },
+                "speed_additions": {
+                        "enemy_common": -2,
+                        "enemy_easy": 3,
+                        "enemy_rare": 9
+                }
+        },
+        "generatedBy": "Dreamland (1.0.0) LevelEditorMenu"
+}
