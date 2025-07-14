@@ -2,7 +2,7 @@
         "name": "Kirpa",
 
         "filenames": ["kirpa", "kirpa-overdrive"],
-        "difficulties": ["idk", "idk"],
+        "difficulties": ["pretty easy", "difficult"],
         "variations": ["Default", "Overdrive"],
         "fileSuffixes": [null, null],
         "filePrefixes": ["kirpa/", "kirpa/overdrive/"]        

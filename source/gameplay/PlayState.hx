@@ -281,6 +281,8 @@ class PlayState extends FlxState
 				if (enemy.overlaps(player))
 				{
 					FlxG.switchState((!GOTO_LEVEL_EDITOR) ? GameOver.new : LevelEditorMenu.new);
+					if (GOTO_LEVEL_EDITOR)
+						PlayState.SCORE = 0;
 					GOTO_LEVEL_EDITOR = false;
 
 					instance = null;
