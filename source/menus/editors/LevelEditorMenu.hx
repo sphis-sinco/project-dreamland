@@ -12,7 +12,9 @@ import openfl.net.FileReference;
 
 class LevelEditorMenu extends FlxState
 {
-	var _file:FileReference;
+	public static var instance:LevelEditorMenu = null;
+
+	public var _file:FileReference;
 
 	public var LEVEL_JSON:LevelData = LevelDataManager.defaultJSON;
 
@@ -22,6 +24,8 @@ class LevelEditorMenu extends FlxState
 
 	override function create()
 	{
+		instance = this;
+
 		initalized = false;
 
 		super.create();
@@ -290,6 +294,7 @@ class LevelEditorMenu extends FlxState
 
 		if (Controls.UI_LEAVE)
 		{
+			instance = null;
 			FlxG.switchState(EditorMenu.new);
 		}
 	}
