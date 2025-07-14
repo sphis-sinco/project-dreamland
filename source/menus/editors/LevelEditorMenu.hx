@@ -123,8 +123,8 @@ class LevelEditorMenu extends FlxState
 
 		SETTINGS_SPEED_ENEMY_RARE_NUM = new FlxUINumericStepper(10, SETTINGS_CHANCES_ENEMY_EASY_NUM.y + SETTINGS_CHANCES_ENEMY_EASY_NUM.height + 15,
 			0.1, 2, -7, 20, 1);
-		SETTINGS_SPEED_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_SPEED_ENEMY_RARE_NUM.y + SETTINGS_SPEED_ENEMY_RARE_NUM.height + 5, 5,
-			0.1, -7, 20, 1);
+		SETTINGS_SPEED_ENEMY_EASY_NUM = new FlxUINumericStepper(10, SETTINGS_SPEED_ENEMY_RARE_NUM.y + SETTINGS_SPEED_ENEMY_RARE_NUM.height + 5, 0.1,
+			2, -7, 20, 1);
 		SETTINGS_SPEED_ENEMY_COMMON_NUM = new FlxUINumericStepper(10, SETTINGS_SPEED_ENEMY_EASY_NUM.y + SETTINGS_SPEED_ENEMY_EASY_NUM.height + 5, 0.1,
 			2, -7, 20, 1);
 
@@ -309,6 +309,7 @@ class LevelEditorMenu extends FlxState
 	private function saveLevel()
 	{
 		var json = LEVEL_JSON;
+		json.generatedBy = 'Dreamland (${Global.APP_VERSION}) LevelEditorMenu';
 
 		var data:String = Json.stringify(json);
 

@@ -5,6 +5,7 @@ typedef LevelData =
 	var ?author:String;
 	var ?assets:LevelDataAssetsInfo;
 	var ?settings:LevelDataSettings;
+	var ?generatedBy:String;
 }
 
 typedef LevelDataAssetsInfo =

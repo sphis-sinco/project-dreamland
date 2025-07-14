@@ -1,0 +1,9 @@
+{
+        "name": "Kirpa",
+
+        "filenames": ["kirpa", "kirpa-overdrive"],
+        "difficulties": ["idk", "idk"],
+        "variations": ["Default", "Overdrive"],
+        "fileSuffixes": [null, null],
+        "filePrefixes": ["kirpa/", "kirpa/overdrive/"]        
+}

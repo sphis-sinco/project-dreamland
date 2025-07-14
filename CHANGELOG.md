@@ -5,6 +5,7 @@ A new team member was added to the team: HeroEyad
 - The level name, variation, and difficulty text has been moved up
 - Level sprite's scale has been set to 1 for the x and y
 ## Gameplay
+- **NEW LEVEL: KIRPA (DEFAULT AND OVERDRIVE)**
 - The highscore variable is initalized after the save is initalized
 - The background is scaled down in non-mobile builds
 - All backgrounds have been extended

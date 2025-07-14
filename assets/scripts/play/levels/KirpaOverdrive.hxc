@@ -1,0 +1,55 @@
+import flixel.FlxSprite;
+import gameplay.PlayState;
+import gameplay.ResultsSubState;
+import save.Save;
+import shaders.AdjustColorShader;
+
+var playerShader:AdjustColorShader = new AdjustColorShader();
+var enemyShader:AdjustColorShader = new AdjustColorShader();
+var desiredLevel = 'kirpa-overdrive';
+
+function stateCreate()
+{
+	// trace(PlayState.CURRENT_LEVEL);
+
+	if (Global.CurrentState == 'PlayState' && PlayState.CURRENT_LEVEL == desiredLevel)
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		playerShader.hue = 6;
+		playerShader.saturation = 0;
+		playerShader.brightness = -13;
+
+		enemyShader.hue = playerShader.hue;
+		enemyShader.saturation = playerShader.saturation;
+		enemyShader.brightness = playerShader.brightness;
+
+		PlayState.instance.player.shader = playerShader;
+
+		PlayState.instance.onNewBullet = function(bullet:FlxSprite)
+		{
+			bullet.shader = playerShader;
+		}
+		PlayState.instance.onNewEnemy = function(enemy:FlxSprite)
+		{
+			enemy.shader = enemyShader;
+		}
+	}
+}
+
+function substateCreate()
+{
+	if (Global.CurrentSubState == 'ResultsSubState' && PlayState.CURRENT_LEVEL == desiredLevel)
+	{
+		if (!getSavedataInfo('shaders'))
+			return;
+
+		ResultsSubState.instance.player.shader = playerShader;
+		ResultsSubState.instance.screen.shader = playerShader;
+		ResultsSubState.instance.screen_pulse.shader = playerShader;
+		ResultsSubState.instance.HIGHSCORE.shader = playerShader;
+		ResultsSubState.instance.backdrop.shader = playerShader;
+		ResultsSubState.instance.scoreText.shader = playerShader;
+	}
+}
