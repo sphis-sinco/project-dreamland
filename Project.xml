@@ -55,12 +55,12 @@
 	<assets path="exclusives/mobile" rename="assets/mobile" if="MOBILE_BUILD" />
 
 	<define name="DISCORDRPC" if="windows" unless="hl || neko || MOBILE_BUILD" />
-	<define name="POLYMOD_MODDING" unless="html5 || neko || MOBILE_BUILD" />
+	<!-- <define name="POLYMOD_MODDING" unless="html5 || neko || MOBILE_BUILD" /> -->
 	<define name="BLOCK_SOME_POLYMOD_TRACES" if="blockSomePolymodTraces" />
+	<define name="ASSET_REPLACEMENT" />
 
 	<section if="POLYMOD_MODDING">
 		<define name="SCRIPT_FILES" />
-		<define name="ASSET_REPLACEMENT" />
 		<assets path="example_mods" rename="mods" />
 		<assets path="debug_mods" rename="mods" if="debug" />
 	</section>

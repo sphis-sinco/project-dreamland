@@ -1,7 +1,6 @@
 # 1.0.3 (7/14/2025)
 ## Modding
-- Fixed assets not being read properly for mods
-- Fixed asset folders not being found for mods
+- Modding has been disabled, just fucking use the damn assets folder at this point.
 
 # 1.0.2 (7/14/2025)
 ## Gameplay

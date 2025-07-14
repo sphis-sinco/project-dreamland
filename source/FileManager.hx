@@ -480,8 +480,6 @@ class FileManager
 		trace(path);
 		var file:String = readFile(path, posinfo);
 
-		trace(file);
-
 		if (!exists(path) || file == '' || file == null)
 			return null;
 
