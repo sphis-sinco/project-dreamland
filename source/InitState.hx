@@ -34,7 +34,9 @@ class InitState extends FlxState
 		}
 		else
 		{
-			var starting_state = haxe.macro.Compiler.getDefine('STARTING_STATE').split('=')[0];
+			var starting_state = haxe.macro.Compiler.getDefine('STARTING_STATE');
+			if (starting_state != null)
+				starting_state = starting_state.split('=')[0];
 			trace(starting_state);
 
 			switch (starting_state)
