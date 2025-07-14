@@ -363,7 +363,7 @@ class PlayState extends FlxState
 
 		new_enemy.loadGraphic(texturepath);
 
-		new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-60, 60));
+		new_enemy.setPosition(FlxG.width + new_enemy.width * 2, player.y + FlxG.random.float(-120, 120));
 		if (new_enemy.y < 0 + enemy_offscreen_padding)
 			new_enemy.y = 0 + enemy_offscreen_padding;
 		if (new_enemy.y > FlxG.height - new_enemy.height - enemy_offscreen_padding)
