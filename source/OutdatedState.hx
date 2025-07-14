@@ -16,7 +16,7 @@ class OutdatedState extends FlxState
 			+ #if MOBILE_BUILD 'press A' #else 'press ${Controls.getKey('ui_select')}' #end
 			+ ' to go to the github to update.\n'
 			+ 'or you can '
-			+ #if MOBILE_BUILD 'press B' #else 'press ${Controls.getKey('ui_select')}' #end
+			+ #if MOBILE_BUILD 'press B' #else 'press ${Controls.getKey('ui_leave')}' #end
 			+ ' to continue.';
 
 		#if html5

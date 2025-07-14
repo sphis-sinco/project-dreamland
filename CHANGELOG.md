@@ -1,6 +1,12 @@
+# 1.0.2 (7/14/2025)
+## Application
+- Fixed version
+## General
+- Fixed "ENTER" being used instead of "ESCAPE" for continuing to play the game in Outdated state (just a text change)
+
 # 1.0.1 (7/14/2025)
 ## Modding
-Fixed Windows only crash where mod folders don't work because of the folder checking system
+- Fixed Windows only crash where mod folders don't work because of the folder checking system
 
 # 1.0.0 (7/13/2025)
 A new team member was added to the team: HeroEyad
