@@ -186,7 +186,7 @@ class LevelSelect extends FlxState
 
 	function updateSelSecondFunc(d:Dynamic)
 	{
-		FlxG.log.add(d);
+		trace(d);
 		difficulty.text = levels[CURRENT_SELECTION] + ': $d';
 		// loadBG();
 	}

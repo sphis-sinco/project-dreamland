@@ -181,12 +181,14 @@ class FileManager
 			TryCatch.tryCatch(() ->
 			{
 				var prefix:String = 'mods/';
-				var modDir:Array<String> = FileSystem.readDirectory('$prefix${folder}/');
-				trace('Checking "$prefix${folder}/" for a $type_folder folder');
-				if (modDir.contains('$type_folder'))
+				var theFuckingPath:String = '$prefix${folder}/$type_folder';
+				trace('Checking "$prefix${folder}" for a $type_folder folder');
+				trace(FileSystem.exists(theFuckingPath));
+				if (FileSystem.exists(theFuckingPath))
 				{
 					trace('$folder has a $type_folder folder');
-					typePaths.push('$prefix${folder}/$type_folder/');
+					trace(FileSystem.readDirectory(theFuckingPath));
+					typePaths.push(theFuckingPath);
 				}
 			}, {
 					traceErr: true,
@@ -458,19 +460,6 @@ class FileManager
 			return '';
 		}
 
-		#if sys
-		return TryCatch.tryCatch(function()
-		{
-			// https://community.openfl.org/t/android-read-and-load-a-txt-file/10779/22
-			var dapath = #if android lime.system.System.applicationStorageDirectory + #end
-			path.replace('data/data/', 'data/');
-			// trace(dapath);
-			return File.getContent(dapath);
-		}, {
-				traceErr: true
-		});
-		#end
-
 		return TryCatch.tryCatch(function()
 		{
 			return openfl.Assets.getText(path);
@@ -488,18 +477,31 @@ class FileManager
 	public static function getJSON(path:String, ?posinfo:PosInfos):Dynamic
 	{
 		var json:Dynamic = null;
+		trace(path);
 		var file:String = readFile(path, posinfo);
 
-		TryCatch.tryCatch(function()
+		trace(file);
+
+		if (!exists(path) || file == '' || file == null)
+			return null;
+
+		try
 		{
-			json = Json.parse(file);
-		}, {
-				traceErr: true,
-				errFunc: d ->
-				{
-					json = file;
-				}
-		});
+			TryCatch.tryCatch(function()
+			{
+				json = Json.parse(file);
+			}, {
+					traceErr: true,
+					errFunc: d ->
+					{
+						json = file;
+					}
+			});
+		}
+		catch (e)
+		{
+			json = file;
+		}
 
 		return json;
 	}
