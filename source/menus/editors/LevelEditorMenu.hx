@@ -354,6 +354,7 @@ class LevelEditorMenu extends FlxState
 		fr.addEventListener(Event.CANCEL, _onCancel, false, 0, true);
 		var filters:Array<FileFilter> = new Array<FileFilter>();
 		filters.push(new FileFilter("Level Files", "*.dream"));
+		filters.push(new FileFilter("JSON Level Files", "*.json"));
 		fr.browse();
 	}
 
@@ -371,7 +372,7 @@ class LevelEditorMenu extends FlxState
 		var fr:FileReference = cast E.target;
 		fr.removeEventListener(Event.COMPLETE, _onLoad);
 
-		trace(fr.data);
+		// trace(fr.data);
 		LEVEL_JSON = Json.parse(fr.data.toString());
 		loadJSON();
 	}
