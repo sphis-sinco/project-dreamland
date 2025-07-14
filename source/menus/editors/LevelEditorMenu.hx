@@ -3,6 +3,7 @@ package menus.editors;
 import data.LevelData;
 import flixel.addons.ui.*;
 import flixel.math.FlxMath;
+import flixel.text.FlxInputText;
 import flixel.ui.FlxButton;
 
 class LevelEditorMenu extends FlxState
@@ -11,8 +12,12 @@ class LevelEditorMenu extends FlxState
 
 	public var UI_BOX:FlxUITabMenu;
 
+	public var initalized:Bool = false;
+
 	override function create()
 	{
+		initalized = false;
+
 		super.create();
 
 		var tabs = [
@@ -33,6 +38,8 @@ class LevelEditorMenu extends FlxState
 		addAssetsTab();
 		addSettingsTab1();
 
+		AUTHOR_TEXT.text = 'Person';
+
 		ASSETS_DIRECTORY_TEXT.text = LEVEL_JSON.assets.directory;
 		ASSETS_PLAYER_TEXT.text = LEVEL_JSON.assets.player;
 
@@ -52,6 +59,8 @@ class LevelEditorMenu extends FlxState
 		SETTINGS_SPEED_ENEMY_COMMON_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_common;
 		SETTINGS_SPEED_ENEMY_EASY_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_easy;
 		SETTINGS_SPEED_ENEMY_RARE_NUM.value = LEVEL_JSON.settings.speed_additions.enemy_rare;
+
+		initalized = true;
 	}
 
 	function addSettingsTab2()
@@ -62,18 +71,18 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public var SETTINGS_AMMO_NUM:FlxUINumericStepper;
+	public var SETTINGS_AMMO_NUM:FlxUINumericStepper = new FlxUINumericStepper();
 
-	public var SETTINGS_SCORE_ENEMY_RARE_NUM:FlxUINumericStepper;
-	public var SETTINGS_SCORE_ENEMY_EASY_NUM:FlxUINumericStepper;
-	public var SETTINGS_SCORE_ENEMY_COMMON_NUM:FlxUINumericStepper;
+	public var SETTINGS_SCORE_ENEMY_RARE_NUM:FlxUINumericStepper = new FlxUINumericStepper();
+	public var SETTINGS_SCORE_ENEMY_EASY_NUM:FlxUINumericStepper = new FlxUINumericStepper();
+	public var SETTINGS_SCORE_ENEMY_COMMON_NUM:FlxUINumericStepper = new FlxUINumericStepper();
 
-	public var SETTINGS_CHANCES_ENEMY_RARE_NUM:FlxUINumericStepper;
-	public var SETTINGS_CHANCES_ENEMY_EASY_NUM:FlxUINumericStepper;
+	public var SETTINGS_CHANCES_ENEMY_RARE_NUM:FlxUINumericStepper = new FlxUINumericStepper();
+	public var SETTINGS_CHANCES_ENEMY_EASY_NUM:FlxUINumericStepper = new FlxUINumericStepper();
 
-	public var SETTINGS_SPEED_ENEMY_RARE_NUM:FlxUINumericStepper;
-	public var SETTINGS_SPEED_ENEMY_EASY_NUM:FlxUINumericStepper;
-	public var SETTINGS_SPEED_ENEMY_COMMON_NUM:FlxUINumericStepper;
+	public var SETTINGS_SPEED_ENEMY_RARE_NUM:FlxUINumericStepper = new FlxUINumericStepper();
+	public var SETTINGS_SPEED_ENEMY_EASY_NUM:FlxUINumericStepper = new FlxUINumericStepper();
+	public var SETTINGS_SPEED_ENEMY_COMMON_NUM:FlxUINumericStepper = new FlxUINumericStepper();
 
 	function addSettingsTab1()
 	{
@@ -134,12 +143,12 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public var ASSETS_DIRECTORY_TEXT:FlxInputText;
-	public var ASSETS_PLAYER_TEXT:FlxInputText;
+	public var ASSETS_DIRECTORY_TEXT:FlxInputText = new FlxInputText();
+	public var ASSETS_PLAYER_TEXT:FlxInputText = new FlxInputText();
 
-	public var ASSETS_ENEMY_RARE_TEXT:FlxInputText;
-	public var ASSETS_ENEMY_EASY_TEXT:FlxInputText;
-	public var ASSETS_ENEMY_COMMON_TEXT:FlxInputText;
+	public var ASSETS_ENEMY_RARE_TEXT:FlxInputText = new FlxInputText();
+	public var ASSETS_ENEMY_EASY_TEXT:FlxInputText = new FlxInputText();
+	public var ASSETS_ENEMY_COMMON_TEXT:FlxInputText = new FlxInputText();
 
 	function addAssetsTab()
 	{
@@ -177,8 +186,8 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public var AUTHOR_TEXT:FlxInputText;
-	public var INFO_TEXT:FlxText;
+	public var AUTHOR_TEXT:FlxInputText = new FlxInputText();
+	public var INFO_TEXT:FlxText = new FlxText();
 
 	function addMiscTab()
 	{
@@ -196,7 +205,7 @@ class LevelEditorMenu extends FlxState
 
 		tab_group.add(new FlxButton(10, UI_BOX.height - 60, 'Play', () ->
 		{
-			saveSongJson();
+			saveLevelJson();
 
 			PlayState.GOTO_LEVEL_EDITOR = true;
 			FlxG.switchState(() -> new PlayState(LEVEL_JSON));
@@ -205,29 +214,41 @@ class LevelEditorMenu extends FlxState
 		UI_BOX.addGroup(tab_group);
 	}
 
-	public dynamic function saveSongJson()
+	public dynamic function saveLevelJson()
 	{
-		LEVEL_JSON.author = AUTHOR_TEXT.text;
+		LEVEL_JSON = getAssembledLevelJson();
+	}
 
-		LEVEL_JSON.assets.directory = ASSETS_DIRECTORY_TEXT.text;
-		LEVEL_JSON.assets.player = ASSETS_PLAYER_TEXT.text;
+	public function getAssembledLevelJson():LevelData
+	{
+		var returnJson:LevelData = LevelDataManager.defaultJSON;
 
-		LEVEL_JSON.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
-		LEVEL_JSON.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
-		LEVEL_JSON.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
+		if (!initalized)
+			return returnJson;
 
-		LEVEL_JSON.settings.ammo = Std.int(SETTINGS_AMMO_NUM.value);
+		returnJson.author = AUTHOR_TEXT.text;
 
-		LEVEL_JSON.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
-		LEVEL_JSON.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
-		LEVEL_JSON.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
+		returnJson.assets.directory = ASSETS_DIRECTORY_TEXT.text;
+		returnJson.assets.player = ASSETS_PLAYER_TEXT.text;
 
-		LEVEL_JSON.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
-		LEVEL_JSON.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
+		returnJson.assets.enemy_common = ASSETS_ENEMY_COMMON_TEXT.text;
+		returnJson.assets.enemy_easy = ASSETS_ENEMY_EASY_TEXT.text;
+		returnJson.assets.enemy_rare = ASSETS_ENEMY_RARE_TEXT.text;
 
-		LEVEL_JSON.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
-		LEVEL_JSON.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
-		LEVEL_JSON.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
+		returnJson.settings.ammo = Std.int(SETTINGS_AMMO_NUM.value);
+
+		returnJson.settings.scores.enemy_common = Std.int(SETTINGS_SCORE_ENEMY_COMMON_NUM.value);
+		returnJson.settings.scores.enemy_easy = Std.int(SETTINGS_SCORE_ENEMY_EASY_NUM.value);
+		returnJson.settings.scores.enemy_rare = Std.int(SETTINGS_SCORE_ENEMY_RARE_NUM.value);
+
+		returnJson.settings.chances.enemy_easy = Std.int(SETTINGS_CHANCES_ENEMY_EASY_NUM.value);
+		returnJson.settings.chances.enemy_rare = Std.int(SETTINGS_CHANCES_ENEMY_RARE_NUM.value);
+
+		returnJson.settings.speed_additions.enemy_common = Std.int(SETTINGS_SPEED_ENEMY_COMMON_NUM.value);
+		returnJson.settings.speed_additions.enemy_easy = Std.int(SETTINGS_SPEED_ENEMY_EASY_NUM.value);
+		returnJson.settings.speed_additions.enemy_rare = Std.int(SETTINGS_SPEED_ENEMY_RARE_NUM.value);
+
+		return returnJson;
 	}
 
 	override function update(elapsed:Float)
@@ -235,12 +256,17 @@ class LevelEditorMenu extends FlxState
 		super.update(elapsed);
 
 		INFO_TEXT.text = '';
-		infoTextFileCheck('background image', 'images/${LEVEL_JSON.assets.directory}background.png');
-		infoTextFileCheck('player data file', 'data/players/${LEVEL_JSON.assets.player}.json');
+		if (initalized)
+		{
+			saveLevelJson();
 
-		infoTextFileCheck('enemy (common) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_common}.png');
-		infoTextFileCheck('enemy (easy) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_easy}.png');
-		infoTextFileCheck('enemy (rare) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_rare}.png');
+			infoTextFileCheck('background image', 'images/${LEVEL_JSON.assets.directory}background.png');
+			infoTextFileCheck('player data file', 'data/players/${LEVEL_JSON.assets.player}.json');
+
+			infoTextFileCheck('enemy (common) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_common}.png');
+			infoTextFileCheck('enemy (easy) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_easy}.png');
+			infoTextFileCheck('enemy (rare) image', 'images/${LEVEL_JSON.assets.directory}${LEVEL_JSON.assets.enemy_rare}.png');
+		}
 
 		if (Controls.UI_LEAVE)
 		{
