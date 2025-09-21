@@ -133,7 +133,8 @@ class FileManager
 		var readFileFolder:Dynamic = function(folder:String, ogdir:String) {};
 		var readFolder:Dynamic = function(folder:String, ogdir:String)
 		{
-			trace('reading ${ogdir}${folder}');
+			var dirToRead = '${ogdir} ${!(ogdir.endsWith('/') || folder.startsWith('/')) ? '/' : ''} ${folder}';
+			trace('reading ${dirToRead}');
 
 			TryCatch.tryCatch(function()
 			{
