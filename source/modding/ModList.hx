@@ -5,9 +5,9 @@ import polymod.Polymod;
 
 class ModList
 {
-	public static var modList:Map<String, Bool> = new Map<String, Bool>();
+	public static var modList:Map<String, Bool> = [];
 
-	public static var modMetadatas:Map<String, ModMetadata> = new Map();
+	public static var modMetadatas:Map<String, ModMetadata> = [];
 
 	public static function setModEnabled(mod:String, enabled:Bool):Void
 	{

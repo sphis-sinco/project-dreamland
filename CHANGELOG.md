@@ -2,6 +2,7 @@
 ## General
 - Fixed Sphis credit
 ## Modding
+- The Mod Menu has been overhauled
 - Modding has been enabled once again
 
 # 1.0.3 (7/14/2025)
