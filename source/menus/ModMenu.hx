@@ -178,7 +178,7 @@ class ModMenu extends FlxState
 							.apiVersion.lessThan(Version.arrayToVersion([0, 9, 0]));
 						var old_player_results_version = !ModList.modMetadatas.get(curModId)
 							.apiVersion.lessThan(Version.arrayToVersion([1, 0, 0]));
-						var old_stages = !ModList.modMetadatas.get(curModId).apiVersion.lessThan(Version.arrayToVersion([2, 0, 0]));
+						var old_stages = ModList.modMetadatas.get(curModId).apiVersion.lessThan(Version.arrayToVersion([2, 0, 0]));
 
 						outdatedText = ' \n%Outdated ';
 
