@@ -1,4 +1,6 @@
 # 2.0.0 (9/20/2025)
+## General
+- Fixed Sphis credit
 ## Modding
 - Modding has been enabled once again
 
