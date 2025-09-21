@@ -152,7 +152,7 @@ class FileManager
 			trace('${ogdir}${folder}');
 			#end
 
-			for (file in FileSystem.readDirectory('${ogdir}${folder}'))
+			for (file in FileSystem.readDirectory('${ogdir}${!(ogdir.endsWith('/') || folder.startsWith('/')) ? '/' : ''}${folder}'))
 			{
 				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
 				if (!file.contains('.'))
