@@ -1,3 +1,7 @@
+# 2.0.0 (9/20/2025)
+## Modding
+- Modding has been enabled once again
+
 # 1.0.3 (7/14/2025)
 ## Modding
 - Modding has been disabled, just fucking use the damn assets folder at this point if you for some reason wanna mod this piece of shit.
