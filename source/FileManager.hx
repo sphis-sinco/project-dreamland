@@ -148,16 +148,21 @@ class FileManager
 
 		readFileFolder = function(folder:String, ogdir:String)
 		{
+			var dirToRead = '${ogdir} ${!(ogdir.endsWith('/') || folder.startsWith('/')) ? '/' : ''} ${folder}';
+
 			#if EXCESS_TRACES
-			trace('${ogdir}${folder}');
+			trace(dirToRead);
 			#end
 
-			for (file in FileSystem.readDirectory('${ogdir}${!(ogdir.endsWith('/') || folder.startsWith('/')) ? '/' : ''}${folder}'))
+			if (!FileSystem.isDirectory(dirToRead))
+				return;
+
+			for (file in FileSystem.readDirectory(dirToRead))
 			{
 				final endsplitter:String = '${!folder.endsWith('/') && !file.startsWith('/') ? '/' : ''}';
 				if (!file.contains('.'))
 				{
-					readFolder('${file}', '${ogdir}${folder}${endsplitter}');
+					readFolder('${file}', '${dirToRead}${endsplitter}');
 				}
 				else
 				{
@@ -165,7 +170,7 @@ class FileManager
 					{
 						if (file.endsWith(extension))
 						{
-							final path:String = '${ogdir}${folder}${endsplitter}${file}';
+							final path:String = '${dirToRead}${endsplitter}${file}';
 
 							if (!arr.contains(path))
 								arr.push('${path}');
