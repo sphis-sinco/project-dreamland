@@ -9,6 +9,7 @@ import modding.PolymodHandler;
 import openfl.display.BitmapData;
 import thx.semver.Version;
 
+// todo: revert
 class ModMenu extends FlxState
 {
 	public static var savedSelection:Int = 0;
