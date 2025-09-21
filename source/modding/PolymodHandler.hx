@@ -71,10 +71,7 @@ class PolymodHandler
 		// Ensure TXT files have merge support.
 		output.addType('txt', TextFileFormat.LINES);
 		// Ensure script files have merge support.
-		for (ext in ScriptManager.SCRIPT_EXTS)
-		{
-			output.addType(ext, TextFileFormat.PLAINTEXT);
-		}
+		output.addType("hxc", TextFileFormat.PLAINTEXT);
 		// You can specify the format of a specific file, with file extension.
 		// output.addFile("data/introText.txt", TextFileFormat.LINES)
 		return output;
