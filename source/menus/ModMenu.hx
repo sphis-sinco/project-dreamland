@@ -178,6 +178,7 @@ class ModMenu extends FlxState
 							.apiVersion.lessThan(Version.arrayToVersion([0, 9, 0]));
 						var old_player_results_version = !ModList.modMetadatas.get(curModId)
 							.apiVersion.lessThan(Version.arrayToVersion([1, 0, 0]));
+						var old_stages = !ModList.modMetadatas.get(curModId).apiVersion.lessThan(Version.arrayToVersion([2, 0, 0]));
 
 						outdatedText = ' \n%Outdated ';
 
@@ -185,6 +186,8 @@ class ModMenu extends FlxState
 							outdatedText += '\n$* Custom player results assets won\'t work$';
 						if (old_level_system_version)
 							outdatedText += '\n$* Any new levels added won\'t work$';
+						if (old_stages)
+							outdatedText += '\n$* Level backgrounds won\'t work$';
 
 						outdatedText += '%';
 					}
